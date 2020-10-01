@@ -12,7 +12,8 @@
  *
  * ========================================
 */
-
+#include <project.h>
+#include <modes.h>
 #include <inputs.h>
 
 /* global variables */
@@ -63,11 +64,6 @@ CY_ISR(PWR_OK_MODE_SHORT_ISR)
         else
         {
             MODE_SHORT_V = 1;   // if it is not, set variale indicating MODE short press
-// TO BE REMOVED TO BE REMOVED
-            PSoC_LED_Write(1u);
-            CyDelay(500);
-            PSoC_LED_Write(0u);
-// TO BE REMOVED TO BE REMOVED
         }
     }
 // Check if interrupt is triggered by PWR_OK push button release (rising edge)
@@ -80,11 +76,6 @@ CY_ISR(PWR_OK_MODE_SHORT_ISR)
         else
         {
             PWR_OK_SHORT_V = 1;   // if it is not, set variale indicating PWR_OK short press
-// TO BE REMOVED TO BE REMOVED
-            PSoC_LED_Write(1u);
-            CyDelay(500);
-            PSoC_LED_Write(0u);
-// TO BE REMOVED TO BE REMOVED
         }
     } 
 // Wait 2mS before clearing interrupt to debounce push buttons
@@ -119,11 +110,6 @@ CY_ISR(MODE_LONG_ISR)
         MODE_LONG_V = 1;        // set variable indicating long press
         Timer_1_ClearInterrupt(Timer_1_INTR_MASK_TC);
                                 // clear interrupt source from timer
-// TO BE REMOVED TO BE REMOVED
-        LED_Write(1u);
-        CyDelay(500);
-        LED_Write(0u);
- // TO BE REMOVED TO BE REMOVED
     }
 }
 
@@ -153,11 +139,6 @@ CY_ISR(PWR_OK_LONG_ISR)
         PWR_OK_LONG_V = 1;      // set variable indicating long press
         Timer_2_ClearInterrupt(Timer_2_INTR_MASK_TC);
                                 // clear interrupt source from timer
-// TO BE REMOVED TO BE REMOVED
-        LED_Write(1u);
-        CyDelay(500);
-        LED_Write(0u);
- // TO BE REMOVED TO BE REMOVED
     }
 }
 
@@ -170,10 +151,16 @@ CY_ISR(PWR_OK_LONG_ISR)
 *  count (STOP condition) or when timer FIFO is full (4 new bits)
 *   
 * Parameters:
-*  None
+*  Routine operates on 3 global vatiables (due to the fact that it can caleld in 
+*  the middle of incomming command to clear 4 byte FIFO.
+*  DATALINK_TABLE[64] - to store incoming information about timer values
+*  DATALINK_TABLE_COUNTER - to store current posiiton in incoming command
+*  DATALINK_TABLE_COUNTER_MAX - to store and indicate to the system that new 
+*  command arrived. Serving routine (datalink)decoder) operate on it plus 
+*  DATALINK_TABLE content. 
 *
 * Return:
-*  None
+*  Sets value of DATALINK_TABLE_COUNTER_MAX to the size of last DATALINK command.
 *
 ********************************************************************************/
 CY_ISR(DATALINK_INTRRUPTHandler)
@@ -182,12 +169,9 @@ CY_ISR(DATALINK_INTRRUPTHandler)
     uint8 DATALINK_STATUS = 0; 
 // read DATALINK timer status regiister    
     DATALINK_STATUS = DATALINK_Timer_ReadStatusRegister();
-// Check if interrupt came from Timer Counter expired (end of new command)
+// Check if interrupt came from Timer Counter expired (indicating end of new command)
     if (0u != (DATALINK_STATUS & 0x01))
     {
-// TO BE REMOVED TO BE REMOVED
-        PSoC_LED_Write(~PSoC_LED_Read());
-// TO BE REMOVED TO BE REMOVED 
 // flush all data that is still in FIFO        
         while (0u != (DATALINK_Timer_ReadStatusRegister() & 0x08))
         {
@@ -196,7 +180,7 @@ CY_ISR(DATALINK_INTRRUPTHandler)
 // store data from fifo into table            
             DATALINK_TABLE[DATALINK_TABLE_COUNTER] = DATALINK_Timer_ReadCapture();
         }
-// store latest table data size
+// store latest table data size - this will indicate that new command was received
         DATALINK_TABLE_COUNTER_MAX = DATALINK_TABLE_COUNTER;
 // reset table data pointer for next command        
         DATALINK_TABLE_COUNTER = 0;
@@ -216,9 +200,38 @@ CY_ISR(DATALINK_INTRRUPTHandler)
             DATALINK_TABLE[DATALINK_TABLE_COUNTER] = DATALINK_Timer_ReadCapture();
         }
     }
-// TO BE REMOVED TO BE REMOVED
-    LED_Write(~LED_Read());
-// TO BE REMOVED TO BE REMOVED
+}
+
+
+/*******************************************************************************
+* Function Name: CY_ISR(DISPLAY_Timer_INTHandler)
+********************************************************************************
+* Summary:
+*  The Interrupt Service Routine. Triggered by software when timer expires after 
+*  DISPLAY_Timer_Start() is called. It uses timer to count 2 seconds wait.
+*  This time is used to display information that are temporary (like button press
+*  or BT status).
+*   
+* Parameters:
+*  Timer interrupt handler 
+*
+* Return:
+*  updates DISPLAY_UPDATE variable.when TC is called.
+*
+********************************************************************************/
+CY_ISR(DISPLAY_Timer_INTHandler)
+{
+// Check if interrupt came from Timer Counter expired (indicating timer count elapsed)
+    if (0u != (DISPLAY_Timer_ReadStatusRegister() & 0x01))
+    {
+// sets display update variable 
+        DISPLAY_UPDATE = 1;
+// clear all remining interrupts        
+        DISPLAY_Timer_INT_ClearPending();
+// stop timer and wait for another software call to start        
+        DISPLAY_Timer_Stop();
+    }
+
 }
 
 

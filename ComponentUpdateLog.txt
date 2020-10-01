@@ -1,0 +1,28 @@
+Last Modified Date & Time: 06/12/2020 00:22:56
+
+BeoM_main: BeoM_main.cydwr
+	cy_boot [v4.20] to [v5.90]
+
+BeoM_main: TopDesign.cysch
+	BT_APTX [v2.10] to [v2.20]
+	BT_HD [v2.10] to [v2.20]
+	BT_LL [v2.10] to [v2.20]
+	BT_NEXT [v2.10] to [v2.20]
+	BT_PAIRING [v2.10] to [v2.20]
+	BT_PAUSE [v2.10] to [v2.20]
+	BT_PREVIOUS [v2.10] to [v2.20]
+	BT_RE_CONNECT [v2.10] to [v2.20]
+	BT_SBC [v2.10] to [v2.20]
+	BT_Tx_Rx [v2.10] to [v2.20]
+	LED [v2.10] to [v2.20]
+	Pin_1 [v2.10] to [v2.20]
+	PSoC_LED [v2.10] to [v2.20]
+	PWR_BT [v2.10] to [v2.20]
+	PWR_DISP [v2.10] to [v2.20]
+	PWR_OK_MODE [v2.10] to [v2.20]
+	PWR_RPI [v2.10] to [v2.20]
+	PWR_SDSP [v2.10] to [v2.20]
+	Timer_1 [v2.0] to [v2.10]
+	Timer_2 [v2.0] to [v2.10]
+
+

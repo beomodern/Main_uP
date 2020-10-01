@@ -1,0 +1,2992 @@
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"display.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.SPIM_display_write,"ax",%progbits
+  20              		.align	1
+  21              		.global	SPIM_display_write
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	SPIM_display_write, %function
+  25              	SPIM_display_write:
+  26              	.LFB32:
+  27              		.file 1 "display.c"
+   1:display.c     **** /* ========================================
+   2:display.c     ****  *
+   3:display.c     ****  * Copyright HEMI, 2020
+   4:display.c     ****  * All Rights Reserved
+   5:display.c     ****  * UNPUBLISHED, LICENSED SOFTWARE.
+   6:display.c     ****  * 
+   7:display.c     ****  * Functions used by BeoModern main PSoC to display informaiton on BeoModern
+   8:display.c     ****  * front display as well as front LEDs
+   9:display.c     ****  *
+  10:display.c     ****  * CONFIDENTIAL AND PROPRIETARY INFORMATION
+  11:display.c     ****  * WHICH IS THE PROPERTY OF HEMI.
+  12:display.c     ****  *
+  13:display.c     ****  * ========================================
+  14:display.c     **** */
+  15:display.c     **** 
+  16:display.c     **** #include <inputs.h>
+  17:display.c     **** #include <display.h>
+  18:display.c     **** 
+  19:display.c     **** 
+  20:display.c     **** // This dummy buffer used by SPIM when it receives status packet.
+  21:display.c     **** const uint8 dummyBuffer[TxPACKET_SIZE] = {0xFFu, 0xFFu, 0xFFu};
+  22:display.c     **** //const uint8 message_table[TxPACKET_SIZE+2] = {0};
+  23:display.c     **** 
+  24:display.c     **** 
+  25:display.c     **** 
+  26:display.c     **** /*******************************************************************************
+  27:display.c     **** * Function Name: SPIM_display_write
+  28:display.c     **** ********************************************************************************
+  29:display.c     **** * Summary:
+  30:display.c     **** *  SPI Master initiates the transmission of 25 long message to the SPI Slave. 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 2
+
+
+  31:display.c     **** *  Funciton adds start and stop bajts to indicate correct transfer.
+  32:display.c     **** *  After transfer completion, the dummy bytes sent by the SPIS are cleared from 
+  33:display.c     **** *  the RX buffer.
+  34:display.c     **** *
+  35:display.c     **** * Summary:
+  36:display.c     **** *  Funciton reponsible for decoding and displayin commands that were sent over 
+  37:display.c     **** *  SPI interface to display. It intercepts 24 ASCI characters and pushes them to 
+  38:display.c     **** *  display. It also interprets two control words and manipulates LEDs acordingly
+  39:display.c     **** *  to control words state.
+  40:display.c     **** *  More than one LED can be ON at one time.
+  41:display.c     **** *
+  42:display.c     **** * Parameters:
+  43:display.c     **** *  input_table[] - table returned by SPI slave routine contining 24 ASCI
+  44:display.c     **** *                  characters and 2 control words for LED ON/OFF states
+  45:display.c     **** *  disp_ctrl1 - Each bit represents LED on front interface
+  46:display.c     **** *               LED control
+  47:display.c     **** *               CTRL0.0 - Player
+  48:display.c     **** *               CTRL0.1 - iRadio
+  49:display.c     **** *               CTRL0.2 - DAB Radio
+  50:display.c     **** *               CTRL0.3 - Aux IN
+  51:display.c     **** *               CTRL0.4 - Clock    
+  52:display.c     **** *               CTRL0.5 - RDS/FM Display
+  53:display.c     **** *               CTRL0.6 - BT Rx    
+  54:display.c     **** *               CTRL0.7 - NOT USED
+  55:display.c     ****                 only one LED can be ON at particualr moment in time
+  56:display.c     **** *  disp_ctrl2 - Each bit represents LED on front interface
+  57:display.c     **** *               LED control
+  58:display.c     **** *               CTRL1.0 - BT Tx
+  59:display.c     **** *               CTRL1.1 - Online status
+  60:display.c     **** *               CTRL1.2 - Signal Level
+  61:display.c     **** *               CTRL1.3 - Spectrum Analyser
+  62:display.c     **** *               CTRL1.4 - Clock 1
+  63:display.c     **** *               CTRL1.5 - Clock 2
+  64:display.c     **** *               CTRL1.6 - NOT USED
+  65:display.c     **** *               CTRL1.7 - NOT USED
+  66:display.c     **** *               more than one LED can be ON at particualr moment in time
+  67:display.c     **** * Return:
+  68:display.c     **** *  none
+  69:display.c     **** *
+  70:display.c     **** *
+  71:display.c     **** *******************************************************************************/
+  72:display.c     **** void SPIM_display_write(uint8 message_table[], uint8 disp_ctrl1, uint8 disp_ctrl2)
+  73:display.c     **** {
+  28              		.loc 1 73 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 70B5     		push	{r4, r5, r6, lr}
+  34              		.cfi_def_cfa_offset 16
+  35              		.cfi_offset 4, -16
+  36              		.cfi_offset 5, -12
+  37              		.cfi_offset 6, -8
+  38              		.cfi_offset 14, -4
+  39              		.loc 1 73 0
+  40 0002 0500     		movs	r5, r0
+  74:display.c     **** // SPIM TX buffer 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 3
+
+
+  75:display.c     ****     static uint8 mTxBuffer[TxPACKET_SIZE] = {0};
+  76:display.c     **** // variable to populate Tx buffer with incomming message
+  77:display.c     ****     uint8 i = 0;
+  78:display.c     **** // set start of Tx message 
+  79:display.c     ****     mTxBuffer[TxPACKET_SOP_POS] = (PACKET_SOP);
+  41              		.loc 1 79 0
+  42 0004 0120     		movs	r0, #1
+  43              	.LVL1:
+  44 0006 0C4B     		ldr	r3, .L7
+  45 0008 0024     		movs	r4, #0
+  46 000a 1870     		strb	r0, [r3]
+  47              	.LVL2:
+  48 000c 1800     		movs	r0, r3
+  49              	.LVL3:
+  50              	.L2:
+  80:display.c     **** // populate buffer with incoming 24 characters of data    
+  81:display.c     ****     for (i = 1; i<TxPACKET_SIZE-3; i++)
+  82:display.c     ****     {
+  83:display.c     ****         mTxBuffer[i] = (message_table[i-1]);
+  51              		.loc 1 83 0 discriminator 3
+  52 000e 2E5D     		ldrb	r6, [r5, r4]
+  53 0010 0319     		adds	r3, r0, r4
+  54 0012 0134     		adds	r4, r4, #1
+  55              	.LVL4:
+  56 0014 5E70     		strb	r6, [r3, #1]
+  81:display.c     ****     {
+  57              		.loc 1 81 0 discriminator 3
+  58 0016 182C     		cmp	r4, #24
+  59 0018 F9D1     		bne	.L2
+  84:display.c     ****     }
+  85:display.c     **** // populate control messages 1 and 2    
+  86:display.c     ****     mTxBuffer[TxPACKET_CTRL1_POS] = disp_ctrl1;
+  87:display.c     ****     mTxBuffer[TxPACKET_CTRL2_POS] = disp_ctrl2;
+  88:display.c     ****     
+  89:display.c     **** // set end of Tx message    
+  90:display.c     ****     mTxBuffer[TxPACKET_EOP_POS] = (PACKET_EOP);
+  60              		.loc 1 90 0
+  61 001a 1723     		movs	r3, #23
+  86:display.c     ****     mTxBuffer[TxPACKET_CTRL2_POS] = disp_ctrl2;
+  62              		.loc 1 86 0
+  63 001c 4176     		strb	r1, [r0, #25]
+  91:display.c     **** 
+  92:display.c     **** // Start transfer (message plus start/stop indicators
+  93:display.c     ****     SPIM_SpiUartPutArray(mTxBuffer, TxPACKET_SIZE);
+  64              		.loc 1 93 0
+  65 001e 1C21     		movs	r1, #28
+  66              	.LVL5:
+  87:display.c     ****     
+  67              		.loc 1 87 0
+  68 0020 8276     		strb	r2, [r0, #26]
+  90:display.c     **** 
+  69              		.loc 1 90 0
+  70 0022 C376     		strb	r3, [r0, #27]
+  71              		.loc 1 93 0
+  72 0024 FFF7FEFF 		bl	SPIM_SpiUartPutArray
+  73              	.LVL6:
+  74              	.L3:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 4
+
+
+  94:display.c     **** 
+  95:display.c     **** // Wait for the end of the transfer. The number of transmitted data
+  96:display.c     **** // elements has to be equal to the number of received data elements.
+  97:display.c     ****     while((TxPACKET_SIZE) != SPIM_SpiUartGetRxBufferSize())
+  75              		.loc 1 97 0 discriminator 1
+  76 0028 FFF7FEFF 		bl	SPIM_SpiUartGetRxBufferSize
+  77              	.LVL7:
+  78 002c 1C28     		cmp	r0, #28
+  79 002e FBD1     		bne	.L3
+  98:display.c     ****     {
+  99:display.c     ****     }
+ 100:display.c     **** 
+ 101:display.c     **** // Clear dummy bytes from RX buffer
+ 102:display.c     ****     SPIM_SpiUartClearRxBuffer();
+  80              		.loc 1 102 0
+  81 0030 FFF7FEFF 		bl	SPIM_SpiUartClearRxBuffer
+  82              	.LVL8:
+ 103:display.c     **** }
+  83              		.loc 1 103 0
+  84              		@ sp needed
+  85              	.LVL9:
+  86 0034 70BD     		pop	{r4, r5, r6, pc}
+  87              	.L8:
+  88 0036 C046     		.align	2
+  89              	.L7:
+  90 0038 00000000 		.word	.LANCHOR0
+  91              		.cfi_endproc
+  92              	.LFE32:
+  93              		.size	SPIM_display_write, .-SPIM_display_write
+  94              		.section	.text.SPIM_display_read,"ax",%progbits
+  95              		.align	1
+  96              		.global	SPIM_display_read
+  97              		.code	16
+  98              		.thumb_func
+  99              		.type	SPIM_display_read, %function
+ 100              	SPIM_display_read:
+ 101              	.LFB33:
+ 104:display.c     **** 
+ 105:display.c     **** 
+ 106:display.c     **** 
+ 107:display.c     **** /*******************************************************************************
+ 108:display.c     **** * Function Name: SPIM_display_read
+ 109:display.c     **** ********************************************************************************
+ 110:display.c     **** * Summary:
+ 111:display.c     **** *  SPIM initiates the transmission of a dummy packet to collect the status
+ 112:display.c     **** *  information from the SPIS. After the transfer is complete the format of
+ 113:display.c     **** *  the packet is verified and the status is returned. If the format of the
+ 114:display.c     **** *  packet is invalid the unknown status is returned.
+ 115:display.c     **** *
+ 116:display.c     **** * Parameters:
+ 117:display.c     **** *  None
+ 118:display.c     **** *
+ 119:display.c     **** * Return:
+ 120:display.c     **** *  None
+ 121:display.c     **** *
+ 122:display.c     **** *******************************************************************************/
+ 123:display.c     **** uint32 SPIM_display_read(void)
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 5
+
+
+ 124:display.c     **** {
+ 102              		.loc 1 124 0
+ 103              		.cfi_startproc
+ 104              		@ args = 0, pretend = 0, frame = 8
+ 105              		@ frame_needed = 0, uses_anonymous_args = 0
+ 106 0000 37B5     		push	{r0, r1, r2, r4, r5, lr}
+ 107              		.cfi_def_cfa_offset 24
+ 108              		.cfi_offset 0, -24
+ 109              		.cfi_offset 1, -20
+ 110              		.cfi_offset 2, -16
+ 111              		.cfi_offset 4, -12
+ 112              		.cfi_offset 5, -8
+ 113              		.cfi_offset 14, -4
+ 125:display.c     ****     uint8 tmpBuffer[RxPACKET_SIZE];
+ 126:display.c     ****     uint8 status;
+ 127:display.c     ****     uint32 i;
+ 128:display.c     **** 
+ 129:display.c     **** // Start transfer
+ 130:display.c     ****     SPIM_SpiUartPutArray(dummyBuffer, RxPACKET_SIZE);
+ 114              		.loc 1 130 0
+ 115 0002 0321     		movs	r1, #3
+ 116 0004 0E48     		ldr	r0, .L18
+ 117 0006 FFF7FEFF 		bl	SPIM_SpiUartPutArray
+ 118              	.LVL10:
+ 119              	.L10:
+ 131:display.c     **** 
+ 132:display.c     **** // Wait for the end of the transfer. The number of transmitted data
+ 133:display.c     **** // elements has to be equal to the number of received data elements.
+ 134:display.c     ****     while (RxPACKET_SIZE != SPIM_SpiUartGetRxBufferSize())
+ 120              		.loc 1 134 0 discriminator 1
+ 121 000a FFF7FEFF 		bl	SPIM_SpiUartGetRxBufferSize
+ 122              	.LVL11:
+ 123 000e 0328     		cmp	r0, #3
+ 124 0010 FBD1     		bne	.L10
+ 135:display.c     ****     {
+ 136:display.c     ****     }
+ 137:display.c     **** 
+ 138:display.c     **** // Clear dummy bytes from TX buffer
+ 139:display.c     ****     SPIM_SpiUartClearTxBuffer();
+ 125              		.loc 1 139 0
+ 126 0012 FFF7FEFF 		bl	SPIM_SpiUartClearTxBuffer
+ 127              	.LVL12:
+ 140:display.c     **** 
+ 141:display.c     **** // Read data from the RX buffer
+ 142:display.c     ****     i = 0u;
+ 128              		.loc 1 142 0
+ 129 0016 0025     		movs	r5, #0
+ 130              	.LVL13:
+ 131              	.L11:
+ 143:display.c     ****     while (0u != SPIM_SpiUartGetRxBufferSize())
+ 132              		.loc 1 143 0
+ 133 0018 FFF7FEFF 		bl	SPIM_SpiUartGetRxBufferSize
+ 134              	.LVL14:
+ 135 001c 01AC     		add	r4, sp, #4
+ 136 001e 0028     		cmp	r0, #0
+ 137 0020 04D0     		beq	.L17
+ 144:display.c     ****     {
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 6
+
+
+ 145:display.c     ****         tmpBuffer[i] = SPIM_SpiUartReadRxData();
+ 138              		.loc 1 145 0
+ 139 0022 FFF7FEFF 		bl	SPIM_SpiUartReadRxData
+ 140              	.LVL15:
+ 141 0026 6055     		strb	r0, [r4, r5]
+ 146:display.c     **** //        UART_UartPutChar('0' + tmpBuffer[i]);
+ 147:display.c     ****         i++;
+ 142              		.loc 1 147 0
+ 143 0028 0135     		adds	r5, r5, #1
+ 144              	.LVL16:
+ 145 002a F5E7     		b	.L11
+ 146              	.L17:
+ 148:display.c     **** //        UART_UartPutString("A");
+ 149:display.c     ****         
+ 150:display.c     ****     }
+ 151:display.c     **** 
+ 152:display.c     ****  // Check packet format
+ 153:display.c     ****     if ((tmpBuffer[RxPACKET_SOP_POS] == PACKET_SOP) &&
+ 147              		.loc 1 153 0
+ 148 002c 2378     		ldrb	r3, [r4]
+ 154:display.c     ****         (tmpBuffer[RxPACKET_EOP_POS] == PACKET_EOP))
+ 155:display.c     ****     {
+ 156:display.c     ****  // Return status
+ 157:display.c     ****         status = tmpBuffer[RxPACKET_STS_POS];
+ 158:display.c     **** //        UART_UartPutString("B");
+ 159:display.c     ****     }
+ 160:display.c     ****     else
+ 161:display.c     ****     {
+ 162:display.c     ****  // Invalid packet format, return 0xFF status
+ 163:display.c     ****         status = 0xFF;
+ 149              		.loc 1 163 0
+ 150 002e FF30     		adds	r0, r0, #255
+ 153:display.c     ****         (tmpBuffer[RxPACKET_EOP_POS] == PACKET_EOP))
+ 151              		.loc 1 153 0
+ 152 0030 012B     		cmp	r3, #1
+ 153 0032 03D1     		bne	.L13
+ 153:display.c     ****         (tmpBuffer[RxPACKET_EOP_POS] == PACKET_EOP))
+ 154              		.loc 1 153 0 is_stmt 0 discriminator 1
+ 155 0034 A378     		ldrb	r3, [r4, #2]
+ 156 0036 172B     		cmp	r3, #23
+ 157 0038 00D1     		bne	.L13
+ 157:display.c     **** //        UART_UartPutString("B");
+ 158              		.loc 1 157 0 is_stmt 1
+ 159 003a 6078     		ldrb	r0, [r4, #1]
+ 160              	.LVL17:
+ 161              	.L13:
+ 164:display.c     **** //        UART_UartPutString("C");
+ 165:display.c     ****     }
+ 166:display.c     **** 
+ 167:display.c     ****     return (status);
+ 168:display.c     **** }
+ 162              		.loc 1 168 0
+ 163              		@ sp needed
+ 164              	.LVL18:
+ 165 003c 3EBD     		pop	{r1, r2, r3, r4, r5, pc}
+ 166              	.L19:
+ 167 003e C046     		.align	2
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 7
+
+
+ 168              	.L18:
+ 169 0040 00000000 		.word	.LANCHOR1
+ 170              		.cfi_endproc
+ 171              	.LFE33:
+ 172              		.size	SPIM_display_read, .-SPIM_display_read
+ 173              		.section	.text.SPIM_SigmaDSP_init_SPI,"ax",%progbits
+ 174              		.align	1
+ 175              		.global	SPIM_SigmaDSP_init_SPI
+ 176              		.code	16
+ 177              		.thumb_func
+ 178              		.type	SPIM_SigmaDSP_init_SPI, %function
+ 179              	SPIM_SigmaDSP_init_SPI:
+ 180              	.LFB34:
+ 169:display.c     **** 
+ 170:display.c     **** /*******************************************************************************
+ 171:display.c     **** * Function Name: SPIM_SigmaDSP_init_SPI
+ 172:display.c     **** ********************************************************************************
+ 173:display.c     **** * Summary:
+ 174:display.c     **** *  This function toggles 3 times /CS line that selects SigmaDSP on SPI port
+ 175:display.c     **** *  This in turn enables serial port in SPI mode for further transactions. 
+ 176:display.c     **** *
+ 177:display.c     **** * Parameters:
+ 178:display.c     **** *  None
+ 179:display.c     **** *
+ 180:display.c     **** * Return:
+ 181:display.c     **** *  zero
+ 182:display.c     **** *
+ 183:display.c     **** *******************************************************************************/
+ 184:display.c     **** uint8 SPIM_SigmaDSP_init_SPI(void)
+ 185:display.c     **** {
+ 181              		.loc 1 185 0
+ 182              		.cfi_startproc
+ 183              		@ args = 0, pretend = 0, frame = 8
+ 184              		@ frame_needed = 0, uses_anonymous_args = 0
+ 185 0000 37B5     		push	{r0, r1, r2, r4, r5, lr}
+ 186              		.cfi_def_cfa_offset 24
+ 187              		.cfi_offset 0, -24
+ 188              		.cfi_offset 1, -20
+ 189              		.cfi_offset 2, -16
+ 190              		.cfi_offset 4, -12
+ 191              		.cfi_offset 5, -8
+ 192              		.cfi_offset 14, -4
+ 186:display.c     **** 
+ 187:display.c     **** // SPIM TX buffer 
+ 188:display.c     ****     uint8 localBuffer[1] = {0};
+ 193              		.loc 1 188 0
+ 194 0002 0020     		movs	r0, #0
+ 195 0004 01AC     		add	r4, sp, #4
+ 196 0006 2070     		strb	r0, [r4]
+ 189:display.c     **** // buffer value to 0 (only need to toggle CS line 3 times
+ 190:display.c     ****     localBuffer[0] = (0x00);
+ 191:display.c     ****     
+ 192:display.c     **** // set SPI slave select line to SigmaDSP
+ 193:display.c     ****     SPIM_SpiSetActiveSlaveSelect(SPIM_SPI_SLAVE_SELECT0); 
+ 197              		.loc 1 193 0
+ 198 0008 FFF7FEFF 		bl	SPIM_SpiSetActiveSlaveSelect
+ 199              	.LVL19:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 8
+
+
+ 194:display.c     **** 
+ 195:display.c     **** // sent SPI message - first /CS toggle
+ 196:display.c     ****     SPIM_SpiUartPutArray(localBuffer, 1);
+ 200              		.loc 1 196 0
+ 201 000c 0121     		movs	r1, #1
+ 202 000e 2000     		movs	r0, r4
+ 203 0010 FFF7FEFF 		bl	SPIM_SpiUartPutArray
+ 204              	.LVL20:
+ 205              	.L21:
+ 197:display.c     **** // Wait for the end of the transfer. The number of transmitted data
+ 198:display.c     **** // elements has to be equal to the number of received data elements.
+ 199:display.c     ****     while((1) != SPIM_SpiUartGetRxBufferSize())
+ 206              		.loc 1 199 0 discriminator 1
+ 207 0014 FFF7FEFF 		bl	SPIM_SpiUartGetRxBufferSize
+ 208              	.LVL21:
+ 209 0018 0500     		movs	r5, r0
+ 210 001a 0128     		cmp	r0, #1
+ 211 001c FAD1     		bne	.L21
+ 200:display.c     ****     {
+ 201:display.c     ****     }
+ 202:display.c     **** // Clear dummy bytes from RX buffer
+ 203:display.c     ****     SPIM_SpiUartClearRxBuffer(); 
+ 212              		.loc 1 203 0
+ 213 001e FFF7FEFF 		bl	SPIM_SpiUartClearRxBuffer
+ 214              	.LVL22:
+ 204:display.c     **** 
+ 205:display.c     **** // wait 100uS    
+ 206:display.c     ****     CyDelayUs(100);  
+ 215              		.loc 1 206 0
+ 216 0022 6420     		movs	r0, #100
+ 217 0024 FFF7FEFF 		bl	CyDelayUs
+ 218              	.LVL23:
+ 207:display.c     **** 
+ 208:display.c     **** // sent SPI message - second /CS toggle
+ 209:display.c     ****     SPIM_SpiUartPutArray(localBuffer, 1);
+ 219              		.loc 1 209 0
+ 220 0028 2900     		movs	r1, r5
+ 221 002a 2000     		movs	r0, r4
+ 222 002c FFF7FEFF 		bl	SPIM_SpiUartPutArray
+ 223              	.LVL24:
+ 224              	.L22:
+ 210:display.c     **** // Wait for the end of the transfer. The number of transmitted data
+ 211:display.c     **** // elements has to be equal to the number of received data elements.
+ 212:display.c     ****     while((1) != SPIM_SpiUartGetRxBufferSize())
+ 225              		.loc 1 212 0 discriminator 1
+ 226 0030 FFF7FEFF 		bl	SPIM_SpiUartGetRxBufferSize
+ 227              	.LVL25:
+ 228 0034 0500     		movs	r5, r0
+ 229 0036 0128     		cmp	r0, #1
+ 230 0038 FAD1     		bne	.L22
+ 213:display.c     ****     {
+ 214:display.c     ****     }
+ 215:display.c     **** // Clear dummy bytes from RX buffer
+ 216:display.c     ****     SPIM_SpiUartClearRxBuffer(); 
+ 231              		.loc 1 216 0
+ 232 003a FFF7FEFF 		bl	SPIM_SpiUartClearRxBuffer
+ 233              	.LVL26:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 9
+
+
+ 217:display.c     ****     
+ 218:display.c     **** // wait 100uS  
+ 219:display.c     ****     CyDelayUs(100); 
+ 234              		.loc 1 219 0
+ 235 003e 6420     		movs	r0, #100
+ 236 0040 FFF7FEFF 		bl	CyDelayUs
+ 237              	.LVL27:
+ 220:display.c     ****     
+ 221:display.c     **** // sent SPI message -third /CS toggle
+ 222:display.c     ****     SPIM_SpiUartPutArray(localBuffer, 1);
+ 238              		.loc 1 222 0
+ 239 0044 2900     		movs	r1, r5
+ 240 0046 2000     		movs	r0, r4
+ 241 0048 FFF7FEFF 		bl	SPIM_SpiUartPutArray
+ 242              	.LVL28:
+ 243              	.L23:
+ 223:display.c     **** // Wait for the end of the transfer. The number of transmitted data
+ 224:display.c     **** // elements has to be equal to the number of received data elements.
+ 225:display.c     ****     while((1) != SPIM_SpiUartGetRxBufferSize())
+ 244              		.loc 1 225 0 discriminator 1
+ 245 004c FFF7FEFF 		bl	SPIM_SpiUartGetRxBufferSize
+ 246              	.LVL29:
+ 247 0050 0400     		movs	r4, r0
+ 248 0052 0128     		cmp	r0, #1
+ 249 0054 FAD1     		bne	.L23
+ 226:display.c     ****     {
+ 227:display.c     ****     }
+ 228:display.c     **** // Clear dummy bytes from RX buffer
+ 229:display.c     ****     SPIM_SpiUartClearRxBuffer(); 
+ 250              		.loc 1 229 0
+ 251 0056 FFF7FEFF 		bl	SPIM_SpiUartClearRxBuffer
+ 252              	.LVL30:
+ 230:display.c     ****     
+ 231:display.c     **** // set SPI slave select line to display module
+ 232:display.c     ****     SPIM_SpiSetActiveSlaveSelect(SPIM_SPI_SLAVE_SELECT1); 
+ 253              		.loc 1 232 0
+ 254 005a 2000     		movs	r0, r4
+ 255 005c FFF7FEFF 		bl	SPIM_SpiSetActiveSlaveSelect
+ 256              	.LVL31:
+ 233:display.c     ****     
+ 234:display.c     ****     return 0;
+ 235:display.c     **** }
+ 257              		.loc 1 235 0
+ 258              		@ sp needed
+ 259 0060 0020     		movs	r0, #0
+ 260 0062 3EBD     		pop	{r1, r2, r3, r4, r5, pc}
+ 261              		.cfi_endproc
+ 262              	.LFE34:
+ 263              		.size	SPIM_SigmaDSP_init_SPI, .-SPIM_SigmaDSP_init_SPI
+ 264              		.section	.text.SPIM_SigmaDSP_write,"ax",%progbits
+ 265              		.align	1
+ 266              		.global	SPIM_SigmaDSP_write
+ 267              		.code	16
+ 268              		.thumb_func
+ 269              		.type	SPIM_SigmaDSP_write, %function
+ 270              	SPIM_SigmaDSP_write:
+ 271              	.LFB35:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 10
+
+
+ 236:display.c     **** 
+ 237:display.c     **** 
+ 238:display.c     **** 
+ 239:display.c     **** /*******************************************************************************
+ 240:display.c     **** * Function Name: SPIM_SigmaDSP_write
+ 241:display.c     **** ********************************************************************************
+ 242:display.c     **** * Summary:
+ 243:display.c     **** *  This function sents commands over SPI interface to SigmaDSP
+ 244:display.c     **** *  Commands are controled thru command parameter and are listed below. 
+ 245:display.c     **** *
+ 246:display.c     **** * Parameters:
+ 247:display.c     **** *  0 = Control = 0x052E -> 0x0000 = MUTE
+ 248:display.c     **** *  1 = Control = 0x052E -> 0x0001 = RPi
+ 249:display.c     **** *  2 = Control = 0x052E -> 0x0002 = DAB
+ 250:display.c     **** *  3 = Control = 0x052E -> 0x0003 = AuxIN
+ 251:display.c     **** *  4 = Control = 0x052E -> 0x0004 = BlueTooth Rx
+ 252:display.c     **** *  5 = LED = 0x0531 -> 0x0000 = OFF
+ 253:display.c     **** *  6 = LED = 0x0531 -> 0x0001 = ON
+ 254:display.c     **** *
+ 255:display.c     **** * Return:
+ 256:display.c     **** *  zero
+ 257:display.c     **** *
+ 258:display.c     **** *******************************************************************************/
+ 259:display.c     **** uint8 SPIM_SigmaDSP_write(uint8 command)
+ 260:display.c     **** {
+ 272              		.loc 1 260 0
+ 273              		.cfi_startproc
+ 274              		@ args = 0, pretend = 0, frame = 8
+ 275              		@ frame_needed = 0, uses_anonymous_args = 0
+ 276              	.LVL32:
+ 277 0000 13B5     		push	{r0, r1, r4, lr}
+ 278              		.cfi_def_cfa_offset 16
+ 279              		.cfi_offset 0, -16
+ 280              		.cfi_offset 1, -12
+ 281              		.cfi_offset 4, -8
+ 282              		.cfi_offset 14, -4
+ 261:display.c     **** // buffer for data to be sent over SPI to SigmaDSP 
+ 262:display.c     ****     uint8 writeBuffer[7] = {0};
+ 283              		.loc 1 262 0
+ 284 0002 0722     		movs	r2, #7
+ 260:display.c     **** // buffer for data to be sent over SPI to SigmaDSP 
+ 285              		.loc 1 260 0
+ 286 0004 0400     		movs	r4, r0
+ 287              		.loc 1 262 0
+ 288 0006 0021     		movs	r1, #0
+ 289 0008 6846     		mov	r0, sp
+ 290              	.LVL33:
+ 291 000a FFF7FEFF 		bl	memset
+ 292              	.LVL34:
+ 263:display.c     **** // first buffer byte set to value 0x00 indicating write data    
+ 264:display.c     ****     writeBuffer[0] = (0x00);
+ 265:display.c     **** // 3, 4 and 5 buffer bytes set to 0x00 all data sent over SPI have its MSBs = 0    
+ 266:display.c     ****     writeBuffer[3] = (0x00);
+ 267:display.c     ****     writeBuffer[4] = (0x00);    
+ 268:display.c     ****     writeBuffer[5] = (0x00);    
+ 269:display.c     **** 
+ 270:display.c     **** // set SPI slave select line to SigmaDSP
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 11
+
+
+ 271:display.c     ****     SPIM_SpiSetActiveSlaveSelect(SPIM_SPI_SLAVE_SELECT0); 
+ 293              		.loc 1 271 0
+ 294 000e 0020     		movs	r0, #0
+ 295 0010 FFF7FEFF 		bl	SPIM_SpiSetActiveSlaveSelect
+ 296              	.LVL35:
+ 272:display.c     ****     
+ 273:display.c     ****     switch (command)
+ 297              		.loc 1 273 0
+ 298 0014 062C     		cmp	r4, #6
+ 299 0016 23D8     		bhi	.L28
+ 300 0018 0523     		movs	r3, #5
+ 274:display.c     ****     {    
+ 275:display.c     **** //  0 = Control = 0x052E -> 0x0000 = MUTE
+ 276:display.c     ****     case (0):
+ 277:display.c     ****         writeBuffer[1] = (0x05);
+ 278:display.c     ****         writeBuffer[2] = (0x2E);
+ 279:display.c     ****         writeBuffer[6] = (0x00);    
+ 280:display.c     ****         break;
+ 281:display.c     **** //  1 = Control = 0x052E -> 0x0001 = RPi
+ 282:display.c     ****     case (1):
+ 283:display.c     ****         writeBuffer[1] = (0x05);
+ 284:display.c     ****         writeBuffer[2] = (0x2E);
+ 285:display.c     ****         writeBuffer[6] = (0x01);    
+ 286:display.c     ****         break;
+ 287:display.c     **** //  2 = Control = 0x052E -> 0x0002 = DAB
+ 288:display.c     ****     case (2):
+ 289:display.c     ****         writeBuffer[1] = (0x05);
+ 290:display.c     ****         writeBuffer[2] = (0x2E);
+ 291:display.c     ****         writeBuffer[6] = (0x02);    
+ 292:display.c     ****         break;        
+ 293:display.c     **** //  3 = Control = 0x052E -> 0x0003 = AuxIN
+ 294:display.c     ****     case (3):
+ 295:display.c     ****         writeBuffer[1] = (0x05);
+ 296:display.c     ****         writeBuffer[2] = (0x2E);
+ 297:display.c     ****         writeBuffer[6] = (0x03);    
+ 298:display.c     ****         break;
+ 299:display.c     **** //  4 = Control = 0x052E -> 0x0004 = BlueTooth Rx
+ 300:display.c     ****     case (4):
+ 301:display.c     ****         writeBuffer[1] = (0x05);
+ 302:display.c     ****         writeBuffer[2] = (0x2E);
+ 303:display.c     ****         writeBuffer[6] = (0x04);    
+ 304:display.c     ****         break;        
+ 305:display.c     **** //  5 = LED = 0x0531 -> 0x0000 = OFF
+ 306:display.c     ****     case (5):
+ 307:display.c     ****         writeBuffer[1] = (0x05);
+ 308:display.c     ****         writeBuffer[2] = (0x31);
+ 309:display.c     ****         writeBuffer[6] = (0x00);    
+ 310:display.c     ****         break;
+ 311:display.c     **** //  6 = LED = 0x0531 -> 0x0001 = ON
+ 312:display.c     ****     case (6):
+ 313:display.c     ****         writeBuffer[1] = (0x05);
+ 301              		.loc 1 313 0
+ 302 001a 6A46     		mov	r2, sp
+ 273:display.c     ****     {    
+ 303              		.loc 1 273 0
+ 304 001c 2000     		movs	r0, r4
+ 305              		.loc 1 313 0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 12
+
+
+ 306 001e 5370     		strb	r3, [r2, #1]
+ 273:display.c     ****     {    
+ 307              		.loc 1 273 0
+ 308 0020 FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 309              	.L30:
+ 310 0024 04       		.byte	(.L29-.L30)/2
+ 311 0025 06       		.byte	(.L31-.L30)/2
+ 312 0026 0A       		.byte	(.L32-.L30)/2
+ 313 0027 0E       		.byte	(.L33-.L30)/2
+ 314 0028 12       		.byte	(.L34-.L30)/2
+ 315 0029 16       		.byte	(.L35-.L30)/2
+ 316 002a 1A       		.byte	(.L36-.L30)/2
+ 317 002b 00       		.p2align 1
+ 318              	.L29:
+ 278:display.c     ****         writeBuffer[6] = (0x00);    
+ 319              		.loc 1 278 0
+ 320 002c 2E23     		movs	r3, #46
+ 321 002e 10E0     		b	.L40
+ 322              	.L31:
+ 284:display.c     ****         writeBuffer[6] = (0x01);    
+ 323              		.loc 1 284 0
+ 324 0030 2E23     		movs	r3, #46
+ 325 0032 9370     		strb	r3, [r2, #2]
+ 285:display.c     ****         break;
+ 326              		.loc 1 285 0
+ 327 0034 2D3B     		subs	r3, r3, #45
+ 328 0036 12E0     		b	.L39
+ 329              	.L32:
+ 290:display.c     ****         writeBuffer[6] = (0x02);    
+ 330              		.loc 1 290 0
+ 331 0038 2E23     		movs	r3, #46
+ 332 003a 9370     		strb	r3, [r2, #2]
+ 291:display.c     ****         break;        
+ 333              		.loc 1 291 0
+ 334 003c 2C3B     		subs	r3, r3, #44
+ 335 003e 0EE0     		b	.L39
+ 336              	.L33:
+ 296:display.c     ****         writeBuffer[6] = (0x03);    
+ 337              		.loc 1 296 0
+ 338 0040 2E23     		movs	r3, #46
+ 339 0042 9370     		strb	r3, [r2, #2]
+ 297:display.c     ****         break;
+ 340              		.loc 1 297 0
+ 341 0044 2B3B     		subs	r3, r3, #43
+ 342 0046 0AE0     		b	.L39
+ 343              	.L34:
+ 302:display.c     ****         writeBuffer[6] = (0x04);    
+ 344              		.loc 1 302 0
+ 345 0048 2E23     		movs	r3, #46
+ 346 004a 9370     		strb	r3, [r2, #2]
+ 303:display.c     ****         break;        
+ 347              		.loc 1 303 0
+ 348 004c 2A3B     		subs	r3, r3, #42
+ 349 004e 06E0     		b	.L39
+ 350              	.L35:
+ 308:display.c     ****         writeBuffer[6] = (0x00);    
+ 351              		.loc 1 308 0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 13
+
+
+ 352 0050 3123     		movs	r3, #49
+ 353              	.L40:
+ 354 0052 9370     		strb	r3, [r2, #2]
+ 309:display.c     ****         break;
+ 355              		.loc 1 309 0
+ 356 0054 0023     		movs	r3, #0
+ 357 0056 02E0     		b	.L39
+ 358              	.L36:
+ 314:display.c     ****         writeBuffer[2] = (0x31);
+ 359              		.loc 1 314 0
+ 360 0058 3123     		movs	r3, #49
+ 361 005a 9370     		strb	r3, [r2, #2]
+ 315:display.c     ****         writeBuffer[6] = (0x01);    
+ 362              		.loc 1 315 0
+ 363 005c 303B     		subs	r3, r3, #48
+ 364              	.L39:
+ 365 005e 9371     		strb	r3, [r2, #6]
+ 366              	.L28:
+ 316:display.c     ****         break;         
+ 317:display.c     ****     }        
+ 318:display.c     **** // Start buffer transfer over SPI interface to SigmaDSP
+ 319:display.c     ****     SPIM_SpiUartPutArray(writeBuffer, 7);
+ 367              		.loc 1 319 0
+ 368 0060 0721     		movs	r1, #7
+ 369 0062 6846     		mov	r0, sp
+ 370 0064 FFF7FEFF 		bl	SPIM_SpiUartPutArray
+ 371              	.LVL36:
+ 372              	.L37:
+ 320:display.c     **** 
+ 321:display.c     **** // Wait for the end of the transfer. The number of transmitted data
+ 322:display.c     **** // elements has to be equal to the number of received data elements.
+ 323:display.c     ****     while((7) != SPIM_SpiUartGetRxBufferSize())
+ 373              		.loc 1 323 0 discriminator 1
+ 374 0068 FFF7FEFF 		bl	SPIM_SpiUartGetRxBufferSize
+ 375              	.LVL37:
+ 376 006c 0728     		cmp	r0, #7
+ 377 006e FBD1     		bne	.L37
+ 324:display.c     ****     {
+ 325:display.c     ****     }
+ 326:display.c     **** // Clear dummy bytes from RX buffer
+ 327:display.c     ****     SPIM_SpiUartClearRxBuffer();  
+ 378              		.loc 1 327 0
+ 379 0070 FFF7FEFF 		bl	SPIM_SpiUartClearRxBuffer
+ 380              	.LVL38:
+ 328:display.c     **** 
+ 329:display.c     **** // set SPI slave select line to display module
+ 330:display.c     ****     SPIM_SpiSetActiveSlaveSelect(SPIM_SPI_SLAVE_SELECT1);     
+ 381              		.loc 1 330 0
+ 382 0074 0120     		movs	r0, #1
+ 383 0076 FFF7FEFF 		bl	SPIM_SpiSetActiveSlaveSelect
+ 384              	.LVL39:
+ 331:display.c     ****     
+ 332:display.c     ****     return 0;
+ 333:display.c     **** }
+ 385              		.loc 1 333 0
+ 386              		@ sp needed
+ 387 007a 0020     		movs	r0, #0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 14
+
+
+ 388 007c 16BD     		pop	{r1, r2, r4, pc}
+ 389              		.cfi_endproc
+ 390              	.LFE35:
+ 391              		.size	SPIM_SigmaDSP_write, .-SPIM_SigmaDSP_write
+ 392              		.section	.text.SPIM_SigmaDSP_read,"ax",%progbits
+ 393              		.align	1
+ 394              		.global	SPIM_SigmaDSP_read
+ 395              		.code	16
+ 396              		.thumb_func
+ 397              		.type	SPIM_SigmaDSP_read, %function
+ 398              	SPIM_SigmaDSP_read:
+ 399              	.LFB36:
+ 334:display.c     **** 
+ 335:display.c     **** 
+ 336:display.c     **** /*******************************************************************************
+ 337:display.c     **** * Function Name: SPIM_SigmaDSP_read
+ 338:display.c     **** ********************************************************************************
+ 339:display.c     **** * Summary:
+ 340:display.c     **** *  This function sents commands over SPI interface to SigmaDSP. Command itends 
+ 341:display.c     **** *  to read back SPI register values and return them as one 32 bit value.
+ 342:display.c     **** *
+ 343:display.c     **** * Parameters:
+ 344:display.c     **** * Parameters:
+ 345:display.c     **** *  0 = LEVEL = 0x0175
+ 346:display.c     **** *  1 = Spectrum analyzer -> Right = 0x0520
+ 347:display.c     **** *  2 = Spectrum analyzer -> Left = 0x051F
+ 348:display.c     **** *  3 = Spectrum analyzer -> Left&Right = 0x0521
+ 349:display.c     **** *  4 = CODE = 0x0029
+ 350:display.c     **** *
+ 351:display.c     **** * Return:
+ 352:display.c     **** *  0 = LEVEL -> 0x0000aabb
+ 353:display.c     **** *    -> aa - 0x00 - 0x10 - left channel 
+ 354:display.c     **** *    -> bb - 0x00 - 0x10 - right channel
+ 355:display.c     **** *  1 = Spectrum analyzer -> Right
+ 356:display.c     **** *    b31-b28 - NOT_USED
+ 357:display.c     **** *    b27-b24 - 31.5Hz
+ 358:display.c     **** *    b23-b20 - 63Hz
+ 359:display.c     **** *    b19-b16 - 125Hz
+ 360:display.c     **** *    b15-b12 - 250Hz
+ 361:display.c     **** *    b11-b8 - 500Hz
+ 362:display.c     **** *    b7-b4 - 1000Hz
+ 363:display.c     **** *    b3-b0 - 2000Hz        
+ 364:display.c     **** *  2 = Spectrum analyzer -> Left
+ 365:display.c     **** *    b31-b28 - NOT_USED
+ 366:display.c     **** *    b27-b24 - 31.5Hz
+ 367:display.c     **** *    b23-b20 - 63Hz
+ 368:display.c     **** *    b19-b16 - 125Hz
+ 369:display.c     **** *    b15-b12 - 250Hz
+ 370:display.c     **** *    b11-b8 - 500Hz
+ 371:display.c     **** *    b7-b4 - 1000Hz
+ 372:display.c     **** *    b3-b0 - 2000Hz        
+ 373:display.c     **** *  3 = Spectrum analyzer -> Left&Right
+ 374:display.c     **** *    LEFT
+ 375:display.c     **** *    b31-b28 - NOT_USED
+ 376:display.c     **** *    b27-b24 - 4000Hz
+ 377:display.c     **** *    b23-b20 - 8000Hz
+ 378:display.c     **** *    b19-b16 - 16000Hz
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 15
+
+
+ 379:display.c     **** *    RIGHT
+ 380:display.c     **** *    b15-b12 - NOT_USED
+ 381:display.c     **** *    b11-b8 - 4000Hz
+ 382:display.c     **** *    b7-b4 - 8000Hz
+ 383:display.c     **** *    b3-b0 - 16000Hz
+ 384:display.c     **** *  4 = CODE 
+ 385:display.c     **** *   expected fixed value -> 32 bit word = 0xBE01BE02
+ 386:display.c     **** *
+ 387:display.c     **** *******************************************************************************/
+ 388:display.c     **** uint32 SPIM_SigmaDSP_read(uint8 command)
+ 389:display.c     **** {
+ 400              		.loc 1 389 0
+ 401              		.cfi_startproc
+ 402              		@ args = 0, pretend = 0, frame = 16
+ 403              		@ frame_needed = 0, uses_anonymous_args = 0
+ 404              	.LVL40:
+ 405 0000 7FB5     		push	{r0, r1, r2, r3, r4, r5, r6, lr}
+ 406              		.cfi_def_cfa_offset 32
+ 407              		.cfi_offset 0, -32
+ 408              		.cfi_offset 1, -28
+ 409              		.cfi_offset 2, -24
+ 410              		.cfi_offset 3, -20
+ 411              		.cfi_offset 4, -16
+ 412              		.cfi_offset 5, -12
+ 413              		.cfi_offset 6, -8
+ 414              		.cfi_offset 14, -4
+ 390:display.c     **** // variable used to return read command value    
+ 391:display.c     ****     uint32 status = 0;
+ 392:display.c     **** 
+ 393:display.c     **** // variable used by read buffer command    
+ 394:display.c     ****     uint8 i;
+ 395:display.c     **** 
+ 396:display.c     **** // buffer for data to be read over SPI from SigmaDSP 
+ 397:display.c     ****     uint8 readBuffer[7] = {0};
+ 398:display.c     **** // buffer for data to be sent over SPI to SigmaDSP 
+ 399:display.c     ****     uint8 writeBuffer[7] = {0};
+ 400:display.c     **** // first buffer byte set to value 0x01 indicating read data    
+ 401:display.c     ****     writeBuffer[0] = (0x01);
+ 415              		.loc 1 401 0
+ 416 0002 0126     		movs	r6, #1
+ 389:display.c     **** // variable used to return read command value    
+ 417              		.loc 1 389 0
+ 418 0004 0500     		movs	r5, r0
+ 397:display.c     **** // buffer for data to be sent over SPI to SigmaDSP 
+ 419              		.loc 1 397 0
+ 420 0006 0722     		movs	r2, #7
+ 421 0008 0021     		movs	r1, #0
+ 399:display.c     **** // first buffer byte set to value 0x01 indicating read data    
+ 422              		.loc 1 399 0
+ 423 000a 02AC     		add	r4, sp, #8
+ 397:display.c     **** // buffer for data to be sent over SPI to SigmaDSP 
+ 424              		.loc 1 397 0
+ 425 000c 6846     		mov	r0, sp
+ 426              	.LVL41:
+ 427 000e FFF7FEFF 		bl	memset
+ 428              	.LVL42:
+ 399:display.c     **** // first buffer byte set to value 0x01 indicating read data    
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 16
+
+
+ 429              		.loc 1 399 0
+ 430 0012 0722     		movs	r2, #7
+ 431 0014 0021     		movs	r1, #0
+ 432 0016 2000     		movs	r0, r4
+ 433 0018 FFF7FEFF 		bl	memset
+ 434              	.LVL43:
+ 402:display.c     **** // 3, 4, 5 and 6 buffer bytes set to 0x00 - dummy bytes sent to only toggle SCLK line    
+ 403:display.c     ****     writeBuffer[3] = (0x00);
+ 404:display.c     ****     writeBuffer[4] = (0x00);    
+ 405:display.c     ****     writeBuffer[5] = (0x00); 
+ 406:display.c     ****     writeBuffer[6] = (0x00); 
+ 407:display.c     **** 
+ 408:display.c     **** // set SPI slave select line to SigmaDSP
+ 409:display.c     ****     SPIM_SpiSetActiveSlaveSelect(SPIM_SPI_SLAVE_SELECT0); 
+ 435              		.loc 1 409 0
+ 436 001c 0020     		movs	r0, #0
+ 401:display.c     **** // 3, 4, 5 and 6 buffer bytes set to 0x00 - dummy bytes sent to only toggle SCLK line    
+ 437              		.loc 1 401 0
+ 438 001e 2670     		strb	r6, [r4]
+ 439              		.loc 1 409 0
+ 440 0020 FFF7FEFF 		bl	SPIM_SpiSetActiveSlaveSelect
+ 441              	.LVL44:
+ 410:display.c     ****     
+ 411:display.c     **** // set read address based on incoming command
+ 412:display.c     ****     switch (command)
+ 442              		.loc 1 412 0
+ 443 0024 042D     		cmp	r5, #4
+ 444 0026 18D8     		bhi	.L42
+ 445 0028 2800     		movs	r0, r5
+ 446 002a FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 447              	.L44:
+ 448 002e 03       		.byte	(.L43-.L44)/2
+ 449 002f 06       		.byte	(.L45-.L44)/2
+ 450 0030 0A       		.byte	(.L46-.L44)/2
+ 451 0031 0E       		.byte	(.L47-.L44)/2
+ 452 0032 12       		.byte	(.L48-.L44)/2
+ 453 0033 00       		.p2align 1
+ 454              	.L43:
+ 413:display.c     ****     {    
+ 414:display.c     **** //  0 = LEVEL = 0x0175
+ 415:display.c     ****     case (0):
+ 416:display.c     ****         writeBuffer[1] = (0x01);
+ 455              		.loc 1 416 0
+ 456 0034 6670     		strb	r6, [r4, #1]
+ 417:display.c     ****         writeBuffer[2] = (0x75);
+ 457              		.loc 1 417 0
+ 458 0036 7523     		movs	r3, #117
+ 459 0038 0EE0     		b	.L61
+ 460              	.L45:
+ 418:display.c     ****         break;
+ 419:display.c     **** //  1 = Spectrum analyzer -> Right = 0x0520
+ 420:display.c     ****     case (1):
+ 421:display.c     ****         writeBuffer[1] = (0x05);
+ 461              		.loc 1 421 0
+ 462 003a 0523     		movs	r3, #5
+ 463 003c 6370     		strb	r3, [r4, #1]
+ 422:display.c     ****         writeBuffer[2] = (0x20);
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 17
+
+
+ 464              		.loc 1 422 0
+ 465 003e 1B33     		adds	r3, r3, #27
+ 466 0040 0AE0     		b	.L61
+ 467              	.L46:
+ 423:display.c     ****         break;
+ 424:display.c     **** //  2 = Spectrum analyzer -> Left = 0x051F
+ 425:display.c     ****     case (2):
+ 426:display.c     ****         writeBuffer[1] = (0x05);
+ 468              		.loc 1 426 0
+ 469 0042 0523     		movs	r3, #5
+ 470 0044 6370     		strb	r3, [r4, #1]
+ 427:display.c     ****         writeBuffer[2] = (0x1F);
+ 471              		.loc 1 427 0
+ 472 0046 1A33     		adds	r3, r3, #26
+ 473 0048 06E0     		b	.L61
+ 474              	.L47:
+ 428:display.c     ****         break;        
+ 429:display.c     **** //  3 = Spectrum analyzer -> Left&Right = 0x0521
+ 430:display.c     ****     case (3):
+ 431:display.c     ****         writeBuffer[1] = (0x05);
+ 475              		.loc 1 431 0
+ 476 004a 0523     		movs	r3, #5
+ 477 004c 6370     		strb	r3, [r4, #1]
+ 432:display.c     ****         writeBuffer[2] = (0x21);
+ 478              		.loc 1 432 0
+ 479 004e 1C33     		adds	r3, r3, #28
+ 480 0050 02E0     		b	.L61
+ 481              	.L48:
+ 433:display.c     ****         break;
+ 434:display.c     **** //  4 = CODE = 0x0029
+ 435:display.c     ****     case (4):
+ 436:display.c     ****         writeBuffer[1] = (0x00);
+ 482              		.loc 1 436 0
+ 483 0052 0023     		movs	r3, #0
+ 484 0054 6370     		strb	r3, [r4, #1]
+ 437:display.c     ****         writeBuffer[2] = (0x29);
+ 485              		.loc 1 437 0
+ 486 0056 2933     		adds	r3, r3, #41
+ 487              	.L61:
+ 488 0058 A370     		strb	r3, [r4, #2]
+ 489              	.L42:
+ 438:display.c     ****         break;        
+ 439:display.c     ****     }            
+ 440:display.c     ****     
+ 441:display.c     **** // Start SPI transfer
+ 442:display.c     ****     SPIM_SpiUartPutArray(writeBuffer, 7);
+ 490              		.loc 1 442 0
+ 491 005a 0721     		movs	r1, #7
+ 492 005c 2000     		movs	r0, r4
+ 493 005e FFF7FEFF 		bl	SPIM_SpiUartPutArray
+ 494              	.LVL45:
+ 495              	.L49:
+ 443:display.c     **** 
+ 444:display.c     **** // Wait for the end of the transfer. The number of transmitted data
+ 445:display.c     **** // elements has to be equal to the number of received data elements.
+ 446:display.c     ****     while (7 != SPIM_SpiUartGetRxBufferSize())
+ 496              		.loc 1 446 0 discriminator 1
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 18
+
+
+ 497 0062 FFF7FEFF 		bl	SPIM_SpiUartGetRxBufferSize
+ 498              	.LVL46:
+ 499 0066 0728     		cmp	r0, #7
+ 500 0068 FBD1     		bne	.L49
+ 447:display.c     ****     {
+ 448:display.c     ****     }
+ 449:display.c     **** 
+ 450:display.c     **** // Clear dummy bytes from TX buffer
+ 451:display.c     ****     SPIM_SpiUartClearTxBuffer();
+ 501              		.loc 1 451 0
+ 502 006a FFF7FEFF 		bl	SPIM_SpiUartClearTxBuffer
+ 503              	.LVL47:
+ 452:display.c     **** 
+ 453:display.c     **** // Read data from the RX buffer
+ 454:display.c     ****     i = 0u;
+ 504              		.loc 1 454 0
+ 505 006e 0026     		movs	r6, #0
+ 506              	.LVL48:
+ 507              	.L50:
+ 455:display.c     ****     while (0u != SPIM_SpiUartGetRxBufferSize())
+ 508              		.loc 1 455 0
+ 509 0070 FFF7FEFF 		bl	SPIM_SpiUartGetRxBufferSize
+ 510              	.LVL49:
+ 511 0074 041E     		subs	r4, r0, #0
+ 512 0076 06D0     		beq	.L63
+ 456:display.c     ****     {
+ 457:display.c     ****         readBuffer[i] = SPIM_SpiUartReadRxData();
+ 513              		.loc 1 457 0
+ 514 0078 FFF7FEFF 		bl	SPIM_SpiUartReadRxData
+ 515              	.LVL50:
+ 516 007c 6B46     		mov	r3, sp
+ 517 007e 9855     		strb	r0, [r3, r6]
+ 458:display.c     **** //        UART_UartPutChar('0' + readBuffer[i]);
+ 459:display.c     ****         i++;
+ 518              		.loc 1 459 0
+ 519 0080 0136     		adds	r6, r6, #1
+ 520              	.LVL51:
+ 521 0082 F6B2     		uxtb	r6, r6
+ 522              	.LVL52:
+ 523 0084 F4E7     		b	.L50
+ 524              	.L63:
+ 460:display.c     ****     }
+ 461:display.c     ****     
+ 462:display.c     **** // Clear dummy bytes from RX buffer
+ 463:display.c     ****     SPIM_SpiUartClearRxBuffer();
+ 525              		.loc 1 463 0
+ 526 0086 FFF7FEFF 		bl	SPIM_SpiUartClearRxBuffer
+ 527              	.LVL53:
+ 464:display.c     ****     
+ 465:display.c     ****     
+ 466:display.c     **** // format read back values into one 32 bit variable that is returned by 
+ 467:display.c     **** // this function
+ 468:display.c     ****     switch (command)
+ 528              		.loc 1 468 0
+ 529 008a 042D     		cmp	r5, #4
+ 530 008c 15D8     		bhi	.L52
+ 531 008e 2800     		movs	r0, r5
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 19
+
+
+ 469:display.c     ****     {    
+ 470:display.c     **** // 0 = LEVEL -> 0x0000aabb
+ 471:display.c     **** //    -> aa - 0x00 - 0x10 - left channel 
+ 472:display.c     **** //    -> bb - 0x00 - 0x10 - right channel
+ 473:display.c     ****     case (0):
+ 474:display.c     ****         status = readBuffer[5];
+ 475:display.c     ****         status = status << 8;
+ 476:display.c     ****         status = status | readBuffer[6];
+ 477:display.c     ****         break;
+ 478:display.c     **** // 1 = Spectrum analyzer -> Right
+ 479:display.c     **** // b31-b28 - NOT_USED
+ 480:display.c     **** // b27-b24 - 31.5Hz
+ 481:display.c     **** // b23-b20 - 63Hz
+ 482:display.c     **** // b19-b16 - 125Hz
+ 483:display.c     **** // b15-b12 - 250Hz
+ 484:display.c     **** // b11-b8 - 500Hz
+ 485:display.c     **** // b7-b4 - 1000Hz
+ 486:display.c     **** // b3-b0 - 2000Hz        
+ 487:display.c     ****     case (1):
+ 488:display.c     ****         status = readBuffer[3];
+ 489:display.c     ****         status = status << 8;
+ 490:display.c     ****         status = status | readBuffer[4];
+ 491:display.c     ****         status = status << 8;
+ 492:display.c     ****         status = status | readBuffer[5];
+ 493:display.c     ****         status = status << 8;
+ 494:display.c     ****         status = status | readBuffer[6];
+ 495:display.c     ****         break;
+ 496:display.c     **** //  2 = Spectrum analyzer -> Left
+ 497:display.c     **** // b31-b28 - NOT_USED
+ 498:display.c     **** // b27-b24 - 31.5Hz
+ 499:display.c     **** // b23-b20 - 63Hz
+ 500:display.c     **** // b19-b16 - 125Hz
+ 501:display.c     **** // b15-b12 - 250Hz
+ 502:display.c     **** // b11-b8 - 500Hz
+ 503:display.c     **** // b7-b4 - 1000Hz
+ 504:display.c     **** // b3-b0 - 2000Hz        
+ 505:display.c     ****     case (2):
+ 506:display.c     ****         status = readBuffer[3];
+ 507:display.c     ****         status = status << 8;
+ 508:display.c     ****         status = status | readBuffer[4];
+ 509:display.c     ****         status = status << 8;
+ 510:display.c     ****         status = status | readBuffer[5];
+ 511:display.c     ****         status = status << 8;
+ 512:display.c     ****         status = status | readBuffer[6];
+ 513:display.c     ****         break;        
+ 514:display.c     **** //  3 = Spectrum analyzer -> Left&Right
+ 515:display.c     **** // LEFT
+ 516:display.c     **** // b31-b28 - NOT_USED
+ 517:display.c     **** // b27-b24 - 4000Hz
+ 518:display.c     **** // b23-b20 - 8000Hz
+ 519:display.c     **** // b19-b16 - 16000Hz
+ 520:display.c     **** // RIGHT
+ 521:display.c     **** // b15-b12 - NOT_USED
+ 522:display.c     **** // b11-b8 - 4000Hz
+ 523:display.c     **** // b7-b4 - 8000Hz
+ 524:display.c     **** // b3-b0 - 16000Hz
+ 525:display.c     ****     case (3):
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 20
+
+
+ 526:display.c     ****         status = readBuffer[3];
+ 527:display.c     ****         status = status << 8;
+ 528:display.c     ****         status = status | readBuffer[4];
+ 529:display.c     ****         status = status << 8;
+ 530:display.c     ****         status = status | readBuffer[5];
+ 531:display.c     ****         status = status << 8;
+ 532:display.c     ****         status = status | readBuffer[6];
+ 533:display.c     ****         break;
+ 534:display.c     **** //  4 = CODE 
+ 535:display.c     **** // expected fixed value -> 32 bit word = 0xBE01BE02
+ 536:display.c     ****     case (4):
+ 537:display.c     ****         status = readBuffer[3];
+ 532              		.loc 1 537 0
+ 533 0090 6B46     		mov	r3, sp
+ 468:display.c     ****     {    
+ 534              		.loc 1 468 0
+ 535 0092 FFF7FEFF 		bl	__gnu_thumb1_case_uqi
+ 536              	.L54:
+ 537 0096 03       		.byte	(.L53-.L54)/2
+ 538 0097 06       		.byte	(.L58-.L54)/2
+ 539 0098 06       		.byte	(.L58-.L54)/2
+ 540 0099 06       		.byte	(.L58-.L54)/2
+ 541 009a 06       		.byte	(.L58-.L54)/2
+ 542 009b 00       		.p2align 1
+ 543              	.L53:
+ 474:display.c     ****         status = status << 8;
+ 544              		.loc 1 474 0
+ 545 009c 5C79     		ldrb	r4, [r3, #5]
+ 546              	.LVL54:
+ 475:display.c     ****         status = status | readBuffer[6];
+ 547              		.loc 1 475 0
+ 548 009e 2402     		lsls	r4, r4, #8
+ 549              	.LVL55:
+ 550 00a0 09E0     		b	.L62
+ 551              	.LVL56:
+ 552              	.L58:
+ 553              		.loc 1 537 0
+ 554 00a2 DC78     		ldrb	r4, [r3, #3]
+ 555              	.LVL57:
+ 538:display.c     ****         status = status << 8;
+ 539:display.c     ****         status = status | readBuffer[4];
+ 556              		.loc 1 539 0
+ 557 00a4 1B79     		ldrb	r3, [r3, #4]
+ 538:display.c     ****         status = status << 8;
+ 558              		.loc 1 538 0
+ 559 00a6 2402     		lsls	r4, r4, #8
+ 560              	.LVL58:
+ 561              		.loc 1 539 0
+ 562 00a8 1C43     		orrs	r4, r3
+ 563              	.LVL59:
+ 540:display.c     ****         status = status << 8;
+ 541:display.c     ****         status = status | readBuffer[5];
+ 564              		.loc 1 541 0
+ 565 00aa 6B46     		mov	r3, sp
+ 566 00ac 5B79     		ldrb	r3, [r3, #5]
+ 540:display.c     ****         status = status << 8;
+ 567              		.loc 1 540 0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 21
+
+
+ 568 00ae 2402     		lsls	r4, r4, #8
+ 569              	.LVL60:
+ 570              		.loc 1 541 0
+ 571 00b0 1C43     		orrs	r4, r3
+ 572              	.LVL61:
+ 542:display.c     ****         status = status << 8;
+ 543:display.c     ****         status = status | readBuffer[6];
+ 573              		.loc 1 543 0
+ 574 00b2 6B46     		mov	r3, sp
+ 542:display.c     ****         status = status << 8;
+ 575              		.loc 1 542 0
+ 576 00b4 2402     		lsls	r4, r4, #8
+ 577              	.LVL62:
+ 578              	.L62:
+ 579              		.loc 1 543 0
+ 580 00b6 9B79     		ldrb	r3, [r3, #6]
+ 581 00b8 1C43     		orrs	r4, r3
+ 582              	.LVL63:
+ 583              	.L52:
+ 544:display.c     ****         break;        
+ 545:display.c     ****     }                
+ 546:display.c     **** 
+ 547:display.c     **** // TO BE REMOVED TO BE REMOVED   
+ 548:display.c     **** /*    
+ 549:display.c     ****     if (((status & 0xF0000000) >> 28) >0x09)
+ 550:display.c     ****     {
+ 551:display.c     ****         UART_UartPutChar('0' + (((status & 0xF0000000) >> 28) + 0x07));
+ 552:display.c     ****     }
+ 553:display.c     ****     else
+ 554:display.c     ****        {
+ 555:display.c     ****            UART_UartPutChar('0' + ((status & 0xF0000000) >> 28));
+ 556:display.c     ****        }
+ 557:display.c     ****     
+ 558:display.c     ****     if (((status & 0x0F000000) >> 24) >0x09)
+ 559:display.c     ****     {
+ 560:display.c     ****         UART_UartPutChar('0' + (((status & 0x0F000000) >> 24) + 0x07));
+ 561:display.c     ****     }
+ 562:display.c     ****     else
+ 563:display.c     ****        {
+ 564:display.c     ****            UART_UartPutChar('0' + ((status & 0x0F000000) >> 24));
+ 565:display.c     ****        }
+ 566:display.c     ****     
+ 567:display.c     ****     if (((status & 0x00F00000) >> 20) >0x09)
+ 568:display.c     ****     {
+ 569:display.c     ****         UART_UartPutChar('0' + (((status & 0x00F00000) >> 20) + 0x07));
+ 570:display.c     ****     }
+ 571:display.c     ****     else
+ 572:display.c     ****        {
+ 573:display.c     ****            UART_UartPutChar('0' + ((status & 0x00F00000) >> 20));
+ 574:display.c     ****        }
+ 575:display.c     ****     
+ 576:display.c     ****     if (((status & 0x000F0000) >> 16) >0x09)
+ 577:display.c     ****     {
+ 578:display.c     ****         UART_UartPutChar('0' + (((status & 0x000F0000) >> 16) + 0x07));
+ 579:display.c     ****     }
+ 580:display.c     ****     else
+ 581:display.c     ****        {
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 22
+
+
+ 582:display.c     ****            UART_UartPutChar('0' + ((status & 0x000F0000) >> 16));
+ 583:display.c     ****        }
+ 584:display.c     ****     
+ 585:display.c     ****     if (((status & 0x0000F000) >> 12) >0x09)
+ 586:display.c     ****     {
+ 587:display.c     ****         UART_UartPutChar('0' + (((status & 0x0000F000) >> 12) + 0x07));
+ 588:display.c     ****     }
+ 589:display.c     ****     else
+ 590:display.c     ****        {
+ 591:display.c     ****            UART_UartPutChar('0' + ((status & 0x0000F000) >> 12));
+ 592:display.c     ****        }    
+ 593:display.c     ****     
+ 594:display.c     ****     if (((status & 0x00000F00) >> 8) >0x09)
+ 595:display.c     ****     {
+ 596:display.c     ****         UART_UartPutChar('0' + (((status & 0x00000F00) >> 8) + 0x07));
+ 597:display.c     ****     }
+ 598:display.c     ****     else
+ 599:display.c     ****        {
+ 600:display.c     ****            UART_UartPutChar('0' + ((status & 0x00000F00) >> 8));
+ 601:display.c     ****        }
+ 602:display.c     ****  
+ 603:display.c     ****     if (((status & 0x000000F0) >> 4) >0x09)
+ 604:display.c     ****     {
+ 605:display.c     ****         UART_UartPutChar('0' + (((status & 0x000000F0) >> 4) + 0x07));
+ 606:display.c     ****     }
+ 607:display.c     ****     else
+ 608:display.c     ****        {
+ 609:display.c     ****            UART_UartPutChar('0' + ((status & 0x000000F0) >> 4));
+ 610:display.c     ****        }
+ 611:display.c     ****             
+ 612:display.c     ****     if ((status & 0x0000000F) >0x09)
+ 613:display.c     ****     {
+ 614:display.c     ****        UART_UartPutChar('0' + ((status & 0x0000000F) + 0x07));
+ 615:display.c     ****     }
+ 616:display.c     ****     else
+ 617:display.c     ****         {
+ 618:display.c     ****             UART_UartPutChar('0' + (status & 0x0000000F));
+ 619:display.c     ****         }
+ 620:display.c     ****     
+ 621:display.c     ****     UART_UartPutString("\n\r");
+ 622:display.c     **** */    
+ 623:display.c     **** // TO BE REMOVED TO BE REMOVED
+ 624:display.c     ****     
+ 625:display.c     ****     
+ 626:display.c     **** // set SPI slave select line to display module
+ 627:display.c     ****     SPIM_SpiSetActiveSlaveSelect(SPIM_SPI_SLAVE_SELECT1);   
+ 584              		.loc 1 627 0
+ 585 00ba 0120     		movs	r0, #1
+ 586 00bc FFF7FEFF 		bl	SPIM_SpiSetActiveSlaveSelect
+ 587              	.LVL64:
+ 628:display.c     ****     
+ 629:display.c     ****     return (status);
+ 630:display.c     **** }
+ 588              		.loc 1 630 0
+ 589 00c0 2000     		movs	r0, r4
+ 590 00c2 04B0     		add	sp, sp, #16
+ 591              		@ sp needed
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 23
+
+
+ 592              	.LVL65:
+ 593              	.LVL66:
+ 594 00c4 70BD     		pop	{r4, r5, r6, pc}
+ 595              		.cfi_endproc
+ 596              	.LFE36:
+ 597              		.size	SPIM_SigmaDSP_read, .-SPIM_SigmaDSP_read
+ 598              		.global	dummyBuffer
+ 599              		.comm	DISPLAY_UPDATE,1,1
+ 600              		.comm	DATALINK_TABLE_COUNTER_MAX,1,1
+ 601              		.comm	DATALINK_TABLE_COUNTER,1,1
+ 602              		.comm	DATALINK_TABLE,64,1
+ 603              		.comm	PWR_OK_LONG_V,1,1
+ 604              		.comm	MODE_LONG_V,1,1
+ 605              		.comm	PWR_OK_SHORT_V,1,1
+ 606              		.comm	MODE_SHORT_V,1,1
+ 607              		.section	.rodata
+ 608              		.set	.LANCHOR1,. + 0
+ 609              		.type	dummyBuffer, %object
+ 610              		.size	dummyBuffer, 28
+ 611              	dummyBuffer:
+ 612 0000 FF       		.byte	-1
+ 613 0001 FF       		.byte	-1
+ 614 0002 FF       		.byte	-1
+ 615 0003 00000000 		.space	25
+ 615      00000000 
+ 615      00000000 
+ 615      00000000 
+ 615      00000000 
+ 616              		.bss
+ 617              		.set	.LANCHOR0,. + 0
+ 618              		.type	mTxBuffer.6410, %object
+ 619              		.size	mTxBuffer.6410, 28
+ 620              	mTxBuffer.6410:
+ 621 0000 00000000 		.space	28
+ 621      00000000 
+ 621      00000000 
+ 621      00000000 
+ 621      00000000 
+ 622              		.text
+ 623              	.Letext0:
+ 624              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 625              		.file 3 "./inputs.h"
+ 626              		.file 4 "Generated_Source\\PSoC4/SPIM_SPI_UART.h"
+ 627              		.file 5 "Generated_Source\\PSoC4/CyLib.h"
+ 628              		.section	.debug_info,"",%progbits
+ 629              	.Ldebug_info0:
+ 630 0000 BF050000 		.4byte	0x5bf
+ 631 0004 0400     		.2byte	0x4
+ 632 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 633 000a 04       		.byte	0x4
+ 634 000b 01       		.uleb128 0x1
+ 635 000c DD020000 		.4byte	.LASF46
+ 636 0010 0C       		.byte	0xc
+ 637 0011 5C000000 		.4byte	.LASF47
+ 638 0015 55020000 		.4byte	.LASF48
+ 639 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 640 001d 00000000 		.4byte	0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 24
+
+
+ 641 0021 00000000 		.4byte	.Ldebug_line0
+ 642 0025 02       		.uleb128 0x2
+ 643 0026 01       		.byte	0x1
+ 644 0027 06       		.byte	0x6
+ 645 0028 C3020000 		.4byte	.LASF0
+ 646 002c 02       		.uleb128 0x2
+ 647 002d 01       		.byte	0x1
+ 648 002e 08       		.byte	0x8
+ 649 002f E1000000 		.4byte	.LASF1
+ 650 0033 02       		.uleb128 0x2
+ 651 0034 02       		.byte	0x2
+ 652 0035 05       		.byte	0x5
+ 653 0036 2E020000 		.4byte	.LASF2
+ 654 003a 02       		.uleb128 0x2
+ 655 003b 02       		.byte	0x2
+ 656 003c 07       		.byte	0x7
+ 657 003d 06010000 		.4byte	.LASF3
+ 658 0041 02       		.uleb128 0x2
+ 659 0042 04       		.byte	0x4
+ 660 0043 05       		.byte	0x5
+ 661 0044 82020000 		.4byte	.LASF4
+ 662 0048 02       		.uleb128 0x2
+ 663 0049 04       		.byte	0x4
+ 664 004a 07       		.byte	0x7
+ 665 004b 3C010000 		.4byte	.LASF5
+ 666 004f 02       		.uleb128 0x2
+ 667 0050 08       		.byte	0x8
+ 668 0051 05       		.byte	0x5
+ 669 0052 0F020000 		.4byte	.LASF6
+ 670 0056 02       		.uleb128 0x2
+ 671 0057 08       		.byte	0x8
+ 672 0058 07       		.byte	0x7
+ 673 0059 A0010000 		.4byte	.LASF7
+ 674 005d 03       		.uleb128 0x3
+ 675 005e 04       		.byte	0x4
+ 676 005f 05       		.byte	0x5
+ 677 0060 696E7400 		.ascii	"int\000"
+ 678 0064 02       		.uleb128 0x2
+ 679 0065 04       		.byte	0x4
+ 680 0066 07       		.byte	0x7
+ 681 0067 76010000 		.4byte	.LASF8
+ 682 006b 04       		.uleb128 0x4
+ 683 006c DB000000 		.4byte	.LASF9
+ 684 0070 02       		.byte	0x2
+ 685 0071 F701     		.2byte	0x1f7
+ 686 0073 2C000000 		.4byte	0x2c
+ 687 0077 04       		.uleb128 0x4
+ 688 0078 6F010000 		.4byte	.LASF10
+ 689 007c 02       		.byte	0x2
+ 690 007d F901     		.2byte	0x1f9
+ 691 007f 48000000 		.4byte	0x48
+ 692 0083 02       		.uleb128 0x2
+ 693 0084 04       		.byte	0x4
+ 694 0085 04       		.byte	0x4
+ 695 0086 D5000000 		.4byte	.LASF11
+ 696 008a 02       		.uleb128 0x2
+ 697 008b 08       		.byte	0x8
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 25
+
+
+ 698 008c 04       		.byte	0x4
+ 699 008d 8F000000 		.4byte	.LASF12
+ 700 0091 02       		.uleb128 0x2
+ 701 0092 01       		.byte	0x1
+ 702 0093 08       		.byte	0x8
+ 703 0094 1D020000 		.4byte	.LASF13
+ 704 0098 02       		.uleb128 0x2
+ 705 0099 08       		.byte	0x8
+ 706 009a 04       		.byte	0x4
+ 707 009b EB010000 		.4byte	.LASF14
+ 708 009f 02       		.uleb128 0x2
+ 709 00a0 04       		.byte	0x4
+ 710 00a1 07       		.byte	0x7
+ 711 00a2 F7010000 		.4byte	.LASF15
+ 712 00a6 05       		.uleb128 0x5
+ 713 00a7 04       		.byte	0x4
+ 714 00a8 6B000000 		.4byte	0x6b
+ 715 00ac 06       		.uleb128 0x6
+ 716 00ad 96020000 		.4byte	.LASF49
+ 717 00b1 01       		.byte	0x1
+ 718 00b2 48       		.byte	0x48
+ 719 00b3 00000000 		.4byte	.LFB32
+ 720 00b7 3C000000 		.4byte	.LFE32-.LFB32
+ 721 00bb 01       		.uleb128 0x1
+ 722 00bc 9C       		.byte	0x9c
+ 723 00bd 3B010000 		.4byte	0x13b
+ 724 00c1 07       		.uleb128 0x7
+ 725 00c2 92010000 		.4byte	.LASF16
+ 726 00c6 01       		.byte	0x1
+ 727 00c7 48       		.byte	0x48
+ 728 00c8 A6000000 		.4byte	0xa6
+ 729 00cc 00000000 		.4byte	.LLST0
+ 730 00d0 07       		.uleb128 0x7
+ 731 00d1 2B000000 		.4byte	.LASF17
+ 732 00d5 01       		.byte	0x1
+ 733 00d6 48       		.byte	0x48
+ 734 00d7 6B000000 		.4byte	0x6b
+ 735 00db 2C000000 		.4byte	.LLST1
+ 736 00df 07       		.uleb128 0x7
+ 737 00e0 36000000 		.4byte	.LASF18
+ 738 00e4 01       		.byte	0x1
+ 739 00e5 48       		.byte	0x48
+ 740 00e6 6B000000 		.4byte	0x6b
+ 741 00ea 5C000000 		.4byte	.LLST2
+ 742 00ee 08       		.uleb128 0x8
+ 743 00ef CB000000 		.4byte	.LASF19
+ 744 00f3 01       		.byte	0x1
+ 745 00f4 4B       		.byte	0x4b
+ 746 00f5 3B010000 		.4byte	0x13b
+ 747 00f9 05       		.uleb128 0x5
+ 748 00fa 03       		.byte	0x3
+ 749 00fb 00000000 		.4byte	mTxBuffer.6410
+ 750 00ff 09       		.uleb128 0x9
+ 751 0100 6900     		.ascii	"i\000"
+ 752 0102 01       		.byte	0x1
+ 753 0103 4D       		.byte	0x4d
+ 754 0104 6B000000 		.4byte	0x6b
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 26
+
+
+ 755 0108 7D000000 		.4byte	.LLST3
+ 756 010c 0A       		.uleb128 0xa
+ 757 010d 28000000 		.4byte	.LVL6
+ 758 0111 66050000 		.4byte	0x566
+ 759 0115 28010000 		.4byte	0x128
+ 760 0119 0B       		.uleb128 0xb
+ 761 011a 01       		.uleb128 0x1
+ 762 011b 50       		.byte	0x50
+ 763 011c 05       		.uleb128 0x5
+ 764 011d 03       		.byte	0x3
+ 765 011e 00000000 		.4byte	.LANCHOR0
+ 766 0122 0B       		.uleb128 0xb
+ 767 0123 01       		.uleb128 0x1
+ 768 0124 51       		.byte	0x51
+ 769 0125 01       		.uleb128 0x1
+ 770 0126 4C       		.byte	0x4c
+ 771 0127 00       		.byte	0
+ 772 0128 0C       		.uleb128 0xc
+ 773 0129 2C000000 		.4byte	.LVL7
+ 774 012d 72050000 		.4byte	0x572
+ 775 0131 0C       		.uleb128 0xc
+ 776 0132 34000000 		.4byte	.LVL8
+ 777 0136 7E050000 		.4byte	0x57e
+ 778 013a 00       		.byte	0
+ 779 013b 0D       		.uleb128 0xd
+ 780 013c 6B000000 		.4byte	0x6b
+ 781 0140 4B010000 		.4byte	0x14b
+ 782 0144 0E       		.uleb128 0xe
+ 783 0145 9F000000 		.4byte	0x9f
+ 784 0149 1B       		.byte	0x1b
+ 785 014a 00       		.byte	0
+ 786 014b 0F       		.uleb128 0xf
+ 787 014c 00000000 		.4byte	.LASF22
+ 788 0150 01       		.byte	0x1
+ 789 0151 7B       		.byte	0x7b
+ 790 0152 77000000 		.4byte	0x77
+ 791 0156 00000000 		.4byte	.LFB33
+ 792 015a 44000000 		.4byte	.LFE33-.LFB33
+ 793 015e 01       		.uleb128 0x1
+ 794 015f 9C       		.byte	0x9c
+ 795 0160 CD010000 		.4byte	0x1cd
+ 796 0164 08       		.uleb128 0x8
+ 797 0165 CA010000 		.4byte	.LASF20
+ 798 0169 01       		.byte	0x1
+ 799 016a 7D       		.byte	0x7d
+ 800 016b CD010000 		.4byte	0x1cd
+ 801 016f 02       		.uleb128 0x2
+ 802 0170 91       		.byte	0x91
+ 803 0171 6C       		.sleb128 -20
+ 804 0172 08       		.uleb128 0x8
+ 805 0173 96000000 		.4byte	.LASF21
+ 806 0177 01       		.byte	0x1
+ 807 0178 7E       		.byte	0x7e
+ 808 0179 6B000000 		.4byte	0x6b
+ 809 017d 01       		.uleb128 0x1
+ 810 017e 50       		.byte	0x50
+ 811 017f 09       		.uleb128 0x9
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 27
+
+
+ 812 0180 6900     		.ascii	"i\000"
+ 813 0182 01       		.byte	0x1
+ 814 0183 7F       		.byte	0x7f
+ 815 0184 77000000 		.4byte	0x77
+ 816 0188 AA000000 		.4byte	.LLST4
+ 817 018c 0A       		.uleb128 0xa
+ 818 018d 0A000000 		.4byte	.LVL10
+ 819 0191 66050000 		.4byte	0x566
+ 820 0195 A8010000 		.4byte	0x1a8
+ 821 0199 0B       		.uleb128 0xb
+ 822 019a 01       		.uleb128 0x1
+ 823 019b 50       		.byte	0x50
+ 824 019c 05       		.uleb128 0x5
+ 825 019d 03       		.byte	0x3
+ 826 019e 00000000 		.4byte	.LANCHOR1
+ 827 01a2 0B       		.uleb128 0xb
+ 828 01a3 01       		.uleb128 0x1
+ 829 01a4 51       		.byte	0x51
+ 830 01a5 01       		.uleb128 0x1
+ 831 01a6 33       		.byte	0x33
+ 832 01a7 00       		.byte	0
+ 833 01a8 0C       		.uleb128 0xc
+ 834 01a9 0E000000 		.4byte	.LVL11
+ 835 01ad 72050000 		.4byte	0x572
+ 836 01b1 0C       		.uleb128 0xc
+ 837 01b2 16000000 		.4byte	.LVL12
+ 838 01b6 8A050000 		.4byte	0x58a
+ 839 01ba 0C       		.uleb128 0xc
+ 840 01bb 1C000000 		.4byte	.LVL14
+ 841 01bf 72050000 		.4byte	0x572
+ 842 01c3 0C       		.uleb128 0xc
+ 843 01c4 26000000 		.4byte	.LVL15
+ 844 01c8 96050000 		.4byte	0x596
+ 845 01cc 00       		.byte	0
+ 846 01cd 0D       		.uleb128 0xd
+ 847 01ce 6B000000 		.4byte	0x6b
+ 848 01d2 DD010000 		.4byte	0x1dd
+ 849 01d6 0E       		.uleb128 0xe
+ 850 01d7 9F000000 		.4byte	0x9f
+ 851 01db 02       		.byte	0x2
+ 852 01dc 00       		.byte	0
+ 853 01dd 0F       		.uleb128 0xf
+ 854 01de D4010000 		.4byte	.LASF23
+ 855 01e2 01       		.byte	0x1
+ 856 01e3 B8       		.byte	0xb8
+ 857 01e4 6B000000 		.4byte	0x6b
+ 858 01e8 00000000 		.4byte	.LFB34
+ 859 01ec 64000000 		.4byte	.LFE34-.LFB34
+ 860 01f0 01       		.uleb128 0x1
+ 861 01f1 9C       		.byte	0x9c
+ 862 01f2 D3020000 		.4byte	0x2d3
+ 863 01f6 08       		.uleb128 0x8
+ 864 01f7 22020000 		.4byte	.LASF24
+ 865 01fb 01       		.byte	0x1
+ 866 01fc BC       		.byte	0xbc
+ 867 01fd D3020000 		.4byte	0x2d3
+ 868 0201 02       		.uleb128 0x2
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 28
+
+
+ 869 0202 91       		.byte	0x91
+ 870 0203 6C       		.sleb128 -20
+ 871 0204 0A       		.uleb128 0xa
+ 872 0205 0C000000 		.4byte	.LVL19
+ 873 0209 A2050000 		.4byte	0x5a2
+ 874 020d 17020000 		.4byte	0x217
+ 875 0211 0B       		.uleb128 0xb
+ 876 0212 01       		.uleb128 0x1
+ 877 0213 50       		.byte	0x50
+ 878 0214 01       		.uleb128 0x1
+ 879 0215 30       		.byte	0x30
+ 880 0216 00       		.byte	0
+ 881 0217 0A       		.uleb128 0xa
+ 882 0218 14000000 		.4byte	.LVL20
+ 883 021c 66050000 		.4byte	0x566
+ 884 0220 30020000 		.4byte	0x230
+ 885 0224 0B       		.uleb128 0xb
+ 886 0225 01       		.uleb128 0x1
+ 887 0226 50       		.byte	0x50
+ 888 0227 02       		.uleb128 0x2
+ 889 0228 74       		.byte	0x74
+ 890 0229 00       		.sleb128 0
+ 891 022a 0B       		.uleb128 0xb
+ 892 022b 01       		.uleb128 0x1
+ 893 022c 51       		.byte	0x51
+ 894 022d 01       		.uleb128 0x1
+ 895 022e 31       		.byte	0x31
+ 896 022f 00       		.byte	0
+ 897 0230 0C       		.uleb128 0xc
+ 898 0231 18000000 		.4byte	.LVL21
+ 899 0235 72050000 		.4byte	0x572
+ 900 0239 0C       		.uleb128 0xc
+ 901 023a 22000000 		.4byte	.LVL22
+ 902 023e 7E050000 		.4byte	0x57e
+ 903 0242 0A       		.uleb128 0xa
+ 904 0243 28000000 		.4byte	.LVL23
+ 905 0247 AE050000 		.4byte	0x5ae
+ 906 024b 56020000 		.4byte	0x256
+ 907 024f 0B       		.uleb128 0xb
+ 908 0250 01       		.uleb128 0x1
+ 909 0251 50       		.byte	0x50
+ 910 0252 02       		.uleb128 0x2
+ 911 0253 08       		.byte	0x8
+ 912 0254 64       		.byte	0x64
+ 913 0255 00       		.byte	0
+ 914 0256 0A       		.uleb128 0xa
+ 915 0257 30000000 		.4byte	.LVL24
+ 916 025b 66050000 		.4byte	0x566
+ 917 025f 70020000 		.4byte	0x270
+ 918 0263 0B       		.uleb128 0xb
+ 919 0264 01       		.uleb128 0x1
+ 920 0265 50       		.byte	0x50
+ 921 0266 02       		.uleb128 0x2
+ 922 0267 74       		.byte	0x74
+ 923 0268 00       		.sleb128 0
+ 924 0269 0B       		.uleb128 0xb
+ 925 026a 01       		.uleb128 0x1
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 29
+
+
+ 926 026b 51       		.byte	0x51
+ 927 026c 02       		.uleb128 0x2
+ 928 026d 75       		.byte	0x75
+ 929 026e 00       		.sleb128 0
+ 930 026f 00       		.byte	0
+ 931 0270 0C       		.uleb128 0xc
+ 932 0271 34000000 		.4byte	.LVL25
+ 933 0275 72050000 		.4byte	0x572
+ 934 0279 0C       		.uleb128 0xc
+ 935 027a 3E000000 		.4byte	.LVL26
+ 936 027e 7E050000 		.4byte	0x57e
+ 937 0282 0A       		.uleb128 0xa
+ 938 0283 44000000 		.4byte	.LVL27
+ 939 0287 AE050000 		.4byte	0x5ae
+ 940 028b 96020000 		.4byte	0x296
+ 941 028f 0B       		.uleb128 0xb
+ 942 0290 01       		.uleb128 0x1
+ 943 0291 50       		.byte	0x50
+ 944 0292 02       		.uleb128 0x2
+ 945 0293 08       		.byte	0x8
+ 946 0294 64       		.byte	0x64
+ 947 0295 00       		.byte	0
+ 948 0296 0A       		.uleb128 0xa
+ 949 0297 4C000000 		.4byte	.LVL28
+ 950 029b 66050000 		.4byte	0x566
+ 951 029f B0020000 		.4byte	0x2b0
+ 952 02a3 0B       		.uleb128 0xb
+ 953 02a4 01       		.uleb128 0x1
+ 954 02a5 50       		.byte	0x50
+ 955 02a6 02       		.uleb128 0x2
+ 956 02a7 74       		.byte	0x74
+ 957 02a8 00       		.sleb128 0
+ 958 02a9 0B       		.uleb128 0xb
+ 959 02aa 01       		.uleb128 0x1
+ 960 02ab 51       		.byte	0x51
+ 961 02ac 02       		.uleb128 0x2
+ 962 02ad 75       		.byte	0x75
+ 963 02ae 00       		.sleb128 0
+ 964 02af 00       		.byte	0
+ 965 02b0 0C       		.uleb128 0xc
+ 966 02b1 50000000 		.4byte	.LVL29
+ 967 02b5 72050000 		.4byte	0x572
+ 968 02b9 0C       		.uleb128 0xc
+ 969 02ba 5A000000 		.4byte	.LVL30
+ 970 02be 7E050000 		.4byte	0x57e
+ 971 02c2 10       		.uleb128 0x10
+ 972 02c3 60000000 		.4byte	.LVL31
+ 973 02c7 A2050000 		.4byte	0x5a2
+ 974 02cb 0B       		.uleb128 0xb
+ 975 02cc 01       		.uleb128 0x1
+ 976 02cd 50       		.byte	0x50
+ 977 02ce 02       		.uleb128 0x2
+ 978 02cf 74       		.byte	0x74
+ 979 02d0 00       		.sleb128 0
+ 980 02d1 00       		.byte	0
+ 981 02d2 00       		.byte	0
+ 982 02d3 0D       		.uleb128 0xd
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 30
+
+
+ 983 02d4 6B000000 		.4byte	0x6b
+ 984 02d8 E3020000 		.4byte	0x2e3
+ 985 02dc 0E       		.uleb128 0xe
+ 986 02dd 9F000000 		.4byte	0x9f
+ 987 02e1 00       		.byte	0
+ 988 02e2 00       		.byte	0
+ 989 02e3 11       		.uleb128 0x11
+ 990 02e4 9D000000 		.4byte	.LASF25
+ 991 02e8 01       		.byte	0x1
+ 992 02e9 0301     		.2byte	0x103
+ 993 02eb 6B000000 		.4byte	0x6b
+ 994 02ef 00000000 		.4byte	.LFB35
+ 995 02f3 7E000000 		.4byte	.LFE35-.LFB35
+ 996 02f7 01       		.uleb128 0x1
+ 997 02f8 9C       		.byte	0x9c
+ 998 02f9 88030000 		.4byte	0x388
+ 999 02fd 12       		.uleb128 0x12
+ 1000 02fe 72000000 		.4byte	.LASF26
+ 1001 0302 01       		.byte	0x1
+ 1002 0303 0301     		.2byte	0x103
+ 1003 0305 6B000000 		.4byte	0x6b
+ 1004 0309 C9000000 		.4byte	.LLST5
+ 1005 030d 13       		.uleb128 0x13
+ 1006 030e 50000000 		.4byte	.LASF27
+ 1007 0312 01       		.byte	0x1
+ 1008 0313 0601     		.2byte	0x106
+ 1009 0315 88030000 		.4byte	0x388
+ 1010 0319 02       		.uleb128 0x2
+ 1011 031a 91       		.byte	0x91
+ 1012 031b 70       		.sleb128 -16
+ 1013 031c 0A       		.uleb128 0xa
+ 1014 031d 0E000000 		.4byte	.LVL34
+ 1015 0321 B9050000 		.4byte	0x5b9
+ 1016 0325 3A030000 		.4byte	0x33a
+ 1017 0329 0B       		.uleb128 0xb
+ 1018 032a 01       		.uleb128 0x1
+ 1019 032b 50       		.byte	0x50
+ 1020 032c 02       		.uleb128 0x2
+ 1021 032d 7D       		.byte	0x7d
+ 1022 032e 00       		.sleb128 0
+ 1023 032f 0B       		.uleb128 0xb
+ 1024 0330 01       		.uleb128 0x1
+ 1025 0331 51       		.byte	0x51
+ 1026 0332 01       		.uleb128 0x1
+ 1027 0333 30       		.byte	0x30
+ 1028 0334 0B       		.uleb128 0xb
+ 1029 0335 01       		.uleb128 0x1
+ 1030 0336 52       		.byte	0x52
+ 1031 0337 01       		.uleb128 0x1
+ 1032 0338 37       		.byte	0x37
+ 1033 0339 00       		.byte	0
+ 1034 033a 0A       		.uleb128 0xa
+ 1035 033b 14000000 		.4byte	.LVL35
+ 1036 033f A2050000 		.4byte	0x5a2
+ 1037 0343 4D030000 		.4byte	0x34d
+ 1038 0347 0B       		.uleb128 0xb
+ 1039 0348 01       		.uleb128 0x1
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 31
+
+
+ 1040 0349 50       		.byte	0x50
+ 1041 034a 01       		.uleb128 0x1
+ 1042 034b 30       		.byte	0x30
+ 1043 034c 00       		.byte	0
+ 1044 034d 0A       		.uleb128 0xa
+ 1045 034e 68000000 		.4byte	.LVL36
+ 1046 0352 66050000 		.4byte	0x566
+ 1047 0356 66030000 		.4byte	0x366
+ 1048 035a 0B       		.uleb128 0xb
+ 1049 035b 01       		.uleb128 0x1
+ 1050 035c 50       		.byte	0x50
+ 1051 035d 02       		.uleb128 0x2
+ 1052 035e 7D       		.byte	0x7d
+ 1053 035f 00       		.sleb128 0
+ 1054 0360 0B       		.uleb128 0xb
+ 1055 0361 01       		.uleb128 0x1
+ 1056 0362 51       		.byte	0x51
+ 1057 0363 01       		.uleb128 0x1
+ 1058 0364 37       		.byte	0x37
+ 1059 0365 00       		.byte	0
+ 1060 0366 0C       		.uleb128 0xc
+ 1061 0367 6C000000 		.4byte	.LVL37
+ 1062 036b 72050000 		.4byte	0x572
+ 1063 036f 0C       		.uleb128 0xc
+ 1064 0370 74000000 		.4byte	.LVL38
+ 1065 0374 7E050000 		.4byte	0x57e
+ 1066 0378 10       		.uleb128 0x10
+ 1067 0379 7A000000 		.4byte	.LVL39
+ 1068 037d A2050000 		.4byte	0x5a2
+ 1069 0381 0B       		.uleb128 0xb
+ 1070 0382 01       		.uleb128 0x1
+ 1071 0383 50       		.byte	0x50
+ 1072 0384 01       		.uleb128 0x1
+ 1073 0385 31       		.byte	0x31
+ 1074 0386 00       		.byte	0
+ 1075 0387 00       		.byte	0
+ 1076 0388 0D       		.uleb128 0xd
+ 1077 0389 6B000000 		.4byte	0x6b
+ 1078 038d 98030000 		.4byte	0x398
+ 1079 0391 0E       		.uleb128 0xe
+ 1080 0392 9F000000 		.4byte	0x9f
+ 1081 0396 06       		.byte	0x6
+ 1082 0397 00       		.byte	0
+ 1083 0398 11       		.uleb128 0x11
+ 1084 0399 B7010000 		.4byte	.LASF28
+ 1085 039d 01       		.byte	0x1
+ 1086 039e 8401     		.2byte	0x184
+ 1087 03a0 77000000 		.4byte	0x77
+ 1088 03a4 00000000 		.4byte	.LFB36
+ 1089 03a8 C6000000 		.4byte	.LFE36-.LFB36
+ 1090 03ac 01       		.uleb128 0x1
+ 1091 03ad 9C       		.byte	0x9c
+ 1092 03ae A3040000 		.4byte	0x4a3
+ 1093 03b2 12       		.uleb128 0x12
+ 1094 03b3 72000000 		.4byte	.LASF26
+ 1095 03b7 01       		.byte	0x1
+ 1096 03b8 8401     		.2byte	0x184
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 32
+
+
+ 1097 03ba 6B000000 		.4byte	0x6b
+ 1098 03be EA000000 		.4byte	.LLST6
+ 1099 03c2 14       		.uleb128 0x14
+ 1100 03c3 96000000 		.4byte	.LASF21
+ 1101 03c7 01       		.byte	0x1
+ 1102 03c8 8701     		.2byte	0x187
+ 1103 03ca 77000000 		.4byte	0x77
+ 1104 03ce 0B010000 		.4byte	.LLST7
+ 1105 03d2 15       		.uleb128 0x15
+ 1106 03d3 6900     		.ascii	"i\000"
+ 1107 03d5 01       		.byte	0x1
+ 1108 03d6 8A01     		.2byte	0x18a
+ 1109 03d8 6B000000 		.4byte	0x6b
+ 1110 03dc 4C010000 		.4byte	.LLST8
+ 1111 03e0 13       		.uleb128 0x13
+ 1112 03e1 8B020000 		.4byte	.LASF29
+ 1113 03e5 01       		.byte	0x1
+ 1114 03e6 8D01     		.2byte	0x18d
+ 1115 03e8 88030000 		.4byte	0x388
+ 1116 03ec 02       		.uleb128 0x2
+ 1117 03ed 91       		.byte	0x91
+ 1118 03ee 60       		.sleb128 -32
+ 1119 03ef 13       		.uleb128 0x13
+ 1120 03f0 50000000 		.4byte	.LASF27
+ 1121 03f4 01       		.byte	0x1
+ 1122 03f5 8F01     		.2byte	0x18f
+ 1123 03f7 88030000 		.4byte	0x388
+ 1124 03fb 02       		.uleb128 0x2
+ 1125 03fc 91       		.byte	0x91
+ 1126 03fd 68       		.sleb128 -24
+ 1127 03fe 0A       		.uleb128 0xa
+ 1128 03ff 12000000 		.4byte	.LVL42
+ 1129 0403 B9050000 		.4byte	0x5b9
+ 1130 0407 1C040000 		.4byte	0x41c
+ 1131 040b 0B       		.uleb128 0xb
+ 1132 040c 01       		.uleb128 0x1
+ 1133 040d 50       		.byte	0x50
+ 1134 040e 02       		.uleb128 0x2
+ 1135 040f 7D       		.byte	0x7d
+ 1136 0410 00       		.sleb128 0
+ 1137 0411 0B       		.uleb128 0xb
+ 1138 0412 01       		.uleb128 0x1
+ 1139 0413 51       		.byte	0x51
+ 1140 0414 01       		.uleb128 0x1
+ 1141 0415 30       		.byte	0x30
+ 1142 0416 0B       		.uleb128 0xb
+ 1143 0417 01       		.uleb128 0x1
+ 1144 0418 52       		.byte	0x52
+ 1145 0419 01       		.uleb128 0x1
+ 1146 041a 37       		.byte	0x37
+ 1147 041b 00       		.byte	0
+ 1148 041c 0A       		.uleb128 0xa
+ 1149 041d 1C000000 		.4byte	.LVL43
+ 1150 0421 B9050000 		.4byte	0x5b9
+ 1151 0425 3A040000 		.4byte	0x43a
+ 1152 0429 0B       		.uleb128 0xb
+ 1153 042a 01       		.uleb128 0x1
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 33
+
+
+ 1154 042b 50       		.byte	0x50
+ 1155 042c 02       		.uleb128 0x2
+ 1156 042d 74       		.byte	0x74
+ 1157 042e 00       		.sleb128 0
+ 1158 042f 0B       		.uleb128 0xb
+ 1159 0430 01       		.uleb128 0x1
+ 1160 0431 51       		.byte	0x51
+ 1161 0432 01       		.uleb128 0x1
+ 1162 0433 30       		.byte	0x30
+ 1163 0434 0B       		.uleb128 0xb
+ 1164 0435 01       		.uleb128 0x1
+ 1165 0436 52       		.byte	0x52
+ 1166 0437 01       		.uleb128 0x1
+ 1167 0438 37       		.byte	0x37
+ 1168 0439 00       		.byte	0
+ 1169 043a 0A       		.uleb128 0xa
+ 1170 043b 24000000 		.4byte	.LVL44
+ 1171 043f A2050000 		.4byte	0x5a2
+ 1172 0443 4D040000 		.4byte	0x44d
+ 1173 0447 0B       		.uleb128 0xb
+ 1174 0448 01       		.uleb128 0x1
+ 1175 0449 50       		.byte	0x50
+ 1176 044a 01       		.uleb128 0x1
+ 1177 044b 30       		.byte	0x30
+ 1178 044c 00       		.byte	0
+ 1179 044d 0A       		.uleb128 0xa
+ 1180 044e 62000000 		.4byte	.LVL45
+ 1181 0452 66050000 		.4byte	0x566
+ 1182 0456 66040000 		.4byte	0x466
+ 1183 045a 0B       		.uleb128 0xb
+ 1184 045b 01       		.uleb128 0x1
+ 1185 045c 50       		.byte	0x50
+ 1186 045d 02       		.uleb128 0x2
+ 1187 045e 74       		.byte	0x74
+ 1188 045f 00       		.sleb128 0
+ 1189 0460 0B       		.uleb128 0xb
+ 1190 0461 01       		.uleb128 0x1
+ 1191 0462 51       		.byte	0x51
+ 1192 0463 01       		.uleb128 0x1
+ 1193 0464 37       		.byte	0x37
+ 1194 0465 00       		.byte	0
+ 1195 0466 0C       		.uleb128 0xc
+ 1196 0467 66000000 		.4byte	.LVL46
+ 1197 046b 72050000 		.4byte	0x572
+ 1198 046f 0C       		.uleb128 0xc
+ 1199 0470 6E000000 		.4byte	.LVL47
+ 1200 0474 8A050000 		.4byte	0x58a
+ 1201 0478 0C       		.uleb128 0xc
+ 1202 0479 74000000 		.4byte	.LVL49
+ 1203 047d 72050000 		.4byte	0x572
+ 1204 0481 0C       		.uleb128 0xc
+ 1205 0482 7C000000 		.4byte	.LVL50
+ 1206 0486 96050000 		.4byte	0x596
+ 1207 048a 0C       		.uleb128 0xc
+ 1208 048b 8A000000 		.4byte	.LVL53
+ 1209 048f 7E050000 		.4byte	0x57e
+ 1210 0493 10       		.uleb128 0x10
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 34
+
+
+ 1211 0494 C0000000 		.4byte	.LVL64
+ 1212 0498 A2050000 		.4byte	0x5a2
+ 1213 049c 0B       		.uleb128 0xb
+ 1214 049d 01       		.uleb128 0x1
+ 1215 049e 50       		.byte	0x50
+ 1216 049f 01       		.uleb128 0x1
+ 1217 04a0 31       		.byte	0x31
+ 1218 04a1 00       		.byte	0
+ 1219 04a2 00       		.byte	0
+ 1220 04a3 16       		.uleb128 0x16
+ 1221 04a4 1E000000 		.4byte	.LASF30
+ 1222 04a8 03       		.byte	0x3
+ 1223 04a9 15       		.byte	0x15
+ 1224 04aa 6B000000 		.4byte	0x6b
+ 1225 04ae 05       		.uleb128 0x5
+ 1226 04af 03       		.byte	0x3
+ 1227 04b0 00000000 		.4byte	MODE_SHORT_V
+ 1228 04b4 16       		.uleb128 0x16
+ 1229 04b5 00020000 		.4byte	.LASF31
+ 1230 04b9 03       		.byte	0x3
+ 1231 04ba 16       		.byte	0x16
+ 1232 04bb 6B000000 		.4byte	0x6b
+ 1233 04bf 05       		.uleb128 0x5
+ 1234 04c0 03       		.byte	0x3
+ 1235 04c1 00000000 		.4byte	PWR_OK_SHORT_V
+ 1236 04c5 16       		.uleb128 0x16
+ 1237 04c6 12000000 		.4byte	.LASF32
+ 1238 04ca 03       		.byte	0x3
+ 1239 04cb 17       		.byte	0x17
+ 1240 04cc 6B000000 		.4byte	0x6b
+ 1241 04d0 05       		.uleb128 0x5
+ 1242 04d1 03       		.byte	0x3
+ 1243 04d2 00000000 		.4byte	MODE_LONG_V
+ 1244 04d6 16       		.uleb128 0x16
+ 1245 04d7 CF020000 		.4byte	.LASF33
+ 1246 04db 03       		.byte	0x3
+ 1247 04dc 18       		.byte	0x18
+ 1248 04dd 6B000000 		.4byte	0x6b
+ 1249 04e1 05       		.uleb128 0x5
+ 1250 04e2 03       		.byte	0x3
+ 1251 04e3 00000000 		.4byte	PWR_OK_LONG_V
+ 1252 04e7 0D       		.uleb128 0xd
+ 1253 04e8 6B000000 		.4byte	0x6b
+ 1254 04ec F7040000 		.4byte	0x4f7
+ 1255 04f0 0E       		.uleb128 0xe
+ 1256 04f1 9F000000 		.4byte	0x9f
+ 1257 04f5 3F       		.byte	0x3f
+ 1258 04f6 00       		.byte	0
+ 1259 04f7 16       		.uleb128 0x16
+ 1260 04f8 41000000 		.4byte	.LASF34
+ 1261 04fc 03       		.byte	0x3
+ 1262 04fd 1A       		.byte	0x1a
+ 1263 04fe E7040000 		.4byte	0x4e7
+ 1264 0502 05       		.uleb128 0x5
+ 1265 0503 03       		.byte	0x3
+ 1266 0504 00000000 		.4byte	DATALINK_TABLE
+ 1267 0508 16       		.uleb128 0x16
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 35
+
+
+ 1268 0509 4E010000 		.4byte	.LASF35
+ 1269 050d 03       		.byte	0x3
+ 1270 050e 1B       		.byte	0x1b
+ 1271 050f 6B000000 		.4byte	0x6b
+ 1272 0513 05       		.uleb128 0x5
+ 1273 0514 03       		.byte	0x3
+ 1274 0515 00000000 		.4byte	DATALINK_TABLE_COUNTER
+ 1275 0519 16       		.uleb128 0x16
+ 1276 051a 6B030000 		.4byte	.LASF36
+ 1277 051e 03       		.byte	0x3
+ 1278 051f 1C       		.byte	0x1c
+ 1279 0520 6B000000 		.4byte	0x6b
+ 1280 0524 05       		.uleb128 0x5
+ 1281 0525 03       		.byte	0x3
+ 1282 0526 00000000 		.4byte	DATALINK_TABLE_COUNTER_MAX
+ 1283 052a 16       		.uleb128 0x16
+ 1284 052b 83010000 		.4byte	.LASF37
+ 1285 052f 03       		.byte	0x3
+ 1286 0530 1D       		.byte	0x1d
+ 1287 0531 6B000000 		.4byte	0x6b
+ 1288 0535 05       		.uleb128 0x5
+ 1289 0536 03       		.byte	0x3
+ 1290 0537 00000000 		.4byte	DISPLAY_UPDATE
+ 1291 053b 0D       		.uleb128 0xd
+ 1292 053c 4B050000 		.4byte	0x54b
+ 1293 0540 4B050000 		.4byte	0x54b
+ 1294 0544 0E       		.uleb128 0xe
+ 1295 0545 9F000000 		.4byte	0x9f
+ 1296 0549 1B       		.byte	0x1b
+ 1297 054a 00       		.byte	0
+ 1298 054b 17       		.uleb128 0x17
+ 1299 054c 6B000000 		.4byte	0x6b
+ 1300 0550 16       		.uleb128 0x16
+ 1301 0551 66000000 		.4byte	.LASF38
+ 1302 0555 01       		.byte	0x1
+ 1303 0556 15       		.byte	0x15
+ 1304 0557 61050000 		.4byte	0x561
+ 1305 055b 05       		.uleb128 0x5
+ 1306 055c 03       		.byte	0x3
+ 1307 055d 00000000 		.4byte	dummyBuffer
+ 1308 0561 17       		.uleb128 0x17
+ 1309 0562 3B050000 		.4byte	0x53b
+ 1310 0566 18       		.uleb128 0x18
+ 1311 0567 7A000000 		.4byte	.LASF39
+ 1312 056b 7A000000 		.4byte	.LASF39
+ 1313 056f 04       		.byte	0x4
+ 1314 0570 4503     		.2byte	0x345
+ 1315 0572 18       		.uleb128 0x18
+ 1316 0573 19010000 		.4byte	.LASF40
+ 1317 0577 19010000 		.4byte	.LASF40
+ 1318 057b 04       		.byte	0x4
+ 1319 057c 3E03     		.2byte	0x33e
+ 1320 057e 18       		.uleb128 0x18
+ 1321 057f B1000000 		.4byte	.LASF41
+ 1322 0583 B1000000 		.4byte	.LASF41
+ 1323 0587 04       		.byte	0x4
+ 1324 0588 3F03     		.2byte	0x33f
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 36
+
+
+ 1325 058a 18       		.uleb128 0x18
+ 1326 058b A9020000 		.4byte	.LASF42
+ 1327 058f A9020000 		.4byte	.LASF42
+ 1328 0593 04       		.byte	0x4
+ 1329 0594 4703     		.2byte	0x347
+ 1330 0596 18       		.uleb128 0x18
+ 1331 0597 EF000000 		.4byte	.LASF43
+ 1332 059b EF000000 		.4byte	.LASF43
+ 1333 059f 04       		.byte	0x4
+ 1334 05a0 3D03     		.2byte	0x33d
+ 1335 05a2 18       		.uleb128 0x18
+ 1336 05a3 38020000 		.4byte	.LASF44
+ 1337 05a7 38020000 		.4byte	.LASF44
+ 1338 05ab 04       		.byte	0x4
+ 1339 05ac F602     		.2byte	0x2f6
+ 1340 05ae 19       		.uleb128 0x19
+ 1341 05af 65010000 		.4byte	.LASF45
+ 1342 05b3 65010000 		.4byte	.LASF45
+ 1343 05b7 05       		.byte	0x5
+ 1344 05b8 ED       		.byte	0xed
+ 1345 05b9 1A       		.uleb128 0x1a
+ 1346 05ba 35010000 		.4byte	.LASF50
+ 1347 05be 35010000 		.4byte	.LASF50
+ 1348 05c2 00       		.byte	0
+ 1349              		.section	.debug_abbrev,"",%progbits
+ 1350              	.Ldebug_abbrev0:
+ 1351 0000 01       		.uleb128 0x1
+ 1352 0001 11       		.uleb128 0x11
+ 1353 0002 01       		.byte	0x1
+ 1354 0003 25       		.uleb128 0x25
+ 1355 0004 0E       		.uleb128 0xe
+ 1356 0005 13       		.uleb128 0x13
+ 1357 0006 0B       		.uleb128 0xb
+ 1358 0007 03       		.uleb128 0x3
+ 1359 0008 0E       		.uleb128 0xe
+ 1360 0009 1B       		.uleb128 0x1b
+ 1361 000a 0E       		.uleb128 0xe
+ 1362 000b 55       		.uleb128 0x55
+ 1363 000c 17       		.uleb128 0x17
+ 1364 000d 11       		.uleb128 0x11
+ 1365 000e 01       		.uleb128 0x1
+ 1366 000f 10       		.uleb128 0x10
+ 1367 0010 17       		.uleb128 0x17
+ 1368 0011 00       		.byte	0
+ 1369 0012 00       		.byte	0
+ 1370 0013 02       		.uleb128 0x2
+ 1371 0014 24       		.uleb128 0x24
+ 1372 0015 00       		.byte	0
+ 1373 0016 0B       		.uleb128 0xb
+ 1374 0017 0B       		.uleb128 0xb
+ 1375 0018 3E       		.uleb128 0x3e
+ 1376 0019 0B       		.uleb128 0xb
+ 1377 001a 03       		.uleb128 0x3
+ 1378 001b 0E       		.uleb128 0xe
+ 1379 001c 00       		.byte	0
+ 1380 001d 00       		.byte	0
+ 1381 001e 03       		.uleb128 0x3
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 37
+
+
+ 1382 001f 24       		.uleb128 0x24
+ 1383 0020 00       		.byte	0
+ 1384 0021 0B       		.uleb128 0xb
+ 1385 0022 0B       		.uleb128 0xb
+ 1386 0023 3E       		.uleb128 0x3e
+ 1387 0024 0B       		.uleb128 0xb
+ 1388 0025 03       		.uleb128 0x3
+ 1389 0026 08       		.uleb128 0x8
+ 1390 0027 00       		.byte	0
+ 1391 0028 00       		.byte	0
+ 1392 0029 04       		.uleb128 0x4
+ 1393 002a 16       		.uleb128 0x16
+ 1394 002b 00       		.byte	0
+ 1395 002c 03       		.uleb128 0x3
+ 1396 002d 0E       		.uleb128 0xe
+ 1397 002e 3A       		.uleb128 0x3a
+ 1398 002f 0B       		.uleb128 0xb
+ 1399 0030 3B       		.uleb128 0x3b
+ 1400 0031 05       		.uleb128 0x5
+ 1401 0032 49       		.uleb128 0x49
+ 1402 0033 13       		.uleb128 0x13
+ 1403 0034 00       		.byte	0
+ 1404 0035 00       		.byte	0
+ 1405 0036 05       		.uleb128 0x5
+ 1406 0037 0F       		.uleb128 0xf
+ 1407 0038 00       		.byte	0
+ 1408 0039 0B       		.uleb128 0xb
+ 1409 003a 0B       		.uleb128 0xb
+ 1410 003b 49       		.uleb128 0x49
+ 1411 003c 13       		.uleb128 0x13
+ 1412 003d 00       		.byte	0
+ 1413 003e 00       		.byte	0
+ 1414 003f 06       		.uleb128 0x6
+ 1415 0040 2E       		.uleb128 0x2e
+ 1416 0041 01       		.byte	0x1
+ 1417 0042 3F       		.uleb128 0x3f
+ 1418 0043 19       		.uleb128 0x19
+ 1419 0044 03       		.uleb128 0x3
+ 1420 0045 0E       		.uleb128 0xe
+ 1421 0046 3A       		.uleb128 0x3a
+ 1422 0047 0B       		.uleb128 0xb
+ 1423 0048 3B       		.uleb128 0x3b
+ 1424 0049 0B       		.uleb128 0xb
+ 1425 004a 27       		.uleb128 0x27
+ 1426 004b 19       		.uleb128 0x19
+ 1427 004c 11       		.uleb128 0x11
+ 1428 004d 01       		.uleb128 0x1
+ 1429 004e 12       		.uleb128 0x12
+ 1430 004f 06       		.uleb128 0x6
+ 1431 0050 40       		.uleb128 0x40
+ 1432 0051 18       		.uleb128 0x18
+ 1433 0052 9742     		.uleb128 0x2117
+ 1434 0054 19       		.uleb128 0x19
+ 1435 0055 01       		.uleb128 0x1
+ 1436 0056 13       		.uleb128 0x13
+ 1437 0057 00       		.byte	0
+ 1438 0058 00       		.byte	0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 38
+
+
+ 1439 0059 07       		.uleb128 0x7
+ 1440 005a 05       		.uleb128 0x5
+ 1441 005b 00       		.byte	0
+ 1442 005c 03       		.uleb128 0x3
+ 1443 005d 0E       		.uleb128 0xe
+ 1444 005e 3A       		.uleb128 0x3a
+ 1445 005f 0B       		.uleb128 0xb
+ 1446 0060 3B       		.uleb128 0x3b
+ 1447 0061 0B       		.uleb128 0xb
+ 1448 0062 49       		.uleb128 0x49
+ 1449 0063 13       		.uleb128 0x13
+ 1450 0064 02       		.uleb128 0x2
+ 1451 0065 17       		.uleb128 0x17
+ 1452 0066 00       		.byte	0
+ 1453 0067 00       		.byte	0
+ 1454 0068 08       		.uleb128 0x8
+ 1455 0069 34       		.uleb128 0x34
+ 1456 006a 00       		.byte	0
+ 1457 006b 03       		.uleb128 0x3
+ 1458 006c 0E       		.uleb128 0xe
+ 1459 006d 3A       		.uleb128 0x3a
+ 1460 006e 0B       		.uleb128 0xb
+ 1461 006f 3B       		.uleb128 0x3b
+ 1462 0070 0B       		.uleb128 0xb
+ 1463 0071 49       		.uleb128 0x49
+ 1464 0072 13       		.uleb128 0x13
+ 1465 0073 02       		.uleb128 0x2
+ 1466 0074 18       		.uleb128 0x18
+ 1467 0075 00       		.byte	0
+ 1468 0076 00       		.byte	0
+ 1469 0077 09       		.uleb128 0x9
+ 1470 0078 34       		.uleb128 0x34
+ 1471 0079 00       		.byte	0
+ 1472 007a 03       		.uleb128 0x3
+ 1473 007b 08       		.uleb128 0x8
+ 1474 007c 3A       		.uleb128 0x3a
+ 1475 007d 0B       		.uleb128 0xb
+ 1476 007e 3B       		.uleb128 0x3b
+ 1477 007f 0B       		.uleb128 0xb
+ 1478 0080 49       		.uleb128 0x49
+ 1479 0081 13       		.uleb128 0x13
+ 1480 0082 02       		.uleb128 0x2
+ 1481 0083 17       		.uleb128 0x17
+ 1482 0084 00       		.byte	0
+ 1483 0085 00       		.byte	0
+ 1484 0086 0A       		.uleb128 0xa
+ 1485 0087 898201   		.uleb128 0x4109
+ 1486 008a 01       		.byte	0x1
+ 1487 008b 11       		.uleb128 0x11
+ 1488 008c 01       		.uleb128 0x1
+ 1489 008d 31       		.uleb128 0x31
+ 1490 008e 13       		.uleb128 0x13
+ 1491 008f 01       		.uleb128 0x1
+ 1492 0090 13       		.uleb128 0x13
+ 1493 0091 00       		.byte	0
+ 1494 0092 00       		.byte	0
+ 1495 0093 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 39
+
+
+ 1496 0094 8A8201   		.uleb128 0x410a
+ 1497 0097 00       		.byte	0
+ 1498 0098 02       		.uleb128 0x2
+ 1499 0099 18       		.uleb128 0x18
+ 1500 009a 9142     		.uleb128 0x2111
+ 1501 009c 18       		.uleb128 0x18
+ 1502 009d 00       		.byte	0
+ 1503 009e 00       		.byte	0
+ 1504 009f 0C       		.uleb128 0xc
+ 1505 00a0 898201   		.uleb128 0x4109
+ 1506 00a3 00       		.byte	0
+ 1507 00a4 11       		.uleb128 0x11
+ 1508 00a5 01       		.uleb128 0x1
+ 1509 00a6 31       		.uleb128 0x31
+ 1510 00a7 13       		.uleb128 0x13
+ 1511 00a8 00       		.byte	0
+ 1512 00a9 00       		.byte	0
+ 1513 00aa 0D       		.uleb128 0xd
+ 1514 00ab 01       		.uleb128 0x1
+ 1515 00ac 01       		.byte	0x1
+ 1516 00ad 49       		.uleb128 0x49
+ 1517 00ae 13       		.uleb128 0x13
+ 1518 00af 01       		.uleb128 0x1
+ 1519 00b0 13       		.uleb128 0x13
+ 1520 00b1 00       		.byte	0
+ 1521 00b2 00       		.byte	0
+ 1522 00b3 0E       		.uleb128 0xe
+ 1523 00b4 21       		.uleb128 0x21
+ 1524 00b5 00       		.byte	0
+ 1525 00b6 49       		.uleb128 0x49
+ 1526 00b7 13       		.uleb128 0x13
+ 1527 00b8 2F       		.uleb128 0x2f
+ 1528 00b9 0B       		.uleb128 0xb
+ 1529 00ba 00       		.byte	0
+ 1530 00bb 00       		.byte	0
+ 1531 00bc 0F       		.uleb128 0xf
+ 1532 00bd 2E       		.uleb128 0x2e
+ 1533 00be 01       		.byte	0x1
+ 1534 00bf 3F       		.uleb128 0x3f
+ 1535 00c0 19       		.uleb128 0x19
+ 1536 00c1 03       		.uleb128 0x3
+ 1537 00c2 0E       		.uleb128 0xe
+ 1538 00c3 3A       		.uleb128 0x3a
+ 1539 00c4 0B       		.uleb128 0xb
+ 1540 00c5 3B       		.uleb128 0x3b
+ 1541 00c6 0B       		.uleb128 0xb
+ 1542 00c7 27       		.uleb128 0x27
+ 1543 00c8 19       		.uleb128 0x19
+ 1544 00c9 49       		.uleb128 0x49
+ 1545 00ca 13       		.uleb128 0x13
+ 1546 00cb 11       		.uleb128 0x11
+ 1547 00cc 01       		.uleb128 0x1
+ 1548 00cd 12       		.uleb128 0x12
+ 1549 00ce 06       		.uleb128 0x6
+ 1550 00cf 40       		.uleb128 0x40
+ 1551 00d0 18       		.uleb128 0x18
+ 1552 00d1 9742     		.uleb128 0x2117
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 40
+
+
+ 1553 00d3 19       		.uleb128 0x19
+ 1554 00d4 01       		.uleb128 0x1
+ 1555 00d5 13       		.uleb128 0x13
+ 1556 00d6 00       		.byte	0
+ 1557 00d7 00       		.byte	0
+ 1558 00d8 10       		.uleb128 0x10
+ 1559 00d9 898201   		.uleb128 0x4109
+ 1560 00dc 01       		.byte	0x1
+ 1561 00dd 11       		.uleb128 0x11
+ 1562 00de 01       		.uleb128 0x1
+ 1563 00df 31       		.uleb128 0x31
+ 1564 00e0 13       		.uleb128 0x13
+ 1565 00e1 00       		.byte	0
+ 1566 00e2 00       		.byte	0
+ 1567 00e3 11       		.uleb128 0x11
+ 1568 00e4 2E       		.uleb128 0x2e
+ 1569 00e5 01       		.byte	0x1
+ 1570 00e6 3F       		.uleb128 0x3f
+ 1571 00e7 19       		.uleb128 0x19
+ 1572 00e8 03       		.uleb128 0x3
+ 1573 00e9 0E       		.uleb128 0xe
+ 1574 00ea 3A       		.uleb128 0x3a
+ 1575 00eb 0B       		.uleb128 0xb
+ 1576 00ec 3B       		.uleb128 0x3b
+ 1577 00ed 05       		.uleb128 0x5
+ 1578 00ee 27       		.uleb128 0x27
+ 1579 00ef 19       		.uleb128 0x19
+ 1580 00f0 49       		.uleb128 0x49
+ 1581 00f1 13       		.uleb128 0x13
+ 1582 00f2 11       		.uleb128 0x11
+ 1583 00f3 01       		.uleb128 0x1
+ 1584 00f4 12       		.uleb128 0x12
+ 1585 00f5 06       		.uleb128 0x6
+ 1586 00f6 40       		.uleb128 0x40
+ 1587 00f7 18       		.uleb128 0x18
+ 1588 00f8 9742     		.uleb128 0x2117
+ 1589 00fa 19       		.uleb128 0x19
+ 1590 00fb 01       		.uleb128 0x1
+ 1591 00fc 13       		.uleb128 0x13
+ 1592 00fd 00       		.byte	0
+ 1593 00fe 00       		.byte	0
+ 1594 00ff 12       		.uleb128 0x12
+ 1595 0100 05       		.uleb128 0x5
+ 1596 0101 00       		.byte	0
+ 1597 0102 03       		.uleb128 0x3
+ 1598 0103 0E       		.uleb128 0xe
+ 1599 0104 3A       		.uleb128 0x3a
+ 1600 0105 0B       		.uleb128 0xb
+ 1601 0106 3B       		.uleb128 0x3b
+ 1602 0107 05       		.uleb128 0x5
+ 1603 0108 49       		.uleb128 0x49
+ 1604 0109 13       		.uleb128 0x13
+ 1605 010a 02       		.uleb128 0x2
+ 1606 010b 17       		.uleb128 0x17
+ 1607 010c 00       		.byte	0
+ 1608 010d 00       		.byte	0
+ 1609 010e 13       		.uleb128 0x13
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 41
+
+
+ 1610 010f 34       		.uleb128 0x34
+ 1611 0110 00       		.byte	0
+ 1612 0111 03       		.uleb128 0x3
+ 1613 0112 0E       		.uleb128 0xe
+ 1614 0113 3A       		.uleb128 0x3a
+ 1615 0114 0B       		.uleb128 0xb
+ 1616 0115 3B       		.uleb128 0x3b
+ 1617 0116 05       		.uleb128 0x5
+ 1618 0117 49       		.uleb128 0x49
+ 1619 0118 13       		.uleb128 0x13
+ 1620 0119 02       		.uleb128 0x2
+ 1621 011a 18       		.uleb128 0x18
+ 1622 011b 00       		.byte	0
+ 1623 011c 00       		.byte	0
+ 1624 011d 14       		.uleb128 0x14
+ 1625 011e 34       		.uleb128 0x34
+ 1626 011f 00       		.byte	0
+ 1627 0120 03       		.uleb128 0x3
+ 1628 0121 0E       		.uleb128 0xe
+ 1629 0122 3A       		.uleb128 0x3a
+ 1630 0123 0B       		.uleb128 0xb
+ 1631 0124 3B       		.uleb128 0x3b
+ 1632 0125 05       		.uleb128 0x5
+ 1633 0126 49       		.uleb128 0x49
+ 1634 0127 13       		.uleb128 0x13
+ 1635 0128 02       		.uleb128 0x2
+ 1636 0129 17       		.uleb128 0x17
+ 1637 012a 00       		.byte	0
+ 1638 012b 00       		.byte	0
+ 1639 012c 15       		.uleb128 0x15
+ 1640 012d 34       		.uleb128 0x34
+ 1641 012e 00       		.byte	0
+ 1642 012f 03       		.uleb128 0x3
+ 1643 0130 08       		.uleb128 0x8
+ 1644 0131 3A       		.uleb128 0x3a
+ 1645 0132 0B       		.uleb128 0xb
+ 1646 0133 3B       		.uleb128 0x3b
+ 1647 0134 05       		.uleb128 0x5
+ 1648 0135 49       		.uleb128 0x49
+ 1649 0136 13       		.uleb128 0x13
+ 1650 0137 02       		.uleb128 0x2
+ 1651 0138 17       		.uleb128 0x17
+ 1652 0139 00       		.byte	0
+ 1653 013a 00       		.byte	0
+ 1654 013b 16       		.uleb128 0x16
+ 1655 013c 34       		.uleb128 0x34
+ 1656 013d 00       		.byte	0
+ 1657 013e 03       		.uleb128 0x3
+ 1658 013f 0E       		.uleb128 0xe
+ 1659 0140 3A       		.uleb128 0x3a
+ 1660 0141 0B       		.uleb128 0xb
+ 1661 0142 3B       		.uleb128 0x3b
+ 1662 0143 0B       		.uleb128 0xb
+ 1663 0144 49       		.uleb128 0x49
+ 1664 0145 13       		.uleb128 0x13
+ 1665 0146 3F       		.uleb128 0x3f
+ 1666 0147 19       		.uleb128 0x19
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 42
+
+
+ 1667 0148 02       		.uleb128 0x2
+ 1668 0149 18       		.uleb128 0x18
+ 1669 014a 00       		.byte	0
+ 1670 014b 00       		.byte	0
+ 1671 014c 17       		.uleb128 0x17
+ 1672 014d 26       		.uleb128 0x26
+ 1673 014e 00       		.byte	0
+ 1674 014f 49       		.uleb128 0x49
+ 1675 0150 13       		.uleb128 0x13
+ 1676 0151 00       		.byte	0
+ 1677 0152 00       		.byte	0
+ 1678 0153 18       		.uleb128 0x18
+ 1679 0154 2E       		.uleb128 0x2e
+ 1680 0155 00       		.byte	0
+ 1681 0156 3F       		.uleb128 0x3f
+ 1682 0157 19       		.uleb128 0x19
+ 1683 0158 3C       		.uleb128 0x3c
+ 1684 0159 19       		.uleb128 0x19
+ 1685 015a 6E       		.uleb128 0x6e
+ 1686 015b 0E       		.uleb128 0xe
+ 1687 015c 03       		.uleb128 0x3
+ 1688 015d 0E       		.uleb128 0xe
+ 1689 015e 3A       		.uleb128 0x3a
+ 1690 015f 0B       		.uleb128 0xb
+ 1691 0160 3B       		.uleb128 0x3b
+ 1692 0161 05       		.uleb128 0x5
+ 1693 0162 00       		.byte	0
+ 1694 0163 00       		.byte	0
+ 1695 0164 19       		.uleb128 0x19
+ 1696 0165 2E       		.uleb128 0x2e
+ 1697 0166 00       		.byte	0
+ 1698 0167 3F       		.uleb128 0x3f
+ 1699 0168 19       		.uleb128 0x19
+ 1700 0169 3C       		.uleb128 0x3c
+ 1701 016a 19       		.uleb128 0x19
+ 1702 016b 6E       		.uleb128 0x6e
+ 1703 016c 0E       		.uleb128 0xe
+ 1704 016d 03       		.uleb128 0x3
+ 1705 016e 0E       		.uleb128 0xe
+ 1706 016f 3A       		.uleb128 0x3a
+ 1707 0170 0B       		.uleb128 0xb
+ 1708 0171 3B       		.uleb128 0x3b
+ 1709 0172 0B       		.uleb128 0xb
+ 1710 0173 00       		.byte	0
+ 1711 0174 00       		.byte	0
+ 1712 0175 1A       		.uleb128 0x1a
+ 1713 0176 2E       		.uleb128 0x2e
+ 1714 0177 00       		.byte	0
+ 1715 0178 3F       		.uleb128 0x3f
+ 1716 0179 19       		.uleb128 0x19
+ 1717 017a 3C       		.uleb128 0x3c
+ 1718 017b 19       		.uleb128 0x19
+ 1719 017c 6E       		.uleb128 0x6e
+ 1720 017d 0E       		.uleb128 0xe
+ 1721 017e 03       		.uleb128 0x3
+ 1722 017f 0E       		.uleb128 0xe
+ 1723 0180 00       		.byte	0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 43
+
+
+ 1724 0181 00       		.byte	0
+ 1725 0182 00       		.byte	0
+ 1726              		.section	.debug_loc,"",%progbits
+ 1727              	.Ldebug_loc0:
+ 1728              	.LLST0:
+ 1729 0000 00000000 		.4byte	.LVL0
+ 1730 0004 06000000 		.4byte	.LVL1
+ 1731 0008 0100     		.2byte	0x1
+ 1732 000a 50       		.byte	0x50
+ 1733 000b 06000000 		.4byte	.LVL1
+ 1734 000f 34000000 		.4byte	.LVL9
+ 1735 0013 0100     		.2byte	0x1
+ 1736 0015 55       		.byte	0x55
+ 1737 0016 34000000 		.4byte	.LVL9
+ 1738 001a 3C000000 		.4byte	.LFE32
+ 1739 001e 0400     		.2byte	0x4
+ 1740 0020 F3       		.byte	0xf3
+ 1741 0021 01       		.uleb128 0x1
+ 1742 0022 50       		.byte	0x50
+ 1743 0023 9F       		.byte	0x9f
+ 1744 0024 00000000 		.4byte	0
+ 1745 0028 00000000 		.4byte	0
+ 1746              	.LLST1:
+ 1747 002c 00000000 		.4byte	.LVL0
+ 1748 0030 20000000 		.4byte	.LVL5
+ 1749 0034 0100     		.2byte	0x1
+ 1750 0036 51       		.byte	0x51
+ 1751 0037 20000000 		.4byte	.LVL5
+ 1752 003b 27000000 		.4byte	.LVL6-1
+ 1753 003f 0500     		.2byte	0x5
+ 1754 0041 03       		.byte	0x3
+ 1755 0042 19000000 		.4byte	mTxBuffer.6410+25
+ 1756 0046 27000000 		.4byte	.LVL6-1
+ 1757 004a 3C000000 		.4byte	.LFE32
+ 1758 004e 0400     		.2byte	0x4
+ 1759 0050 F3       		.byte	0xf3
+ 1760 0051 01       		.uleb128 0x1
+ 1761 0052 51       		.byte	0x51
+ 1762 0053 9F       		.byte	0x9f
+ 1763 0054 00000000 		.4byte	0
+ 1764 0058 00000000 		.4byte	0
+ 1765              	.LLST2:
+ 1766 005c 00000000 		.4byte	.LVL0
+ 1767 0060 27000000 		.4byte	.LVL6-1
+ 1768 0064 0100     		.2byte	0x1
+ 1769 0066 52       		.byte	0x52
+ 1770 0067 27000000 		.4byte	.LVL6-1
+ 1771 006b 3C000000 		.4byte	.LFE32
+ 1772 006f 0400     		.2byte	0x4
+ 1773 0071 F3       		.byte	0xf3
+ 1774 0072 01       		.uleb128 0x1
+ 1775 0073 52       		.byte	0x52
+ 1776 0074 9F       		.byte	0x9f
+ 1777 0075 00000000 		.4byte	0
+ 1778 0079 00000000 		.4byte	0
+ 1779              	.LLST3:
+ 1780 007d 00000000 		.4byte	.LVL0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 44
+
+
+ 1781 0081 0C000000 		.4byte	.LVL2
+ 1782 0085 0200     		.2byte	0x2
+ 1783 0087 30       		.byte	0x30
+ 1784 0088 9F       		.byte	0x9f
+ 1785 0089 0C000000 		.4byte	.LVL2
+ 1786 008d 0E000000 		.4byte	.LVL3
+ 1787 0091 0200     		.2byte	0x2
+ 1788 0093 31       		.byte	0x31
+ 1789 0094 9F       		.byte	0x9f
+ 1790 0095 0E000000 		.4byte	.LVL3
+ 1791 0099 14000000 		.4byte	.LVL4
+ 1792 009d 0300     		.2byte	0x3
+ 1793 009f 74       		.byte	0x74
+ 1794 00a0 01       		.sleb128 1
+ 1795 00a1 9F       		.byte	0x9f
+ 1796 00a2 00000000 		.4byte	0
+ 1797 00a6 00000000 		.4byte	0
+ 1798              	.LLST4:
+ 1799 00aa 16000000 		.4byte	.LVL12
+ 1800 00ae 18000000 		.4byte	.LVL13
+ 1801 00b2 0200     		.2byte	0x2
+ 1802 00b4 30       		.byte	0x30
+ 1803 00b5 9F       		.byte	0x9f
+ 1804 00b6 18000000 		.4byte	.LVL13
+ 1805 00ba 3C000000 		.4byte	.LVL18
+ 1806 00be 0100     		.2byte	0x1
+ 1807 00c0 55       		.byte	0x55
+ 1808 00c1 00000000 		.4byte	0
+ 1809 00c5 00000000 		.4byte	0
+ 1810              	.LLST5:
+ 1811 00c9 00000000 		.4byte	.LVL32
+ 1812 00cd 0A000000 		.4byte	.LVL33
+ 1813 00d1 0100     		.2byte	0x1
+ 1814 00d3 50       		.byte	0x50
+ 1815 00d4 0A000000 		.4byte	.LVL33
+ 1816 00d8 7E000000 		.4byte	.LFE35
+ 1817 00dc 0400     		.2byte	0x4
+ 1818 00de F3       		.byte	0xf3
+ 1819 00df 01       		.uleb128 0x1
+ 1820 00e0 50       		.byte	0x50
+ 1821 00e1 9F       		.byte	0x9f
+ 1822 00e2 00000000 		.4byte	0
+ 1823 00e6 00000000 		.4byte	0
+ 1824              	.LLST6:
+ 1825 00ea 00000000 		.4byte	.LVL40
+ 1826 00ee 0E000000 		.4byte	.LVL41
+ 1827 00f2 0100     		.2byte	0x1
+ 1828 00f4 50       		.byte	0x50
+ 1829 00f5 0E000000 		.4byte	.LVL41
+ 1830 00f9 C6000000 		.4byte	.LFE36
+ 1831 00fd 0400     		.2byte	0x4
+ 1832 00ff F3       		.byte	0xf3
+ 1833 0100 01       		.uleb128 0x1
+ 1834 0101 50       		.byte	0x50
+ 1835 0102 9F       		.byte	0x9f
+ 1836 0103 00000000 		.4byte	0
+ 1837 0107 00000000 		.4byte	0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 45
+
+
+ 1838              	.LLST7:
+ 1839 010b 00000000 		.4byte	.LVL40
+ 1840 010f 9E000000 		.4byte	.LVL54
+ 1841 0113 0200     		.2byte	0x2
+ 1842 0115 30       		.byte	0x30
+ 1843 0116 9F       		.byte	0x9f
+ 1844 0117 9E000000 		.4byte	.LVL54
+ 1845 011b A2000000 		.4byte	.LVL56
+ 1846 011f 0100     		.2byte	0x1
+ 1847 0121 54       		.byte	0x54
+ 1848 0122 A2000000 		.4byte	.LVL56
+ 1849 0126 A4000000 		.4byte	.LVL57
+ 1850 012a 0200     		.2byte	0x2
+ 1851 012c 30       		.byte	0x30
+ 1852 012d 9F       		.byte	0x9f
+ 1853 012e A4000000 		.4byte	.LVL57
+ 1854 0132 C4000000 		.4byte	.LVL65
+ 1855 0136 0100     		.2byte	0x1
+ 1856 0138 54       		.byte	0x54
+ 1857 0139 C4000000 		.4byte	.LVL65
+ 1858 013d C6000000 		.4byte	.LFE36
+ 1859 0141 0100     		.2byte	0x1
+ 1860 0143 50       		.byte	0x50
+ 1861 0144 00000000 		.4byte	0
+ 1862 0148 00000000 		.4byte	0
+ 1863              	.LLST8:
+ 1864 014c 6E000000 		.4byte	.LVL47
+ 1865 0150 70000000 		.4byte	.LVL48
+ 1866 0154 0200     		.2byte	0x2
+ 1867 0156 30       		.byte	0x30
+ 1868 0157 9F       		.byte	0x9f
+ 1869 0158 70000000 		.4byte	.LVL48
+ 1870 015c 82000000 		.4byte	.LVL51
+ 1871 0160 0100     		.2byte	0x1
+ 1872 0162 56       		.byte	0x56
+ 1873 0163 84000000 		.4byte	.LVL52
+ 1874 0167 C4000000 		.4byte	.LVL66
+ 1875 016b 0100     		.2byte	0x1
+ 1876 016d 56       		.byte	0x56
+ 1877 016e 00000000 		.4byte	0
+ 1878 0172 00000000 		.4byte	0
+ 1879              		.section	.debug_aranges,"",%progbits
+ 1880 0000 3C000000 		.4byte	0x3c
+ 1881 0004 0200     		.2byte	0x2
+ 1882 0006 00000000 		.4byte	.Ldebug_info0
+ 1883 000a 04       		.byte	0x4
+ 1884 000b 00       		.byte	0
+ 1885 000c 0000     		.2byte	0
+ 1886 000e 0000     		.2byte	0
+ 1887 0010 00000000 		.4byte	.LFB32
+ 1888 0014 3C000000 		.4byte	.LFE32-.LFB32
+ 1889 0018 00000000 		.4byte	.LFB33
+ 1890 001c 44000000 		.4byte	.LFE33-.LFB33
+ 1891 0020 00000000 		.4byte	.LFB34
+ 1892 0024 64000000 		.4byte	.LFE34-.LFB34
+ 1893 0028 00000000 		.4byte	.LFB35
+ 1894 002c 7E000000 		.4byte	.LFE35-.LFB35
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 46
+
+
+ 1895 0030 00000000 		.4byte	.LFB36
+ 1896 0034 C6000000 		.4byte	.LFE36-.LFB36
+ 1897 0038 00000000 		.4byte	0
+ 1898 003c 00000000 		.4byte	0
+ 1899              		.section	.debug_ranges,"",%progbits
+ 1900              	.Ldebug_ranges0:
+ 1901 0000 00000000 		.4byte	.LFB32
+ 1902 0004 3C000000 		.4byte	.LFE32
+ 1903 0008 00000000 		.4byte	.LFB33
+ 1904 000c 44000000 		.4byte	.LFE33
+ 1905 0010 00000000 		.4byte	.LFB34
+ 1906 0014 64000000 		.4byte	.LFE34
+ 1907 0018 00000000 		.4byte	.LFB35
+ 1908 001c 7E000000 		.4byte	.LFE35
+ 1909 0020 00000000 		.4byte	.LFB36
+ 1910 0024 C6000000 		.4byte	.LFE36
+ 1911 0028 00000000 		.4byte	0
+ 1912 002c 00000000 		.4byte	0
+ 1913              		.section	.debug_line,"",%progbits
+ 1914              	.Ldebug_line0:
+ 1915 0000 88010000 		.section	.debug_str,"MS",%progbits,1
+ 1915      02007000 
+ 1915      00000201 
+ 1915      FB0E0D00 
+ 1915      01010101 
+ 1916              	.LASF22:
+ 1917 0000 5350494D 		.ascii	"SPIM_display_read\000"
+ 1917      5F646973 
+ 1917      706C6179 
+ 1917      5F726561 
+ 1917      6400
+ 1918              	.LASF32:
+ 1919 0012 4D4F4445 		.ascii	"MODE_LONG_V\000"
+ 1919      5F4C4F4E 
+ 1919      475F5600 
+ 1920              	.LASF30:
+ 1921 001e 4D4F4445 		.ascii	"MODE_SHORT_V\000"
+ 1921      5F53484F 
+ 1921      52545F56 
+ 1921      00
+ 1922              	.LASF17:
+ 1923 002b 64697370 		.ascii	"disp_ctrl1\000"
+ 1923      5F637472 
+ 1923      6C3100
+ 1924              	.LASF18:
+ 1925 0036 64697370 		.ascii	"disp_ctrl2\000"
+ 1925      5F637472 
+ 1925      6C3200
+ 1926              	.LASF34:
+ 1927 0041 44415441 		.ascii	"DATALINK_TABLE\000"
+ 1927      4C494E4B 
+ 1927      5F544142 
+ 1927      4C4500
+ 1928              	.LASF27:
+ 1929 0050 77726974 		.ascii	"writeBuffer\000"
+ 1929      65427566 
+ 1929      66657200 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 47
+
+
+ 1930              	.LASF47:
+ 1931 005c 64697370 		.ascii	"display.c\000"
+ 1931      6C61792E 
+ 1931      6300
+ 1932              	.LASF38:
+ 1933 0066 64756D6D 		.ascii	"dummyBuffer\000"
+ 1933      79427566 
+ 1933      66657200 
+ 1934              	.LASF26:
+ 1935 0072 636F6D6D 		.ascii	"command\000"
+ 1935      616E6400 
+ 1936              	.LASF39:
+ 1937 007a 5350494D 		.ascii	"SPIM_SpiUartPutArray\000"
+ 1937      5F537069 
+ 1937      55617274 
+ 1937      50757441 
+ 1937      72726179 
+ 1938              	.LASF12:
+ 1939 008f 646F7562 		.ascii	"double\000"
+ 1939      6C6500
+ 1940              	.LASF21:
+ 1941 0096 73746174 		.ascii	"status\000"
+ 1941      757300
+ 1942              	.LASF25:
+ 1943 009d 5350494D 		.ascii	"SPIM_SigmaDSP_write\000"
+ 1943      5F536967 
+ 1943      6D614453 
+ 1943      505F7772 
+ 1943      69746500 
+ 1944              	.LASF41:
+ 1945 00b1 5350494D 		.ascii	"SPIM_SpiUartClearRxBuffer\000"
+ 1945      5F537069 
+ 1945      55617274 
+ 1945      436C6561 
+ 1945      72527842 
+ 1946              	.LASF19:
+ 1947 00cb 6D547842 		.ascii	"mTxBuffer\000"
+ 1947      75666665 
+ 1947      7200
+ 1948              	.LASF11:
+ 1949 00d5 666C6F61 		.ascii	"float\000"
+ 1949      7400
+ 1950              	.LASF9:
+ 1951 00db 75696E74 		.ascii	"uint8\000"
+ 1951      3800
+ 1952              	.LASF1:
+ 1953 00e1 756E7369 		.ascii	"unsigned char\000"
+ 1953      676E6564 
+ 1953      20636861 
+ 1953      7200
+ 1954              	.LASF43:
+ 1955 00ef 5350494D 		.ascii	"SPIM_SpiUartReadRxData\000"
+ 1955      5F537069 
+ 1955      55617274 
+ 1955      52656164 
+ 1955      52784461 
+ 1956              	.LASF3:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 48
+
+
+ 1957 0106 73686F72 		.ascii	"short unsigned int\000"
+ 1957      7420756E 
+ 1957      7369676E 
+ 1957      65642069 
+ 1957      6E7400
+ 1958              	.LASF40:
+ 1959 0119 5350494D 		.ascii	"SPIM_SpiUartGetRxBufferSize\000"
+ 1959      5F537069 
+ 1959      55617274 
+ 1959      47657452 
+ 1959      78427566 
+ 1960              	.LASF50:
+ 1961 0135 6D656D73 		.ascii	"memset\000"
+ 1961      657400
+ 1962              	.LASF5:
+ 1963 013c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1963      20756E73 
+ 1963      69676E65 
+ 1963      6420696E 
+ 1963      7400
+ 1964              	.LASF35:
+ 1965 014e 44415441 		.ascii	"DATALINK_TABLE_COUNTER\000"
+ 1965      4C494E4B 
+ 1965      5F544142 
+ 1965      4C455F43 
+ 1965      4F554E54 
+ 1966              	.LASF45:
+ 1967 0165 43794465 		.ascii	"CyDelayUs\000"
+ 1967      6C617955 
+ 1967      7300
+ 1968              	.LASF10:
+ 1969 016f 75696E74 		.ascii	"uint32\000"
+ 1969      333200
+ 1970              	.LASF8:
+ 1971 0176 756E7369 		.ascii	"unsigned int\000"
+ 1971      676E6564 
+ 1971      20696E74 
+ 1971      00
+ 1972              	.LASF37:
+ 1973 0183 44495350 		.ascii	"DISPLAY_UPDATE\000"
+ 1973      4C41595F 
+ 1973      55504441 
+ 1973      544500
+ 1974              	.LASF16:
+ 1975 0192 6D657373 		.ascii	"message_table\000"
+ 1975      6167655F 
+ 1975      7461626C 
+ 1975      6500
+ 1976              	.LASF7:
+ 1977 01a0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1977      206C6F6E 
+ 1977      6720756E 
+ 1977      7369676E 
+ 1977      65642069 
+ 1978              	.LASF28:
+ 1979 01b7 5350494D 		.ascii	"SPIM_SigmaDSP_read\000"
+ 1979      5F536967 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 49
+
+
+ 1979      6D614453 
+ 1979      505F7265 
+ 1979      616400
+ 1980              	.LASF20:
+ 1981 01ca 746D7042 		.ascii	"tmpBuffer\000"
+ 1981      75666665 
+ 1981      7200
+ 1982              	.LASF23:
+ 1983 01d4 5350494D 		.ascii	"SPIM_SigmaDSP_init_SPI\000"
+ 1983      5F536967 
+ 1983      6D614453 
+ 1983      505F696E 
+ 1983      69745F53 
+ 1984              	.LASF14:
+ 1985 01eb 6C6F6E67 		.ascii	"long double\000"
+ 1985      20646F75 
+ 1985      626C6500 
+ 1986              	.LASF15:
+ 1987 01f7 73697A65 		.ascii	"sizetype\000"
+ 1987      74797065 
+ 1987      00
+ 1988              	.LASF31:
+ 1989 0200 5057525F 		.ascii	"PWR_OK_SHORT_V\000"
+ 1989      4F4B5F53 
+ 1989      484F5254 
+ 1989      5F5600
+ 1990              	.LASF6:
+ 1991 020f 6C6F6E67 		.ascii	"long long int\000"
+ 1991      206C6F6E 
+ 1991      6720696E 
+ 1991      7400
+ 1992              	.LASF13:
+ 1993 021d 63686172 		.ascii	"char\000"
+ 1993      00
+ 1994              	.LASF24:
+ 1995 0222 6C6F6361 		.ascii	"localBuffer\000"
+ 1995      6C427566 
+ 1995      66657200 
+ 1996              	.LASF2:
+ 1997 022e 73686F72 		.ascii	"short int\000"
+ 1997      7420696E 
+ 1997      7400
+ 1998              	.LASF44:
+ 1999 0238 5350494D 		.ascii	"SPIM_SpiSetActiveSlaveSelect\000"
+ 1999      5F537069 
+ 1999      53657441 
+ 1999      63746976 
+ 1999      65536C61 
+ 2000              	.LASF48:
+ 2001 0255 433A5C55 		.ascii	"C:\\Users\\Ala\\Desktop\\Cypress\\BeoM_main.cydsn\000"
+ 2001      73657273 
+ 2001      5C416C61 
+ 2001      5C446573 
+ 2001      6B746F70 
+ 2002              	.LASF4:
+ 2003 0282 6C6F6E67 		.ascii	"long int\000"
+ 2003      20696E74 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccIveMAV.s 			page 50
+
+
+ 2003      00
+ 2004              	.LASF29:
+ 2005 028b 72656164 		.ascii	"readBuffer\000"
+ 2005      42756666 
+ 2005      657200
+ 2006              	.LASF49:
+ 2007 0296 5350494D 		.ascii	"SPIM_display_write\000"
+ 2007      5F646973 
+ 2007      706C6179 
+ 2007      5F777269 
+ 2007      746500
+ 2008              	.LASF42:
+ 2009 02a9 5350494D 		.ascii	"SPIM_SpiUartClearTxBuffer\000"
+ 2009      5F537069 
+ 2009      55617274 
+ 2009      436C6561 
+ 2009      72547842 
+ 2010              	.LASF0:
+ 2011 02c3 7369676E 		.ascii	"signed char\000"
+ 2011      65642063 
+ 2011      68617200 
+ 2012              	.LASF33:
+ 2013 02cf 5057525F 		.ascii	"PWR_OK_LONG_V\000"
+ 2013      4F4B5F4C 
+ 2013      4F4E475F 
+ 2013      5600
+ 2014              	.LASF46:
+ 2015 02dd 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 2015      43313120 
+ 2015      352E342E 
+ 2015      31203230 
+ 2015      31363036 
+ 2016 0310 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 2016      20726576 
+ 2016      6973696F 
+ 2016      6E203233 
+ 2016      37373135 
+ 2017 0343 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 2017      66756E63 
+ 2017      74696F6E 
+ 2017      2D736563 
+ 2017      74696F6E 
+ 2018              	.LASF36:
+ 2019 036b 44415441 		.ascii	"DATALINK_TABLE_COUNTER_MAX\000"
+ 2019      4C494E4B 
+ 2019      5F544142 
+ 2019      4C455F43 
+ 2019      4F554E54 
+ 2020              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

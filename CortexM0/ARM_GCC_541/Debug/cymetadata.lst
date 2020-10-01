@@ -1,0 +1,402 @@
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccv1XIer.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"cymetadata.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	cy_meta_loadable
+  20              		.section	.cyloadablemeta,"a",%progbits
+  21              		.type	cy_meta_loadable, %object
+  22              		.size	cy_meta_loadable, 64
+  23              	cy_meta_loadable:
+  24 0000 00       		.byte	0
+  25 0001 00       		.byte	0
+  26 0002 00       		.byte	0
+  27 0003 00       		.byte	0
+  28 0004 00       		.byte	0
+  29 0005 00       		.byte	0
+  30 0006 00       		.byte	0
+  31 0007 00       		.byte	0
+  32 0008 00       		.byte	0
+  33 0009 00       		.byte	0
+  34 000a 00       		.byte	0
+  35 000b 00       		.byte	0
+  36 000c 00       		.byte	0
+  37 000d 00       		.byte	0
+  38 000e 00       		.byte	0
+  39 000f 00       		.byte	0
+  40 0010 00       		.byte	0
+  41 0011 00       		.byte	0
+  42 0012 00       		.byte	0
+  43 0013 00       		.byte	0
+  44 0014 00       		.byte	0
+  45 0015 00       		.byte	0
+  46 0016 00       		.byte	0
+  47 0017 00       		.byte	0
+  48 0018 00       		.byte	0
+  49 0019 00       		.byte	0
+  50 001a 00       		.byte	0
+  51 001b 00       		.byte	0
+  52 001c 00       		.byte	0
+  53 001d 00       		.byte	0
+  54 001e 00       		.byte	0
+  55 001f 00       		.byte	0
+  56 0020 80       		.byte	-128
+  57 0021 00       		.byte	0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccv1XIer.s 			page 2
+
+
+  58 0022 00       		.byte	0
+  59 0023 00       		.byte	0
+  60 0024 00       		.byte	0
+  61 0025 00       		.byte	0
+  62 0026 00       		.byte	0
+  63 0027 00       		.byte	0
+  64 0028 00       		.byte	0
+  65 0029 00       		.byte	0
+  66 002a 00       		.byte	0
+  67 002b 00       		.byte	0
+  68 002c 00       		.byte	0
+  69 002d 00       		.byte	0
+  70 002e 00       		.byte	0
+  71 002f 00       		.byte	0
+  72 0030 00       		.byte	0
+  73 0031 00       		.byte	0
+  74 0032 00       		.byte	0
+  75 0033 00       		.byte	0
+  76 0034 00       		.byte	0
+  77 0035 00       		.byte	0
+  78 0036 00       		.byte	0
+  79 0037 00       		.byte	0
+  80 0038 00       		.byte	0
+  81 0039 00       		.byte	0
+  82 003a 00       		.byte	0
+  83 003b 00       		.byte	0
+  84 003c 00       		.byte	0
+  85 003d 00       		.byte	0
+  86 003e 00       		.byte	0
+  87 003f 00       		.byte	0
+  88              		.text
+  89              	.Letext0:
+  90              		.file 1 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+  91              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+  92              		.file 3 "Generated_Source\\PSoC4\\cymetadata.c"
+  93              		.section	.debug_info,"",%progbits
+  94              	.Ldebug_info0:
+  95 0000 A8000000 		.4byte	0xa8
+  96 0004 0400     		.2byte	0x4
+  97 0006 00000000 		.4byte	.Ldebug_abbrev0
+  98 000a 04       		.byte	0x4
+  99 000b 01       		.uleb128 0x1
+ 100 000c 01010000 		.4byte	.LASF12
+ 101 0010 0C       		.byte	0xc
+ 102 0011 18000000 		.4byte	.LASF13
+ 103 0015 3C000000 		.4byte	.LASF14
+ 104 0019 00000000 		.4byte	.Ldebug_line0
+ 105 001d 02       		.uleb128 0x2
+ 106 001e 01       		.byte	0x1
+ 107 001f 06       		.byte	0x6
+ 108 0020 F5000000 		.4byte	.LASF0
+ 109 0024 03       		.uleb128 0x3
+ 110 0025 00000000 		.4byte	.LASF9
+ 111 0029 01       		.byte	0x1
+ 112 002a 1D       		.byte	0x1d
+ 113 002b 2F000000 		.4byte	0x2f
+ 114 002f 02       		.uleb128 0x2
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccv1XIer.s 			page 3
+
+
+ 115 0030 01       		.byte	0x1
+ 116 0031 08       		.byte	0x8
+ 117 0032 0A000000 		.4byte	.LASF1
+ 118 0036 02       		.uleb128 0x2
+ 119 0037 02       		.byte	0x2
+ 120 0038 05       		.byte	0x5
+ 121 0039 E2000000 		.4byte	.LASF2
+ 122 003d 02       		.uleb128 0x2
+ 123 003e 02       		.byte	0x2
+ 124 003f 07       		.byte	0x7
+ 125 0040 69000000 		.4byte	.LASF3
+ 126 0044 02       		.uleb128 0x2
+ 127 0045 04       		.byte	0x4
+ 128 0046 05       		.byte	0x5
+ 129 0047 EC000000 		.4byte	.LASF4
+ 130 004b 02       		.uleb128 0x2
+ 131 004c 04       		.byte	0x4
+ 132 004d 07       		.byte	0x7
+ 133 004e 7C000000 		.4byte	.LASF5
+ 134 0052 02       		.uleb128 0x2
+ 135 0053 08       		.byte	0x8
+ 136 0054 05       		.byte	0x5
+ 137 0055 D4000000 		.4byte	.LASF6
+ 138 0059 02       		.uleb128 0x2
+ 139 005a 08       		.byte	0x8
+ 140 005b 07       		.byte	0x7
+ 141 005c 9B000000 		.4byte	.LASF7
+ 142 0060 04       		.uleb128 0x4
+ 143 0061 04       		.byte	0x4
+ 144 0062 05       		.byte	0x5
+ 145 0063 696E7400 		.ascii	"int\000"
+ 146 0067 02       		.uleb128 0x2
+ 147 0068 04       		.byte	0x4
+ 148 0069 07       		.byte	0x7
+ 149 006a 8E000000 		.4byte	.LASF8
+ 150 006e 03       		.uleb128 0x3
+ 151 006f B2000000 		.4byte	.LASF10
+ 152 0073 02       		.byte	0x2
+ 153 0074 18       		.byte	0x18
+ 154 0075 24000000 		.4byte	0x24
+ 155 0079 05       		.uleb128 0x5
+ 156 007a 90000000 		.4byte	0x90
+ 157 007e 89000000 		.4byte	0x89
+ 158 0082 06       		.uleb128 0x6
+ 159 0083 89000000 		.4byte	0x89
+ 160 0087 3F       		.byte	0x3f
+ 161 0088 00       		.byte	0
+ 162 0089 02       		.uleb128 0x2
+ 163 008a 04       		.byte	0x4
+ 164 008b 07       		.byte	0x7
+ 165 008c CB000000 		.4byte	.LASF11
+ 166 0090 07       		.uleb128 0x7
+ 167 0091 6E000000 		.4byte	0x6e
+ 168 0095 08       		.uleb128 0x8
+ 169 0096 BA000000 		.4byte	.LASF15
+ 170 009a 03       		.byte	0x3
+ 171 009b 1F       		.byte	0x1f
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccv1XIer.s 			page 4
+
+
+ 172 009c A6000000 		.4byte	0xa6
+ 173 00a0 05       		.uleb128 0x5
+ 174 00a1 03       		.byte	0x3
+ 175 00a2 00000000 		.4byte	cy_meta_loadable
+ 176 00a6 07       		.uleb128 0x7
+ 177 00a7 79000000 		.4byte	0x79
+ 178 00ab 00       		.byte	0
+ 179              		.section	.debug_abbrev,"",%progbits
+ 180              	.Ldebug_abbrev0:
+ 181 0000 01       		.uleb128 0x1
+ 182 0001 11       		.uleb128 0x11
+ 183 0002 01       		.byte	0x1
+ 184 0003 25       		.uleb128 0x25
+ 185 0004 0E       		.uleb128 0xe
+ 186 0005 13       		.uleb128 0x13
+ 187 0006 0B       		.uleb128 0xb
+ 188 0007 03       		.uleb128 0x3
+ 189 0008 0E       		.uleb128 0xe
+ 190 0009 1B       		.uleb128 0x1b
+ 191 000a 0E       		.uleb128 0xe
+ 192 000b 10       		.uleb128 0x10
+ 193 000c 17       		.uleb128 0x17
+ 194 000d 00       		.byte	0
+ 195 000e 00       		.byte	0
+ 196 000f 02       		.uleb128 0x2
+ 197 0010 24       		.uleb128 0x24
+ 198 0011 00       		.byte	0
+ 199 0012 0B       		.uleb128 0xb
+ 200 0013 0B       		.uleb128 0xb
+ 201 0014 3E       		.uleb128 0x3e
+ 202 0015 0B       		.uleb128 0xb
+ 203 0016 03       		.uleb128 0x3
+ 204 0017 0E       		.uleb128 0xe
+ 205 0018 00       		.byte	0
+ 206 0019 00       		.byte	0
+ 207 001a 03       		.uleb128 0x3
+ 208 001b 16       		.uleb128 0x16
+ 209 001c 00       		.byte	0
+ 210 001d 03       		.uleb128 0x3
+ 211 001e 0E       		.uleb128 0xe
+ 212 001f 3A       		.uleb128 0x3a
+ 213 0020 0B       		.uleb128 0xb
+ 214 0021 3B       		.uleb128 0x3b
+ 215 0022 0B       		.uleb128 0xb
+ 216 0023 49       		.uleb128 0x49
+ 217 0024 13       		.uleb128 0x13
+ 218 0025 00       		.byte	0
+ 219 0026 00       		.byte	0
+ 220 0027 04       		.uleb128 0x4
+ 221 0028 24       		.uleb128 0x24
+ 222 0029 00       		.byte	0
+ 223 002a 0B       		.uleb128 0xb
+ 224 002b 0B       		.uleb128 0xb
+ 225 002c 3E       		.uleb128 0x3e
+ 226 002d 0B       		.uleb128 0xb
+ 227 002e 03       		.uleb128 0x3
+ 228 002f 08       		.uleb128 0x8
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccv1XIer.s 			page 5
+
+
+ 229 0030 00       		.byte	0
+ 230 0031 00       		.byte	0
+ 231 0032 05       		.uleb128 0x5
+ 232 0033 01       		.uleb128 0x1
+ 233 0034 01       		.byte	0x1
+ 234 0035 49       		.uleb128 0x49
+ 235 0036 13       		.uleb128 0x13
+ 236 0037 01       		.uleb128 0x1
+ 237 0038 13       		.uleb128 0x13
+ 238 0039 00       		.byte	0
+ 239 003a 00       		.byte	0
+ 240 003b 06       		.uleb128 0x6
+ 241 003c 21       		.uleb128 0x21
+ 242 003d 00       		.byte	0
+ 243 003e 49       		.uleb128 0x49
+ 244 003f 13       		.uleb128 0x13
+ 245 0040 2F       		.uleb128 0x2f
+ 246 0041 0B       		.uleb128 0xb
+ 247 0042 00       		.byte	0
+ 248 0043 00       		.byte	0
+ 249 0044 07       		.uleb128 0x7
+ 250 0045 26       		.uleb128 0x26
+ 251 0046 00       		.byte	0
+ 252 0047 49       		.uleb128 0x49
+ 253 0048 13       		.uleb128 0x13
+ 254 0049 00       		.byte	0
+ 255 004a 00       		.byte	0
+ 256 004b 08       		.uleb128 0x8
+ 257 004c 34       		.uleb128 0x34
+ 258 004d 00       		.byte	0
+ 259 004e 03       		.uleb128 0x3
+ 260 004f 0E       		.uleb128 0xe
+ 261 0050 3A       		.uleb128 0x3a
+ 262 0051 0B       		.uleb128 0xb
+ 263 0052 3B       		.uleb128 0x3b
+ 264 0053 0B       		.uleb128 0xb
+ 265 0054 49       		.uleb128 0x49
+ 266 0055 13       		.uleb128 0x13
+ 267 0056 3F       		.uleb128 0x3f
+ 268 0057 19       		.uleb128 0x19
+ 269 0058 02       		.uleb128 0x2
+ 270 0059 18       		.uleb128 0x18
+ 271 005a 00       		.byte	0
+ 272 005b 00       		.byte	0
+ 273 005c 00       		.byte	0
+ 274              		.section	.debug_aranges,"",%progbits
+ 275 0000 14000000 		.4byte	0x14
+ 276 0004 0200     		.2byte	0x2
+ 277 0006 00000000 		.4byte	.Ldebug_info0
+ 278 000a 04       		.byte	0x4
+ 279 000b 00       		.byte	0
+ 280 000c 0000     		.2byte	0
+ 281 000e 0000     		.2byte	0
+ 282 0010 00000000 		.4byte	0
+ 283 0014 00000000 		.4byte	0
+ 284              		.section	.debug_line,"",%progbits
+ 285              	.Ldebug_line0:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccv1XIer.s 			page 6
+
+
+ 286 0000 3D010000 		.section	.debug_str,"MS",%progbits,1
+ 286      02003701 
+ 286      00000201 
+ 286      FB0E0D00 
+ 286      01010101 
+ 287              	.LASF9:
+ 288 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 288      6E74385F 
+ 288      7400
+ 289              	.LASF1:
+ 290 000a 756E7369 		.ascii	"unsigned char\000"
+ 290      676E6564 
+ 290      20636861 
+ 290      7200
+ 291              	.LASF13:
+ 292 0018 47656E65 		.ascii	"Generated_Source\\PSoC4\\cymetadata.c\000"
+ 292      72617465 
+ 292      645F536F 
+ 292      75726365 
+ 292      5C50536F 
+ 293              	.LASF14:
+ 294 003c 433A5C55 		.ascii	"C:\\Users\\Ala\\Desktop\\Cypress\\BeoM_main.cydsn\000"
+ 294      73657273 
+ 294      5C416C61 
+ 294      5C446573 
+ 294      6B746F70 
+ 295              	.LASF3:
+ 296 0069 73686F72 		.ascii	"short unsigned int\000"
+ 296      7420756E 
+ 296      7369676E 
+ 296      65642069 
+ 296      6E7400
+ 297              	.LASF5:
+ 298 007c 6C6F6E67 		.ascii	"long unsigned int\000"
+ 298      20756E73 
+ 298      69676E65 
+ 298      6420696E 
+ 298      7400
+ 299              	.LASF8:
+ 300 008e 756E7369 		.ascii	"unsigned int\000"
+ 300      676E6564 
+ 300      20696E74 
+ 300      00
+ 301              	.LASF7:
+ 302 009b 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 302      206C6F6E 
+ 302      6720756E 
+ 302      7369676E 
+ 302      65642069 
+ 303              	.LASF10:
+ 304 00b2 75696E74 		.ascii	"uint8_t\000"
+ 304      385F7400 
+ 305              	.LASF15:
+ 306 00ba 63795F6D 		.ascii	"cy_meta_loadable\000"
+ 306      6574615F 
+ 306      6C6F6164 
+ 306      61626C65 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccv1XIer.s 			page 7
+
+
+ 306      00
+ 307              	.LASF11:
+ 308 00cb 73697A65 		.ascii	"sizetype\000"
+ 308      74797065 
+ 308      00
+ 309              	.LASF6:
+ 310 00d4 6C6F6E67 		.ascii	"long long int\000"
+ 310      206C6F6E 
+ 310      6720696E 
+ 310      7400
+ 311              	.LASF2:
+ 312 00e2 73686F72 		.ascii	"short int\000"
+ 312      7420696E 
+ 312      7400
+ 313              	.LASF4:
+ 314 00ec 6C6F6E67 		.ascii	"long int\000"
+ 314      20696E74 
+ 314      00
+ 315              	.LASF0:
+ 316 00f5 7369676E 		.ascii	"signed char\000"
+ 316      65642063 
+ 316      68617200 
+ 317              	.LASF12:
+ 318 0101 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 318      43313120 
+ 318      352E342E 
+ 318      31203230 
+ 318      31363036 
+ 319 0134 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 319      20726576 
+ 319      6973696F 
+ 319      6E203233 
+ 319      37373135 
+ 320 0167 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 320      66756E63 
+ 320      74696F6E 
+ 320      2D736563 
+ 320      74696F6E 
+ 321              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

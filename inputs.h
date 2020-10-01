@@ -26,6 +26,9 @@ uint8 PWR_OK_LONG_V;    /* variable storing PWR/OK long button press event  */
 uint8 DATALINK_TABLE[64];    
 uint8 DATALINK_TABLE_COUNTER;
 uint8 DATALINK_TABLE_COUNTER_MAX;
+uint8 DISPLAY_UPDATE;
+
+
 
 /*******************************************************************************
 * Function Name: CY_ISR(PWR_OK_MODE_SHORT_ISR)
@@ -101,6 +104,27 @@ CY_ISR(PWR_OK_LONG_ISR);
 *
 ********************************************************************************/
 CY_ISR(DATALINK_INTRRUPTHandler);
+
+
+/*******************************************************************************
+* Function Name: CY_ISR(DISPLAY_Timer_INTHandler)
+********************************************************************************
+* Summary:
+*  The Interrupt Service Routine. Triggered by software when timer expires after 
+*  DISPLAY_Timer_Start() is called. It uses timer to count 2 seconds wait.
+*  This time is used to display information that are temporary (like button press
+*  or BT status).
+*   
+* Parameters:
+*  Timer interrupt handler 
+*
+* Return:
+*  updates DISPLAY_UPDATE variable.when TC is called.
+*
+********************************************************************************/
+CY_ISR(DISPLAY_Timer_INTHandler);
+
+
 
 
 #endif // INPUTS_H_

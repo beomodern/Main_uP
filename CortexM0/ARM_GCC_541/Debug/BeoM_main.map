@@ -1,0 +1,2429 @@
+Archive member included to satisfy reference by file (symbol)
+
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (UART_Start)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+                              .\CortexM0\ARM_GCC_541\Debug\operate.o (UART_SpiUartWriteTxData)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+                              .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o) (UART_UartInit)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (Bootloadable_1_Load)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+                              .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o) (CySysFlashWriteRow)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+                              .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o (CyHalt)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (Pin_1_Read)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (Timer_1_Start)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (Timer_2_Start)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+                              .\CortexM0\ARM_GCC_541\Debug\operate.o (LED_Write)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (PSoC_LED_Write)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (MODE_LONG_StartEx)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (PWR_OK_LONG_StartEx)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (BT_SBC_Read)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (BT_PAIRING_Read)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (BT_APTX_Read)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (BT_LL_Read)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (BT_HD_Read)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (BT_Tx_Rx_Write)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (BT_NEXT_Write)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (BT_PREVIOUS_Write)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (BT_PAUSE_Write)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (BT_RE_CONNECT_Write)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (PWR_RPI_Write)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (PWR_BT_Write)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (PWR_SDSP_Write)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (PWR_DISP_Write)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (Em_EEPROM_Init)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (PWR_OK_MODE_SHORT_StartEx)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+                              .\CortexM0\ARM_GCC_541\Debug\inputs.o (PWR_OK_MODE_ClearInterrupt)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+                              .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o) (Cy_Em_EEPROM_Init)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (DATALINK_Write)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+                              .\CortexM0\ARM_GCC_541\Debug\inputs.o (DATALINK_Timer_ReadStatusRegister)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (DATALINK_INTRRUPT_StartEx)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (DISPLAY_Timer_INT_StartEx)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+                              .\CortexM0\ARM_GCC_541\Debug\inputs.o (DISPLAY_Timer_Stop)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (SPIM_Start)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+                              .\CortexM0\ARM_GCC_541\Debug\spi_int.o (SPIM_SpiUartReadRxData)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+                              .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o) (SPIM_SpiPostEnable)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+                              .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o) (SPIM_SPI_UART_ISR)
+.\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyBootAsmGnu.o)
+                              .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o) (CyDelayCycles)
+c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (__gnu_thumb1_case_uqi)
+c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_thumb1_case_uhi.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (__gnu_thumb1_case_uhi)
+c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
+                              .\CortexM0\ARM_GCC_541\Debug\operate.o (__aeabi_uidiv)
+c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (__aeabi_idiv)
+c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
+                              c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_muldi3.o)
+                              .\CortexM0\ARM_GCC_541\Debug\modes.o (__aeabi_lmul)
+c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+                              .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o (__errno)
+c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+                              c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o (exit)
+c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+                              c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o) (_global_impure_ptr)
+c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+                              c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o (__libc_init_array)
+c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (memcpy)
+c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+                              c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o (memset)
+c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strcpy.o)
+                              .\CortexM0\ARM_GCC_541\Debug\main.o (strcpy)
+
+Allocating common symbols
+Common symbol       size              file
+
+current_display_data_buffer
+                    0x18              .\CortexM0\ARM_GCC_541\Debug\main.o
+SPIM_rxBufferOverflow
+                    0x1               .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+SPIM_rxBufferInternal
+                    0x1f              .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+next_PSUstate       0x5               .\CortexM0\ARM_GCC_541\Debug\main.o
+Em_EEPROM_context   0x1c              .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+display_return      0x4               .\CortexM0\ARM_GCC_541\Debug\main.o
+current_disp_ctrl2  0x1               .\CortexM0\ARM_GCC_541\Debug\main.o
+current_PSUstate    0x5               .\CortexM0\ARM_GCC_541\Debug\main.o
+SPIM_rxBufferTail   0x4               .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+SPIM_rxBufferHead   0x4               .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+array               0x3               .\CortexM0\ARM_GCC_541\Debug\main.o
+eepromArray         0x3               .\CortexM0\ARM_GCC_541\Debug\main.o
+current_disp_ctrl1  0x1               .\CortexM0\ARM_GCC_541\Debug\main.o
+DISPLAY_UPDATE      0x1               .\CortexM0\ARM_GCC_541\Debug\main.o
+
+Discarded input sections
+
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
+ .data          0x00000000        0x4 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .text          0x00000000       0x78 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.extab     0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.exidx     0x00000000        0x8 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\modes.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\inputs.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\inputs.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\operate.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .data          0x00000000        0x4 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .text._exit    0x00000000        0xa .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .text._sbrk    0x00000000       0x30 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .text.UART_Init
+                0x00000000        0x8 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .text.UART_Stop
+                0x00000000       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .text.UART_SetRxFifoLevel
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .text.UART_SetTxFifoLevel
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .text.UART_I2CSlaveNackGeneration
+                0x00000000       0x3c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .text.UART_SpiUartClearRxBuffer
+                0x00000000       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .text.UART_SpiUartPutArray
+                0x00000000       0x16 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .text.UART_SpiUartGetTxBufferSize
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .text.UART_SpiUartClearTxBuffer
+                0x00000000       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .text.UART_SpiUartDisableIntRx
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .text.UART_SpiUartDisableIntTx
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .text.UART_UartStop
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .text.UART_UartSetRxAddress
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .text.UART_UartSetRxAddressMask
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .text.UART_UartGetByte
+                0x00000000       0x34 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .text.UART_UartPutCRLF
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .text.UART_UartSendBreakBlocking
+                0x00000000       0x58 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+ .text.Bootloadable_1_SetFlashByte
+                0x00000000       0x32 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+ .text.CySysFlashSetWaitCycles
+                0x00000000       0x30 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .bss           0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysClkImoStart
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysClkImoStop
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysClkWriteHfclkDirect
+                0x00000000       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysEnablePumpClock
+                0x00000000       0x34 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysClkGetSysclkSource
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysClkWriteSysclkDiv
+                0x00000000       0x2c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysLvdDisable
+                0x00000000       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysLvdGetInterruptSource
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysLvdClearInterrupt
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysGetResetReason
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CyDisableInts
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CyEnableInts
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CyIntSetSysVector
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CyIntGetSysVector
+                0x00000000       0x12 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CyIntGetVector
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CyIntGetPriority
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CyIntGetState
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CyIntSetPending
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CyIntClearPending
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CyHalt   0x00000000        0x4 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysLvdEnable
+                0x00000000       0x44 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CyDelayFreq
+                0x00000000       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysTickInit
+                0x00000000       0x44 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysTickStop
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysTickEnableInterrupt
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysTickEnable
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysTickStart
+                0x00000000       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysTickDisableInterrupt
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysTickSetReload
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysTickGetReload
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysTickGetValue
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysTickGetCountFlag
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysTickServiceCallbacks
+                0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysTickClear
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysTickSetCallback
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CySysTickGetCallback
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text.CyGetUniqueId
+                0x00000000       0x74 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .text.Pin_1_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .text.Pin_1_Write
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .text.Pin_1_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .text.Pin_1_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .text.Pin_1_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetMode
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetQDMode
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetPrescaler
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetOneShot
+                0x00000000       0x30 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetPWMMode
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetPWMSyncKill
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetPWMStopOnKill
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetPWMDeadTime
+                0x00000000       0x2c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetPWMInvert
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_WriteCounter
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_ReadCounter
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetCounterMode
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_WritePeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_ReadPeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetCompareSwap
+                0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_WritePeriodBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_ReadPeriodBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetPeriodSwap
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_WriteCompare
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_ReadCompare
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_WriteCompareBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_ReadCompareBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_ReadCapture
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_ReadCaptureBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetCaptureMode
+                0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetReloadMode
+                0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetStartMode
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetStopMode
+                0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetCountMode
+                0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_TriggerCommand
+                0x00000000       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_ReadStatus
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetInterruptMode
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_GetInterruptSource
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text.Timer_1_SetInterrupt
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetMode
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetQDMode
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetPrescaler
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetOneShot
+                0x00000000       0x30 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetPWMMode
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetPWMSyncKill
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetPWMStopOnKill
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetPWMDeadTime
+                0x00000000       0x2c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetPWMInvert
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_WriteCounter
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_ReadCounter
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetCounterMode
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_WritePeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_ReadPeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetCompareSwap
+                0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_WritePeriodBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_ReadPeriodBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetPeriodSwap
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_WriteCompare
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_ReadCompare
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_WriteCompareBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_ReadCompareBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_ReadCapture
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_ReadCaptureBuf
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetCaptureMode
+                0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetReloadMode
+                0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetStartMode
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetStopMode
+                0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetCountMode
+                0x00000000       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_TriggerCommand
+                0x00000000       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_ReadStatus
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetInterruptMode
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_GetInterruptSource
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text.Timer_2_SetInterrupt
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .text.LED_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .text.LED_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .text.LED_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .text.LED_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .text.LED_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .text.PSoC_LED_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .text.PSoC_LED_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .text.PSoC_LED_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .text.PSoC_LED_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .text.MODE_LONG_Interrupt
+                0x00000000        0x2 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .text.MODE_LONG_Stop
+                0x00000000       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .text.MODE_LONG_SetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .text.MODE_LONG_GetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .text.MODE_LONG_Start
+                0x00000000       0x30 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .text.MODE_LONG_GetPriority
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .text.MODE_LONG_Enable
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .text.MODE_LONG_GetState
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .text.MODE_LONG_Disable
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .text.MODE_LONG_SetPending
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .text.MODE_LONG_ClearPending
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .text.PWR_OK_LONG_Interrupt
+                0x00000000        0x2 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .text.PWR_OK_LONG_Stop
+                0x00000000       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .text.PWR_OK_LONG_SetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .text.PWR_OK_LONG_GetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .text.PWR_OK_LONG_Start
+                0x00000000       0x30 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .text.PWR_OK_LONG_GetPriority
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .text.PWR_OK_LONG_Enable
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .text.PWR_OK_LONG_GetState
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .text.PWR_OK_LONG_Disable
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .text.PWR_OK_LONG_SetPending
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .text.PWR_OK_LONG_ClearPending
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .text.BT_SBC_SetDriveMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .text.BT_SBC_Write
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .text.BT_SBC_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .text.BT_SBC_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .text.BT_SBC_ClearInterrupt
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .text.BT_PAIRING_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .text.BT_PAIRING_Write
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .text.BT_PAIRING_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .text.BT_PAIRING_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .text.BT_PAIRING_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .text.BT_APTX_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .text.BT_APTX_Write
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .text.BT_APTX_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .text.BT_APTX_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .text.BT_APTX_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .text.BT_LL_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .text.BT_LL_Write
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .text.BT_LL_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .text.BT_LL_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .text.BT_LL_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .text.BT_HD_SetDriveMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .text.BT_HD_Write
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .text.BT_HD_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .text.BT_HD_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .text.BT_HD_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .text.BT_Tx_Rx_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .text.BT_Tx_Rx_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .text.BT_Tx_Rx_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .text.BT_Tx_Rx_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .text.BT_Tx_Rx_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .text.BT_NEXT_SetDriveMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .text.BT_NEXT_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .text.BT_NEXT_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .text.BT_NEXT_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .text.BT_NEXT_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .text.BT_PREVIOUS_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .text.BT_PREVIOUS_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .text.BT_PREVIOUS_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .text.BT_PREVIOUS_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .text.BT_PREVIOUS_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .text.BT_PAUSE_SetDriveMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .text.BT_PAUSE_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .text.BT_PAUSE_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .text.BT_PAUSE_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .text.BT_PAUSE_ClearInterrupt
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .text.BT_RE_CONNECT_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .text.BT_RE_CONNECT_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .text.BT_RE_CONNECT_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .text.BT_RE_CONNECT_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .text.BT_RE_CONNECT_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .text.PWR_RPI_SetDriveMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .text.PWR_RPI_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .text.PWR_RPI_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .text.PWR_RPI_ClearInterrupt
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .text.PWR_BT_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .text.PWR_BT_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .text.PWR_BT_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .text.PWR_BT_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .text.PWR_SDSP_SetDriveMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .text.PWR_SDSP_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .text.PWR_SDSP_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .text.PWR_SDSP_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .text.PWR_DISP_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .text.PWR_DISP_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .text.PWR_DISP_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .text.PWR_DISP_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+ .rodata        0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .text.PWR_OK_MODE_SHORT_Interrupt
+                0x00000000        0x2 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .text.PWR_OK_MODE_SHORT_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .text.PWR_OK_MODE_SHORT_SetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .text.PWR_OK_MODE_SHORT_GetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .text.PWR_OK_MODE_SHORT_Start
+                0x00000000       0x2c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .text.PWR_OK_MODE_SHORT_GetPriority
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .text.PWR_OK_MODE_SHORT_Enable
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .text.PWR_OK_MODE_SHORT_GetState
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .text.PWR_OK_MODE_SHORT_Disable
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .text.PWR_OK_MODE_SHORT_SetPending
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .text.PWR_OK_MODE_SHORT_ClearPending
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .text.PWR_OK_MODE_SetDriveMode
+                0x00000000       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .text.PWR_OK_MODE_Write
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .text.PWR_OK_MODE_Read
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .text.PWR_OK_MODE_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .text.PWR_OK_MODE_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .text.Cy_Em_EEPROM_Erase
+                0x00000000       0x86 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .text.Cy_Em_EEPROM_NumWrites
+                0x00000000        0x6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .text.DATALINK_SetDriveMode
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .text.DATALINK_ReadDataReg
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .text.DATALINK_SetInterruptMode
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .text.DATALINK_ClearInterrupt
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .text.DATALINK_Timer_Enable
+                0x00000000        0x2 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .text.DATALINK_Timer_Stop
+                0x00000000        0x2 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .text.DATALINK_Timer_SetInterruptMode
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .text.DATALINK_Timer_SoftwareCapture
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .text.DATALINK_Timer_ReadPeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .text.DATALINK_Timer_WritePeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .text.DATALINK_Timer_WriteCounter
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .text.DATALINK_Timer_ReadCounter
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .text.DATALINK_Timer_EnableTrigger
+                0x00000000        0x2 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .text.DATALINK_Timer_DisableTrigger
+                0x00000000        0x2 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .text.DATALINK_INTRRUPT_Interrupt
+                0x00000000        0x2 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .text.DATALINK_INTRRUPT_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .text.DATALINK_INTRRUPT_SetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .text.DATALINK_INTRRUPT_GetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .text.DATALINK_INTRRUPT_Start
+                0x00000000       0x2c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .text.DATALINK_INTRRUPT_GetPriority
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .text.DATALINK_INTRRUPT_GetState
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .text.DATALINK_INTRRUPT_SetPending
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .text.DISPLAY_Timer_INT_Interrupt
+                0x00000000        0x2 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .text.DISPLAY_Timer_INT_Stop
+                0x00000000       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .text.DISPLAY_Timer_INT_SetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .text.DISPLAY_Timer_INT_GetVector
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .text.DISPLAY_Timer_INT_Start
+                0x00000000       0x2c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .text.DISPLAY_Timer_INT_GetPriority
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .text.DISPLAY_Timer_INT_Enable
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .text.DISPLAY_Timer_INT_GetState
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .text.DISPLAY_Timer_INT_Disable
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .text.DISPLAY_Timer_INT_SetPending
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .text.DISPLAY_Timer_SetInterruptMode
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .text.DISPLAY_Timer_SoftwareCapture
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .text.DISPLAY_Timer_ReadControlRegister
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .text.DISPLAY_Timer_WriteControlRegister
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .text.DISPLAY_Timer_ReadPeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .text.DISPLAY_Timer_WritePeriod
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .text.DISPLAY_Timer_ReadCapture
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .text.DISPLAY_Timer_WriteCounter
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .text.DISPLAY_Timer_ReadCounter
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .text.SPIM_Init
+                0x00000000        0x8 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .text.SPIM_Stop
+                0x00000000       0x2c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .text.SPIM_SetRxFifoLevel
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .text.SPIM_SetTxFifoLevel
+                0x00000000       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .text.SPIM_SetCustomInterruptHandler
+                0x00000000        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .text.SPIM_I2CSlaveNackGeneration
+                0x00000000       0x3c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .text.SPIM_SpiUartGetTxBufferSize
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .text.SPIM_SpiUartDisableIntRx
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .text.SPIM_SpiUartDisableIntTx
+                0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+ .text.SPIM_SpiStop
+                0x00000000       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+ .text          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+ .data          0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyBootAsmGnu.o)
+ .bss           0x00000000        0x0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyBootAsmGnu.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_thumb1_case_uhi.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_thumb1_case_uhi.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_muldi3.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_muldi3.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .text.exit     0x00000000       0x2c c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .rodata._global_impure_ptr
+                0x00000000        0x4 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strcpy.o)
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strcpy.o)
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strcpy.o)
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
+ .text          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+ .data          0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+ .bss           0x00000000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+rom              0x00000000         0x00008000         xr
+ram              0x20000000         0x00001000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
+LOAD c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+LOAD c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+START GROUP
+LOAD .\CortexM0\ARM_GCC_541\Debug\main.o
+LOAD .\CortexM0\ARM_GCC_541\Debug\modes.o
+LOAD .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+LOAD .\CortexM0\ARM_GCC_541\Debug\inputs.o
+LOAD .\CortexM0\ARM_GCC_541\Debug\operate.o
+LOAD .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+LOAD .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+LOAD .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+LOAD .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+LOAD .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a
+END GROUP
+START GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libc_nano.a
+END GROUP
+START GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libc_nano.a
+END GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
+LOAD c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+START GROUP
+LOAD c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libc.a
+LOAD c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libnosys.a
+END GROUP
+                0x00000000                CY_APPL_ORIGIN = 0x0
+                0x00000080                CY_FLASH_ROW_SIZE = 0x80
+                0x00000001                CY_APPL_NUM = 0x1
+                0x00000001                CY_APPL_MAX = 0x1
+                0x00000040                CY_METADATA_SIZE = 0x40
+                0x00000001                CY_APPL_LOADABLE = 0x1
+                0x00000080                CY_CHECKSUM_EXCLUDE_SIZE = ALIGN (0x80, CY_FLASH_ROW_SIZE)
+                0x00000000                CY_APP_FOR_STACK_AND_COPIER = 0x0
+                [!provide]                PROVIDE (__cy_heap_start, _end)
+                0x00000001                PROVIDE (__cy_region_num, ((__cy_regions_end - __cy_regions) / 0x10))
+                0x20001000                PROVIDE (__cy_stack, (ORIGIN (ram) + LENGTH (ram)))
+                [!provide]                PROVIDE (__cy_heap_end, (__cy_stack - 0x400))
+
+.cybootloader   0x00000000     0x1100
+ *(.cybootloader)
+ .cybootloader  0x00000000     0x1100 .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+                0x00000000                cy_bootloader
+                0x00001100                appl1_start = CY_APPL_ORIGIN?CY_APPL_ORIGIN:ALIGN (CY_FLASH_ROW_SIZE)
+                0x00004800                appl2_start = (appl1_start + ALIGN ((((LENGTH (rom) - appl1_start) - (0x2 * CY_FLASH_ROW_SIZE)) / 0x2), CY_FLASH_ROW_SIZE))
+                0x00001100                appl_start = (CY_APPL_NUM == 0x1)?appl1_start:appl2_start
+                0x00000000                cy_project_type_bootloader = (appl_start == 0x0)?0x1:0x0
+                0x00000000                cy_project_type_app_for_stack_and_copier = (CY_APP_FOR_STACK_AND_COPIER == 0x1)?0x1:0x0
+
+.text           0x00001100     0x4692
+ CREATE_OBJECT_SYMBOLS
+                0x00001100                PROVIDE (__cy_interrupt_vector, RomVectors)
+ *(.romvectors)
+ .romvectors    0x00001100       0x10 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x00001100                RomVectors
+                0x00000001                ASSERT ((. != __cy_interrupt_vector), No interrupt vector)
+                0x00000001                ASSERT (CY_APPL_ORIGIN?(SIZEOF (.cybootloader) <= CY_APPL_ORIGIN):0x1, Wrong image location)
+                0x00001110                PROVIDE (__cy_reset, Reset)
+ *(.text.Reset)
+ .text.Reset    0x00001110       0x10 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x00001110                Reset
+                0x00000001                ASSERT ((. != __cy_reset), No reset code)
+ *(.psocinit)
+ .psocinit      0x00001120      0x274 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+                0x00001120                cyfitter_cfg
+                0x00001394                . = MAX (., 0x100)
+ *(.text .text.* .gnu.linkonce.t.*)
+ .text          0x00001394       0x60 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .text.startup.main
+                0x000013f4      0x174 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x000013f4                main
+ .text.psu_config
+                0x00001568       0x5c .\CortexM0\ARM_GCC_541\Debug\modes.o
+                0x00001568                psu_config
+ .text.BT_control
+                0x000015c4      0x354 .\CortexM0\ARM_GCC_541\Debug\modes.o
+                0x000015c4                BT_control
+ .text.buttons_check
+                0x00001918      0x10c .\CortexM0\ARM_GCC_541\Debug\modes.o
+                0x00001918                buttons_check
+ .text.datalink_decoder
+                0x00001a24      0x978 .\CortexM0\ARM_GCC_541\Debug\modes.o
+                0x00001a24                datalink_decoder
+ .text.SigmaDSP_to_display
+                0x0000239c      0x140 .\CortexM0\ARM_GCC_541\Debug\modes.o
+                0x0000239c                SigmaDSP_to_display
+ .text.DATALINK_times
+                0x000024dc       0xb8 .\CortexM0\ARM_GCC_541\Debug\modes.o
+                0x000024dc                DATALINK_times
+ .text.DATALINK_out
+                0x00002594      0x7d2 .\CortexM0\ARM_GCC_541\Debug\modes.o
+                0x00002594                DATALINK_out
+ *fill*         0x00002d66        0x2 
+ .text.SPIM_display_write
+                0x00002d68       0x44 .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+                0x00002d68                SPIM_display_write
+ .text.SPIM_display_read
+                0x00002dac       0x48 .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+                0x00002dac                SPIM_display_read
+ .text.SPIM_SigmaDSP_init_SPI
+                0x00002df4       0x64 .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+                0x00002df4                SPIM_SigmaDSP_init_SPI
+ .text.SPIM_SigmaDSP_write
+                0x00002e58       0x7e .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+                0x00002e58                SPIM_SigmaDSP_write
+ .text.SPIM_SigmaDSP_read
+                0x00002ed6       0xc8 .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+                0x00002ed6                SPIM_SigmaDSP_read
+ *fill*         0x00002f9e        0x2 
+ .text.PWR_OK_MODE_SHORT_ISR
+                0x00002fa0       0x48 .\CortexM0\ARM_GCC_541\Debug\inputs.o
+                0x00002fa0                PWR_OK_MODE_SHORT_ISR
+ .text.MODE_LONG_ISR
+                0x00002fe8       0x1c .\CortexM0\ARM_GCC_541\Debug\inputs.o
+                0x00002fe8                MODE_LONG_ISR
+ .text.PWR_OK_LONG_ISR
+                0x00003004       0x1c .\CortexM0\ARM_GCC_541\Debug\inputs.o
+                0x00003004                PWR_OK_LONG_ISR
+ .text.DATALINK_INTRRUPTHandler
+                0x00003020       0x60 .\CortexM0\ARM_GCC_541\Debug\inputs.o
+                0x00003020                DATALINK_INTRRUPTHandler
+ .text.DISPLAY_Timer_INTHandler
+                0x00003080       0x20 .\CortexM0\ARM_GCC_541\Debug\inputs.o
+                0x00003080                DISPLAY_Timer_INTHandler
+ .text.BeoM_PSU_state
+                0x000030a0      0x9f4 .\CortexM0\ARM_GCC_541\Debug\operate.o
+                0x000030a0                BeoM_PSU_state
+ .text.display_update
+                0x00003a94      0x20c .\CortexM0\ARM_GCC_541\Debug\operate.o
+                0x00003a94                display_update
+ .text.datalink_check
+                0x00003ca0      0x2b4 .\CortexM0\ARM_GCC_541\Debug\operate.o
+                0x00003ca0                datalink_check
+ .text.IntDefaultHandler
+                0x00003f54       0x10 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x00003f54                IntDefaultHandler
+ .text.Start_c  0x00003f64       0x4c .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x00003f64                Start_c
+ .text.startup.initialize_psoc
+                0x00003fb0       0x48 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x00003fb0                initialize_psoc
+ .text.UART_Enable
+                0x00003ff8       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+                0x00003ff8                UART_Enable
+ .text.UART_Start
+                0x00004010       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+                0x00004010                UART_Start
+ .text.UART_SpiUartReadRxData
+                0x0000402c        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+                0x0000402c                UART_SpiUartReadRxData
+ .text.UART_SpiUartGetRxBufferSize
+                0x00004038       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+                0x00004038                UART_SpiUartGetRxBufferSize
+ .text.UART_SpiUartWriteTxData
+                0x00004048       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+                0x00004048                UART_SpiUartWriteTxData
+ .text.UART_UartInit
+                0x00004064       0x9c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+                0x00004064                UART_UartInit
+ .text.UART_UartPostEnable
+                0x00004100       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+                0x00004100                UART_UartPostEnable
+ .text.UART_UartGetChar
+                0x00004124       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+                0x00004124                UART_UartGetChar
+ .text.UART_UartPutString
+                0x0000414c       0x16 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+                0x0000414c                UART_UartPutString
+ *fill*         0x00004162        0x2 
+ .text.Bootloadable_1_Load
+                0x00004164       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+                0x00004164                Bootloadable_1_Load
+ .text.CySysFlashWriteRow
+                0x00004178      0x1ac .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+                0x00004178                CySysFlashWriteRow
+ .text.CyIntSetVector
+                0x00004324       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+                0x00004324                CyIntSetVector
+ .text.CyIntSetPriority
+                0x0000433c       0x40 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+                0x0000433c                CyIntSetPriority
+ .text.CyIntEnable
+                0x0000437c       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+                0x0000437c                CyIntEnable
+ .text.CyIntDisable
+                0x00004390       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+                0x00004390                CyIntDisable
+ .text.CySoftwareReset
+                0x000043a4       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+                0x000043a4                CySoftwareReset
+ .text.CyDelay  0x000043bc       0x2c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+                0x000043bc                CyDelay
+ .text.CyDelayUs
+                0x000043e8       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+                0x000043e8                CyDelayUs
+ .text.CySysClkWriteImoFreq
+                0x000043fc      0x128 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+                0x000043fc                CySysClkWriteImoFreq
+ .text.Pin_1_Read
+                0x00004524       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+                0x00004524                Pin_1_Read
+ .text.Timer_1_Init
+                0x00004534       0x3c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+                0x00004534                Timer_1_Init
+ .text.Timer_1_Enable
+                0x00004570       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+                0x00004570                Timer_1_Enable
+ .text.Timer_1_Start
+                0x0000458c       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+                0x0000458c                Timer_1_Start
+ .text.Timer_1_GetInterruptSourceMasked
+                0x000045a8        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+                0x000045a8                Timer_1_GetInterruptSourceMasked
+ .text.Timer_1_ClearInterrupt
+                0x000045b4        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+                0x000045b4                Timer_1_ClearInterrupt
+ .text.Timer_2_Init
+                0x000045c0       0x3c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+                0x000045c0                Timer_2_Init
+ .text.Timer_2_Enable
+                0x000045fc       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+                0x000045fc                Timer_2_Enable
+ .text.Timer_2_Start
+                0x00004618       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+                0x00004618                Timer_2_Start
+ .text.Timer_2_GetInterruptSourceMasked
+                0x00004634        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+                0x00004634                Timer_2_GetInterruptSourceMasked
+ .text.Timer_2_ClearInterrupt
+                0x00004640        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+                0x00004640                Timer_2_ClearInterrupt
+ .text.LED_Write
+                0x0000464c       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+                0x0000464c                LED_Write
+ .text.PSoC_LED_Write
+                0x00004664       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+                0x00004664                PSoC_LED_Write
+ .text.PSoC_LED_Read
+                0x0000467c       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+                0x0000467c                PSoC_LED_Read
+ .text.MODE_LONG_SetPriority
+                0x0000468c       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+                0x0000468c                MODE_LONG_SetPriority
+ .text.MODE_LONG_StartEx
+                0x000046ac       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+                0x000046ac                MODE_LONG_StartEx
+ .text.PWR_OK_LONG_SetPriority
+                0x000046d4       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+                0x000046d4                PWR_OK_LONG_SetPriority
+ .text.PWR_OK_LONG_StartEx
+                0x000046f8       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+                0x000046f8                PWR_OK_LONG_StartEx
+ .text.BT_SBC_Read
+                0x00004720       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+                0x00004720                BT_SBC_Read
+ .text.BT_PAIRING_Read
+                0x00004730       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+                0x00004730                BT_PAIRING_Read
+ .text.BT_APTX_Read
+                0x00004740       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+                0x00004740                BT_APTX_Read
+ .text.BT_LL_Read
+                0x00004750       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+                0x00004750                BT_LL_Read
+ .text.BT_HD_Read
+                0x00004760       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+                0x00004760                BT_HD_Read
+ .text.BT_Tx_Rx_Write
+                0x00004770       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+                0x00004770                BT_Tx_Rx_Write
+ .text.BT_NEXT_Write
+                0x00004788       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+                0x00004788                BT_NEXT_Write
+ .text.BT_PREVIOUS_Write
+                0x000047a0       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+                0x000047a0                BT_PREVIOUS_Write
+ .text.BT_PAUSE_Write
+                0x000047b8       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+                0x000047b8                BT_PAUSE_Write
+ .text.BT_RE_CONNECT_Write
+                0x000047d0       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+                0x000047d0                BT_RE_CONNECT_Write
+ .text.PWR_RPI_Write
+                0x000047e8       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+                0x000047e8                PWR_RPI_Write
+ .text.PWR_RPI_ReadDataReg
+                0x00004800       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+                0x00004800                PWR_RPI_ReadDataReg
+ .text.PWR_BT_Write
+                0x00004810       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+                0x00004810                PWR_BT_Write
+ .text.PWR_BT_ReadDataReg
+                0x00004828       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+                0x00004828                PWR_BT_ReadDataReg
+ .text.PWR_SDSP_Write
+                0x00004838       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+                0x00004838                PWR_SDSP_Write
+ .text.PWR_SDSP_ReadDataReg
+                0x00004850       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+                0x00004850                PWR_SDSP_ReadDataReg
+ .text.PWR_DISP_Write
+                0x00004860       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+                0x00004860                PWR_DISP_Write
+ .text.PWR_DISP_ReadDataReg
+                0x00004878       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+                0x00004878                PWR_DISP_ReadDataReg
+ .text.Em_EEPROM_Init
+                0x00004888       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+                0x00004888                Em_EEPROM_Init
+ .text.PWR_OK_MODE_SHORT_SetPriority
+                0x000048b0       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+                0x000048b0                PWR_OK_MODE_SHORT_SetPriority
+ .text.PWR_OK_MODE_SHORT_StartEx
+                0x000048d0       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+                0x000048d0                PWR_OK_MODE_SHORT_StartEx
+ .text.PWR_OK_MODE_ClearInterrupt
+                0x000048f4       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+                0x000048f4                PWR_OK_MODE_ClearInterrupt
+ .text.FindLastWrittenRow
+                0x00004908       0x2a .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ *fill*         0x00004932        0x2 
+ .text.GetNextRowToWrite
+                0x00004934       0x4c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .text.WriteRow.isra.0
+                0x00004980       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .text.CalcChecksum.constprop.1
+                0x00004990       0x30 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .text.CheckCrcAndCopy
+                0x000049c0       0x6e .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .text.Cy_Em_EEPROM_Init
+                0x00004a2e       0xf8 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+                0x00004a2e                Cy_Em_EEPROM_Init
+ .text.Cy_Em_EEPROM_Read
+                0x00004b26      0x1dc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+                0x00004b26                Cy_Em_EEPROM_Read
+ .text.Cy_Em_EEPROM_Write
+                0x00004d02      0x1ca .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+                0x00004d02                Cy_Em_EEPROM_Write
+ .text.DATALINK_Write
+                0x00004ecc       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+                0x00004ecc                DATALINK_Write
+ .text.DATALINK_Read
+                0x00004ee4       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+                0x00004ee4                DATALINK_Read
+ .text.DATALINK_Timer_ReadStatusRegister
+                0x00004ef4        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+                0x00004ef4                DATALINK_Timer_ReadStatusRegister
+ .text.DATALINK_Timer_ReadCapture
+                0x00004f00        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+                0x00004f00                DATALINK_Timer_ReadCapture
+ .text.DATALINK_Timer_ClearFIFO
+                0x00004f0c       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+                0x00004f0c                DATALINK_Timer_ClearFIFO
+ .text.DATALINK_Timer_Init
+                0x00004f28       0x3c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+                0x00004f28                DATALINK_Timer_Init
+ .text.DATALINK_Timer_Start
+                0x00004f64       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+                0x00004f64                DATALINK_Timer_Start
+ .text.DATALINK_INTRRUPT_SetPriority
+                0x00004f7c       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+                0x00004f7c                DATALINK_INTRRUPT_SetPriority
+ .text.DATALINK_INTRRUPT_StartEx
+                0x00004f9c       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+                0x00004f9c                DATALINK_INTRRUPT_StartEx
+ .text.DATALINK_INTRRUPT_Enable
+                0x00004fc0        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+                0x00004fc0                DATALINK_INTRRUPT_Enable
+ .text.DATALINK_INTRRUPT_Disable
+                0x00004fcc        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+                0x00004fcc                DATALINK_INTRRUPT_Disable
+ .text.DATALINK_INTRRUPT_ClearPending
+                0x00004fd8        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+                0x00004fd8                DATALINK_INTRRUPT_ClearPending
+ .text.DISPLAY_Timer_INT_SetPriority
+                0x00004fe4       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+                0x00004fe4                DISPLAY_Timer_INT_SetPriority
+ .text.DISPLAY_Timer_INT_StartEx
+                0x00005008       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+                0x00005008                DISPLAY_Timer_INT_StartEx
+ .text.DISPLAY_Timer_INT_ClearPending
+                0x0000502c        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+                0x0000502c                DISPLAY_Timer_INT_ClearPending
+ .text.DISPLAY_Timer_Enable
+                0x00005038       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+                0x00005038                DISPLAY_Timer_Enable
+ .text.DISPLAY_Timer_Stop
+                0x00005048       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+                0x00005048                DISPLAY_Timer_Stop
+ .text.DISPLAY_Timer_ReadStatusRegister
+                0x00005058        0xc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+                0x00005058                DISPLAY_Timer_ReadStatusRegister
+ .text.DISPLAY_Timer_ClearFIFO
+                0x00005064       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+                0x00005064                DISPLAY_Timer_ClearFIFO
+ .text.DISPLAY_Timer_Init
+                0x00005080       0x3c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+                0x00005080                DISPLAY_Timer_Init
+ .text.DISPLAY_Timer_Start
+                0x000050bc       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+                0x000050bc                DISPLAY_Timer_Start
+ .text.SPIM_Enable
+                0x000050d8       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+                0x000050d8                SPIM_Enable
+ .text.SPIM_Start
+                0x000050f8       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+                0x000050f8                SPIM_Start
+ .text.SPIM_SpiUartReadRxData
+                0x00005114       0x30 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+                0x00005114                SPIM_SpiUartReadRxData
+ .text.SPIM_SpiUartGetRxBufferSize
+                0x00005144       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+                0x00005144                SPIM_SpiUartGetRxBufferSize
+ .text.SPIM_SpiUartClearRxBuffer
+                0x00005160       0x54 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+                0x00005160                SPIM_SpiUartClearRxBuffer
+ .text.SPIM_SpiUartWriteTxData
+                0x000051b4       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+                0x000051b4                SPIM_SpiUartWriteTxData
+ .text.SPIM_SpiUartPutArray
+                0x000051d0       0x16 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+                0x000051d0                SPIM_SpiUartPutArray
+ *fill*         0x000051e6        0x2 
+ .text.SPIM_SpiUartClearTxBuffer
+                0x000051e8       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+                0x000051e8                SPIM_SpiUartClearTxBuffer
+ .text.SPIM_SpiPostEnable
+                0x00005208       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+                0x00005208                SPIM_SpiPostEnable
+ .text.SPIM_SpiSetActiveSlaveSelect
+                0x0000521c       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+                0x0000521c                SPIM_SpiSetActiveSlaveSelect
+ .text.SPIM_SpiInit
+                0x0000523c       0xc4 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+                0x0000523c                SPIM_SpiInit
+ .text.SPIM_SPI_UART_ISR
+                0x00005300       0x74 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+                0x00005300                SPIM_SPI_UART_ISR
+ *fill*         0x00005374        0x4 
+ .text          0x00005378       0x24 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyBootAsmGnu.o)
+                0x00005378                CyDelayCycles
+                0x0000538c                CyEnterCriticalSection
+                0x00005394                CyExitCriticalSection
+ .text          0x0000539c       0x14 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+                0x0000539c                __gnu_thumb1_case_uqi
+ .text          0x000053b0       0x14 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_thumb1_case_uhi.o)
+                0x000053b0                __gnu_thumb1_case_uhi
+ .text          0x000053c4      0x114 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
+                0x000053c4                __aeabi_uidiv
+                0x000053c4                __udivsi3
+                0x000054d0                __aeabi_uidivmod
+ .text          0x000054d8      0x1d4 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
+                0x000054d8                __divsi3
+                0x000054d8                __aeabi_idiv
+                0x000056a4                __aeabi_idivmod
+ .text          0x000056ac        0x4 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
+                0x000056ac                __aeabi_idiv0
+                0x000056ac                __aeabi_ldiv0
+ .text          0x000056b0       0x58 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_muldi3.o)
+                0x000056b0                __muldi3
+                0x000056b0                __aeabi_lmul
+ .text.__errno  0x00005708        0xc c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+                0x00005708                __errno
+ .text.__libc_init_array
+                0x00005714       0x4c c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+                0x00005714                __libc_init_array
+ .text.memcpy   0x00005760       0x12 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
+                0x00005760                memcpy
+ .text.memset   0x00005772       0x10 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+                0x00005772                memset
+ .text.strcpy   0x00005782       0x10 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strcpy.o)
+                0x00005782                strcpy
+ *(.plt)
+ *(.gnu.warning)
+ *(.glue_7t)
+ .glue_7t       0x00005792        0x0 linker stubs
+ *(.glue_7)
+ .glue_7        0x00005792        0x0 linker stubs
+ *(.vfp11_veneer)
+ .vfp11_veneer  0x00005792        0x0 linker stubs
+ *(.bootloader)
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+ *(.gcc_except_table)
+
+.v4_bx          0x00005794        0x0
+ .v4_bx         0x00005794        0x0 linker stubs
+
+.iplt           0x00005794        0x0
+ .iplt          0x00005794        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+
+.eh_frame_hdr
+ *(.eh_frame_hdr)
+
+.eh_frame       0x00005794        0x4
+ *(.eh_frame)
+ .eh_frame      0x00005794        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .eh_frame      0x00005794        0x4 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
+                [!provide]                PROVIDE (__exidx_start, .)
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x00005798                __exidx_end = .
+
+.rodata         0x00005798      0x5d0
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata        0x00005798       0x19 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .rodata.str1.1
+                0x000057b1      0x19a .\CortexM0\ARM_GCC_541\Debug\modes.o
+ .rodata        0x0000594b       0x1c .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+                0x0000594b                dummyBuffer
+ .rodata.str1.1
+                0x00005967       0xe0 .\CortexM0\ARM_GCC_541\Debug\operate.o
+                                 0xec (size before relaxing)
+ *fill*         0x00005a47        0x1 
+ .rodata        0x00005a48      0x2b8 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .rodata        0x00005d00       0x2e .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+                0x00005d00                cyImoFreqMhz2Reg
+ .rodata.str1.1
+                0x00005d2e        0x2 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+                0x00005d30                . = ALIGN (0x4)
+ *(.init)
+ .init          0x00005d30        0x4 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
+                0x00005d30                _init
+ .init          0x00005d34        0x8 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+                0x00005d3c                . = ALIGN (0x4)
+                0x00005d3c                __preinit_array_start = .
+ *(.preinit_array)
+                0x00005d3c                __preinit_array_end = .
+                0x00005d3c                . = ALIGN (0x4)
+                0x00005d3c                __init_array_start = .
+ *(SORT(.init_array.*))
+ *(.init_array)
+ .init_array    0x00005d3c        0x4 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .init_array    0x00005d40        0x4 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x00005d44                __init_array_end = .
+                0x00005d44                . = ALIGN (0x4)
+ *(.fini)
+ .fini          0x00005d44        0x4 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
+                0x00005d44                _fini
+ .fini          0x00005d48        0x8 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+                0x00005d50                . = ALIGN (0x4)
+                0x00005d50                __fini_array_start = .
+ *(.fini_array)
+ .fini_array    0x00005d50        0x4 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ *(SORT(.fini_array.*))
+                0x00005d54                __fini_array_end = .
+                0x00005d54                . = ALIGN (0x4)
+ *crtbegin.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o) .ctors)
+ *(SORT(.ctors.*))
+ *crtend.o(.ctors)
+                0x00005d54                . = ALIGN (0x4)
+ *crtbegin.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o) .dtors)
+ *(SORT(.dtors.*))
+ *crtend.o(.dtors)
+                0x00005d54                . = ALIGN (0x4)
+                0x00005d54                __cy_regions = .
+                0x00005d54        0x4 LONG 0x5d68 __cy_region_init_ram
+                0x00005d58        0x4 LONG 0x200000c8 __cy_region_start_data
+                0x00005d5c        0x4 LONG 0x98 __cy_region_init_size_ram
+                0x00005d60        0x4 LONG 0x118 __cy_region_zero_size_ram
+                0x00005d64                __cy_regions_end = .
+                0x00005d68                . = ALIGN (0x8)
+ *fill*         0x00005d64        0x4 
+                0x00005d68                _etext = .
+
+.ramvectors     0x20000000       0xc0
+                0x20000000                __cy_region_start_ram = .
+ *(.ramvectors)
+ .ramvectors    0x20000000       0xc0 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x20000000                CyRamVectors
+
+.btldr_run      0x200000c0        0x4
+ *(.bootloaderruntype)
+ .bootloaderruntype
+                0x200000c0        0x4 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                0x200000c0                cyBtldrRunType
+
+.noinit
+ *(.noinit)
+
+.data           0x200000c8       0x98 load address 0x00005d68
+                0x200000c8                __cy_region_start_data = .
+ *(.jcr)
+ .jcr           0x200000c8        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .jcr           0x200000c8        0x4 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
+ *(.got.plt)
+ *(.got)
+ *(.shdata)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x200000cc       0x18 .\CortexM0\ARM_GCC_541\Debug\modes.o
+                0x200000cc                new_display_data_buffer
+ .data          0x200000e4        0x1 .\CortexM0\ARM_GCC_541\Debug\operate.o
+                0x200000e4                FM_RADIO_STATION
+ *fill*         0x200000e5        0x3 
+ .data          0x200000e8       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+                0x200000e8                CySysClkPumpConfig
+                0x200000ec                cydelay32kMs
+                0x200000f0                cydelayFreqKhz
+                0x200000f4                cydelayFreqMhz
+                0x200000f8                cydelayFreqHz
+ .data.impure_data
+                0x200000fc       0x60 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .data._impure_ptr
+                0x2000015c        0x4 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+                0x2000015c                _impure_ptr
+                0x20000160                . = ALIGN (0x8)
+ *(.ram)
+                0x20000160                _edata = .
+
+.igot.plt       0x20000160        0x0 load address 0x00005e00
+ .igot.plt      0x20000160        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+
+.bss            0x20000160      0x118 load address 0x00005e00
+                0x20000160                PROVIDE (__bss_start__, .)
+ *(.shbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x20000160       0x1c c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .bss           0x2000017c        0x6 .\CortexM0\ARM_GCC_541\Debug\modes.o
+                0x2000017c                new_disp_ctrl1
+                0x2000017d                new_disp_ctrl2
+                0x2000017e                new_display_data_flag
+                0x2000017f                SYSTEM_STATE
+                0x20000180                DISPLAY_STATE
+                0x20000181                BT_Tx_STATE
+ .bss           0x20000182       0x1c .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+ .bss           0x2000019e       0x48 .\CortexM0\ARM_GCC_541\Debug\inputs.o
+                0x2000019e                MODE_SWITCH
+                0x2000019f                MODE_SHORT_V
+                0x200001a0                PWR_OK_SWITCH
+                0x200001a1                PWR_OK_SHORT_V
+                0x200001a2                MODE_LONG_V
+                0x200001a3                PWR_OK_LONG_V
+                0x200001a4                DATALINK_TABLE_COUNTER
+                0x200001a5                DATALINK_TABLE
+                0x200001e5                DATALINK_TABLE_COUNTER_MAX
+ .bss           0x200001e6        0x1 .\CortexM0\ARM_GCC_541\Debug\operate.o
+                0x200001e6                counter
+ *fill*         0x200001e7        0x1 
+ .bss           0x200001e8        0x4 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+                0x200001e8                UART_initVar
+                0x200001ea                UART_IntrTxMask
+ .bss           0x200001ec        0x4 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+ .bss           0x200001f0        0x1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+                0x200001f0                Timer_1_initVar
+ .bss           0x200001f1        0x1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+                0x200001f1                Timer_2_initVar
+ .bss           0x200001f2        0x1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+                0x200001f2                DATALINK_Timer_initVar
+ .bss           0x200001f3        0x1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+                0x200001f3                DISPLAY_Timer_initVar
+ .bss           0x200001f4        0xa .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+                0x200001f4                SPIM_initVar
+                0x200001f8                SPIM_customIntrHandler
+                0x200001fc                SPIM_IntrTxMask
+ *(COMMON)
+ *fill*         0x200001fe        0x2 
+ COMMON         0x20000200       0x32 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x20000200                current_display_data_buffer
+                0x20000218                next_PSUstate
+                0x20000220                display_return
+                0x20000224                current_disp_ctrl2
+                0x20000225                current_PSUstate
+                0x2000022a                array
+                0x2000022d                eepromArray
+                0x20000230                current_disp_ctrl1
+                0x20000231                DISPLAY_UPDATE
+ *fill*         0x20000232        0x2 
+ COMMON         0x20000234       0x1c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+                0x20000234                Em_EEPROM_context
+ COMMON         0x20000250       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+                0x20000250                SPIM_rxBufferOverflow
+                0x20000251                SPIM_rxBufferInternal
+                0x20000270                SPIM_rxBufferTail
+                0x20000274                SPIM_rxBufferHead
+                0x20000278                . = ALIGN (0x8)
+ *(.ram.b)
+                0x20000278                _end = .
+                0x20000278                __end = .
+                0x20000278                PROVIDE (end, .)
+                0x20000278                PROVIDE (__bss_end__, .)
+                0x00005d68                __cy_region_init_ram = LOADADDR (.data)
+                0x00000098                __cy_region_init_size_ram = (_edata - ADDR (.data))
+                0x00000118                __cy_region_zero_size_ram = (_end - _edata)
+
+.heap           0x20000278      0x100 load address 0x00005e00
+                0x20000278                . = _end
+                0x20000378                . = (. + 0x100)
+ *fill*         0x20000278      0x100 
+                0x20000378                __cy_heap_limit = .
+
+.stack          0x20000c00      0x400
+                0x20000c00                __cy_stack_limit = .
+                0x20001000                . = (. + 0x400)
+ *fill*         0x20000c00      0x400 
+                0x00000001                ASSERT ((__cy_stack_limit >= __cy_heap_limit), region RAM overflowed with stack)
+
+.cy_checksum_exclude
+                0x00007f00       0x80
+ *(.cy_checksum_exclude)
+ .cy_checksum_exclude
+                0x00007f00       0x80 .\CortexM0\ARM_GCC_541\Debug\main.o
+                0x00007f00                Em_EEPROM_em_EepromStorage
+                0x00000080                cy_checksum_exclude_size = (CY_APPL_LOADABLE == 0x1)?SIZEOF (.cy_checksum_exclude):0x0
+                0x00000001                ASSERT ((cy_checksum_exclude_size <= CY_CHECKSUM_EXCLUDE_SIZE), CY_BOOT: Section .cy_checksum_exclude size exceedes specified limit.)
+                0xf0000000                cyloadermeta_start = (cy_project_type_bootloader || cy_project_type_app_for_stack_and_copier)?(LENGTH (rom) - CY_METADATA_SIZE):0xf0000000
+
+.cyloadermeta   0xf0000000       0x40
+ *(.cyloadermeta)
+ .cyloadermeta  0xf0000000       0x40 .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+                0xf0000000                cy_meta_loader
+                0x00007fc0                cyloadablemeta_start = cy_project_type_app_for_stack_and_copier?((LENGTH (rom) - CY_FLASH_ROW_SIZE) - CY_METADATA_SIZE):((LENGTH (rom) - (CY_FLASH_ROW_SIZE * (CY_APPL_NUM - 0x1))) - CY_METADATA_SIZE)
+
+.cyloadablemeta
+                0x00007fc0       0x40
+ *(.cyloadablemeta)
+ .cyloadablemeta
+                0x00007fc0       0x40 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+                0x00007fc0                cy_meta_loadable
+
+.cyflashprotect
+                0x90400000       0x20
+ *(.cyflashprotect)
+ .cyflashprotect
+                0x90400000       0x20 .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+                0x90400000                cy_meta_flashprotect
+
+.cymeta         0x90500000        0xc
+ *(.cymeta)
+ .cymeta        0x90500000        0xc .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+                0x90500000                cy_metadata
+
+.cychipprotect  0x90600000        0x1
+ *(.cychipprotect)
+ .cychipprotect
+                0x90600000        0x1 .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+                0x90600000                cy_meta_chipprotect
+
+.rel.dyn        0x00008000        0x0 load address 0x90600004
+ .rel.iplt      0x00008000        0x0 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000     0x11c8
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_aranges
+                0x00000020       0x50 .\CortexM0\ARM_GCC_541\Debug\modes.o
+ .debug_aranges
+                0x00000070       0x40 .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+ .debug_aranges
+                0x000000b0       0x40 .\CortexM0\ARM_GCC_541\Debug\inputs.o
+ .debug_aranges
+                0x000000f0       0x30 .\CortexM0\ARM_GCC_541\Debug\operate.o
+ .debug_aranges
+                0x00000120       0x20 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_aranges
+                0x00000140       0x18 .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+ .debug_aranges
+                0x00000158       0x18 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_aranges
+                0x00000170       0x48 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_aranges
+                0x000001b8       0x50 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .debug_aranges
+                0x00000208       0x60 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .debug_aranges
+                0x00000268       0x68 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .debug_aranges
+                0x000002d0       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+ .debug_aranges
+                0x000002f8       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+ .debug_aranges
+                0x00000320      0x180 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .debug_aranges
+                0x000004a0       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .debug_aranges
+                0x000004e8      0x148 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .debug_aranges
+                0x00000630      0x148 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .debug_aranges
+                0x00000778       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .debug_aranges
+                0x000007c0       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .debug_aranges
+                0x00000808       0x80 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .debug_aranges
+                0x00000888       0x80 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .debug_aranges
+                0x00000908       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .debug_aranges
+                0x00000950       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .debug_aranges
+                0x00000998       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .debug_aranges
+                0x000009e0       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .debug_aranges
+                0x00000a28       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .debug_aranges
+                0x00000a70       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .debug_aranges
+                0x00000ab8       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .debug_aranges
+                0x00000b00       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .debug_aranges
+                0x00000b48       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .debug_aranges
+                0x00000b90       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .debug_aranges
+                0x00000bd8       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .debug_aranges
+                0x00000c20       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .debug_aranges
+                0x00000c68       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .debug_aranges
+                0x00000cb0       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .debug_aranges
+                0x00000cf8       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+ .debug_aranges
+                0x00000d18       0x80 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .debug_aranges
+                0x00000d98       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .debug_aranges
+                0x00000de0       0x68 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .debug_aranges
+                0x00000e48       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .debug_aranges
+                0x00000e90       0x78 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .debug_aranges
+                0x00000f08       0x80 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .debug_aranges
+                0x00000f88       0x80 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .debug_aranges
+                0x00001008       0x90 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .debug_aranges
+                0x00001098       0x58 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .debug_aranges
+                0x000010f0       0x60 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .debug_aranges
+                0x00001150       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+ .debug_aranges
+                0x00001188       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+ .debug_aranges
+                0x000011a8       0x20 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyBootAsmGnu.o)
+
+.debug_pubnames
+ *(.debug_pubnames)
+
+.debug_info     0x00000000     0xbfe1
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000      0x6a4 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_info    0x000006a4     0x198f .\CortexM0\ARM_GCC_541\Debug\modes.o
+ .debug_info    0x00002033      0x5e9 .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+ .debug_info    0x0000261c      0x437 .\CortexM0\ARM_GCC_541\Debug\inputs.o
+ .debug_info    0x00002a53     0x10cc .\CortexM0\ARM_GCC_541\Debug\operate.o
+ .debug_info    0x00003b1f      0x396 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_info    0x00003eb5      0x153 .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+ .debug_info    0x00004008       0xac .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_info    0x000040b4      0x3af .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_info    0x00004463      0x261 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .debug_info    0x000046c4      0x224 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .debug_info    0x000048e8      0x310 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .debug_info    0x00004bf8      0x1a0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+ .debug_info    0x00004d98      0x364 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+ .debug_info    0x000050fc      0xbdb .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .debug_info    0x00005cd7      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .debug_info    0x00005e72      0x90e .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .debug_info    0x00006780      0x90e .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .debug_info    0x0000708e      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .debug_info    0x00007229      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .debug_info    0x000073c4      0x352 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .debug_info    0x00007716      0x352 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .debug_info    0x00007a68      0x1a0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .debug_info    0x00007c08      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .debug_info    0x00007da3      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .debug_info    0x00007f3e      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .debug_info    0x000080d9      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .debug_info    0x00008274      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .debug_info    0x0000840f      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .debug_info    0x000085aa      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .debug_info    0x00008745      0x1a0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .debug_info    0x000088e5      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .debug_info    0x00008a80      0x1a0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .debug_info    0x00008c20      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .debug_info    0x00008dbb      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .debug_info    0x00008f56      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .debug_info    0x000090f1      0x242 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+ .debug_info    0x00009333      0x352 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .debug_info    0x00009685      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .debug_info    0x00009820      0xfb5 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .debug_info    0x0000a7d5      0x19b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .debug_info    0x0000a970      0x2fe .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .debug_info    0x0000ac6e      0x352 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .debug_info    0x0000afc0      0x352 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .debug_info    0x0000b312      0x358 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .debug_info    0x0000b66a      0x308 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .debug_info    0x0000b972      0x2df .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .debug_info    0x0000bc51      0x1d4 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+ .debug_info    0x0000be25      0x141 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+ .debug_info    0x0000bf66       0x7b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyBootAsmGnu.o)
+
+.debug_abbrev   0x00000000     0x3e2c
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x11f .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_abbrev  0x0000011f      0x21a .\CortexM0\ARM_GCC_541\Debug\modes.o
+ .debug_abbrev  0x00000339      0x183 .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+ .debug_abbrev  0x000004bc       0xfb .\CortexM0\ARM_GCC_541\Debug\inputs.o
+ .debug_abbrev  0x000005b7      0x1a5 .\CortexM0\ARM_GCC_541\Debug\operate.o
+ .debug_abbrev  0x0000075c      0x1de .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_abbrev  0x0000093a       0x77 .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+ .debug_abbrev  0x000009b1       0x5d .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_abbrev  0x00000a0e      0x1e6 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_abbrev  0x00000bf4      0x127 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .debug_abbrev  0x00000d1b      0x14f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .debug_abbrev  0x00000e6a      0x123 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .debug_abbrev  0x00000f8d       0xf7 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+ .debug_abbrev  0x00001084      0x1ce .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+ .debug_abbrev  0x00001252      0x2f5 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .debug_abbrev  0x00001547       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .debug_abbrev  0x0000160d      0x17c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .debug_abbrev  0x00001789      0x17c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .debug_abbrev  0x00001905       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .debug_abbrev  0x000019cb       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .debug_abbrev  0x00001a91      0x233 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .debug_abbrev  0x00001cc4      0x233 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .debug_abbrev  0x00001ef7       0xc8 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .debug_abbrev  0x00001fbf       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .debug_abbrev  0x00002085       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .debug_abbrev  0x0000214b       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .debug_abbrev  0x00002211       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .debug_abbrev  0x000022d7       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .debug_abbrev  0x0000239d       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .debug_abbrev  0x00002463       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .debug_abbrev  0x00002529       0xc8 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .debug_abbrev  0x000025f1       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .debug_abbrev  0x000026b7       0xc8 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .debug_abbrev  0x0000277f       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .debug_abbrev  0x00002845       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .debug_abbrev  0x0000290b       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .debug_abbrev  0x000029d1      0x110 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+ .debug_abbrev  0x00002ae1      0x244 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .debug_abbrev  0x00002d25       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .debug_abbrev  0x00002deb      0x2fe .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .debug_abbrev  0x000030e9       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .debug_abbrev  0x000031af      0x19a .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .debug_abbrev  0x00003349      0x244 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .debug_abbrev  0x0000358d      0x244 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .debug_abbrev  0x000037d1      0x19f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .debug_abbrev  0x00003970      0x16a .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .debug_abbrev  0x00003ada      0x19e .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .debug_abbrev  0x00003c78      0x106 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+ .debug_abbrev  0x00003d7e       0x9a .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+ .debug_abbrev  0x00003e18       0x14 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyBootAsmGnu.o)
+
+.debug_line     0x00000000     0x4c94
+ *(.debug_line)
+ .debug_line    0x00000000      0x34b .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_line    0x0000034b      0x653 .\CortexM0\ARM_GCC_541\Debug\modes.o
+ .debug_line    0x0000099e      0x18f .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+ .debug_line    0x00000b2d      0x16d .\CortexM0\ARM_GCC_541\Debug\inputs.o
+ .debug_line    0x00000c9a      0x40a .\CortexM0\ARM_GCC_541\Debug\operate.o
+ .debug_line    0x000010a4      0x17b .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_line    0x0000121f       0x53 .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+ .debug_line    0x00001272      0x141 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .debug_line    0x000013b3      0x22e .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_line    0x000015e1      0x127 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .debug_line    0x00001708      0x129 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .debug_line    0x00001831      0x19d .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .debug_line    0x000019ce       0xce .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+ .debug_line    0x00001a9c      0x173 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+ .debug_line    0x00001c0f      0x4ef .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .debug_line    0x000020fe       0xc8 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .debug_line    0x000021c6      0x3b9 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .debug_line    0x0000257f      0x3b9 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .debug_line    0x00002938       0xc6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .debug_line    0x000029fe       0xcb .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .debug_line    0x00002ac9      0x199 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .debug_line    0x00002c62      0x199 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .debug_line    0x00002dfb       0xc8 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .debug_line    0x00002ec3       0xcd .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .debug_line    0x00002f90       0xca .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .debug_line    0x0000305a       0xc8 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .debug_line    0x00003122       0xca .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .debug_line    0x000031ec       0xcb .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .debug_line    0x000032b7       0xcc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .debug_line    0x00003383       0xce .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .debug_line    0x00003451       0xca .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .debug_line    0x0000351b       0xd0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .debug_line    0x000035eb       0xc9 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .debug_line    0x000036b4       0xc9 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .debug_line    0x0000377d       0xcd .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .debug_line    0x0000384a       0xcb .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .debug_line    0x00003915       0x8b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+ .debug_line    0x000039a0      0x1b9 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .debug_line    0x00003b59       0xd1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .debug_line    0x00003c2a      0x40e .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .debug_line    0x00004038       0xcb .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .debug_line    0x00004103      0x18a .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .debug_line    0x0000428d      0x1b9 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .debug_line    0x00004446      0x1b7 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .debug_line    0x000045fd      0x1cd .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .debug_line    0x000047ca      0x15a .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .debug_line    0x00004924      0x152 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .debug_line    0x00004a76      0x105 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+ .debug_line    0x00004b7b       0xb0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+ .debug_line    0x00004c2b       0x69 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyBootAsmGnu.o)
+
+.debug_frame    0x00000000     0x268c
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x38 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_frame   0x00000038      0x118 .\CortexM0\ARM_GCC_541\Debug\modes.o
+ .debug_frame   0x00000150       0xcc .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+ .debug_frame   0x0000021c       0xa8 .\CortexM0\ARM_GCC_541\Debug\inputs.o
+ .debug_frame   0x000002c4       0x84 .\CortexM0\ARM_GCC_541\Debug\operate.o
+ .debug_frame   0x00000348       0x3c .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_frame   0x00000384       0xc8 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_frame   0x0000044c       0xb0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .debug_frame   0x000004fc       0xb0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .debug_frame   0x000005ac       0xfc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .debug_frame   0x000006a8       0x54 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+ .debug_frame   0x000006fc       0x54 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+ .debug_frame   0x00000750      0x3b0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .debug_frame   0x00000b00       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .debug_frame   0x00000b70      0x384 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .debug_frame   0x00000ef4      0x384 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .debug_frame   0x00001278       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .debug_frame   0x000012e8       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .debug_frame   0x00001358      0x104 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .debug_frame   0x0000145c      0x104 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .debug_frame   0x00001560       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .debug_frame   0x000015d0       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .debug_frame   0x00001640       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .debug_frame   0x000016b0       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .debug_frame   0x00001720       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .debug_frame   0x00001790       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .debug_frame   0x00001800       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .debug_frame   0x00001870       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .debug_frame   0x000018e0       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .debug_frame   0x00001950       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .debug_frame   0x000019c0       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .debug_frame   0x00001a30       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .debug_frame   0x00001aa0       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .debug_frame   0x00001b10       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .debug_frame   0x00001b80       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+ .debug_frame   0x00001bb8      0x104 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .debug_frame   0x00001cbc       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .debug_frame   0x00001d2c      0x160 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .debug_frame   0x00001e8c       0x70 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .debug_frame   0x00001efc      0x118 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .debug_frame   0x00002014      0x104 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .debug_frame   0x00002118      0x104 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .debug_frame   0x0000221c      0x118 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .debug_frame   0x00002334       0xc0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .debug_frame   0x000023f4       0xbc .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .debug_frame   0x000024b0       0x5c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+ .debug_frame   0x0000250c       0x30 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+ .debug_frame   0x0000253c       0x20 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
+ .debug_frame   0x0000255c       0x20 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
+ .debug_frame   0x0000257c       0x34 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_muldi3.o)
+ .debug_frame   0x000025b0       0x20 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .debug_frame   0x000025d0       0x28 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .debug_frame   0x000025f8       0x2c c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .debug_frame   0x00002624       0x28 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .debug_frame   0x0000264c       0x20 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .debug_frame   0x0000266c       0x20 c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strcpy.o)
+
+.debug_str      0x00000000     0x3887
+ *(.debug_str)
+ .debug_str     0x00000000      0x539 .\CortexM0\ARM_GCC_541\Debug\main.o
+                                0x59f (size before relaxing)
+ .debug_str     0x00000539      0x352 .\CortexM0\ARM_GCC_541\Debug\modes.o
+                                0x6bf (size before relaxing)
+ .debug_str     0x0000088b      0x113 .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+                                0x386 (size before relaxing)
+ .debug_str     0x0000099e      0x1d3 .\CortexM0\ARM_GCC_541\Debug\inputs.o
+                                0x4d8 (size before relaxing)
+ .debug_str     0x00000b71       0x33 .\CortexM0\ARM_GCC_541\Debug\operate.o
+                                0x524 (size before relaxing)
+ .debug_str     0x00000ba4      0x109 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+                                0x2ac (size before relaxing)
+ .debug_str     0x00000cad       0x78 .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+                                0x1d8 (size before relaxing)
+ .debug_str     0x00000d25       0x35 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+                                0x18f (size before relaxing)
+ .debug_str     0x00000d5a      0x149 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+                                0x2fb (size before relaxing)
+ .debug_str     0x00000ea3      0x126 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+                                0x2b1 (size before relaxing)
+ .debug_str     0x00000fc9      0x11d .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+                                0x2b9 (size before relaxing)
+ .debug_str     0x000010e6       0xef .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+                                0x327 (size before relaxing)
+ .debug_str     0x000011d5       0x86 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+                                0x234 (size before relaxing)
+ .debug_str     0x0000125b      0x15a .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+                                0x319 (size before relaxing)
+ .debug_str     0x000013b5      0x482 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+                                0x6a1 (size before relaxing)
+ .debug_str     0x00001837       0xa0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+                                0x221 (size before relaxing)
+ .debug_str     0x000018d7      0x3c1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+                                0x5c5 (size before relaxing)
+ .debug_str     0x00001c98      0x30a .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+                                0x5c5 (size before relaxing)
+ .debug_str     0x00001fa2       0x1d .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+                                0x213 (size before relaxing)
+ .debug_str     0x00001fbf       0x7f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+                                0x236 (size before relaxing)
+ .debug_str     0x0000203e      0x11b .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+                                0x30d (size before relaxing)
+ .debug_str     0x00002159      0x126 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+                                0x329 (size before relaxing)
+ .debug_str     0x0000227f       0x82 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+                                0x228 (size before relaxing)
+ .debug_str     0x00002301       0x9a .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+                                0x244 (size before relaxing)
+ .debug_str     0x0000239b       0x88 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+                                0x22f (size before relaxing)
+ .debug_str     0x00002423       0x7c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+                                0x221 (size before relaxing)
+ .debug_str     0x0000249f       0x7c .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+                                0x221 (size before relaxing)
+ .debug_str     0x0000251b       0x8d .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+                                0x236 (size before relaxing)
+ .debug_str     0x000025a8       0x87 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+                                0x22f (size before relaxing)
+ .debug_str     0x0000262f       0x9f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+                                0x24b (size before relaxing)
+ .debug_str     0x000026ce       0x8d .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+                                0x236 (size before relaxing)
+ .debug_str     0x0000275b       0xab .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+                                0x259 (size before relaxing)
+ .debug_str     0x00002806       0x73 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+                                0x22f (size before relaxing)
+ .debug_str     0x00002879       0x6e .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+                                0x228 (size before relaxing)
+ .debug_str     0x000028e7       0x78 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+                                0x236 (size before relaxing)
+ .debug_str     0x0000295f       0x78 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+                                0x236 (size before relaxing)
+ .debug_str     0x000029d7       0xf7 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+                                0x31c (size before relaxing)
+ .debug_str     0x00002ace      0x174 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+                                0x37d (size before relaxing)
+ .debug_str     0x00002c42       0x96 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+                                0x24b (size before relaxing)
+ .debug_str     0x00002cd8      0x2e5 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+                                0x621 (size before relaxing)
+ .debug_str     0x00002fbd       0x7f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+                                0x236 (size before relaxing)
+ .debug_str     0x0000303c      0x194 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+                                0x393 (size before relaxing)
+ .debug_str     0x000031d0      0x122 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+                                0x37d (size before relaxing)
+ .debug_str     0x000032f2      0x155 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+                                0x37d (size before relaxing)
+ .debug_str     0x00003447      0x19e .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+                                0x3b6 (size before relaxing)
+ .debug_str     0x000035e5      0x142 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+                                0x314 (size before relaxing)
+ .debug_str     0x00003727       0xed .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+                                0x332 (size before relaxing)
+ .debug_str     0x00003814       0x36 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+                                0x277 (size before relaxing)
+ .debug_str     0x0000384a       0x3d .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+                                0x232 (size before relaxing)
+
+.debug_loc      0x00000000     0x48ef
+ *(.debug_loc)
+ .debug_loc     0x00000000       0xec .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_loc     0x000000ec      0x818 .\CortexM0\ARM_GCC_541\Debug\modes.o
+ .debug_loc     0x00000904      0x167 .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+ .debug_loc     0x00000a6b       0x1f .\CortexM0\ARM_GCC_541\Debug\inputs.o
+ .debug_loc     0x00000a8a      0x12f .\CortexM0\ARM_GCC_541\Debug\operate.o
+ .debug_loc     0x00000bb9      0x11e .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_loc     0x00000cd7      0x1de .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_loc     0x00000eb5       0x7e .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .debug_loc     0x00000f33       0xee .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .debug_loc     0x00001021      0x218 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .debug_loc     0x00001239       0x9a .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+ .debug_loc     0x000012d3      0x258 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+ .debug_loc     0x0000152b      0x5f0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .debug_loc     0x00001b1b       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .debug_loc     0x00001bbc      0x579 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .debug_loc     0x00002135      0x579 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .debug_loc     0x000026ae       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .debug_loc     0x0000274f       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .debug_loc     0x000027f0       0xa6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .debug_loc     0x00002896       0xa6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .debug_loc     0x0000293c       0x5f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .debug_loc     0x0000299b       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .debug_loc     0x00002a3c       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .debug_loc     0x00002add       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .debug_loc     0x00002b7e       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .debug_loc     0x00002c1f       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .debug_loc     0x00002cc0       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .debug_loc     0x00002d61       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .debug_loc     0x00002e02       0x5f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .debug_loc     0x00002e61       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .debug_loc     0x00002f02       0x5f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .debug_loc     0x00002f61       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .debug_loc     0x00003002       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .debug_loc     0x000030a3       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .debug_loc     0x00003144       0x2d .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+ .debug_loc     0x00003171       0xaf .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .debug_loc     0x00003220       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .debug_loc     0x000032c1     0x11c5 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .debug_loc     0x00004486       0xa1 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .debug_loc     0x00004527       0x51 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .debug_loc     0x00004578       0xa6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .debug_loc     0x0000461e       0xa6 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .debug_loc     0x000046c4       0x53 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .debug_loc     0x00004717       0x7e .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .debug_loc     0x00004795       0xf2 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .debug_loc     0x00004887       0x4a .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+ .debug_loc     0x000048d1       0x1e .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_ranges   0x00000000     0x1358
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x10 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .debug_ranges  0x00000010       0x40 .\CortexM0\ARM_GCC_541\Debug\modes.o
+ .debug_ranges  0x00000050       0x30 .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+ .debug_ranges  0x00000080       0x30 .\CortexM0\ARM_GCC_541\Debug\inputs.o
+ .debug_ranges  0x000000b0       0x20 .\CortexM0\ARM_GCC_541\Debug\operate.o
+ .debug_ranges  0x000000d0       0xb0 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .debug_ranges  0x00000180       0x50 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .debug_ranges  0x000001d0       0x40 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .debug_ranges  0x00000210       0x50 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .debug_ranges  0x00000260       0x58 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .debug_ranges  0x000002b8       0x18 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+ .debug_ranges  0x000002d0       0x30 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+ .debug_ranges  0x00000300      0x1a8 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .debug_ranges  0x000004a8       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .debug_ranges  0x000004e0      0x150 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .debug_ranges  0x00000630      0x150 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .debug_ranges  0x00000780       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .debug_ranges  0x000007b8       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .debug_ranges  0x000007f0       0xb8 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .debug_ranges  0x000008a8       0xb8 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .debug_ranges  0x00000960       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .debug_ranges  0x00000998       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .debug_ranges  0x000009d0       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .debug_ranges  0x00000a08       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .debug_ranges  0x00000a40       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .debug_ranges  0x00000a78       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .debug_ranges  0x00000ab0       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .debug_ranges  0x00000ae8       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .debug_ranges  0x00000b20       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .debug_ranges  0x00000b58       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .debug_ranges  0x00000b90       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .debug_ranges  0x00000bc8       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .debug_ranges  0x00000c00       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .debug_ranges  0x00000c38       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .debug_ranges  0x00000c70       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+ .debug_ranges  0x00000c80       0xf0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .debug_ranges  0x00000d70       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .debug_ranges  0x00000da8      0x120 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .debug_ranges  0x00000ec8       0x38 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .debug_ranges  0x00000f00       0xc8 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .debug_ranges  0x00000fc8       0xf0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .debug_ranges  0x000010b8       0xf0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .debug_ranges  0x000011a8       0xe0 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .debug_ranges  0x00001288       0x48 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .debug_ranges  0x000012d0       0x50 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .debug_ranges  0x00001320       0x28 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+ .debug_ranges  0x00001348       0x10 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+
+.comment        0x00000000       0x6e
+ .comment       0x00000000       0x6e .\CortexM0\ARM_GCC_541\Debug\main.o
+                                 0x6f (size before relaxing)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\modes.o
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\inputs.o
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\operate.o
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+ .comment       0x0000006e       0x6f .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.note.gnu.arm.ident
+ *(.note.gnu.arm.ident)
+
+.ARM.attributes
+                0x00000000       0x28
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x1e c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crti.o
+ .ARM.attributes
+                0x0000001e       0x2c c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtbegin.o
+ .ARM.attributes
+                0x0000004a       0x1b c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m/crt0.o
+ .ARM.attributes
+                0x00000065       0x31 .\CortexM0\ARM_GCC_541\Debug\main.o
+ .ARM.attributes
+                0x00000096       0x31 .\CortexM0\ARM_GCC_541\Debug\modes.o
+ .ARM.attributes
+                0x000000c7       0x31 .\CortexM0\ARM_GCC_541\Debug\spi_int.o
+ .ARM.attributes
+                0x000000f8       0x31 .\CortexM0\ARM_GCC_541\Debug\inputs.o
+ .ARM.attributes
+                0x00000129       0x31 .\CortexM0\ARM_GCC_541\Debug\operate.o
+ .ARM.attributes
+                0x0000015a       0x31 .\CortexM0\ARM_GCC_541\Debug\cyfitter_cfg.o
+ .ARM.attributes
+                0x0000018b       0x31 .\CortexM0\ARM_GCC_541\Debug\cybootloader.o
+ .ARM.attributes
+                0x000001bc       0x31 .\CortexM0\ARM_GCC_541\Debug\cymetadata.o
+ .ARM.attributes
+                0x000001ed       0x31 .\CortexM0\ARM_GCC_541\Debug\Cm0Start.o
+ .ARM.attributes
+                0x0000021e       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART.o)
+ .ARM.attributes
+                0x0000024f       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_SPI_UART.o)
+ .ARM.attributes
+                0x00000280       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(UART_UART.o)
+ .ARM.attributes
+                0x000002b1       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Bootloadable_1.o)
+ .ARM.attributes
+                0x000002e2       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyFlash.o)
+ .ARM.attributes
+                0x00000313       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyLib.o)
+ .ARM.attributes
+                0x00000344       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Pin_1.o)
+ .ARM.attributes
+                0x00000375       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_1.o)
+ .ARM.attributes
+                0x000003a6       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Timer_2.o)
+ .ARM.attributes
+                0x000003d7       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(LED.o)
+ .ARM.attributes
+                0x00000408       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PSoC_LED.o)
+ .ARM.attributes
+                0x00000439       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(MODE_LONG.o)
+ .ARM.attributes
+                0x0000046a       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_LONG.o)
+ .ARM.attributes
+                0x0000049b       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_SBC.o)
+ .ARM.attributes
+                0x000004cc       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAIRING.o)
+ .ARM.attributes
+                0x000004fd       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_APTX.o)
+ .ARM.attributes
+                0x0000052e       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_LL.o)
+ .ARM.attributes
+                0x0000055f       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_HD.o)
+ .ARM.attributes
+                0x00000590       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_Tx_Rx.o)
+ .ARM.attributes
+                0x000005c1       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_NEXT.o)
+ .ARM.attributes
+                0x000005f2       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PREVIOUS.o)
+ .ARM.attributes
+                0x00000623       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_PAUSE.o)
+ .ARM.attributes
+                0x00000654       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(BT_RE_CONNECT.o)
+ .ARM.attributes
+                0x00000685       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_RPI.o)
+ .ARM.attributes
+                0x000006b6       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_BT.o)
+ .ARM.attributes
+                0x000006e7       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_SDSP.o)
+ .ARM.attributes
+                0x00000718       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_DISP.o)
+ .ARM.attributes
+                0x00000749       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(Em_EEPROM.o)
+ .ARM.attributes
+                0x0000077a       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE_SHORT.o)
+ .ARM.attributes
+                0x000007ab       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(PWR_OK_MODE.o)
+ .ARM.attributes
+                0x000007dc       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(cy_em_eeprom.o)
+ .ARM.attributes
+                0x0000080d       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK.o)
+ .ARM.attributes
+                0x0000083e       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_Timer.o)
+ .ARM.attributes
+                0x0000086f       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DATALINK_INTRRUPT.o)
+ .ARM.attributes
+                0x000008a0       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer_INT.o)
+ .ARM.attributes
+                0x000008d1       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(DISPLAY_Timer.o)
+ .ARM.attributes
+                0x00000902       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM.o)
+ .ARM.attributes
+                0x00000933       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART.o)
+ .ARM.attributes
+                0x00000964       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI.o)
+ .ARM.attributes
+                0x00000995       0x31 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(SPIM_SPI_UART_INT.o)
+ .ARM.attributes
+                0x000009c6       0x21 .\CortexM0\ARM_GCC_541\Debug\BeoM_main.a(CyBootAsmGnu.o)
+ .ARM.attributes
+                0x000009e7       0x1e c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_thumb1_case_uqi.o)
+ .ARM.attributes
+                0x00000a05       0x1e c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_thumb1_case_uhi.o)
+ .ARM.attributes
+                0x00000a23       0x1e c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x00000a41       0x1e c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_divsi3.o)
+ .ARM.attributes
+                0x00000a5f       0x1e c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x00000a7d       0x2c c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m\libgcc.a(_muldi3.o)
+ .ARM.attributes
+                0x00000aa9       0x2c c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-errno.o)
+ .ARM.attributes
+                0x00000ad5       0x2c c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-exit.o)
+ .ARM.attributes
+                0x00000b01       0x2c c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-impure.o)
+ .ARM.attributes
+                0x00000b2d       0x2c c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-init.o)
+ .ARM.attributes
+                0x00000b59       0x2c c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memcpy-stub.o)
+ .ARM.attributes
+                0x00000b85       0x2c c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-memset.o)
+ .ARM.attributes
+                0x00000bb1       0x2c c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/../../../../arm-none-eabi/lib/armv6-m\libg_nano.a(lib_a-strcpy.o)
+ .ARM.attributes
+                0x00000bdd       0x2c c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtend.o
+ .ARM.attributes
+                0x00000c09       0x1e c:/program files (x86)/cypress/psoc creator/4.3/psoc creator/import/gnu/arm/5.4.1/bin/../lib/gcc/arm-none-eabi/5.4.1/armv6-m/crtn.o
+
+/DISCARD/
+ *(.note.GNU-stack)
+OUTPUT(C:\Users\Ala\Desktop\Cypress\BeoM_main.cydsn\CortexM0\ARM_GCC_541\Debug\BeoM_main.elf elf32-littlearm)

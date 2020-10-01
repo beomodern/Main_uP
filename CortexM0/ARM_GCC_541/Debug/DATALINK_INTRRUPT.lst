@@ -1,0 +1,2442 @@
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"DATALINK_INTRRUPT.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.DATALINK_INTRRUPT_Interrupt,"ax",%progbits
+  20              		.align	1
+  21              		.global	DATALINK_INTRRUPT_Interrupt
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	DATALINK_INTRRUPT_Interrupt, %function
+  25              	DATALINK_INTRRUPT_Interrupt:
+  26              	.LFB3:
+  27              		.file 1 "Generated_Source\\PSoC4\\DATALINK_INTRRUPT.c"
+   1:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * File Name: DATALINK_INTRRUPT.c  
+   3:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Version 1.70
+   4:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+   5:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  Description:
+   6:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   API for controlling the state of an interrupt.
+   7:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+   8:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+   9:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  Note:
+  10:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+  11:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************
+  12:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  13:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  14:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  15:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * the software package with which this file was provided.
+  16:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *******************************************************************************/
+  17:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  18:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  19:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** #include <cydevice_trm.h>
+  20:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** #include <CyLib.h>
+  21:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** #include <DATALINK_INTRRUPT.h>
+  22:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  23:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  24:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** #if !defined(DATALINK_INTRRUPT__REMOVED) /* Check for removal by optimization */
+  25:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  26:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+  27:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  Place your includes, defines and code here 
+  28:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************/
+  29:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /* `#START DATALINK_INTRRUPT_intc` */
+  30:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 2
+
+
+  31:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /* `#END` */
+  32:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  33:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** extern cyisraddress CyRamVectors[CYINT_IRQ_BASE + CY_NUM_INTERRUPTS];
+  34:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  35:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /* Declared in startup, used to set unused interrupts to. */
+  36:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** CY_ISR_PROTO(IntDefaultHandler);
+  37:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  38:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  39:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+  40:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Function Name: DATALINK_INTRRUPT_Start
+  41:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************
+  42:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+  43:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Summary:
+  44:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  Set up the interrupt and enable it. This function disables the interrupt, 
+  45:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  sets the default interrupt vector, sets the priority from the value in the
+  46:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  Design Wide Resources Interrupt Editor, then enables the interrupt to the 
+  47:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  interrupt controller.
+  48:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+  49:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Parameters:  
+  50:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+  51:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+  52:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Return:
+  53:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+  54:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+  55:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *******************************************************************************/
+  56:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** void DATALINK_INTRRUPT_Start(void)
+  57:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** {
+  58:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* For all we know the interrupt is active. */
+  59:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     DATALINK_INTRRUPT_Disable();
+  60:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  61:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Set the ISR to point to the DATALINK_INTRRUPT Interrupt. */
+  62:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     DATALINK_INTRRUPT_SetVector(&DATALINK_INTRRUPT_Interrupt);
+  63:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  64:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Set the priority. */
+  65:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     DATALINK_INTRRUPT_SetPriority((uint8)DATALINK_INTRRUPT_INTC_PRIOR_NUMBER);
+  66:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  67:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Enable it. */
+  68:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     DATALINK_INTRRUPT_Enable();
+  69:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+  70:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  71:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  72:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+  73:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Function Name: DATALINK_INTRRUPT_StartEx
+  74:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************
+  75:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+  76:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Summary:
+  77:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  Sets up the interrupt and enables it. This function disables the interrupt,
+  78:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  sets the interrupt vector based on the address passed in, sets the priority 
+  79:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  from the value in the Design Wide Resources Interrupt Editor, then enables 
+  80:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  the interrupt to the interrupt controller.
+  81:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  
+  82:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+  83:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  used to provide consistent definition across compilers:
+  84:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  
+  85:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *  Function definition example:
+  86:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   CY_ISR(MyISR)
+  87:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   {
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 3
+
+
+  88:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   }
+  89:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Function prototype example:
+  90:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   CY_ISR_PROTO(MyISR);
+  91:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+  92:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Parameters:  
+  93:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   address: Address of the ISR to set in the interrupt vector table.
+  94:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+  95:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Return:
+  96:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+  97:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+  98:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *******************************************************************************/
+  99:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** void DATALINK_INTRRUPT_StartEx(cyisraddress address)
+ 100:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** {
+ 101:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* For all we know the interrupt is active. */
+ 102:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     DATALINK_INTRRUPT_Disable();
+ 103:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 104:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Set the ISR to point to the DATALINK_INTRRUPT Interrupt. */
+ 105:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     DATALINK_INTRRUPT_SetVector(address);
+ 106:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 107:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Set the priority. */
+ 108:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     DATALINK_INTRRUPT_SetPriority((uint8)DATALINK_INTRRUPT_INTC_PRIOR_NUMBER);
+ 109:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 110:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Enable it. */
+ 111:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     DATALINK_INTRRUPT_Enable();
+ 112:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 113:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 114:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 115:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+ 116:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Function Name: DATALINK_INTRRUPT_Stop
+ 117:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************
+ 118:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 119:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Summary:
+ 120:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Disables and removes the interrupt.
+ 121:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 122:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Parameters:  
+ 123:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 124:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 125:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Return:
+ 126:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 127:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 128:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *******************************************************************************/
+ 129:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** void DATALINK_INTRRUPT_Stop(void)
+ 130:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** {
+ 131:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Disable this interrupt. */
+ 132:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     DATALINK_INTRRUPT_Disable();
+ 133:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 134:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Set the ISR to point to the passive one. */
+ 135:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     DATALINK_INTRRUPT_SetVector(&IntDefaultHandler);
+ 136:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 137:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 138:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 139:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+ 140:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Function Name: DATALINK_INTRRUPT_Interrupt
+ 141:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************
+ 142:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 143:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Summary:
+ 144:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   The default Interrupt Service Routine for DATALINK_INTRRUPT.
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 4
+
+
+ 145:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 146:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Add custom code between the START and END comments to keep the next version
+ 147:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   of this file from over-writing your code.
+ 148:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 149:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Note You may use either the default ISR by using this API, or you may define
+ 150:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   your own separate ISR through ISR_StartEx().
+ 151:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 152:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Parameters:  
+ 153:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 154:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 155:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Return:
+ 156:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 157:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 158:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *******************************************************************************/
+ 159:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** CY_ISR(DATALINK_INTRRUPT_Interrupt)
+ 160:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** {
+  28              		.loc 1 160 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+ 161:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     #ifdef DATALINK_INTRRUPT_INTERRUPT_INTERRUPT_CALLBACK
+ 162:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****         DATALINK_INTRRUPT_Interrupt_InterruptCallback();
+ 163:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     #endif /* DATALINK_INTRRUPT_INTERRUPT_INTERRUPT_CALLBACK */ 
+ 164:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 165:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /*  Place your Interrupt code here. */
+ 166:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* `#START DATALINK_INTRRUPT_Interrupt` */
+ 167:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 168:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* `#END` */
+ 169:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+  33              		.loc 1 169 0
+  34              		@ sp needed
+  35 0000 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE3:
+  38              		.size	DATALINK_INTRRUPT_Interrupt, .-DATALINK_INTRRUPT_Interrupt
+  39              		.section	.text.DATALINK_INTRRUPT_Stop,"ax",%progbits
+  40              		.align	1
+  41              		.global	DATALINK_INTRRUPT_Stop
+  42              		.code	16
+  43              		.thumb_func
+  44              		.type	DATALINK_INTRRUPT_Stop, %function
+  45              	DATALINK_INTRRUPT_Stop:
+  46              	.LFB2:
+ 130:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Disable this interrupt. */
+  47              		.loc 1 130 0
+  48              		.cfi_startproc
+  49              		@ args = 0, pretend = 0, frame = 0
+  50              		@ frame_needed = 0, uses_anonymous_args = 0
+  51              		@ link register save eliminated.
+  52              	.LBB18:
+  53              	.LBB19:
+ 170:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 171:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 172:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+ 173:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Function Name: DATALINK_INTRRUPT_SetVector
+ 174:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 5
+
+
+ 175:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 176:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Summary:
+ 177:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Change the ISR vector for the Interrupt. Note calling DATALINK_INTRRUPT_Start
+ 178:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   will override any effect this method would have had. To set the vector 
+ 179:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   before the component has been started use DATALINK_INTRRUPT_StartEx instead.
+ 180:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * 
+ 181:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   When defining ISR functions, the CY_ISR and CY_ISR_PROTO macros should be 
+ 182:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   used to provide consistent definition across compilers:
+ 183:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 184:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Function definition example:
+ 185:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   CY_ISR(MyISR)
+ 186:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   {
+ 187:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   }
+ 188:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 189:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Function prototype example:
+ 190:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *     CY_ISR_PROTO(MyISR);
+ 191:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 192:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Parameters:
+ 193:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   address: Address of the ISR to set in the interrupt vector table.
+ 194:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 195:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Return:
+ 196:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 197:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 198:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *******************************************************************************/
+ 199:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** void DATALINK_INTRRUPT_SetVector(cyisraddress address)
+ 200:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** {
+ 201:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     CyRamVectors[CYINT_IRQ_BASE + DATALINK_INTRRUPT__INTC_NUMBER] = address;
+ 202:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 203:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 204:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 205:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+ 206:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Function Name: DATALINK_INTRRUPT_GetVector
+ 207:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************
+ 208:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 209:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Summary:
+ 210:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Gets the "address" of the current ISR vector for the Interrupt.
+ 211:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 212:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Parameters:
+ 213:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 214:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 215:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Return:
+ 216:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Address of the ISR in the interrupt vector table.
+ 217:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 218:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *******************************************************************************/
+ 219:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** cyisraddress DATALINK_INTRRUPT_GetVector(void)
+ 220:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** {
+ 221:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     return CyRamVectors[CYINT_IRQ_BASE + DATALINK_INTRRUPT__INTC_NUMBER];
+ 222:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 223:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 224:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 225:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+ 226:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Function Name: DATALINK_INTRRUPT_SetPriority
+ 227:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************
+ 228:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 229:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Summary:
+ 230:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Sets the Priority of the Interrupt. 
+ 231:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 6
+
+
+ 232:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Note calling DATALINK_INTRRUPT_Start or DATALINK_INTRRUPT_StartEx will 
+ 233:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   override any effect this API would have had. This API should only be called
+ 234:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   after DATALINK_INTRRUPT_Start or DATALINK_INTRRUPT_StartEx has been called. 
+ 235:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   To set the initial priority for the component, use the Design-Wide Resources
+ 236:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Interrupt Editor.
+ 237:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 238:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Note This API has no effect on Non-maskable interrupt NMI).
+ 239:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 240:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Parameters:
+ 241:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   priority: Priority of the interrupt, 0 being the highest priority
+ 242:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *             PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 243:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *             PSoC 4: Priority is from 0 to 3.
+ 244:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 245:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Return:
+ 246:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 247:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 248:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *******************************************************************************/
+ 249:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** void DATALINK_INTRRUPT_SetPriority(uint8 priority)
+ 250:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** {
+ 251:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 	uint8 interruptState;
+ 252:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     uint32 priorityOffset = ((DATALINK_INTRRUPT__INTC_NUMBER % 4u) * 8u) + 6u;
+ 253:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     
+ 254:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 	interruptState = CyEnterCriticalSection();
+ 255:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     *DATALINK_INTRRUPT_INTC_PRIOR = (*DATALINK_INTRRUPT_INTC_PRIOR & (uint32)(~DATALINK_INTRRUPT__I
+ 256:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****                                     ((uint32)priority << priorityOffset);
+ 257:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 	CyExitCriticalSection(interruptState);
+ 258:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 259:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 260:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 261:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+ 262:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Function Name: DATALINK_INTRRUPT_GetPriority
+ 263:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************
+ 264:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 265:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Summary:
+ 266:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Gets the Priority of the Interrupt.
+ 267:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 268:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Parameters:
+ 269:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 270:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 271:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Return:
+ 272:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Priority of the interrupt, 0 being the highest priority
+ 273:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *    PSoC 3 and PSoC 5LP: Priority is from 0 to 7.
+ 274:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *    PSoC 4: Priority is from 0 to 3.
+ 275:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 276:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *******************************************************************************/
+ 277:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** uint8 DATALINK_INTRRUPT_GetPriority(void)
+ 278:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** {
+ 279:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     uint32 priority;
+ 280:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 	uint32 priorityOffset = ((DATALINK_INTRRUPT__INTC_NUMBER % 4u) * 8u) + 6u;
+ 281:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 282:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     priority = (*DATALINK_INTRRUPT_INTC_PRIOR & DATALINK_INTRRUPT__INTC_PRIOR_MASK) >> priorityOffs
+ 283:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 284:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     return (uint8)priority;
+ 285:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 286:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 287:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 288:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 7
+
+
+ 289:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Function Name: DATALINK_INTRRUPT_Enable
+ 290:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************
+ 291:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 292:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Summary:
+ 293:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Enables the interrupt to the interrupt controller. Do not call this function
+ 294:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   unless ISR_Start() has been called or the functionality of the ISR_Start() 
+ 295:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   function, which sets the vector and the priority, has been called.
+ 296:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 297:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Parameters:
+ 298:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 299:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 300:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Return:
+ 301:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 302:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 303:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *******************************************************************************/
+ 304:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** void DATALINK_INTRRUPT_Enable(void)
+ 305:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** {
+ 306:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Enable the general interrupt. */
+ 307:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     *DATALINK_INTRRUPT_INTC_SET_EN = DATALINK_INTRRUPT__INTC_MASK;
+ 308:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 309:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 310:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 311:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+ 312:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Function Name: DATALINK_INTRRUPT_GetState
+ 313:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************
+ 314:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 315:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Summary:
+ 316:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Gets the state (enabled, disabled) of the Interrupt.
+ 317:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 318:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Parameters:
+ 319:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 320:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 321:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Return:
+ 322:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   1 if enabled, 0 if disabled.
+ 323:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 324:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *******************************************************************************/
+ 325:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** uint8 DATALINK_INTRRUPT_GetState(void)
+ 326:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** {
+ 327:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Get the state of the general interrupt. */
+ 328:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     return ((*DATALINK_INTRRUPT_INTC_SET_EN & (uint32)DATALINK_INTRRUPT__INTC_MASK) != 0u) ? 1u:0u;
+ 329:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 330:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 331:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 332:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+ 333:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Function Name: DATALINK_INTRRUPT_Disable
+ 334:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************
+ 335:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 336:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Summary:
+ 337:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Disables the Interrupt in the interrupt controller.
+ 338:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 339:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Parameters:
+ 340:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 341:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 342:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Return:
+ 343:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 344:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 345:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *******************************************************************************/
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 8
+
+
+ 346:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** void DATALINK_INTRRUPT_Disable(void)
+ 347:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** {
+ 348:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Disable the general interrupt. */
+ 349:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     *DATALINK_INTRRUPT_INTC_CLR_EN = DATALINK_INTRRUPT__INTC_MASK;
+  54              		.loc 1 349 0
+  55 0000 0122     		movs	r2, #1
+  56 0002 034B     		ldr	r3, .L3
+  57              	.LBE19:
+  58              	.LBE18:
+ 136:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  59              		.loc 1 136 0
+  60              		@ sp needed
+  61              	.LBB21:
+  62              	.LBB20:
+  63              		.loc 1 349 0
+  64 0004 1A60     		str	r2, [r3]
+  65              	.LVL0:
+  66              	.LBE20:
+  67              	.LBE21:
+  68              	.LBB22:
+  69              	.LBB23:
+ 201:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+  70              		.loc 1 201 0
+  71 0006 034A     		ldr	r2, .L3+4
+  72 0008 034B     		ldr	r3, .L3+8
+  73 000a 1A64     		str	r2, [r3, #64]
+  74              	.LVL1:
+  75              	.LBE23:
+  76              	.LBE22:
+ 136:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+  77              		.loc 1 136 0
+  78 000c 7047     		bx	lr
+  79              	.L4:
+  80 000e C046     		.align	2
+  81              	.L3:
+  82 0010 80E100E0 		.word	-536813184
+  83 0014 00000000 		.word	IntDefaultHandler
+  84 0018 00000000 		.word	CyRamVectors
+  85              		.cfi_endproc
+  86              	.LFE2:
+  87              		.size	DATALINK_INTRRUPT_Stop, .-DATALINK_INTRRUPT_Stop
+  88              		.section	.text.DATALINK_INTRRUPT_SetVector,"ax",%progbits
+  89              		.align	1
+  90              		.global	DATALINK_INTRRUPT_SetVector
+  91              		.code	16
+  92              		.thumb_func
+  93              		.type	DATALINK_INTRRUPT_SetVector, %function
+  94              	DATALINK_INTRRUPT_SetVector:
+  95              	.LFB4:
+ 200:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     CyRamVectors[CYINT_IRQ_BASE + DATALINK_INTRRUPT__INTC_NUMBER] = address;
+  96              		.loc 1 200 0
+  97              		.cfi_startproc
+  98              		@ args = 0, pretend = 0, frame = 0
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100              		@ link register save eliminated.
+ 101              	.LVL2:
+ 201:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 9
+
+
+ 102              		.loc 1 201 0
+ 103 0000 014B     		ldr	r3, .L6
+ 202:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 104              		.loc 1 202 0
+ 105              		@ sp needed
+ 201:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 106              		.loc 1 201 0
+ 107 0002 1864     		str	r0, [r3, #64]
+ 202:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 108              		.loc 1 202 0
+ 109 0004 7047     		bx	lr
+ 110              	.L7:
+ 111 0006 C046     		.align	2
+ 112              	.L6:
+ 113 0008 00000000 		.word	CyRamVectors
+ 114              		.cfi_endproc
+ 115              	.LFE4:
+ 116              		.size	DATALINK_INTRRUPT_SetVector, .-DATALINK_INTRRUPT_SetVector
+ 117              		.section	.text.DATALINK_INTRRUPT_GetVector,"ax",%progbits
+ 118              		.align	1
+ 119              		.global	DATALINK_INTRRUPT_GetVector
+ 120              		.code	16
+ 121              		.thumb_func
+ 122              		.type	DATALINK_INTRRUPT_GetVector, %function
+ 123              	DATALINK_INTRRUPT_GetVector:
+ 124              	.LFB5:
+ 220:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     return CyRamVectors[CYINT_IRQ_BASE + DATALINK_INTRRUPT__INTC_NUMBER];
+ 125              		.loc 1 220 0
+ 126              		.cfi_startproc
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 129              		@ link register save eliminated.
+ 221:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 130              		.loc 1 221 0
+ 131 0000 014B     		ldr	r3, .L9
+ 222:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 132              		.loc 1 222 0
+ 133              		@ sp needed
+ 221:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 134              		.loc 1 221 0
+ 135 0002 186C     		ldr	r0, [r3, #64]
+ 222:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 136              		.loc 1 222 0
+ 137 0004 7047     		bx	lr
+ 138              	.L10:
+ 139 0006 C046     		.align	2
+ 140              	.L9:
+ 141 0008 00000000 		.word	CyRamVectors
+ 142              		.cfi_endproc
+ 143              	.LFE5:
+ 144              		.size	DATALINK_INTRRUPT_GetVector, .-DATALINK_INTRRUPT_GetVector
+ 145              		.section	.text.DATALINK_INTRRUPT_SetPriority,"ax",%progbits
+ 146              		.align	1
+ 147              		.global	DATALINK_INTRRUPT_SetPriority
+ 148              		.code	16
+ 149              		.thumb_func
+ 150              		.type	DATALINK_INTRRUPT_SetPriority, %function
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 10
+
+
+ 151              	DATALINK_INTRRUPT_SetPriority:
+ 152              	.LFB6:
+ 250:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 	uint8 interruptState;
+ 153              		.loc 1 250 0
+ 154              		.cfi_startproc
+ 155              		@ args = 0, pretend = 0, frame = 0
+ 156              		@ frame_needed = 0, uses_anonymous_args = 0
+ 157              	.LVL3:
+ 158 0000 10B5     		push	{r4, lr}
+ 159              		.cfi_def_cfa_offset 8
+ 160              		.cfi_offset 4, -8
+ 161              		.cfi_offset 14, -4
+ 250:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 	uint8 interruptState;
+ 162              		.loc 1 250 0
+ 163 0002 0400     		movs	r4, r0
+ 254:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     *DATALINK_INTRRUPT_INTC_PRIOR = (*DATALINK_INTRRUPT_INTC_PRIOR & (uint32)(~DATALINK_INTRRUPT__I
+ 164              		.loc 1 254 0
+ 165 0004 FFF7FEFF 		bl	CyEnterCriticalSection
+ 166              	.LVL4:
+ 255:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****                                     ((uint32)priority << priorityOffset);
+ 167              		.loc 1 255 0
+ 168 0008 C021     		movs	r1, #192
+ 169 000a 044A     		ldr	r2, .L12
+ 170 000c A401     		lsls	r4, r4, #6
+ 171 000e 1368     		ldr	r3, [r2]
+ 258:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 172              		.loc 1 258 0
+ 173              		@ sp needed
+ 255:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****                                     ((uint32)priority << priorityOffset);
+ 174              		.loc 1 255 0
+ 175 0010 8B43     		bics	r3, r1
+ 176 0012 1C43     		orrs	r4, r3
+ 177 0014 1460     		str	r4, [r2]
+ 257:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 178              		.loc 1 257 0
+ 179 0016 FFF7FEFF 		bl	CyExitCriticalSection
+ 180              	.LVL5:
+ 258:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 181              		.loc 1 258 0
+ 182 001a 10BD     		pop	{r4, pc}
+ 183              	.L13:
+ 184              		.align	2
+ 185              	.L12:
+ 186 001c 00E400E0 		.word	-536812544
+ 187              		.cfi_endproc
+ 188              	.LFE6:
+ 189              		.size	DATALINK_INTRRUPT_SetPriority, .-DATALINK_INTRRUPT_SetPriority
+ 190              		.section	.text.DATALINK_INTRRUPT_Start,"ax",%progbits
+ 191              		.align	1
+ 192              		.global	DATALINK_INTRRUPT_Start
+ 193              		.code	16
+ 194              		.thumb_func
+ 195              		.type	DATALINK_INTRRUPT_Start, %function
+ 196              	DATALINK_INTRRUPT_Start:
+ 197              	.LFB0:
+  57:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* For all we know the interrupt is active. */
+ 198              		.loc 1 57 0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 11
+
+
+ 199              		.cfi_startproc
+ 200              		@ args = 0, pretend = 0, frame = 0
+ 201              		@ frame_needed = 0, uses_anonymous_args = 0
+ 202 0000 10B5     		push	{r4, lr}
+ 203              		.cfi_def_cfa_offset 8
+ 204              		.cfi_offset 4, -8
+ 205              		.cfi_offset 14, -4
+ 206              	.LBB24:
+ 207              	.LBB25:
+ 208              		.loc 1 349 0
+ 209 0002 0124     		movs	r4, #1
+ 210 0004 054B     		ldr	r3, .L15
+ 211              	.LBE25:
+ 212              	.LBE24:
+ 213              	.LBB27:
+ 214              	.LBB28:
+ 201:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 215              		.loc 1 201 0
+ 216 0006 064A     		ldr	r2, .L15+4
+ 217              	.LBE28:
+ 218              	.LBE27:
+ 219              	.LBB31:
+ 220              	.LBB26:
+ 221              		.loc 1 349 0
+ 222 0008 1C60     		str	r4, [r3]
+ 223              	.LVL6:
+ 224              	.LBE26:
+ 225              	.LBE31:
+ 226              	.LBB32:
+ 227              	.LBB29:
+ 201:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 228              		.loc 1 201 0
+ 229 000a 064B     		ldr	r3, .L15+8
+ 230              	.LBE29:
+ 231              	.LBE32:
+  65:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 232              		.loc 1 65 0
+ 233 000c 0320     		movs	r0, #3
+ 234              	.LBB33:
+ 235              	.LBB30:
+ 201:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 236              		.loc 1 201 0
+ 237 000e 1A64     		str	r2, [r3, #64]
+ 238              	.LVL7:
+ 239              	.LBE30:
+ 240              	.LBE33:
+  65:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 241              		.loc 1 65 0
+ 242 0010 FFF7FEFF 		bl	DATALINK_INTRRUPT_SetPriority
+ 243              	.LVL8:
+ 244              	.LBB34:
+ 245              	.LBB35:
+ 307:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 246              		.loc 1 307 0
+ 247 0014 044B     		ldr	r3, .L15+12
+ 248              	.LBE35:
+ 249              	.LBE34:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 12
+
+
+  69:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 250              		.loc 1 69 0
+ 251              		@ sp needed
+ 252              	.LBB37:
+ 253              	.LBB36:
+ 307:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 254              		.loc 1 307 0
+ 255 0016 1C60     		str	r4, [r3]
+ 256              	.LBE36:
+ 257              	.LBE37:
+  69:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 258              		.loc 1 69 0
+ 259 0018 10BD     		pop	{r4, pc}
+ 260              	.L16:
+ 261 001a C046     		.align	2
+ 262              	.L15:
+ 263 001c 80E100E0 		.word	-536813184
+ 264 0020 00000000 		.word	DATALINK_INTRRUPT_Interrupt
+ 265 0024 00000000 		.word	CyRamVectors
+ 266 0028 00E100E0 		.word	-536813312
+ 267              		.cfi_endproc
+ 268              	.LFE0:
+ 269              		.size	DATALINK_INTRRUPT_Start, .-DATALINK_INTRRUPT_Start
+ 270              		.section	.text.DATALINK_INTRRUPT_StartEx,"ax",%progbits
+ 271              		.align	1
+ 272              		.global	DATALINK_INTRRUPT_StartEx
+ 273              		.code	16
+ 274              		.thumb_func
+ 275              		.type	DATALINK_INTRRUPT_StartEx, %function
+ 276              	DATALINK_INTRRUPT_StartEx:
+ 277              	.LFB1:
+ 100:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* For all we know the interrupt is active. */
+ 278              		.loc 1 100 0
+ 279              		.cfi_startproc
+ 280              		@ args = 0, pretend = 0, frame = 0
+ 281              		@ frame_needed = 0, uses_anonymous_args = 0
+ 282              	.LVL9:
+ 283 0000 10B5     		push	{r4, lr}
+ 284              		.cfi_def_cfa_offset 8
+ 285              		.cfi_offset 4, -8
+ 286              		.cfi_offset 14, -4
+ 287              	.LBB38:
+ 288              	.LBB39:
+ 289              		.loc 1 349 0
+ 290 0002 0124     		movs	r4, #1
+ 291 0004 044B     		ldr	r3, .L18
+ 292              	.LBE39:
+ 293              	.LBE38:
+ 112:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 294              		.loc 1 112 0
+ 295              		@ sp needed
+ 296              	.LBB41:
+ 297              	.LBB40:
+ 298              		.loc 1 349 0
+ 299 0006 1C60     		str	r4, [r3]
+ 300              	.LVL10:
+ 301              	.LBE40:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 13
+
+
+ 302              	.LBE41:
+ 303              	.LBB42:
+ 304              	.LBB43:
+ 201:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 305              		.loc 1 201 0
+ 306 0008 044B     		ldr	r3, .L18+4
+ 307 000a 1864     		str	r0, [r3, #64]
+ 308              	.LVL11:
+ 309              	.LBE43:
+ 310              	.LBE42:
+ 108:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 311              		.loc 1 108 0
+ 312 000c 0320     		movs	r0, #3
+ 313              	.LVL12:
+ 314 000e FFF7FEFF 		bl	DATALINK_INTRRUPT_SetPriority
+ 315              	.LVL13:
+ 316              	.LBB44:
+ 317              	.LBB45:
+ 307:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 318              		.loc 1 307 0
+ 319 0012 034B     		ldr	r3, .L18+8
+ 320 0014 1C60     		str	r4, [r3]
+ 321              	.LBE45:
+ 322              	.LBE44:
+ 112:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 323              		.loc 1 112 0
+ 324 0016 10BD     		pop	{r4, pc}
+ 325              	.L19:
+ 326              		.align	2
+ 327              	.L18:
+ 328 0018 80E100E0 		.word	-536813184
+ 329 001c 00000000 		.word	CyRamVectors
+ 330 0020 00E100E0 		.word	-536813312
+ 331              		.cfi_endproc
+ 332              	.LFE1:
+ 333              		.size	DATALINK_INTRRUPT_StartEx, .-DATALINK_INTRRUPT_StartEx
+ 334              		.section	.text.DATALINK_INTRRUPT_GetPriority,"ax",%progbits
+ 335              		.align	1
+ 336              		.global	DATALINK_INTRRUPT_GetPriority
+ 337              		.code	16
+ 338              		.thumb_func
+ 339              		.type	DATALINK_INTRRUPT_GetPriority, %function
+ 340              	DATALINK_INTRRUPT_GetPriority:
+ 341              	.LFB7:
+ 278:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     uint32 priority;
+ 342              		.loc 1 278 0
+ 343              		.cfi_startproc
+ 344              		@ args = 0, pretend = 0, frame = 0
+ 345              		@ frame_needed = 0, uses_anonymous_args = 0
+ 346              		@ link register save eliminated.
+ 347              	.LVL14:
+ 282:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 348              		.loc 1 282 0
+ 349 0000 024B     		ldr	r3, .L21
+ 285:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 350              		.loc 1 285 0
+ 351              		@ sp needed
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 14
+
+
+ 282:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 352              		.loc 1 282 0
+ 353 0002 1868     		ldr	r0, [r3]
+ 354              	.LVL15:
+ 284:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 355              		.loc 1 284 0
+ 356 0004 0006     		lsls	r0, r0, #24
+ 357              	.LVL16:
+ 358 0006 800F     		lsrs	r0, r0, #30
+ 285:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 359              		.loc 1 285 0
+ 360 0008 7047     		bx	lr
+ 361              	.L22:
+ 362 000a C046     		.align	2
+ 363              	.L21:
+ 364 000c 00E400E0 		.word	-536812544
+ 365              		.cfi_endproc
+ 366              	.LFE7:
+ 367              		.size	DATALINK_INTRRUPT_GetPriority, .-DATALINK_INTRRUPT_GetPriority
+ 368              		.section	.text.DATALINK_INTRRUPT_Enable,"ax",%progbits
+ 369              		.align	1
+ 370              		.global	DATALINK_INTRRUPT_Enable
+ 371              		.code	16
+ 372              		.thumb_func
+ 373              		.type	DATALINK_INTRRUPT_Enable, %function
+ 374              	DATALINK_INTRRUPT_Enable:
+ 375              	.LFB8:
+ 305:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Enable the general interrupt. */
+ 376              		.loc 1 305 0
+ 377              		.cfi_startproc
+ 378              		@ args = 0, pretend = 0, frame = 0
+ 379              		@ frame_needed = 0, uses_anonymous_args = 0
+ 380              		@ link register save eliminated.
+ 307:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 381              		.loc 1 307 0
+ 382 0000 0122     		movs	r2, #1
+ 383 0002 014B     		ldr	r3, .L24
+ 308:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 384              		.loc 1 308 0
+ 385              		@ sp needed
+ 307:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 386              		.loc 1 307 0
+ 387 0004 1A60     		str	r2, [r3]
+ 308:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 388              		.loc 1 308 0
+ 389 0006 7047     		bx	lr
+ 390              	.L25:
+ 391              		.align	2
+ 392              	.L24:
+ 393 0008 00E100E0 		.word	-536813312
+ 394              		.cfi_endproc
+ 395              	.LFE8:
+ 396              		.size	DATALINK_INTRRUPT_Enable, .-DATALINK_INTRRUPT_Enable
+ 397              		.section	.text.DATALINK_INTRRUPT_GetState,"ax",%progbits
+ 398              		.align	1
+ 399              		.global	DATALINK_INTRRUPT_GetState
+ 400              		.code	16
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 15
+
+
+ 401              		.thumb_func
+ 402              		.type	DATALINK_INTRRUPT_GetState, %function
+ 403              	DATALINK_INTRRUPT_GetState:
+ 404              	.LFB9:
+ 326:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Get the state of the general interrupt. */
+ 405              		.loc 1 326 0
+ 406              		.cfi_startproc
+ 407              		@ args = 0, pretend = 0, frame = 0
+ 408              		@ frame_needed = 0, uses_anonymous_args = 0
+ 409              		@ link register save eliminated.
+ 328:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 410              		.loc 1 328 0
+ 411 0000 024B     		ldr	r3, .L27
+ 329:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 412              		.loc 1 329 0
+ 413              		@ sp needed
+ 328:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 414              		.loc 1 328 0
+ 415 0002 1868     		ldr	r0, [r3]
+ 416 0004 0123     		movs	r3, #1
+ 417 0006 1840     		ands	r0, r3
+ 329:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 418              		.loc 1 329 0
+ 419 0008 7047     		bx	lr
+ 420              	.L28:
+ 421 000a C046     		.align	2
+ 422              	.L27:
+ 423 000c 00E100E0 		.word	-536813312
+ 424              		.cfi_endproc
+ 425              	.LFE9:
+ 426              		.size	DATALINK_INTRRUPT_GetState, .-DATALINK_INTRRUPT_GetState
+ 427              		.section	.text.DATALINK_INTRRUPT_Disable,"ax",%progbits
+ 428              		.align	1
+ 429              		.global	DATALINK_INTRRUPT_Disable
+ 430              		.code	16
+ 431              		.thumb_func
+ 432              		.type	DATALINK_INTRRUPT_Disable, %function
+ 433              	DATALINK_INTRRUPT_Disable:
+ 434              	.LFB10:
+ 347:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     /* Disable the general interrupt. */
+ 435              		.loc 1 347 0
+ 436              		.cfi_startproc
+ 437              		@ args = 0, pretend = 0, frame = 0
+ 438              		@ frame_needed = 0, uses_anonymous_args = 0
+ 439              		@ link register save eliminated.
+ 440              		.loc 1 349 0
+ 441 0000 0122     		movs	r2, #1
+ 442 0002 014B     		ldr	r3, .L30
+ 350:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 443              		.loc 1 350 0
+ 444              		@ sp needed
+ 349:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 445              		.loc 1 349 0
+ 446 0004 1A60     		str	r2, [r3]
+ 447              		.loc 1 350 0
+ 448 0006 7047     		bx	lr
+ 449              	.L31:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 16
+
+
+ 450              		.align	2
+ 451              	.L30:
+ 452 0008 80E100E0 		.word	-536813184
+ 453              		.cfi_endproc
+ 454              	.LFE10:
+ 455              		.size	DATALINK_INTRRUPT_Disable, .-DATALINK_INTRRUPT_Disable
+ 456              		.section	.text.DATALINK_INTRRUPT_SetPending,"ax",%progbits
+ 457              		.align	1
+ 458              		.global	DATALINK_INTRRUPT_SetPending
+ 459              		.code	16
+ 460              		.thumb_func
+ 461              		.type	DATALINK_INTRRUPT_SetPending, %function
+ 462              	DATALINK_INTRRUPT_SetPending:
+ 463              	.LFB11:
+ 351:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 352:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 353:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+ 354:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Function Name: DATALINK_INTRRUPT_SetPending
+ 355:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************
+ 356:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 357:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Summary:
+ 358:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Causes the Interrupt to enter the pending state, a software method of
+ 359:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   generating the interrupt.
+ 360:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 361:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Parameters:
+ 362:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 363:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 364:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Return:
+ 365:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 366:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 367:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Side Effects:
+ 368:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   If interrupts are enabled and the interrupt is set up properly, the ISR is
+ 369:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   entered (depending on the priority of this interrupt and other pending 
+ 370:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   interrupts).
+ 371:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 372:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *******************************************************************************/
+ 373:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** void DATALINK_INTRRUPT_SetPending(void)
+ 374:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** {
+ 464              		.loc 1 374 0
+ 465              		.cfi_startproc
+ 466              		@ args = 0, pretend = 0, frame = 0
+ 467              		@ frame_needed = 0, uses_anonymous_args = 0
+ 468              		@ link register save eliminated.
+ 375:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     *DATALINK_INTRRUPT_INTC_SET_PD = DATALINK_INTRRUPT__INTC_MASK;
+ 469              		.loc 1 375 0
+ 470 0000 0122     		movs	r2, #1
+ 471 0002 014B     		ldr	r3, .L33
+ 376:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 472              		.loc 1 376 0
+ 473              		@ sp needed
+ 375:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     *DATALINK_INTRRUPT_INTC_SET_PD = DATALINK_INTRRUPT__INTC_MASK;
+ 474              		.loc 1 375 0
+ 475 0004 1A60     		str	r2, [r3]
+ 476              		.loc 1 376 0
+ 477 0006 7047     		bx	lr
+ 478              	.L34:
+ 479              		.align	2
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 17
+
+
+ 480              	.L33:
+ 481 0008 00E200E0 		.word	-536813056
+ 482              		.cfi_endproc
+ 483              	.LFE11:
+ 484              		.size	DATALINK_INTRRUPT_SetPending, .-DATALINK_INTRRUPT_SetPending
+ 485              		.section	.text.DATALINK_INTRRUPT_ClearPending,"ax",%progbits
+ 486              		.align	1
+ 487              		.global	DATALINK_INTRRUPT_ClearPending
+ 488              		.code	16
+ 489              		.thumb_func
+ 490              		.type	DATALINK_INTRRUPT_ClearPending, %function
+ 491              	DATALINK_INTRRUPT_ClearPending:
+ 492              	.LFB12:
+ 377:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 378:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** 
+ 379:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** /*******************************************************************************
+ 380:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Function Name: DATALINK_INTRRUPT_ClearPending
+ 381:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** ********************************************************************************
+ 382:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 383:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Summary:
+ 384:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Clears a pending interrupt in the interrupt controller.
+ 385:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 386:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   Note Some interrupt sources are clear-on-read and require the block 
+ 387:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   interrupt/status register to be read/cleared with the appropriate block API 
+ 388:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   (GPIO, UART, and so on). Otherwise the ISR will continue to remain in 
+ 389:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   pending state even though the interrupt itself is cleared using this API.
+ 390:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 391:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Parameters:
+ 392:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 393:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 394:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** * Return:
+ 395:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *   None
+ 396:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *
+ 397:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** *******************************************************************************/
+ 398:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** void DATALINK_INTRRUPT_ClearPending(void)
+ 399:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** {
+ 493              		.loc 1 399 0
+ 494              		.cfi_startproc
+ 495              		@ args = 0, pretend = 0, frame = 0
+ 496              		@ frame_needed = 0, uses_anonymous_args = 0
+ 497              		@ link register save eliminated.
+ 400:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     *DATALINK_INTRRUPT_INTC_CLR_PD = DATALINK_INTRRUPT__INTC_MASK;
+ 498              		.loc 1 400 0
+ 499 0000 0122     		movs	r2, #1
+ 500 0002 014B     		ldr	r3, .L36
+ 401:Generated_Source\PSoC4/DATALINK_INTRRUPT.c **** }
+ 501              		.loc 1 401 0
+ 502              		@ sp needed
+ 400:Generated_Source\PSoC4/DATALINK_INTRRUPT.c ****     *DATALINK_INTRRUPT_INTC_CLR_PD = DATALINK_INTRRUPT__INTC_MASK;
+ 503              		.loc 1 400 0
+ 504 0004 1A60     		str	r2, [r3]
+ 505              		.loc 1 401 0
+ 506 0006 7047     		bx	lr
+ 507              	.L37:
+ 508              		.align	2
+ 509              	.L36:
+ 510 0008 80E200E0 		.word	-536812928
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 18
+
+
+ 511              		.cfi_endproc
+ 512              	.LFE12:
+ 513              		.size	DATALINK_INTRRUPT_ClearPending, .-DATALINK_INTRRUPT_ClearPending
+ 514              		.text
+ 515              	.Letext0:
+ 516              		.file 2 "Generated_Source\\PSoC4/cytypes.h"
+ 517              		.file 3 "Generated_Source\\PSoC4/CyLib.h"
+ 518              		.section	.debug_info,"",%progbits
+ 519              	.Ldebug_info0:
+ 520 0000 4E030000 		.4byte	0x34e
+ 521 0004 0400     		.2byte	0x4
+ 522 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 523 000a 04       		.byte	0x4
+ 524 000b 01       		.uleb128 0x1
+ 525 000c EF020000 		.4byte	.LASF35
+ 526 0010 0C       		.byte	0xc
+ 527 0011 F5000000 		.4byte	.LASF36
+ 528 0015 78020000 		.4byte	.LASF37
+ 529 0019 80000000 		.4byte	.Ldebug_ranges0+0x80
+ 530 001d 00000000 		.4byte	0
+ 531 0021 00000000 		.4byte	.Ldebug_line0
+ 532 0025 02       		.uleb128 0x2
+ 533 0026 01       		.byte	0x1
+ 534 0027 06       		.byte	0x6
+ 535 0028 E3020000 		.4byte	.LASF0
+ 536 002c 02       		.uleb128 0x2
+ 537 002d 01       		.byte	0x1
+ 538 002e 08       		.byte	0x8
+ 539 002f E7000000 		.4byte	.LASF1
+ 540 0033 02       		.uleb128 0x2
+ 541 0034 02       		.byte	0x2
+ 542 0035 05       		.byte	0x5
+ 543 0036 75010000 		.4byte	.LASF2
+ 544 003a 02       		.uleb128 0x2
+ 545 003b 02       		.byte	0x2
+ 546 003c 07       		.byte	0x7
+ 547 003d 64000000 		.4byte	.LASF3
+ 548 0041 02       		.uleb128 0x2
+ 549 0042 04       		.byte	0x4
+ 550 0043 05       		.byte	0x5
+ 551 0044 CE020000 		.4byte	.LASF4
+ 552 0048 02       		.uleb128 0x2
+ 553 0049 04       		.byte	0x4
+ 554 004a 07       		.byte	0x7
+ 555 004b 2F010000 		.4byte	.LASF5
+ 556 004f 02       		.uleb128 0x2
+ 557 0050 08       		.byte	0x8
+ 558 0051 05       		.byte	0x5
+ 559 0052 11020000 		.4byte	.LASF6
+ 560 0056 02       		.uleb128 0x2
+ 561 0057 08       		.byte	0x8
+ 562 0058 07       		.byte	0x7
+ 563 0059 D0000000 		.4byte	.LASF7
+ 564 005d 03       		.uleb128 0x3
+ 565 005e 04       		.byte	0x4
+ 566 005f 05       		.byte	0x5
+ 567 0060 696E7400 		.ascii	"int\000"
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 19
+
+
+ 568 0064 02       		.uleb128 0x2
+ 569 0065 04       		.byte	0x4
+ 570 0066 07       		.byte	0x7
+ 571 0067 9D010000 		.4byte	.LASF8
+ 572 006b 04       		.uleb128 0x4
+ 573 006c 41010000 		.4byte	.LASF9
+ 574 0070 02       		.byte	0x2
+ 575 0071 F701     		.2byte	0x1f7
+ 576 0073 2C000000 		.4byte	0x2c
+ 577 0077 04       		.uleb128 0x4
+ 578 0078 7F010000 		.4byte	.LASF10
+ 579 007c 02       		.byte	0x2
+ 580 007d F901     		.2byte	0x1f9
+ 581 007f 48000000 		.4byte	0x48
+ 582 0083 02       		.uleb128 0x2
+ 583 0084 04       		.byte	0x4
+ 584 0085 04       		.byte	0x4
+ 585 0086 CA000000 		.4byte	.LASF11
+ 586 008a 02       		.uleb128 0x2
+ 587 008b 08       		.byte	0x8
+ 588 008c 04       		.byte	0x4
+ 589 008d 6E010000 		.4byte	.LASF12
+ 590 0091 02       		.uleb128 0x2
+ 591 0092 01       		.byte	0x1
+ 592 0093 08       		.byte	0x8
+ 593 0094 3C020000 		.4byte	.LASF13
+ 594 0098 04       		.uleb128 0x4
+ 595 0099 37000000 		.4byte	.LASF14
+ 596 009d 02       		.byte	0x2
+ 597 009e A302     		.2byte	0x2a3
+ 598 00a0 A4000000 		.4byte	0xa4
+ 599 00a4 05       		.uleb128 0x5
+ 600 00a5 77000000 		.4byte	0x77
+ 601 00a9 04       		.uleb128 0x4
+ 602 00aa FB010000 		.4byte	.LASF15
+ 603 00ae 02       		.byte	0x2
+ 604 00af B302     		.2byte	0x2b3
+ 605 00b1 B5000000 		.4byte	0xb5
+ 606 00b5 06       		.uleb128 0x6
+ 607 00b6 04       		.byte	0x4
+ 608 00b7 BB000000 		.4byte	0xbb
+ 609 00bb 07       		.uleb128 0x7
+ 610 00bc 02       		.uleb128 0x2
+ 611 00bd 08       		.byte	0x8
+ 612 00be 04       		.byte	0x4
+ 613 00bf D7020000 		.4byte	.LASF16
+ 614 00c3 02       		.uleb128 0x2
+ 615 00c4 04       		.byte	0x4
+ 616 00c5 07       		.byte	0x7
+ 617 00c6 08020000 		.4byte	.LASF17
+ 618 00ca 08       		.uleb128 0x8
+ 619 00cb 5F020000 		.4byte	.LASF18
+ 620 00cf 01       		.byte	0x1
+ 621 00d0 3001     		.2byte	0x130
+ 622 00d2 01       		.byte	0x1
+ 623 00d3 09       		.uleb128 0x9
+ 624 00d4 77000000 		.4byte	.LASF38
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 20
+
+
+ 625 00d8 01       		.byte	0x1
+ 626 00d9 C7       		.byte	0xc7
+ 627 00da 01       		.byte	0x1
+ 628 00db EB000000 		.4byte	0xeb
+ 629 00df 0A       		.uleb128 0xa
+ 630 00e0 C6010000 		.4byte	.LASF27
+ 631 00e4 01       		.byte	0x1
+ 632 00e5 C7       		.byte	0xc7
+ 633 00e6 A9000000 		.4byte	0xa9
+ 634 00ea 00       		.byte	0
+ 635 00eb 08       		.uleb128 0x8
+ 636 00ec 4A000000 		.4byte	.LASF19
+ 637 00f0 01       		.byte	0x1
+ 638 00f1 5A01     		.2byte	0x15a
+ 639 00f3 01       		.byte	0x1
+ 640 00f4 0B       		.uleb128 0xb
+ 641 00f5 1B000000 		.4byte	.LASF30
+ 642 00f9 01       		.byte	0x1
+ 643 00fa 9F       		.byte	0x9f
+ 644 00fb 00000000 		.4byte	.LFB3
+ 645 00ff 02000000 		.4byte	.LFE3-.LFB3
+ 646 0103 01       		.uleb128 0x1
+ 647 0104 9C       		.byte	0x9c
+ 648 0105 0C       		.uleb128 0xc
+ 649 0106 E4010000 		.4byte	.LASF20
+ 650 010a 01       		.byte	0x1
+ 651 010b 81       		.byte	0x81
+ 652 010c 00000000 		.4byte	.LFB2
+ 653 0110 1C000000 		.4byte	.LFE2-.LFB2
+ 654 0114 01       		.uleb128 0x1
+ 655 0115 9C       		.byte	0x9c
+ 656 0116 3F010000 		.4byte	0x13f
+ 657 011a 0D       		.uleb128 0xd
+ 658 011b EB000000 		.4byte	0xeb
+ 659 011f 00000000 		.4byte	.LBB18
+ 660 0123 00000000 		.4byte	.Ldebug_ranges0+0
+ 661 0127 01       		.byte	0x1
+ 662 0128 84       		.byte	0x84
+ 663 0129 0E       		.uleb128 0xe
+ 664 012a D3000000 		.4byte	0xd3
+ 665 012e 06000000 		.4byte	.LBB22
+ 666 0132 06000000 		.4byte	.LBE22-.LBB22
+ 667 0136 01       		.byte	0x1
+ 668 0137 87       		.byte	0x87
+ 669 0138 0F       		.uleb128 0xf
+ 670 0139 DF000000 		.4byte	0xdf
+ 671 013d 00       		.byte	0
+ 672 013e 00       		.byte	0
+ 673 013f 10       		.uleb128 0x10
+ 674 0140 D3000000 		.4byte	0xd3
+ 675 0144 00000000 		.4byte	.LFB4
+ 676 0148 0C000000 		.4byte	.LFE4-.LFB4
+ 677 014c 01       		.uleb128 0x1
+ 678 014d 9C       		.byte	0x9c
+ 679 014e 5A010000 		.4byte	0x15a
+ 680 0152 11       		.uleb128 0x11
+ 681 0153 DF000000 		.4byte	0xdf
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 21
+
+
+ 682 0157 01       		.uleb128 0x1
+ 683 0158 50       		.byte	0x50
+ 684 0159 00       		.byte	0
+ 685 015a 12       		.uleb128 0x12
+ 686 015b AA010000 		.4byte	.LASF28
+ 687 015f 01       		.byte	0x1
+ 688 0160 DB       		.byte	0xdb
+ 689 0161 A9000000 		.4byte	0xa9
+ 690 0165 00000000 		.4byte	.LFB5
+ 691 0169 0C000000 		.4byte	.LFE5-.LFB5
+ 692 016d 01       		.uleb128 0x1
+ 693 016e 9C       		.byte	0x9c
+ 694 016f 0C       		.uleb128 0xc
+ 695 0170 41020000 		.4byte	.LASF21
+ 696 0174 01       		.byte	0x1
+ 697 0175 F9       		.byte	0xf9
+ 698 0176 00000000 		.4byte	.LFB6
+ 699 017a 20000000 		.4byte	.LFE6-.LFB6
+ 700 017e 01       		.uleb128 0x1
+ 701 017f 9C       		.byte	0x9c
+ 702 0180 C1010000 		.4byte	0x1c1
+ 703 0184 13       		.uleb128 0x13
+ 704 0185 65010000 		.4byte	.LASF26
+ 705 0189 01       		.byte	0x1
+ 706 018a F9       		.byte	0xf9
+ 707 018b 6B000000 		.4byte	0x6b
+ 708 018f 00000000 		.4byte	.LLST0
+ 709 0193 14       		.uleb128 0x14
+ 710 0194 20010000 		.4byte	.LASF22
+ 711 0198 01       		.byte	0x1
+ 712 0199 FB       		.byte	0xfb
+ 713 019a 6B000000 		.4byte	0x6b
+ 714 019e 21000000 		.4byte	.LLST1
+ 715 01a2 15       		.uleb128 0x15
+ 716 01a3 BF020000 		.4byte	.LASF23
+ 717 01a7 01       		.byte	0x1
+ 718 01a8 FC       		.byte	0xfc
+ 719 01a9 77000000 		.4byte	0x77
+ 720 01ad 06       		.byte	0x6
+ 721 01ae 16       		.uleb128 0x16
+ 722 01af 08000000 		.4byte	.LVL4
+ 723 01b3 3B030000 		.4byte	0x33b
+ 724 01b7 16       		.uleb128 0x16
+ 725 01b8 1A000000 		.4byte	.LVL5
+ 726 01bc 46030000 		.4byte	0x346
+ 727 01c0 00       		.byte	0
+ 728 01c1 0C       		.uleb128 0xc
+ 729 01c2 B2000000 		.4byte	.LASF24
+ 730 01c6 01       		.byte	0x1
+ 731 01c7 38       		.byte	0x38
+ 732 01c8 00000000 		.4byte	.LFB0
+ 733 01cc 2C000000 		.4byte	.LFE0-.LFB0
+ 734 01d0 01       		.uleb128 0x1
+ 735 01d1 9C       		.byte	0x9c
+ 736 01d2 21020000 		.4byte	0x221
+ 737 01d6 0D       		.uleb128 0xd
+ 738 01d7 EB000000 		.4byte	0xeb
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 22
+
+
+ 739 01db 02000000 		.4byte	.LBB24
+ 740 01df 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 741 01e3 01       		.byte	0x1
+ 742 01e4 3B       		.byte	0x3b
+ 743 01e5 17       		.uleb128 0x17
+ 744 01e6 D3000000 		.4byte	0xd3
+ 745 01ea 06000000 		.4byte	.LBB27
+ 746 01ee 30000000 		.4byte	.Ldebug_ranges0+0x30
+ 747 01f2 01       		.byte	0x1
+ 748 01f3 3E       		.byte	0x3e
+ 749 01f4 02020000 		.4byte	0x202
+ 750 01f8 18       		.uleb128 0x18
+ 751 01f9 DF000000 		.4byte	0xdf
+ 752 01fd 34000000 		.4byte	.LLST2
+ 753 0201 00       		.byte	0
+ 754 0202 0D       		.uleb128 0xd
+ 755 0203 CA000000 		.4byte	0xca
+ 756 0207 14000000 		.4byte	.LBB34
+ 757 020b 50000000 		.4byte	.Ldebug_ranges0+0x50
+ 758 020f 01       		.byte	0x1
+ 759 0210 44       		.byte	0x44
+ 760 0211 19       		.uleb128 0x19
+ 761 0212 14000000 		.4byte	.LVL8
+ 762 0216 6F010000 		.4byte	0x16f
+ 763 021a 1A       		.uleb128 0x1a
+ 764 021b 01       		.uleb128 0x1
+ 765 021c 50       		.byte	0x50
+ 766 021d 01       		.uleb128 0x1
+ 767 021e 33       		.byte	0x33
+ 768 021f 00       		.byte	0
+ 769 0220 00       		.byte	0
+ 770 0221 0C       		.uleb128 0xc
+ 771 0222 A5020000 		.4byte	.LASF25
+ 772 0226 01       		.byte	0x1
+ 773 0227 63       		.byte	0x63
+ 774 0228 00000000 		.4byte	.LFB1
+ 775 022c 24000000 		.4byte	.LFE1-.LFB1
+ 776 0230 01       		.uleb128 0x1
+ 777 0231 9C       		.byte	0x9c
+ 778 0232 90020000 		.4byte	0x290
+ 779 0236 13       		.uleb128 0x13
+ 780 0237 C6010000 		.4byte	.LASF27
+ 781 023b 01       		.byte	0x1
+ 782 023c 63       		.byte	0x63
+ 783 023d A9000000 		.4byte	0xa9
+ 784 0241 4C000000 		.4byte	.LLST3
+ 785 0245 0D       		.uleb128 0xd
+ 786 0246 EB000000 		.4byte	0xeb
+ 787 024a 02000000 		.4byte	.LBB38
+ 788 024e 68000000 		.4byte	.Ldebug_ranges0+0x68
+ 789 0252 01       		.byte	0x1
+ 790 0253 66       		.byte	0x66
+ 791 0254 1B       		.uleb128 0x1b
+ 792 0255 D3000000 		.4byte	0xd3
+ 793 0259 08000000 		.4byte	.LBB42
+ 794 025d 04000000 		.4byte	.LBE42-.LBB42
+ 795 0261 01       		.byte	0x1
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 23
+
+
+ 796 0262 69       		.byte	0x69
+ 797 0263 71020000 		.4byte	0x271
+ 798 0267 18       		.uleb128 0x18
+ 799 0268 DF000000 		.4byte	0xdf
+ 800 026c 7A000000 		.4byte	.LLST4
+ 801 0270 00       		.byte	0
+ 802 0271 1C       		.uleb128 0x1c
+ 803 0272 CA000000 		.4byte	0xca
+ 804 0276 12000000 		.4byte	.LBB44
+ 805 027a 04000000 		.4byte	.LBE44-.LBB44
+ 806 027e 01       		.byte	0x1
+ 807 027f 6F       		.byte	0x6f
+ 808 0280 19       		.uleb128 0x19
+ 809 0281 12000000 		.4byte	.LVL13
+ 810 0285 6F010000 		.4byte	0x16f
+ 811 0289 1A       		.uleb128 0x1a
+ 812 028a 01       		.uleb128 0x1
+ 813 028b 50       		.byte	0x50
+ 814 028c 01       		.uleb128 0x1
+ 815 028d 33       		.byte	0x33
+ 816 028e 00       		.byte	0
+ 817 028f 00       		.byte	0
+ 818 0290 1D       		.uleb128 0x1d
+ 819 0291 47010000 		.4byte	.LASF39
+ 820 0295 01       		.byte	0x1
+ 821 0296 1501     		.2byte	0x115
+ 822 0298 6B000000 		.4byte	0x6b
+ 823 029c 00000000 		.4byte	.LFB7
+ 824 02a0 10000000 		.4byte	.LFE7-.LFB7
+ 825 02a4 01       		.uleb128 0x1
+ 826 02a5 9C       		.byte	0x9c
+ 827 02a6 C8020000 		.4byte	0x2c8
+ 828 02aa 1E       		.uleb128 0x1e
+ 829 02ab 65010000 		.4byte	.LASF26
+ 830 02af 01       		.byte	0x1
+ 831 02b0 1701     		.2byte	0x117
+ 832 02b2 77000000 		.4byte	0x77
+ 833 02b6 8D000000 		.4byte	.LLST5
+ 834 02ba 1F       		.uleb128 0x1f
+ 835 02bb BF020000 		.4byte	.LASF23
+ 836 02bf 01       		.byte	0x1
+ 837 02c0 1801     		.2byte	0x118
+ 838 02c2 77000000 		.4byte	0x77
+ 839 02c6 06       		.byte	0x6
+ 840 02c7 00       		.byte	0
+ 841 02c8 20       		.uleb128 0x20
+ 842 02c9 CA000000 		.4byte	0xca
+ 843 02cd 00000000 		.4byte	.LFB8
+ 844 02d1 0C000000 		.4byte	.LFE8-.LFB8
+ 845 02d5 01       		.uleb128 0x1
+ 846 02d6 9C       		.byte	0x9c
+ 847 02d7 21       		.uleb128 0x21
+ 848 02d8 00000000 		.4byte	.LASF29
+ 849 02dc 01       		.byte	0x1
+ 850 02dd 4501     		.2byte	0x145
+ 851 02df 6B000000 		.4byte	0x6b
+ 852 02e3 00000000 		.4byte	.LFB9
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 24
+
+
+ 853 02e7 10000000 		.4byte	.LFE9-.LFB9
+ 854 02eb 01       		.uleb128 0x1
+ 855 02ec 9C       		.byte	0x9c
+ 856 02ed 20       		.uleb128 0x20
+ 857 02ee EB000000 		.4byte	0xeb
+ 858 02f2 00000000 		.4byte	.LFB10
+ 859 02f6 0C000000 		.4byte	.LFE10-.LFB10
+ 860 02fa 01       		.uleb128 0x1
+ 861 02fb 9C       		.byte	0x9c
+ 862 02fc 22       		.uleb128 0x22
+ 863 02fd 1F020000 		.4byte	.LASF31
+ 864 0301 01       		.byte	0x1
+ 865 0302 7501     		.2byte	0x175
+ 866 0304 00000000 		.4byte	.LFB11
+ 867 0308 0C000000 		.4byte	.LFE11-.LFB11
+ 868 030c 01       		.uleb128 0x1
+ 869 030d 9C       		.byte	0x9c
+ 870 030e 22       		.uleb128 0x22
+ 871 030f 93000000 		.4byte	.LASF32
+ 872 0313 01       		.byte	0x1
+ 873 0314 8E01     		.2byte	0x18e
+ 874 0316 00000000 		.4byte	.LFB12
+ 875 031a 0C000000 		.4byte	.LFE12-.LFB12
+ 876 031e 01       		.uleb128 0x1
+ 877 031f 9C       		.byte	0x9c
+ 878 0320 23       		.uleb128 0x23
+ 879 0321 A9000000 		.4byte	0xa9
+ 880 0325 30030000 		.4byte	0x330
+ 881 0329 24       		.uleb128 0x24
+ 882 032a C3000000 		.4byte	0xc3
+ 883 032e 2F       		.byte	0x2f
+ 884 032f 00       		.byte	0
+ 885 0330 25       		.uleb128 0x25
+ 886 0331 3D000000 		.4byte	.LASF40
+ 887 0335 01       		.byte	0x1
+ 888 0336 21       		.byte	0x21
+ 889 0337 20030000 		.4byte	0x320
+ 890 033b 26       		.uleb128 0x26
+ 891 033c 86010000 		.4byte	.LASF33
+ 892 0340 86010000 		.4byte	.LASF33
+ 893 0344 03       		.byte	0x3
+ 894 0345 F8       		.byte	0xf8
+ 895 0346 26       		.uleb128 0x26
+ 896 0347 CE010000 		.4byte	.LASF34
+ 897 034b CE010000 		.4byte	.LASF34
+ 898 034f 03       		.byte	0x3
+ 899 0350 F9       		.byte	0xf9
+ 900 0351 00       		.byte	0
+ 901              		.section	.debug_abbrev,"",%progbits
+ 902              	.Ldebug_abbrev0:
+ 903 0000 01       		.uleb128 0x1
+ 904 0001 11       		.uleb128 0x11
+ 905 0002 01       		.byte	0x1
+ 906 0003 25       		.uleb128 0x25
+ 907 0004 0E       		.uleb128 0xe
+ 908 0005 13       		.uleb128 0x13
+ 909 0006 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 25
+
+
+ 910 0007 03       		.uleb128 0x3
+ 911 0008 0E       		.uleb128 0xe
+ 912 0009 1B       		.uleb128 0x1b
+ 913 000a 0E       		.uleb128 0xe
+ 914 000b 55       		.uleb128 0x55
+ 915 000c 17       		.uleb128 0x17
+ 916 000d 11       		.uleb128 0x11
+ 917 000e 01       		.uleb128 0x1
+ 918 000f 10       		.uleb128 0x10
+ 919 0010 17       		.uleb128 0x17
+ 920 0011 00       		.byte	0
+ 921 0012 00       		.byte	0
+ 922 0013 02       		.uleb128 0x2
+ 923 0014 24       		.uleb128 0x24
+ 924 0015 00       		.byte	0
+ 925 0016 0B       		.uleb128 0xb
+ 926 0017 0B       		.uleb128 0xb
+ 927 0018 3E       		.uleb128 0x3e
+ 928 0019 0B       		.uleb128 0xb
+ 929 001a 03       		.uleb128 0x3
+ 930 001b 0E       		.uleb128 0xe
+ 931 001c 00       		.byte	0
+ 932 001d 00       		.byte	0
+ 933 001e 03       		.uleb128 0x3
+ 934 001f 24       		.uleb128 0x24
+ 935 0020 00       		.byte	0
+ 936 0021 0B       		.uleb128 0xb
+ 937 0022 0B       		.uleb128 0xb
+ 938 0023 3E       		.uleb128 0x3e
+ 939 0024 0B       		.uleb128 0xb
+ 940 0025 03       		.uleb128 0x3
+ 941 0026 08       		.uleb128 0x8
+ 942 0027 00       		.byte	0
+ 943 0028 00       		.byte	0
+ 944 0029 04       		.uleb128 0x4
+ 945 002a 16       		.uleb128 0x16
+ 946 002b 00       		.byte	0
+ 947 002c 03       		.uleb128 0x3
+ 948 002d 0E       		.uleb128 0xe
+ 949 002e 3A       		.uleb128 0x3a
+ 950 002f 0B       		.uleb128 0xb
+ 951 0030 3B       		.uleb128 0x3b
+ 952 0031 05       		.uleb128 0x5
+ 953 0032 49       		.uleb128 0x49
+ 954 0033 13       		.uleb128 0x13
+ 955 0034 00       		.byte	0
+ 956 0035 00       		.byte	0
+ 957 0036 05       		.uleb128 0x5
+ 958 0037 35       		.uleb128 0x35
+ 959 0038 00       		.byte	0
+ 960 0039 49       		.uleb128 0x49
+ 961 003a 13       		.uleb128 0x13
+ 962 003b 00       		.byte	0
+ 963 003c 00       		.byte	0
+ 964 003d 06       		.uleb128 0x6
+ 965 003e 0F       		.uleb128 0xf
+ 966 003f 00       		.byte	0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 26
+
+
+ 967 0040 0B       		.uleb128 0xb
+ 968 0041 0B       		.uleb128 0xb
+ 969 0042 49       		.uleb128 0x49
+ 970 0043 13       		.uleb128 0x13
+ 971 0044 00       		.byte	0
+ 972 0045 00       		.byte	0
+ 973 0046 07       		.uleb128 0x7
+ 974 0047 15       		.uleb128 0x15
+ 975 0048 00       		.byte	0
+ 976 0049 27       		.uleb128 0x27
+ 977 004a 19       		.uleb128 0x19
+ 978 004b 00       		.byte	0
+ 979 004c 00       		.byte	0
+ 980 004d 08       		.uleb128 0x8
+ 981 004e 2E       		.uleb128 0x2e
+ 982 004f 00       		.byte	0
+ 983 0050 3F       		.uleb128 0x3f
+ 984 0051 19       		.uleb128 0x19
+ 985 0052 03       		.uleb128 0x3
+ 986 0053 0E       		.uleb128 0xe
+ 987 0054 3A       		.uleb128 0x3a
+ 988 0055 0B       		.uleb128 0xb
+ 989 0056 3B       		.uleb128 0x3b
+ 990 0057 05       		.uleb128 0x5
+ 991 0058 27       		.uleb128 0x27
+ 992 0059 19       		.uleb128 0x19
+ 993 005a 20       		.uleb128 0x20
+ 994 005b 0B       		.uleb128 0xb
+ 995 005c 00       		.byte	0
+ 996 005d 00       		.byte	0
+ 997 005e 09       		.uleb128 0x9
+ 998 005f 2E       		.uleb128 0x2e
+ 999 0060 01       		.byte	0x1
+ 1000 0061 3F       		.uleb128 0x3f
+ 1001 0062 19       		.uleb128 0x19
+ 1002 0063 03       		.uleb128 0x3
+ 1003 0064 0E       		.uleb128 0xe
+ 1004 0065 3A       		.uleb128 0x3a
+ 1005 0066 0B       		.uleb128 0xb
+ 1006 0067 3B       		.uleb128 0x3b
+ 1007 0068 0B       		.uleb128 0xb
+ 1008 0069 27       		.uleb128 0x27
+ 1009 006a 19       		.uleb128 0x19
+ 1010 006b 20       		.uleb128 0x20
+ 1011 006c 0B       		.uleb128 0xb
+ 1012 006d 01       		.uleb128 0x1
+ 1013 006e 13       		.uleb128 0x13
+ 1014 006f 00       		.byte	0
+ 1015 0070 00       		.byte	0
+ 1016 0071 0A       		.uleb128 0xa
+ 1017 0072 05       		.uleb128 0x5
+ 1018 0073 00       		.byte	0
+ 1019 0074 03       		.uleb128 0x3
+ 1020 0075 0E       		.uleb128 0xe
+ 1021 0076 3A       		.uleb128 0x3a
+ 1022 0077 0B       		.uleb128 0xb
+ 1023 0078 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 27
+
+
+ 1024 0079 0B       		.uleb128 0xb
+ 1025 007a 49       		.uleb128 0x49
+ 1026 007b 13       		.uleb128 0x13
+ 1027 007c 00       		.byte	0
+ 1028 007d 00       		.byte	0
+ 1029 007e 0B       		.uleb128 0xb
+ 1030 007f 2E       		.uleb128 0x2e
+ 1031 0080 00       		.byte	0
+ 1032 0081 3F       		.uleb128 0x3f
+ 1033 0082 19       		.uleb128 0x19
+ 1034 0083 03       		.uleb128 0x3
+ 1035 0084 0E       		.uleb128 0xe
+ 1036 0085 3A       		.uleb128 0x3a
+ 1037 0086 0B       		.uleb128 0xb
+ 1038 0087 3B       		.uleb128 0x3b
+ 1039 0088 0B       		.uleb128 0xb
+ 1040 0089 27       		.uleb128 0x27
+ 1041 008a 19       		.uleb128 0x19
+ 1042 008b 11       		.uleb128 0x11
+ 1043 008c 01       		.uleb128 0x1
+ 1044 008d 12       		.uleb128 0x12
+ 1045 008e 06       		.uleb128 0x6
+ 1046 008f 40       		.uleb128 0x40
+ 1047 0090 18       		.uleb128 0x18
+ 1048 0091 9742     		.uleb128 0x2117
+ 1049 0093 19       		.uleb128 0x19
+ 1050 0094 00       		.byte	0
+ 1051 0095 00       		.byte	0
+ 1052 0096 0C       		.uleb128 0xc
+ 1053 0097 2E       		.uleb128 0x2e
+ 1054 0098 01       		.byte	0x1
+ 1055 0099 3F       		.uleb128 0x3f
+ 1056 009a 19       		.uleb128 0x19
+ 1057 009b 03       		.uleb128 0x3
+ 1058 009c 0E       		.uleb128 0xe
+ 1059 009d 3A       		.uleb128 0x3a
+ 1060 009e 0B       		.uleb128 0xb
+ 1061 009f 3B       		.uleb128 0x3b
+ 1062 00a0 0B       		.uleb128 0xb
+ 1063 00a1 27       		.uleb128 0x27
+ 1064 00a2 19       		.uleb128 0x19
+ 1065 00a3 11       		.uleb128 0x11
+ 1066 00a4 01       		.uleb128 0x1
+ 1067 00a5 12       		.uleb128 0x12
+ 1068 00a6 06       		.uleb128 0x6
+ 1069 00a7 40       		.uleb128 0x40
+ 1070 00a8 18       		.uleb128 0x18
+ 1071 00a9 9742     		.uleb128 0x2117
+ 1072 00ab 19       		.uleb128 0x19
+ 1073 00ac 01       		.uleb128 0x1
+ 1074 00ad 13       		.uleb128 0x13
+ 1075 00ae 00       		.byte	0
+ 1076 00af 00       		.byte	0
+ 1077 00b0 0D       		.uleb128 0xd
+ 1078 00b1 1D       		.uleb128 0x1d
+ 1079 00b2 00       		.byte	0
+ 1080 00b3 31       		.uleb128 0x31
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 28
+
+
+ 1081 00b4 13       		.uleb128 0x13
+ 1082 00b5 52       		.uleb128 0x52
+ 1083 00b6 01       		.uleb128 0x1
+ 1084 00b7 55       		.uleb128 0x55
+ 1085 00b8 17       		.uleb128 0x17
+ 1086 00b9 58       		.uleb128 0x58
+ 1087 00ba 0B       		.uleb128 0xb
+ 1088 00bb 59       		.uleb128 0x59
+ 1089 00bc 0B       		.uleb128 0xb
+ 1090 00bd 00       		.byte	0
+ 1091 00be 00       		.byte	0
+ 1092 00bf 0E       		.uleb128 0xe
+ 1093 00c0 1D       		.uleb128 0x1d
+ 1094 00c1 01       		.byte	0x1
+ 1095 00c2 31       		.uleb128 0x31
+ 1096 00c3 13       		.uleb128 0x13
+ 1097 00c4 11       		.uleb128 0x11
+ 1098 00c5 01       		.uleb128 0x1
+ 1099 00c6 12       		.uleb128 0x12
+ 1100 00c7 06       		.uleb128 0x6
+ 1101 00c8 58       		.uleb128 0x58
+ 1102 00c9 0B       		.uleb128 0xb
+ 1103 00ca 59       		.uleb128 0x59
+ 1104 00cb 0B       		.uleb128 0xb
+ 1105 00cc 00       		.byte	0
+ 1106 00cd 00       		.byte	0
+ 1107 00ce 0F       		.uleb128 0xf
+ 1108 00cf 05       		.uleb128 0x5
+ 1109 00d0 00       		.byte	0
+ 1110 00d1 31       		.uleb128 0x31
+ 1111 00d2 13       		.uleb128 0x13
+ 1112 00d3 00       		.byte	0
+ 1113 00d4 00       		.byte	0
+ 1114 00d5 10       		.uleb128 0x10
+ 1115 00d6 2E       		.uleb128 0x2e
+ 1116 00d7 01       		.byte	0x1
+ 1117 00d8 31       		.uleb128 0x31
+ 1118 00d9 13       		.uleb128 0x13
+ 1119 00da 11       		.uleb128 0x11
+ 1120 00db 01       		.uleb128 0x1
+ 1121 00dc 12       		.uleb128 0x12
+ 1122 00dd 06       		.uleb128 0x6
+ 1123 00de 40       		.uleb128 0x40
+ 1124 00df 18       		.uleb128 0x18
+ 1125 00e0 9742     		.uleb128 0x2117
+ 1126 00e2 19       		.uleb128 0x19
+ 1127 00e3 01       		.uleb128 0x1
+ 1128 00e4 13       		.uleb128 0x13
+ 1129 00e5 00       		.byte	0
+ 1130 00e6 00       		.byte	0
+ 1131 00e7 11       		.uleb128 0x11
+ 1132 00e8 05       		.uleb128 0x5
+ 1133 00e9 00       		.byte	0
+ 1134 00ea 31       		.uleb128 0x31
+ 1135 00eb 13       		.uleb128 0x13
+ 1136 00ec 02       		.uleb128 0x2
+ 1137 00ed 18       		.uleb128 0x18
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 29
+
+
+ 1138 00ee 00       		.byte	0
+ 1139 00ef 00       		.byte	0
+ 1140 00f0 12       		.uleb128 0x12
+ 1141 00f1 2E       		.uleb128 0x2e
+ 1142 00f2 00       		.byte	0
+ 1143 00f3 3F       		.uleb128 0x3f
+ 1144 00f4 19       		.uleb128 0x19
+ 1145 00f5 03       		.uleb128 0x3
+ 1146 00f6 0E       		.uleb128 0xe
+ 1147 00f7 3A       		.uleb128 0x3a
+ 1148 00f8 0B       		.uleb128 0xb
+ 1149 00f9 3B       		.uleb128 0x3b
+ 1150 00fa 0B       		.uleb128 0xb
+ 1151 00fb 27       		.uleb128 0x27
+ 1152 00fc 19       		.uleb128 0x19
+ 1153 00fd 49       		.uleb128 0x49
+ 1154 00fe 13       		.uleb128 0x13
+ 1155 00ff 11       		.uleb128 0x11
+ 1156 0100 01       		.uleb128 0x1
+ 1157 0101 12       		.uleb128 0x12
+ 1158 0102 06       		.uleb128 0x6
+ 1159 0103 40       		.uleb128 0x40
+ 1160 0104 18       		.uleb128 0x18
+ 1161 0105 9742     		.uleb128 0x2117
+ 1162 0107 19       		.uleb128 0x19
+ 1163 0108 00       		.byte	0
+ 1164 0109 00       		.byte	0
+ 1165 010a 13       		.uleb128 0x13
+ 1166 010b 05       		.uleb128 0x5
+ 1167 010c 00       		.byte	0
+ 1168 010d 03       		.uleb128 0x3
+ 1169 010e 0E       		.uleb128 0xe
+ 1170 010f 3A       		.uleb128 0x3a
+ 1171 0110 0B       		.uleb128 0xb
+ 1172 0111 3B       		.uleb128 0x3b
+ 1173 0112 0B       		.uleb128 0xb
+ 1174 0113 49       		.uleb128 0x49
+ 1175 0114 13       		.uleb128 0x13
+ 1176 0115 02       		.uleb128 0x2
+ 1177 0116 17       		.uleb128 0x17
+ 1178 0117 00       		.byte	0
+ 1179 0118 00       		.byte	0
+ 1180 0119 14       		.uleb128 0x14
+ 1181 011a 34       		.uleb128 0x34
+ 1182 011b 00       		.byte	0
+ 1183 011c 03       		.uleb128 0x3
+ 1184 011d 0E       		.uleb128 0xe
+ 1185 011e 3A       		.uleb128 0x3a
+ 1186 011f 0B       		.uleb128 0xb
+ 1187 0120 3B       		.uleb128 0x3b
+ 1188 0121 0B       		.uleb128 0xb
+ 1189 0122 49       		.uleb128 0x49
+ 1190 0123 13       		.uleb128 0x13
+ 1191 0124 02       		.uleb128 0x2
+ 1192 0125 17       		.uleb128 0x17
+ 1193 0126 00       		.byte	0
+ 1194 0127 00       		.byte	0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 30
+
+
+ 1195 0128 15       		.uleb128 0x15
+ 1196 0129 34       		.uleb128 0x34
+ 1197 012a 00       		.byte	0
+ 1198 012b 03       		.uleb128 0x3
+ 1199 012c 0E       		.uleb128 0xe
+ 1200 012d 3A       		.uleb128 0x3a
+ 1201 012e 0B       		.uleb128 0xb
+ 1202 012f 3B       		.uleb128 0x3b
+ 1203 0130 0B       		.uleb128 0xb
+ 1204 0131 49       		.uleb128 0x49
+ 1205 0132 13       		.uleb128 0x13
+ 1206 0133 1C       		.uleb128 0x1c
+ 1207 0134 0B       		.uleb128 0xb
+ 1208 0135 00       		.byte	0
+ 1209 0136 00       		.byte	0
+ 1210 0137 16       		.uleb128 0x16
+ 1211 0138 898201   		.uleb128 0x4109
+ 1212 013b 00       		.byte	0
+ 1213 013c 11       		.uleb128 0x11
+ 1214 013d 01       		.uleb128 0x1
+ 1215 013e 31       		.uleb128 0x31
+ 1216 013f 13       		.uleb128 0x13
+ 1217 0140 00       		.byte	0
+ 1218 0141 00       		.byte	0
+ 1219 0142 17       		.uleb128 0x17
+ 1220 0143 1D       		.uleb128 0x1d
+ 1221 0144 01       		.byte	0x1
+ 1222 0145 31       		.uleb128 0x31
+ 1223 0146 13       		.uleb128 0x13
+ 1224 0147 52       		.uleb128 0x52
+ 1225 0148 01       		.uleb128 0x1
+ 1226 0149 55       		.uleb128 0x55
+ 1227 014a 17       		.uleb128 0x17
+ 1228 014b 58       		.uleb128 0x58
+ 1229 014c 0B       		.uleb128 0xb
+ 1230 014d 59       		.uleb128 0x59
+ 1231 014e 0B       		.uleb128 0xb
+ 1232 014f 01       		.uleb128 0x1
+ 1233 0150 13       		.uleb128 0x13
+ 1234 0151 00       		.byte	0
+ 1235 0152 00       		.byte	0
+ 1236 0153 18       		.uleb128 0x18
+ 1237 0154 05       		.uleb128 0x5
+ 1238 0155 00       		.byte	0
+ 1239 0156 31       		.uleb128 0x31
+ 1240 0157 13       		.uleb128 0x13
+ 1241 0158 02       		.uleb128 0x2
+ 1242 0159 17       		.uleb128 0x17
+ 1243 015a 00       		.byte	0
+ 1244 015b 00       		.byte	0
+ 1245 015c 19       		.uleb128 0x19
+ 1246 015d 898201   		.uleb128 0x4109
+ 1247 0160 01       		.byte	0x1
+ 1248 0161 11       		.uleb128 0x11
+ 1249 0162 01       		.uleb128 0x1
+ 1250 0163 31       		.uleb128 0x31
+ 1251 0164 13       		.uleb128 0x13
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 31
+
+
+ 1252 0165 00       		.byte	0
+ 1253 0166 00       		.byte	0
+ 1254 0167 1A       		.uleb128 0x1a
+ 1255 0168 8A8201   		.uleb128 0x410a
+ 1256 016b 00       		.byte	0
+ 1257 016c 02       		.uleb128 0x2
+ 1258 016d 18       		.uleb128 0x18
+ 1259 016e 9142     		.uleb128 0x2111
+ 1260 0170 18       		.uleb128 0x18
+ 1261 0171 00       		.byte	0
+ 1262 0172 00       		.byte	0
+ 1263 0173 1B       		.uleb128 0x1b
+ 1264 0174 1D       		.uleb128 0x1d
+ 1265 0175 01       		.byte	0x1
+ 1266 0176 31       		.uleb128 0x31
+ 1267 0177 13       		.uleb128 0x13
+ 1268 0178 11       		.uleb128 0x11
+ 1269 0179 01       		.uleb128 0x1
+ 1270 017a 12       		.uleb128 0x12
+ 1271 017b 06       		.uleb128 0x6
+ 1272 017c 58       		.uleb128 0x58
+ 1273 017d 0B       		.uleb128 0xb
+ 1274 017e 59       		.uleb128 0x59
+ 1275 017f 0B       		.uleb128 0xb
+ 1276 0180 01       		.uleb128 0x1
+ 1277 0181 13       		.uleb128 0x13
+ 1278 0182 00       		.byte	0
+ 1279 0183 00       		.byte	0
+ 1280 0184 1C       		.uleb128 0x1c
+ 1281 0185 1D       		.uleb128 0x1d
+ 1282 0186 00       		.byte	0
+ 1283 0187 31       		.uleb128 0x31
+ 1284 0188 13       		.uleb128 0x13
+ 1285 0189 11       		.uleb128 0x11
+ 1286 018a 01       		.uleb128 0x1
+ 1287 018b 12       		.uleb128 0x12
+ 1288 018c 06       		.uleb128 0x6
+ 1289 018d 58       		.uleb128 0x58
+ 1290 018e 0B       		.uleb128 0xb
+ 1291 018f 59       		.uleb128 0x59
+ 1292 0190 0B       		.uleb128 0xb
+ 1293 0191 00       		.byte	0
+ 1294 0192 00       		.byte	0
+ 1295 0193 1D       		.uleb128 0x1d
+ 1296 0194 2E       		.uleb128 0x2e
+ 1297 0195 01       		.byte	0x1
+ 1298 0196 3F       		.uleb128 0x3f
+ 1299 0197 19       		.uleb128 0x19
+ 1300 0198 03       		.uleb128 0x3
+ 1301 0199 0E       		.uleb128 0xe
+ 1302 019a 3A       		.uleb128 0x3a
+ 1303 019b 0B       		.uleb128 0xb
+ 1304 019c 3B       		.uleb128 0x3b
+ 1305 019d 05       		.uleb128 0x5
+ 1306 019e 27       		.uleb128 0x27
+ 1307 019f 19       		.uleb128 0x19
+ 1308 01a0 49       		.uleb128 0x49
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 32
+
+
+ 1309 01a1 13       		.uleb128 0x13
+ 1310 01a2 11       		.uleb128 0x11
+ 1311 01a3 01       		.uleb128 0x1
+ 1312 01a4 12       		.uleb128 0x12
+ 1313 01a5 06       		.uleb128 0x6
+ 1314 01a6 40       		.uleb128 0x40
+ 1315 01a7 18       		.uleb128 0x18
+ 1316 01a8 9742     		.uleb128 0x2117
+ 1317 01aa 19       		.uleb128 0x19
+ 1318 01ab 01       		.uleb128 0x1
+ 1319 01ac 13       		.uleb128 0x13
+ 1320 01ad 00       		.byte	0
+ 1321 01ae 00       		.byte	0
+ 1322 01af 1E       		.uleb128 0x1e
+ 1323 01b0 34       		.uleb128 0x34
+ 1324 01b1 00       		.byte	0
+ 1325 01b2 03       		.uleb128 0x3
+ 1326 01b3 0E       		.uleb128 0xe
+ 1327 01b4 3A       		.uleb128 0x3a
+ 1328 01b5 0B       		.uleb128 0xb
+ 1329 01b6 3B       		.uleb128 0x3b
+ 1330 01b7 05       		.uleb128 0x5
+ 1331 01b8 49       		.uleb128 0x49
+ 1332 01b9 13       		.uleb128 0x13
+ 1333 01ba 02       		.uleb128 0x2
+ 1334 01bb 17       		.uleb128 0x17
+ 1335 01bc 00       		.byte	0
+ 1336 01bd 00       		.byte	0
+ 1337 01be 1F       		.uleb128 0x1f
+ 1338 01bf 34       		.uleb128 0x34
+ 1339 01c0 00       		.byte	0
+ 1340 01c1 03       		.uleb128 0x3
+ 1341 01c2 0E       		.uleb128 0xe
+ 1342 01c3 3A       		.uleb128 0x3a
+ 1343 01c4 0B       		.uleb128 0xb
+ 1344 01c5 3B       		.uleb128 0x3b
+ 1345 01c6 05       		.uleb128 0x5
+ 1346 01c7 49       		.uleb128 0x49
+ 1347 01c8 13       		.uleb128 0x13
+ 1348 01c9 1C       		.uleb128 0x1c
+ 1349 01ca 0B       		.uleb128 0xb
+ 1350 01cb 00       		.byte	0
+ 1351 01cc 00       		.byte	0
+ 1352 01cd 20       		.uleb128 0x20
+ 1353 01ce 2E       		.uleb128 0x2e
+ 1354 01cf 00       		.byte	0
+ 1355 01d0 31       		.uleb128 0x31
+ 1356 01d1 13       		.uleb128 0x13
+ 1357 01d2 11       		.uleb128 0x11
+ 1358 01d3 01       		.uleb128 0x1
+ 1359 01d4 12       		.uleb128 0x12
+ 1360 01d5 06       		.uleb128 0x6
+ 1361 01d6 40       		.uleb128 0x40
+ 1362 01d7 18       		.uleb128 0x18
+ 1363 01d8 9742     		.uleb128 0x2117
+ 1364 01da 19       		.uleb128 0x19
+ 1365 01db 00       		.byte	0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 33
+
+
+ 1366 01dc 00       		.byte	0
+ 1367 01dd 21       		.uleb128 0x21
+ 1368 01de 2E       		.uleb128 0x2e
+ 1369 01df 00       		.byte	0
+ 1370 01e0 3F       		.uleb128 0x3f
+ 1371 01e1 19       		.uleb128 0x19
+ 1372 01e2 03       		.uleb128 0x3
+ 1373 01e3 0E       		.uleb128 0xe
+ 1374 01e4 3A       		.uleb128 0x3a
+ 1375 01e5 0B       		.uleb128 0xb
+ 1376 01e6 3B       		.uleb128 0x3b
+ 1377 01e7 05       		.uleb128 0x5
+ 1378 01e8 27       		.uleb128 0x27
+ 1379 01e9 19       		.uleb128 0x19
+ 1380 01ea 49       		.uleb128 0x49
+ 1381 01eb 13       		.uleb128 0x13
+ 1382 01ec 11       		.uleb128 0x11
+ 1383 01ed 01       		.uleb128 0x1
+ 1384 01ee 12       		.uleb128 0x12
+ 1385 01ef 06       		.uleb128 0x6
+ 1386 01f0 40       		.uleb128 0x40
+ 1387 01f1 18       		.uleb128 0x18
+ 1388 01f2 9742     		.uleb128 0x2117
+ 1389 01f4 19       		.uleb128 0x19
+ 1390 01f5 00       		.byte	0
+ 1391 01f6 00       		.byte	0
+ 1392 01f7 22       		.uleb128 0x22
+ 1393 01f8 2E       		.uleb128 0x2e
+ 1394 01f9 00       		.byte	0
+ 1395 01fa 3F       		.uleb128 0x3f
+ 1396 01fb 19       		.uleb128 0x19
+ 1397 01fc 03       		.uleb128 0x3
+ 1398 01fd 0E       		.uleb128 0xe
+ 1399 01fe 3A       		.uleb128 0x3a
+ 1400 01ff 0B       		.uleb128 0xb
+ 1401 0200 3B       		.uleb128 0x3b
+ 1402 0201 05       		.uleb128 0x5
+ 1403 0202 27       		.uleb128 0x27
+ 1404 0203 19       		.uleb128 0x19
+ 1405 0204 11       		.uleb128 0x11
+ 1406 0205 01       		.uleb128 0x1
+ 1407 0206 12       		.uleb128 0x12
+ 1408 0207 06       		.uleb128 0x6
+ 1409 0208 40       		.uleb128 0x40
+ 1410 0209 18       		.uleb128 0x18
+ 1411 020a 9742     		.uleb128 0x2117
+ 1412 020c 19       		.uleb128 0x19
+ 1413 020d 00       		.byte	0
+ 1414 020e 00       		.byte	0
+ 1415 020f 23       		.uleb128 0x23
+ 1416 0210 01       		.uleb128 0x1
+ 1417 0211 01       		.byte	0x1
+ 1418 0212 49       		.uleb128 0x49
+ 1419 0213 13       		.uleb128 0x13
+ 1420 0214 01       		.uleb128 0x1
+ 1421 0215 13       		.uleb128 0x13
+ 1422 0216 00       		.byte	0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 34
+
+
+ 1423 0217 00       		.byte	0
+ 1424 0218 24       		.uleb128 0x24
+ 1425 0219 21       		.uleb128 0x21
+ 1426 021a 00       		.byte	0
+ 1427 021b 49       		.uleb128 0x49
+ 1428 021c 13       		.uleb128 0x13
+ 1429 021d 2F       		.uleb128 0x2f
+ 1430 021e 0B       		.uleb128 0xb
+ 1431 021f 00       		.byte	0
+ 1432 0220 00       		.byte	0
+ 1433 0221 25       		.uleb128 0x25
+ 1434 0222 34       		.uleb128 0x34
+ 1435 0223 00       		.byte	0
+ 1436 0224 03       		.uleb128 0x3
+ 1437 0225 0E       		.uleb128 0xe
+ 1438 0226 3A       		.uleb128 0x3a
+ 1439 0227 0B       		.uleb128 0xb
+ 1440 0228 3B       		.uleb128 0x3b
+ 1441 0229 0B       		.uleb128 0xb
+ 1442 022a 49       		.uleb128 0x49
+ 1443 022b 13       		.uleb128 0x13
+ 1444 022c 3F       		.uleb128 0x3f
+ 1445 022d 19       		.uleb128 0x19
+ 1446 022e 3C       		.uleb128 0x3c
+ 1447 022f 19       		.uleb128 0x19
+ 1448 0230 00       		.byte	0
+ 1449 0231 00       		.byte	0
+ 1450 0232 26       		.uleb128 0x26
+ 1451 0233 2E       		.uleb128 0x2e
+ 1452 0234 00       		.byte	0
+ 1453 0235 3F       		.uleb128 0x3f
+ 1454 0236 19       		.uleb128 0x19
+ 1455 0237 3C       		.uleb128 0x3c
+ 1456 0238 19       		.uleb128 0x19
+ 1457 0239 6E       		.uleb128 0x6e
+ 1458 023a 0E       		.uleb128 0xe
+ 1459 023b 03       		.uleb128 0x3
+ 1460 023c 0E       		.uleb128 0xe
+ 1461 023d 3A       		.uleb128 0x3a
+ 1462 023e 0B       		.uleb128 0xb
+ 1463 023f 3B       		.uleb128 0x3b
+ 1464 0240 0B       		.uleb128 0xb
+ 1465 0241 00       		.byte	0
+ 1466 0242 00       		.byte	0
+ 1467 0243 00       		.byte	0
+ 1468              		.section	.debug_loc,"",%progbits
+ 1469              	.Ldebug_loc0:
+ 1470              	.LLST0:
+ 1471 0000 00000000 		.4byte	.LVL3
+ 1472 0004 07000000 		.4byte	.LVL4-1
+ 1473 0008 0100     		.2byte	0x1
+ 1474 000a 50       		.byte	0x50
+ 1475 000b 07000000 		.4byte	.LVL4-1
+ 1476 000f 20000000 		.4byte	.LFE6
+ 1477 0013 0400     		.2byte	0x4
+ 1478 0015 F3       		.byte	0xf3
+ 1479 0016 01       		.uleb128 0x1
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 35
+
+
+ 1480 0017 50       		.byte	0x50
+ 1481 0018 9F       		.byte	0x9f
+ 1482 0019 00000000 		.4byte	0
+ 1483 001d 00000000 		.4byte	0
+ 1484              	.LLST1:
+ 1485 0021 08000000 		.4byte	.LVL4
+ 1486 0025 19000000 		.4byte	.LVL5-1
+ 1487 0029 0100     		.2byte	0x1
+ 1488 002b 50       		.byte	0x50
+ 1489 002c 00000000 		.4byte	0
+ 1490 0030 00000000 		.4byte	0
+ 1491              	.LLST2:
+ 1492 0034 0A000000 		.4byte	.LVL6
+ 1493 0038 10000000 		.4byte	.LVL7
+ 1494 003c 0600     		.2byte	0x6
+ 1495 003e 03       		.byte	0x3
+ 1496 003f 00000000 		.4byte	DATALINK_INTRRUPT_Interrupt
+ 1497 0043 9F       		.byte	0x9f
+ 1498 0044 00000000 		.4byte	0
+ 1499 0048 00000000 		.4byte	0
+ 1500              	.LLST3:
+ 1501 004c 00000000 		.4byte	.LVL9
+ 1502 0050 0E000000 		.4byte	.LVL12
+ 1503 0054 0100     		.2byte	0x1
+ 1504 0056 50       		.byte	0x50
+ 1505 0057 0E000000 		.4byte	.LVL12
+ 1506 005b 11000000 		.4byte	.LVL13-1
+ 1507 005f 0300     		.2byte	0x3
+ 1508 0061 73       		.byte	0x73
+ 1509 0062 C000     		.sleb128 64
+ 1510 0064 11000000 		.4byte	.LVL13-1
+ 1511 0068 24000000 		.4byte	.LFE1
+ 1512 006c 0400     		.2byte	0x4
+ 1513 006e F3       		.byte	0xf3
+ 1514 006f 01       		.uleb128 0x1
+ 1515 0070 50       		.byte	0x50
+ 1516 0071 9F       		.byte	0x9f
+ 1517 0072 00000000 		.4byte	0
+ 1518 0076 00000000 		.4byte	0
+ 1519              	.LLST4:
+ 1520 007a 08000000 		.4byte	.LVL10
+ 1521 007e 0C000000 		.4byte	.LVL11
+ 1522 0082 0100     		.2byte	0x1
+ 1523 0084 50       		.byte	0x50
+ 1524 0085 00000000 		.4byte	0
+ 1525 0089 00000000 		.4byte	0
+ 1526              	.LLST5:
+ 1527 008d 04000000 		.4byte	.LVL15
+ 1528 0091 06000000 		.4byte	.LVL16
+ 1529 0095 0700     		.2byte	0x7
+ 1530 0097 70       		.byte	0x70
+ 1531 0098 00       		.sleb128 0
+ 1532 0099 36       		.byte	0x36
+ 1533 009a 25       		.byte	0x25
+ 1534 009b 33       		.byte	0x33
+ 1535 009c 1A       		.byte	0x1a
+ 1536 009d 9F       		.byte	0x9f
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 36
+
+
+ 1537 009e 00000000 		.4byte	0
+ 1538 00a2 00000000 		.4byte	0
+ 1539              		.section	.debug_aranges,"",%progbits
+ 1540 0000 7C000000 		.4byte	0x7c
+ 1541 0004 0200     		.2byte	0x2
+ 1542 0006 00000000 		.4byte	.Ldebug_info0
+ 1543 000a 04       		.byte	0x4
+ 1544 000b 00       		.byte	0
+ 1545 000c 0000     		.2byte	0
+ 1546 000e 0000     		.2byte	0
+ 1547 0010 00000000 		.4byte	.LFB3
+ 1548 0014 02000000 		.4byte	.LFE3-.LFB3
+ 1549 0018 00000000 		.4byte	.LFB2
+ 1550 001c 1C000000 		.4byte	.LFE2-.LFB2
+ 1551 0020 00000000 		.4byte	.LFB4
+ 1552 0024 0C000000 		.4byte	.LFE4-.LFB4
+ 1553 0028 00000000 		.4byte	.LFB5
+ 1554 002c 0C000000 		.4byte	.LFE5-.LFB5
+ 1555 0030 00000000 		.4byte	.LFB6
+ 1556 0034 20000000 		.4byte	.LFE6-.LFB6
+ 1557 0038 00000000 		.4byte	.LFB0
+ 1558 003c 2C000000 		.4byte	.LFE0-.LFB0
+ 1559 0040 00000000 		.4byte	.LFB1
+ 1560 0044 24000000 		.4byte	.LFE1-.LFB1
+ 1561 0048 00000000 		.4byte	.LFB7
+ 1562 004c 10000000 		.4byte	.LFE7-.LFB7
+ 1563 0050 00000000 		.4byte	.LFB8
+ 1564 0054 0C000000 		.4byte	.LFE8-.LFB8
+ 1565 0058 00000000 		.4byte	.LFB9
+ 1566 005c 10000000 		.4byte	.LFE9-.LFB9
+ 1567 0060 00000000 		.4byte	.LFB10
+ 1568 0064 0C000000 		.4byte	.LFE10-.LFB10
+ 1569 0068 00000000 		.4byte	.LFB11
+ 1570 006c 0C000000 		.4byte	.LFE11-.LFB11
+ 1571 0070 00000000 		.4byte	.LFB12
+ 1572 0074 0C000000 		.4byte	.LFE12-.LFB12
+ 1573 0078 00000000 		.4byte	0
+ 1574 007c 00000000 		.4byte	0
+ 1575              		.section	.debug_ranges,"",%progbits
+ 1576              	.Ldebug_ranges0:
+ 1577 0000 00000000 		.4byte	.LBB18
+ 1578 0004 04000000 		.4byte	.LBE18
+ 1579 0008 04000000 		.4byte	.LBB21
+ 1580 000c 06000000 		.4byte	.LBE21
+ 1581 0010 00000000 		.4byte	0
+ 1582 0014 00000000 		.4byte	0
+ 1583 0018 02000000 		.4byte	.LBB24
+ 1584 001c 06000000 		.4byte	.LBE24
+ 1585 0020 08000000 		.4byte	.LBB31
+ 1586 0024 0A000000 		.4byte	.LBE31
+ 1587 0028 00000000 		.4byte	0
+ 1588 002c 00000000 		.4byte	0
+ 1589 0030 06000000 		.4byte	.LBB27
+ 1590 0034 08000000 		.4byte	.LBE27
+ 1591 0038 0A000000 		.4byte	.LBB32
+ 1592 003c 0C000000 		.4byte	.LBE32
+ 1593 0040 0E000000 		.4byte	.LBB33
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 37
+
+
+ 1594 0044 10000000 		.4byte	.LBE33
+ 1595 0048 00000000 		.4byte	0
+ 1596 004c 00000000 		.4byte	0
+ 1597 0050 14000000 		.4byte	.LBB34
+ 1598 0054 16000000 		.4byte	.LBE34
+ 1599 0058 16000000 		.4byte	.LBB37
+ 1600 005c 18000000 		.4byte	.LBE37
+ 1601 0060 00000000 		.4byte	0
+ 1602 0064 00000000 		.4byte	0
+ 1603 0068 02000000 		.4byte	.LBB38
+ 1604 006c 06000000 		.4byte	.LBE38
+ 1605 0070 06000000 		.4byte	.LBB41
+ 1606 0074 08000000 		.4byte	.LBE41
+ 1607 0078 00000000 		.4byte	0
+ 1608 007c 00000000 		.4byte	0
+ 1609 0080 00000000 		.4byte	.LFB3
+ 1610 0084 02000000 		.4byte	.LFE3
+ 1611 0088 00000000 		.4byte	.LFB2
+ 1612 008c 1C000000 		.4byte	.LFE2
+ 1613 0090 00000000 		.4byte	.LFB4
+ 1614 0094 0C000000 		.4byte	.LFE4
+ 1615 0098 00000000 		.4byte	.LFB5
+ 1616 009c 0C000000 		.4byte	.LFE5
+ 1617 00a0 00000000 		.4byte	.LFB6
+ 1618 00a4 20000000 		.4byte	.LFE6
+ 1619 00a8 00000000 		.4byte	.LFB0
+ 1620 00ac 2C000000 		.4byte	.LFE0
+ 1621 00b0 00000000 		.4byte	.LFB1
+ 1622 00b4 24000000 		.4byte	.LFE1
+ 1623 00b8 00000000 		.4byte	.LFB7
+ 1624 00bc 10000000 		.4byte	.LFE7
+ 1625 00c0 00000000 		.4byte	.LFB8
+ 1626 00c4 0C000000 		.4byte	.LFE8
+ 1627 00c8 00000000 		.4byte	.LFB9
+ 1628 00cc 10000000 		.4byte	.LFE9
+ 1629 00d0 00000000 		.4byte	.LFB10
+ 1630 00d4 0C000000 		.4byte	.LFE10
+ 1631 00d8 00000000 		.4byte	.LFB11
+ 1632 00dc 0C000000 		.4byte	.LFE11
+ 1633 00e0 00000000 		.4byte	.LFB12
+ 1634 00e4 0C000000 		.4byte	.LFE12
+ 1635 00e8 00000000 		.4byte	0
+ 1636 00ec 00000000 		.4byte	0
+ 1637              		.section	.debug_line,"",%progbits
+ 1638              	.Ldebug_line0:
+ 1639 0000 B5010000 		.section	.debug_str,"MS",%progbits,1
+ 1639      02005900 
+ 1639      00000201 
+ 1639      FB0E0D00 
+ 1639      01010101 
+ 1640              	.LASF29:
+ 1641 0000 44415441 		.ascii	"DATALINK_INTRRUPT_GetState\000"
+ 1641      4C494E4B 
+ 1641      5F494E54 
+ 1641      52525550 
+ 1641      545F4765 
+ 1642              	.LASF30:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 38
+
+
+ 1643 001b 44415441 		.ascii	"DATALINK_INTRRUPT_Interrupt\000"
+ 1643      4C494E4B 
+ 1643      5F494E54 
+ 1643      52525550 
+ 1643      545F496E 
+ 1644              	.LASF14:
+ 1645 0037 72656733 		.ascii	"reg32\000"
+ 1645      3200
+ 1646              	.LASF40:
+ 1647 003d 43795261 		.ascii	"CyRamVectors\000"
+ 1647      6D566563 
+ 1647      746F7273 
+ 1647      00
+ 1648              	.LASF19:
+ 1649 004a 44415441 		.ascii	"DATALINK_INTRRUPT_Disable\000"
+ 1649      4C494E4B 
+ 1649      5F494E54 
+ 1649      52525550 
+ 1649      545F4469 
+ 1650              	.LASF3:
+ 1651 0064 73686F72 		.ascii	"short unsigned int\000"
+ 1651      7420756E 
+ 1651      7369676E 
+ 1651      65642069 
+ 1651      6E7400
+ 1652              	.LASF38:
+ 1653 0077 44415441 		.ascii	"DATALINK_INTRRUPT_SetVector\000"
+ 1653      4C494E4B 
+ 1653      5F494E54 
+ 1653      52525550 
+ 1653      545F5365 
+ 1654              	.LASF32:
+ 1655 0093 44415441 		.ascii	"DATALINK_INTRRUPT_ClearPending\000"
+ 1655      4C494E4B 
+ 1655      5F494E54 
+ 1655      52525550 
+ 1655      545F436C 
+ 1656              	.LASF24:
+ 1657 00b2 44415441 		.ascii	"DATALINK_INTRRUPT_Start\000"
+ 1657      4C494E4B 
+ 1657      5F494E54 
+ 1657      52525550 
+ 1657      545F5374 
+ 1658              	.LASF11:
+ 1659 00ca 666C6F61 		.ascii	"float\000"
+ 1659      7400
+ 1660              	.LASF7:
+ 1661 00d0 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1661      206C6F6E 
+ 1661      6720756E 
+ 1661      7369676E 
+ 1661      65642069 
+ 1662              	.LASF1:
+ 1663 00e7 756E7369 		.ascii	"unsigned char\000"
+ 1663      676E6564 
+ 1663      20636861 
+ 1663      7200
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 39
+
+
+ 1664              	.LASF36:
+ 1665 00f5 47656E65 		.ascii	"Generated_Source\\PSoC4\\DATALINK_INTRRUPT.c\000"
+ 1665      72617465 
+ 1665      645F536F 
+ 1665      75726365 
+ 1665      5C50536F 
+ 1666              	.LASF22:
+ 1667 0120 696E7465 		.ascii	"interruptState\000"
+ 1667      72727570 
+ 1667      74537461 
+ 1667      746500
+ 1668              	.LASF5:
+ 1669 012f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1669      20756E73 
+ 1669      69676E65 
+ 1669      6420696E 
+ 1669      7400
+ 1670              	.LASF9:
+ 1671 0141 75696E74 		.ascii	"uint8\000"
+ 1671      3800
+ 1672              	.LASF39:
+ 1673 0147 44415441 		.ascii	"DATALINK_INTRRUPT_GetPriority\000"
+ 1673      4C494E4B 
+ 1673      5F494E54 
+ 1673      52525550 
+ 1673      545F4765 
+ 1674              	.LASF26:
+ 1675 0165 7072696F 		.ascii	"priority\000"
+ 1675      72697479 
+ 1675      00
+ 1676              	.LASF12:
+ 1677 016e 646F7562 		.ascii	"double\000"
+ 1677      6C6500
+ 1678              	.LASF2:
+ 1679 0175 73686F72 		.ascii	"short int\000"
+ 1679      7420696E 
+ 1679      7400
+ 1680              	.LASF10:
+ 1681 017f 75696E74 		.ascii	"uint32\000"
+ 1681      333200
+ 1682              	.LASF33:
+ 1683 0186 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1683      74657243 
+ 1683      72697469 
+ 1683      63616C53 
+ 1683      65637469 
+ 1684              	.LASF8:
+ 1685 019d 756E7369 		.ascii	"unsigned int\000"
+ 1685      676E6564 
+ 1685      20696E74 
+ 1685      00
+ 1686              	.LASF28:
+ 1687 01aa 44415441 		.ascii	"DATALINK_INTRRUPT_GetVector\000"
+ 1687      4C494E4B 
+ 1687      5F494E54 
+ 1687      52525550 
+ 1687      545F4765 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 40
+
+
+ 1688              	.LASF27:
+ 1689 01c6 61646472 		.ascii	"address\000"
+ 1689      65737300 
+ 1690              	.LASF34:
+ 1691 01ce 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1691      69744372 
+ 1691      69746963 
+ 1691      616C5365 
+ 1691      6374696F 
+ 1692              	.LASF20:
+ 1693 01e4 44415441 		.ascii	"DATALINK_INTRRUPT_Stop\000"
+ 1693      4C494E4B 
+ 1693      5F494E54 
+ 1693      52525550 
+ 1693      545F5374 
+ 1694              	.LASF15:
+ 1695 01fb 63796973 		.ascii	"cyisraddress\000"
+ 1695      72616464 
+ 1695      72657373 
+ 1695      00
+ 1696              	.LASF17:
+ 1697 0208 73697A65 		.ascii	"sizetype\000"
+ 1697      74797065 
+ 1697      00
+ 1698              	.LASF6:
+ 1699 0211 6C6F6E67 		.ascii	"long long int\000"
+ 1699      206C6F6E 
+ 1699      6720696E 
+ 1699      7400
+ 1700              	.LASF31:
+ 1701 021f 44415441 		.ascii	"DATALINK_INTRRUPT_SetPending\000"
+ 1701      4C494E4B 
+ 1701      5F494E54 
+ 1701      52525550 
+ 1701      545F5365 
+ 1702              	.LASF13:
+ 1703 023c 63686172 		.ascii	"char\000"
+ 1703      00
+ 1704              	.LASF21:
+ 1705 0241 44415441 		.ascii	"DATALINK_INTRRUPT_SetPriority\000"
+ 1705      4C494E4B 
+ 1705      5F494E54 
+ 1705      52525550 
+ 1705      545F5365 
+ 1706              	.LASF18:
+ 1707 025f 44415441 		.ascii	"DATALINK_INTRRUPT_Enable\000"
+ 1707      4C494E4B 
+ 1707      5F494E54 
+ 1707      52525550 
+ 1707      545F456E 
+ 1708              	.LASF37:
+ 1709 0278 433A5C55 		.ascii	"C:\\Users\\Ala\\Desktop\\Cypress\\BeoM_main.cydsn\000"
+ 1709      73657273 
+ 1709      5C416C61 
+ 1709      5C446573 
+ 1709      6B746F70 
+ 1710              	.LASF25:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cc0dhu0X.s 			page 41
+
+
+ 1711 02a5 44415441 		.ascii	"DATALINK_INTRRUPT_StartEx\000"
+ 1711      4C494E4B 
+ 1711      5F494E54 
+ 1711      52525550 
+ 1711      545F5374 
+ 1712              	.LASF23:
+ 1713 02bf 7072696F 		.ascii	"priorityOffset\000"
+ 1713      72697479 
+ 1713      4F666673 
+ 1713      657400
+ 1714              	.LASF4:
+ 1715 02ce 6C6F6E67 		.ascii	"long int\000"
+ 1715      20696E74 
+ 1715      00
+ 1716              	.LASF16:
+ 1717 02d7 6C6F6E67 		.ascii	"long double\000"
+ 1717      20646F75 
+ 1717      626C6500 
+ 1718              	.LASF0:
+ 1719 02e3 7369676E 		.ascii	"signed char\000"
+ 1719      65642063 
+ 1719      68617200 
+ 1720              	.LASF35:
+ 1721 02ef 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1721      43313120 
+ 1721      352E342E 
+ 1721      31203230 
+ 1721      31363036 
+ 1722 0322 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1722      20726576 
+ 1722      6973696F 
+ 1722      6E203233 
+ 1722      37373135 
+ 1723 0355 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 1723      66756E63 
+ 1723      74696F6E 
+ 1723      2D736563 
+ 1723      74696F6E 
+ 1724              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
