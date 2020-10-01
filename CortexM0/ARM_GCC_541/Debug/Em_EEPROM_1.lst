@@ -1,0 +1,996 @@
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"Em_EEPROM_1.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.global	Em_EEPROM_1_config
+  20              		.section	.rodata
+  21              		.align	2
+  22              		.type	Em_EEPROM_1_config, %object
+  23              		.size	Em_EEPROM_1_config, 16
+  24              	Em_EEPROM_1_config:
+  25 0000 00010000 		.word	256
+  26 0004 01000000 		.word	1
+  27 0008 00       		.byte	0
+  28 0009 00       		.byte	0
+  29 000a 0000     		.space	2
+  30 000c 00000000 		.word	0
+  31              		.comm	Em_EEPROM_1_context,28,4
+  32              		.section	.text.Em_EEPROM_1_Init,"ax",%progbits
+  33              		.align	2
+  34              		.global	Em_EEPROM_1_Init
+  35              		.code	16
+  36              		.thumb_func
+  37              		.type	Em_EEPROM_1_Init, %function
+  38              	Em_EEPROM_1_Init:
+  39              	.LFB0:
+  40              		.file 1 "Generated_Source\\PSoC4\\Em_EEPROM_1.c"
+   1:Generated_Source\PSoC4/Em_EEPROM_1.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/Em_EEPROM_1.c **** * File Name: Em_EEPROM_1.c
+   3:Generated_Source\PSoC4/Em_EEPROM_1.c **** * Version 2.20
+   4:Generated_Source\PSoC4/Em_EEPROM_1.c **** *
+   5:Generated_Source\PSoC4/Em_EEPROM_1.c **** * Description:
+   6:Generated_Source\PSoC4/Em_EEPROM_1.c **** *  This file provides source code of the API for the Emulated EEPROM
+   7:Generated_Source\PSoC4/Em_EEPROM_1.c **** *  Component.
+   8:Generated_Source\PSoC4/Em_EEPROM_1.c **** *
+   9:Generated_Source\PSoC4/Em_EEPROM_1.c **** ********************************************************************************
+  10:Generated_Source\PSoC4/Em_EEPROM_1.c **** * Copyright 2013-2017, Cypress Semiconductor Corporation. All rights reserved.
+  11:Generated_Source\PSoC4/Em_EEPROM_1.c **** * You may use this file only in accordance with the license, terms, conditions,
+  12:Generated_Source\PSoC4/Em_EEPROM_1.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  13:Generated_Source\PSoC4/Em_EEPROM_1.c **** * the software package with which this file was provided.
+  14:Generated_Source\PSoC4/Em_EEPROM_1.c **** *******************************************************************************/
+  15:Generated_Source\PSoC4/Em_EEPROM_1.c **** 
+  16:Generated_Source\PSoC4/Em_EEPROM_1.c **** #include "Em_EEPROM_1.h"
+  17:Generated_Source\PSoC4/Em_EEPROM_1.c **** 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 2
+
+
+  18:Generated_Source\PSoC4/Em_EEPROM_1.c **** /** The instance-specific configuration structure. This should be used in the
+  19:Generated_Source\PSoC4/Em_EEPROM_1.c **** *  associated Em_EEPROM_1_Init() function.
+  20:Generated_Source\PSoC4/Em_EEPROM_1.c **** */
+  21:Generated_Source\PSoC4/Em_EEPROM_1.c **** cy_stc_eeprom_config_t const Em_EEPROM_1_config =
+  22:Generated_Source\PSoC4/Em_EEPROM_1.c **** {
+  23:Generated_Source\PSoC4/Em_EEPROM_1.c ****     256U,
+  24:Generated_Source\PSoC4/Em_EEPROM_1.c ****     1U,
+  25:Generated_Source\PSoC4/Em_EEPROM_1.c ****     0U,
+  26:Generated_Source\PSoC4/Em_EEPROM_1.c ****     0U,
+  27:Generated_Source\PSoC4/Em_EEPROM_1.c ****     0U
+  28:Generated_Source\PSoC4/Em_EEPROM_1.c **** };
+  29:Generated_Source\PSoC4/Em_EEPROM_1.c **** 
+  30:Generated_Source\PSoC4/Em_EEPROM_1.c **** /** The instance-specific context structure that holds all required information
+  31:Generated_Source\PSoC4/Em_EEPROM_1.c **** * about an EEPROM instance. This structure is filled by the Em_EEPROM
+  32:Generated_Source\PSoC4/Em_EEPROM_1.c **** * library Init() function and used by EEPROM library functions.
+  33:Generated_Source\PSoC4/Em_EEPROM_1.c **** */
+  34:Generated_Source\PSoC4/Em_EEPROM_1.c **** cy_stc_eeprom_context_t Em_EEPROM_1_context;
+  35:Generated_Source\PSoC4/Em_EEPROM_1.c **** 
+  36:Generated_Source\PSoC4/Em_EEPROM_1.c **** /* For PSoC 6 place EEPROM into Emulated EEPROM flash area */
+  37:Generated_Source\PSoC4/Em_EEPROM_1.c **** #if ((CY_PSOC6) && (Em_EEPROM_1_STORAGE_EM_EEPROM))
+  38:Generated_Source\PSoC4/Em_EEPROM_1.c **** 
+  39:Generated_Source\PSoC4/Em_EEPROM_1.c ****     CY_SECTION(".cy_em_eeprom") CY_ALIGN(CY_FLASH_SIZEOF_ROW)
+  40:Generated_Source\PSoC4/Em_EEPROM_1.c ****     const uint8 Em_EEPROM_1_em_EepromStorage[Em_EEPROM_1_ACTUAL_SIZE] = {0u};
+  41:Generated_Source\PSoC4/Em_EEPROM_1.c **** 
+  42:Generated_Source\PSoC4/Em_EEPROM_1.c **** #endif /* ((CY_PSOC6) && (Em_EEPROM_1_STORAGE_EM_EEPROM)) */
+  43:Generated_Source\PSoC4/Em_EEPROM_1.c **** 
+  44:Generated_Source\PSoC4/Em_EEPROM_1.c **** 
+  45:Generated_Source\PSoC4/Em_EEPROM_1.c **** /*******************************************************************************
+  46:Generated_Source\PSoC4/Em_EEPROM_1.c **** * Function Name: Em_EEPROM_1_Init
+  47:Generated_Source\PSoC4/Em_EEPROM_1.c **** ********************************************************************************
+  48:Generated_Source\PSoC4/Em_EEPROM_1.c **** *
+  49:Generated_Source\PSoC4/Em_EEPROM_1.c **** * Fills the start address of the EEPROM to the component configuration structure
+  50:Generated_Source\PSoC4/Em_EEPROM_1.c **** * and invokes Cy_Em_EEPROM_Init() function. In case of PSoC 6 the function 
+  51:Generated_Source\PSoC4/Em_EEPROM_1.c **** * is located in Cy_Em_EEPROM middleware library which is part of PDL. In case if
+  52:Generated_Source\PSoC4/Em_EEPROM_1.c **** * it is utilized in the design based on non-PSOC 6 device the function is 
+  53:Generated_Source\PSoC4/Em_EEPROM_1.c **** * located in internal design wide resource component - Em_EEPROM_Dynamic.
+  54:Generated_Source\PSoC4/Em_EEPROM_1.c **** *
+  55:Generated_Source\PSoC4/Em_EEPROM_1.c **** * \param startAddress
+  56:Generated_Source\PSoC4/Em_EEPROM_1.c **** * Start address of the EEPROM storage. For PSoC 6, if Emulated EEPROM is 
+  57:Generated_Source\PSoC4/Em_EEPROM_1.c **** * selected for EEPROM storage, the start address will be overwritten to some 
+  58:Generated_Source\PSoC4/Em_EEPROM_1.c **** * address from Emulated EEPROM flash area.
+  59:Generated_Source\PSoC4/Em_EEPROM_1.c **** *
+  60:Generated_Source\PSoC4/Em_EEPROM_1.c **** * \return
+  61:Generated_Source\PSoC4/Em_EEPROM_1.c **** * A result of function execution of type cy_en_em_eeprom_status_t.
+  62:Generated_Source\PSoC4/Em_EEPROM_1.c **** *
+  63:Generated_Source\PSoC4/Em_EEPROM_1.c **** *******************************************************************************/
+  64:Generated_Source\PSoC4/Em_EEPROM_1.c **** cy_en_em_eeprom_status_t Em_EEPROM_1_Init(uint32 startAddress)
+  65:Generated_Source\PSoC4/Em_EEPROM_1.c **** {
+  41              		.loc 1 65 0
+  42              		.cfi_startproc
+  43              		@ args = 0, pretend = 0, frame = 32
+  44              		@ frame_needed = 1, uses_anonymous_args = 0
+  45 0000 90B5     		push	{r4, r7, lr}
+  46              		.cfi_def_cfa_offset 12
+  47              		.cfi_offset 4, -12
+  48              		.cfi_offset 7, -8
+  49              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 3
+
+
+  50 0002 89B0     		sub	sp, sp, #36
+  51              		.cfi_def_cfa_offset 48
+  52 0004 00AF     		add	r7, sp, #0
+  53              		.cfi_def_cfa_register 7
+  54 0006 7860     		str	r0, [r7, #4]
+  66:Generated_Source\PSoC4/Em_EEPROM_1.c ****     cy_en_em_eeprom_status_t ret;
+  67:Generated_Source\PSoC4/Em_EEPROM_1.c ****     cy_stc_eeprom_config_t config;
+  68:Generated_Source\PSoC4/Em_EEPROM_1.c **** 
+  69:Generated_Source\PSoC4/Em_EEPROM_1.c ****     config.blockingWrite =      Em_EEPROM_1_config.blockingWrite;
+  55              		.loc 1 69 0
+  56 0008 0022     		movs	r2, #0
+  57 000a 0C23     		movs	r3, #12
+  58 000c FB18     		adds	r3, r7, r3
+  59 000e 5A72     		strb	r2, [r3, #9]
+  70:Generated_Source\PSoC4/Em_EEPROM_1.c ****     config.eepromSize =         Em_EEPROM_1_config.eepromSize;
+  60              		.loc 1 70 0
+  61 0010 8023     		movs	r3, #128
+  62 0012 5A00     		lsls	r2, r3, #1
+  63 0014 0C23     		movs	r3, #12
+  64 0016 FB18     		adds	r3, r7, r3
+  65 0018 1A60     		str	r2, [r3]
+  71:Generated_Source\PSoC4/Em_EEPROM_1.c ****     config.redundantCopy =      Em_EEPROM_1_config.redundantCopy;
+  66              		.loc 1 71 0
+  67 001a 0022     		movs	r2, #0
+  68 001c 0C23     		movs	r3, #12
+  69 001e FB18     		adds	r3, r7, r3
+  70 0020 1A72     		strb	r2, [r3, #8]
+  72:Generated_Source\PSoC4/Em_EEPROM_1.c ****     config.wearLevelingFactor = Em_EEPROM_1_config.wearLevelingFactor;
+  71              		.loc 1 72 0
+  72 0022 0122     		movs	r2, #1
+  73 0024 0C23     		movs	r3, #12
+  74 0026 FB18     		adds	r3, r7, r3
+  75 0028 5A60     		str	r2, [r3, #4]
+  73:Generated_Source\PSoC4/Em_EEPROM_1.c ****     
+  74:Generated_Source\PSoC4/Em_EEPROM_1.c **** #if ((CY_PSOC6) && (Em_EEPROM_1_STORAGE_EM_EEPROM))
+  75:Generated_Source\PSoC4/Em_EEPROM_1.c ****     /* For PSoC 6, if Emulated EEPROM is selected - override the eeprom start 
+  76:Generated_Source\PSoC4/Em_EEPROM_1.c ****     * address.
+  77:Generated_Source\PSoC4/Em_EEPROM_1.c ****     */
+  78:Generated_Source\PSoC4/Em_EEPROM_1.c ****     config.userFlashStartAddr = (uint32)Em_EEPROM_1_em_EepromStorage;
+  79:Generated_Source\PSoC4/Em_EEPROM_1.c **** #else
+  80:Generated_Source\PSoC4/Em_EEPROM_1.c ****     config.userFlashStartAddr = startAddress;
+  76              		.loc 1 80 0
+  77 002a 0C23     		movs	r3, #12
+  78 002c FB18     		adds	r3, r7, r3
+  79 002e 7A68     		ldr	r2, [r7, #4]
+  80 0030 DA60     		str	r2, [r3, #12]
+  81:Generated_Source\PSoC4/Em_EEPROM_1.c **** #endif /* ((CY_PSOC6) && (Em_EEPROM_1_STORAGE_EM_EEPROM)) */
+  82:Generated_Source\PSoC4/Em_EEPROM_1.c ****         
+  83:Generated_Source\PSoC4/Em_EEPROM_1.c ****     ret = Cy_Em_EEPROM_Init(&config, &Em_EEPROM_1_context);
+  81              		.loc 1 83 0
+  82 0032 1F23     		movs	r3, #31
+  83 0034 FC18     		adds	r4, r7, r3
+  84 0036 084A     		ldr	r2, .L3
+  85 0038 0C23     		movs	r3, #12
+  86 003a FB18     		adds	r3, r7, r3
+  87 003c 1100     		movs	r1, r2
+  88 003e 1800     		movs	r0, r3
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 4
+
+
+  89 0040 FFF7FEFF 		bl	Cy_Em_EEPROM_Init
+  90 0044 0300     		movs	r3, r0
+  91 0046 2370     		strb	r3, [r4]
+  84:Generated_Source\PSoC4/Em_EEPROM_1.c **** 
+  85:Generated_Source\PSoC4/Em_EEPROM_1.c ****     return(ret);
+  92              		.loc 1 85 0
+  93 0048 1F23     		movs	r3, #31
+  94 004a FB18     		adds	r3, r7, r3
+  95 004c 1B78     		ldrb	r3, [r3]
+  86:Generated_Source\PSoC4/Em_EEPROM_1.c **** }
+  96              		.loc 1 86 0
+  97 004e 1800     		movs	r0, r3
+  98 0050 BD46     		mov	sp, r7
+  99 0052 09B0     		add	sp, sp, #36
+ 100              		@ sp needed
+ 101 0054 90BD     		pop	{r4, r7, pc}
+ 102              	.L4:
+ 103 0056 C046     		.align	2
+ 104              	.L3:
+ 105 0058 00000000 		.word	Em_EEPROM_1_context
+ 106              		.cfi_endproc
+ 107              	.LFE0:
+ 108              		.size	Em_EEPROM_1_Init, .-Em_EEPROM_1_Init
+ 109              		.text
+ 110              	.Letext0:
+ 111              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 112              		.file 3 "Generated_Source\\PSoC4\\cy_em_eeprom.h"
+ 113              		.section	.debug_info,"",%progbits
+ 114              	.Ldebug_info0:
+ 115 0000 17020000 		.4byte	0x217
+ 116 0004 0400     		.2byte	0x4
+ 117 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 118 000a 04       		.byte	0x4
+ 119 000b 01       		.uleb128 0x1
+ 120 000c AD000000 		.4byte	.LASF35
+ 121 0010 0C       		.byte	0xc
+ 122 0011 4F020000 		.4byte	.LASF36
+ 123 0015 92020000 		.4byte	.LASF37
+ 124 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 125 001d 00000000 		.4byte	0
+ 126 0021 00000000 		.4byte	.Ldebug_line0
+ 127 0025 02       		.uleb128 0x2
+ 128 0026 01       		.byte	0x1
+ 129 0027 06       		.byte	0x6
+ 130 0028 EC020000 		.4byte	.LASF0
+ 131 002c 02       		.uleb128 0x2
+ 132 002d 01       		.byte	0x1
+ 133 002e 08       		.byte	0x8
+ 134 002f 6F000000 		.4byte	.LASF1
+ 135 0033 02       		.uleb128 0x2
+ 136 0034 02       		.byte	0x2
+ 137 0035 05       		.byte	0x5
+ 138 0036 74020000 		.4byte	.LASF2
+ 139 003a 02       		.uleb128 0x2
+ 140 003b 02       		.byte	0x2
+ 141 003c 07       		.byte	0x7
+ 142 003d 20000000 		.4byte	.LASF3
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 5
+
+
+ 143 0041 02       		.uleb128 0x2
+ 144 0042 04       		.byte	0x4
+ 145 0043 05       		.byte	0x5
+ 146 0044 C9020000 		.4byte	.LASF4
+ 147 0048 02       		.uleb128 0x2
+ 148 0049 04       		.byte	0x4
+ 149 004a 07       		.byte	0x7
+ 150 004b 95000000 		.4byte	.LASF5
+ 151 004f 02       		.uleb128 0x2
+ 152 0050 08       		.byte	0x8
+ 153 0051 05       		.byte	0x5
+ 154 0052 EC010000 		.4byte	.LASF6
+ 155 0056 02       		.uleb128 0x2
+ 156 0057 08       		.byte	0x8
+ 157 0058 07       		.byte	0x7
+ 158 0059 8A010000 		.4byte	.LASF7
+ 159 005d 03       		.uleb128 0x3
+ 160 005e 04       		.byte	0x4
+ 161 005f 05       		.byte	0x5
+ 162 0060 696E7400 		.ascii	"int\000"
+ 163 0064 02       		.uleb128 0x2
+ 164 0065 04       		.byte	0x4
+ 165 0066 07       		.byte	0x7
+ 166 0067 67010000 		.4byte	.LASF8
+ 167 006b 04       		.uleb128 0x4
+ 168 006c A7000000 		.4byte	.LASF9
+ 169 0070 02       		.byte	0x2
+ 170 0071 A1       		.byte	0xa1
+ 171 0072 2C000000 		.4byte	0x2c
+ 172 0076 04       		.uleb128 0x4
+ 173 0077 60010000 		.4byte	.LASF10
+ 174 007b 02       		.byte	0x2
+ 175 007c A3       		.byte	0xa3
+ 176 007d 48000000 		.4byte	0x48
+ 177 0081 02       		.uleb128 0x2
+ 178 0082 04       		.byte	0x4
+ 179 0083 04       		.byte	0x4
+ 180 0084 69000000 		.4byte	.LASF11
+ 181 0088 02       		.uleb128 0x2
+ 182 0089 08       		.byte	0x8
+ 183 008a 04       		.byte	0x4
+ 184 008b 59010000 		.4byte	.LASF12
+ 185 008f 02       		.uleb128 0x2
+ 186 0090 01       		.byte	0x1
+ 187 0091 08       		.byte	0x8
+ 188 0092 1A020000 		.4byte	.LASF13
+ 189 0096 02       		.uleb128 0x2
+ 190 0097 08       		.byte	0x8
+ 191 0098 04       		.byte	0x4
+ 192 0099 D2020000 		.4byte	.LASF14
+ 193 009d 02       		.uleb128 0x2
+ 194 009e 04       		.byte	0x4
+ 195 009f 07       		.byte	0x7
+ 196 00a0 E3010000 		.4byte	.LASF15
+ 197 00a4 05       		.uleb128 0x5
+ 198 00a5 10       		.byte	0x10
+ 199 00a6 03       		.byte	0x3
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 6
+
+
+ 200 00a7 FB       		.byte	0xfb
+ 201 00a8 ED000000 		.4byte	0xed
+ 202 00ac 06       		.uleb128 0x6
+ 203 00ad 5E000000 		.4byte	.LASF16
+ 204 00b1 03       		.byte	0x3
+ 205 00b2 FE       		.byte	0xfe
+ 206 00b3 76000000 		.4byte	0x76
+ 207 00b7 00       		.byte	0
+ 208 00b8 07       		.uleb128 0x7
+ 209 00b9 4B000000 		.4byte	.LASF17
+ 210 00bd 03       		.byte	0x3
+ 211 00be 0301     		.2byte	0x103
+ 212 00c0 76000000 		.4byte	0x76
+ 213 00c4 04       		.byte	0x4
+ 214 00c5 07       		.uleb128 0x7
+ 215 00c6 D5010000 		.4byte	.LASF18
+ 216 00ca 03       		.byte	0x3
+ 217 00cb 0601     		.2byte	0x106
+ 218 00cd 6B000000 		.4byte	0x6b
+ 219 00d1 08       		.byte	0x8
+ 220 00d2 07       		.uleb128 0x7
+ 221 00d3 B6010000 		.4byte	.LASF19
+ 222 00d7 03       		.byte	0x3
+ 223 00d8 0B01     		.2byte	0x10b
+ 224 00da 6B000000 		.4byte	0x6b
+ 225 00de 09       		.byte	0x9
+ 226 00df 07       		.uleb128 0x7
+ 227 00e0 00000000 		.4byte	.LASF20
+ 228 00e4 03       		.byte	0x3
+ 229 00e5 0E01     		.2byte	0x10e
+ 230 00e7 76000000 		.4byte	0x76
+ 231 00eb 0C       		.byte	0xc
+ 232 00ec 00       		.byte	0
+ 233 00ed 08       		.uleb128 0x8
+ 234 00ee 3B010000 		.4byte	.LASF21
+ 235 00f2 03       		.byte	0x3
+ 236 00f3 0F01     		.2byte	0x10f
+ 237 00f5 A4000000 		.4byte	0xa4
+ 238 00f9 09       		.uleb128 0x9
+ 239 00fa 1C       		.byte	0x1c
+ 240 00fb 03       		.byte	0x3
+ 241 00fc 1601     		.2byte	0x116
+ 242 00fe 6B010000 		.4byte	0x16b
+ 243 0102 07       		.uleb128 0x7
+ 244 0103 BF020000 		.4byte	.LASF22
+ 245 0107 03       		.byte	0x3
+ 246 0108 1B01     		.2byte	0x11b
+ 247 010a 76000000 		.4byte	0x76
+ 248 010e 00       		.byte	0
+ 249 010f 07       		.uleb128 0x7
+ 250 0110 13000000 		.4byte	.LASF23
+ 251 0114 03       		.byte	0x3
+ 252 0115 2001     		.2byte	0x120
+ 253 0117 76000000 		.4byte	0x76
+ 254 011b 04       		.byte	0x4
+ 255 011c 07       		.uleb128 0x7
+ 256 011d DE020000 		.4byte	.LASF24
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 7
+
+
+ 257 0121 03       		.byte	0x3
+ 258 0122 2301     		.2byte	0x123
+ 259 0124 76000000 		.4byte	0x76
+ 260 0128 08       		.byte	0x8
+ 261 0129 07       		.uleb128 0x7
+ 262 012a 5E000000 		.4byte	.LASF16
+ 263 012e 03       		.byte	0x3
+ 264 012f 2601     		.2byte	0x126
+ 265 0131 76000000 		.4byte	0x76
+ 266 0135 0C       		.byte	0xc
+ 267 0136 07       		.uleb128 0x7
+ 268 0137 4B000000 		.4byte	.LASF17
+ 269 013b 03       		.byte	0x3
+ 270 013c 2B01     		.2byte	0x12b
+ 271 013e 76000000 		.4byte	0x76
+ 272 0142 10       		.byte	0x10
+ 273 0143 07       		.uleb128 0x7
+ 274 0144 D5010000 		.4byte	.LASF18
+ 275 0148 03       		.byte	0x3
+ 276 0149 2E01     		.2byte	0x12e
+ 277 014b 6B000000 		.4byte	0x6b
+ 278 014f 14       		.byte	0x14
+ 279 0150 07       		.uleb128 0x7
+ 280 0151 B6010000 		.4byte	.LASF19
+ 281 0155 03       		.byte	0x3
+ 282 0156 3301     		.2byte	0x133
+ 283 0158 6B000000 		.4byte	0x6b
+ 284 015c 15       		.byte	0x15
+ 285 015d 07       		.uleb128 0x7
+ 286 015e 00000000 		.4byte	.LASF20
+ 287 0162 03       		.byte	0x3
+ 288 0163 3601     		.2byte	0x136
+ 289 0165 76000000 		.4byte	0x76
+ 290 0169 18       		.byte	0x18
+ 291 016a 00       		.byte	0
+ 292 016b 08       		.uleb128 0x8
+ 293 016c 33000000 		.4byte	.LASF25
+ 294 0170 03       		.byte	0x3
+ 295 0171 3701     		.2byte	0x137
+ 296 0173 F9000000 		.4byte	0xf9
+ 297 0177 0A       		.uleb128 0xa
+ 298 0178 01       		.byte	0x1
+ 299 0179 2C000000 		.4byte	0x2c
+ 300 017d 03       		.byte	0x3
+ 301 017e 5401     		.2byte	0x154
+ 302 0180 A3010000 		.4byte	0x1a3
+ 303 0184 0B       		.uleb128 0xb
+ 304 0185 A1010000 		.4byte	.LASF26
+ 305 0189 00       		.byte	0
+ 306 018a 0B       		.uleb128 0xb
+ 307 018b 1F020000 		.4byte	.LASF27
+ 308 018f 01       		.byte	0x1
+ 309 0190 0B       		.uleb128 0xb
+ 310 0191 F8020000 		.4byte	.LASF28
+ 311 0195 02       		.byte	0x2
+ 312 0196 0B       		.uleb128 0xb
+ 313 0197 74010000 		.4byte	.LASF29
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 8
+
+
+ 314 019b 03       		.byte	0x3
+ 315 019c 0B       		.uleb128 0xb
+ 316 019d 7D000000 		.4byte	.LASF30
+ 317 01a1 04       		.byte	0x4
+ 318 01a2 00       		.byte	0
+ 319 01a3 08       		.uleb128 0x8
+ 320 01a4 36020000 		.4byte	.LASF31
+ 321 01a8 03       		.byte	0x3
+ 322 01a9 5A01     		.2byte	0x15a
+ 323 01ab 77010000 		.4byte	0x177
+ 324 01af 0C       		.uleb128 0xc
+ 325 01b0 C4010000 		.4byte	.LASF38
+ 326 01b4 01       		.byte	0x1
+ 327 01b5 40       		.byte	0x40
+ 328 01b6 A3010000 		.4byte	0x1a3
+ 329 01ba 00000000 		.4byte	.LFB0
+ 330 01be 5C000000 		.4byte	.LFE0-.LFB0
+ 331 01c2 01       		.uleb128 0x1
+ 332 01c3 9C       		.byte	0x9c
+ 333 01c4 F3010000 		.4byte	0x1f3
+ 334 01c8 0D       		.uleb128 0xd
+ 335 01c9 0D020000 		.4byte	.LASF39
+ 336 01cd 01       		.byte	0x1
+ 337 01ce 40       		.byte	0x40
+ 338 01cf 76000000 		.4byte	0x76
+ 339 01d3 02       		.uleb128 0x2
+ 340 01d4 91       		.byte	0x91
+ 341 01d5 54       		.sleb128 -44
+ 342 01d6 0E       		.uleb128 0xe
+ 343 01d7 72657400 		.ascii	"ret\000"
+ 344 01db 01       		.byte	0x1
+ 345 01dc 42       		.byte	0x42
+ 346 01dd A3010000 		.4byte	0x1a3
+ 347 01e1 02       		.uleb128 0x2
+ 348 01e2 91       		.byte	0x91
+ 349 01e3 6F       		.sleb128 -17
+ 350 01e4 0F       		.uleb128 0xf
+ 351 01e5 52010000 		.4byte	.LASF32
+ 352 01e9 01       		.byte	0x1
+ 353 01ea 43       		.byte	0x43
+ 354 01eb ED000000 		.4byte	0xed
+ 355 01ef 02       		.uleb128 0x2
+ 356 01f0 91       		.byte	0x91
+ 357 01f1 5C       		.sleb128 -36
+ 358 01f2 00       		.byte	0
+ 359 01f3 10       		.uleb128 0x10
+ 360 01f4 FA010000 		.4byte	.LASF33
+ 361 01f8 01       		.byte	0x1
+ 362 01f9 15       		.byte	0x15
+ 363 01fa 04020000 		.4byte	0x204
+ 364 01fe 05       		.uleb128 0x5
+ 365 01ff 03       		.byte	0x3
+ 366 0200 00000000 		.4byte	Em_EEPROM_1_config
+ 367 0204 11       		.uleb128 0x11
+ 368 0205 ED000000 		.4byte	0xed
+ 369 0209 10       		.uleb128 0x10
+ 370 020a 7E020000 		.4byte	.LASF34
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 9
+
+
+ 371 020e 01       		.byte	0x1
+ 372 020f 22       		.byte	0x22
+ 373 0210 6B010000 		.4byte	0x16b
+ 374 0214 05       		.uleb128 0x5
+ 375 0215 03       		.byte	0x3
+ 376 0216 00000000 		.4byte	Em_EEPROM_1_context
+ 377 021a 00       		.byte	0
+ 378              		.section	.debug_abbrev,"",%progbits
+ 379              	.Ldebug_abbrev0:
+ 380 0000 01       		.uleb128 0x1
+ 381 0001 11       		.uleb128 0x11
+ 382 0002 01       		.byte	0x1
+ 383 0003 25       		.uleb128 0x25
+ 384 0004 0E       		.uleb128 0xe
+ 385 0005 13       		.uleb128 0x13
+ 386 0006 0B       		.uleb128 0xb
+ 387 0007 03       		.uleb128 0x3
+ 388 0008 0E       		.uleb128 0xe
+ 389 0009 1B       		.uleb128 0x1b
+ 390 000a 0E       		.uleb128 0xe
+ 391 000b 55       		.uleb128 0x55
+ 392 000c 17       		.uleb128 0x17
+ 393 000d 11       		.uleb128 0x11
+ 394 000e 01       		.uleb128 0x1
+ 395 000f 10       		.uleb128 0x10
+ 396 0010 17       		.uleb128 0x17
+ 397 0011 00       		.byte	0
+ 398 0012 00       		.byte	0
+ 399 0013 02       		.uleb128 0x2
+ 400 0014 24       		.uleb128 0x24
+ 401 0015 00       		.byte	0
+ 402 0016 0B       		.uleb128 0xb
+ 403 0017 0B       		.uleb128 0xb
+ 404 0018 3E       		.uleb128 0x3e
+ 405 0019 0B       		.uleb128 0xb
+ 406 001a 03       		.uleb128 0x3
+ 407 001b 0E       		.uleb128 0xe
+ 408 001c 00       		.byte	0
+ 409 001d 00       		.byte	0
+ 410 001e 03       		.uleb128 0x3
+ 411 001f 24       		.uleb128 0x24
+ 412 0020 00       		.byte	0
+ 413 0021 0B       		.uleb128 0xb
+ 414 0022 0B       		.uleb128 0xb
+ 415 0023 3E       		.uleb128 0x3e
+ 416 0024 0B       		.uleb128 0xb
+ 417 0025 03       		.uleb128 0x3
+ 418 0026 08       		.uleb128 0x8
+ 419 0027 00       		.byte	0
+ 420 0028 00       		.byte	0
+ 421 0029 04       		.uleb128 0x4
+ 422 002a 16       		.uleb128 0x16
+ 423 002b 00       		.byte	0
+ 424 002c 03       		.uleb128 0x3
+ 425 002d 0E       		.uleb128 0xe
+ 426 002e 3A       		.uleb128 0x3a
+ 427 002f 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 10
+
+
+ 428 0030 3B       		.uleb128 0x3b
+ 429 0031 0B       		.uleb128 0xb
+ 430 0032 49       		.uleb128 0x49
+ 431 0033 13       		.uleb128 0x13
+ 432 0034 00       		.byte	0
+ 433 0035 00       		.byte	0
+ 434 0036 05       		.uleb128 0x5
+ 435 0037 13       		.uleb128 0x13
+ 436 0038 01       		.byte	0x1
+ 437 0039 0B       		.uleb128 0xb
+ 438 003a 0B       		.uleb128 0xb
+ 439 003b 3A       		.uleb128 0x3a
+ 440 003c 0B       		.uleb128 0xb
+ 441 003d 3B       		.uleb128 0x3b
+ 442 003e 0B       		.uleb128 0xb
+ 443 003f 01       		.uleb128 0x1
+ 444 0040 13       		.uleb128 0x13
+ 445 0041 00       		.byte	0
+ 446 0042 00       		.byte	0
+ 447 0043 06       		.uleb128 0x6
+ 448 0044 0D       		.uleb128 0xd
+ 449 0045 00       		.byte	0
+ 450 0046 03       		.uleb128 0x3
+ 451 0047 0E       		.uleb128 0xe
+ 452 0048 3A       		.uleb128 0x3a
+ 453 0049 0B       		.uleb128 0xb
+ 454 004a 3B       		.uleb128 0x3b
+ 455 004b 0B       		.uleb128 0xb
+ 456 004c 49       		.uleb128 0x49
+ 457 004d 13       		.uleb128 0x13
+ 458 004e 38       		.uleb128 0x38
+ 459 004f 0B       		.uleb128 0xb
+ 460 0050 00       		.byte	0
+ 461 0051 00       		.byte	0
+ 462 0052 07       		.uleb128 0x7
+ 463 0053 0D       		.uleb128 0xd
+ 464 0054 00       		.byte	0
+ 465 0055 03       		.uleb128 0x3
+ 466 0056 0E       		.uleb128 0xe
+ 467 0057 3A       		.uleb128 0x3a
+ 468 0058 0B       		.uleb128 0xb
+ 469 0059 3B       		.uleb128 0x3b
+ 470 005a 05       		.uleb128 0x5
+ 471 005b 49       		.uleb128 0x49
+ 472 005c 13       		.uleb128 0x13
+ 473 005d 38       		.uleb128 0x38
+ 474 005e 0B       		.uleb128 0xb
+ 475 005f 00       		.byte	0
+ 476 0060 00       		.byte	0
+ 477 0061 08       		.uleb128 0x8
+ 478 0062 16       		.uleb128 0x16
+ 479 0063 00       		.byte	0
+ 480 0064 03       		.uleb128 0x3
+ 481 0065 0E       		.uleb128 0xe
+ 482 0066 3A       		.uleb128 0x3a
+ 483 0067 0B       		.uleb128 0xb
+ 484 0068 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 11
+
+
+ 485 0069 05       		.uleb128 0x5
+ 486 006a 49       		.uleb128 0x49
+ 487 006b 13       		.uleb128 0x13
+ 488 006c 00       		.byte	0
+ 489 006d 00       		.byte	0
+ 490 006e 09       		.uleb128 0x9
+ 491 006f 13       		.uleb128 0x13
+ 492 0070 01       		.byte	0x1
+ 493 0071 0B       		.uleb128 0xb
+ 494 0072 0B       		.uleb128 0xb
+ 495 0073 3A       		.uleb128 0x3a
+ 496 0074 0B       		.uleb128 0xb
+ 497 0075 3B       		.uleb128 0x3b
+ 498 0076 05       		.uleb128 0x5
+ 499 0077 01       		.uleb128 0x1
+ 500 0078 13       		.uleb128 0x13
+ 501 0079 00       		.byte	0
+ 502 007a 00       		.byte	0
+ 503 007b 0A       		.uleb128 0xa
+ 504 007c 04       		.uleb128 0x4
+ 505 007d 01       		.byte	0x1
+ 506 007e 0B       		.uleb128 0xb
+ 507 007f 0B       		.uleb128 0xb
+ 508 0080 49       		.uleb128 0x49
+ 509 0081 13       		.uleb128 0x13
+ 510 0082 3A       		.uleb128 0x3a
+ 511 0083 0B       		.uleb128 0xb
+ 512 0084 3B       		.uleb128 0x3b
+ 513 0085 05       		.uleb128 0x5
+ 514 0086 01       		.uleb128 0x1
+ 515 0087 13       		.uleb128 0x13
+ 516 0088 00       		.byte	0
+ 517 0089 00       		.byte	0
+ 518 008a 0B       		.uleb128 0xb
+ 519 008b 28       		.uleb128 0x28
+ 520 008c 00       		.byte	0
+ 521 008d 03       		.uleb128 0x3
+ 522 008e 0E       		.uleb128 0xe
+ 523 008f 1C       		.uleb128 0x1c
+ 524 0090 0B       		.uleb128 0xb
+ 525 0091 00       		.byte	0
+ 526 0092 00       		.byte	0
+ 527 0093 0C       		.uleb128 0xc
+ 528 0094 2E       		.uleb128 0x2e
+ 529 0095 01       		.byte	0x1
+ 530 0096 3F       		.uleb128 0x3f
+ 531 0097 19       		.uleb128 0x19
+ 532 0098 03       		.uleb128 0x3
+ 533 0099 0E       		.uleb128 0xe
+ 534 009a 3A       		.uleb128 0x3a
+ 535 009b 0B       		.uleb128 0xb
+ 536 009c 3B       		.uleb128 0x3b
+ 537 009d 0B       		.uleb128 0xb
+ 538 009e 27       		.uleb128 0x27
+ 539 009f 19       		.uleb128 0x19
+ 540 00a0 49       		.uleb128 0x49
+ 541 00a1 13       		.uleb128 0x13
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 12
+
+
+ 542 00a2 11       		.uleb128 0x11
+ 543 00a3 01       		.uleb128 0x1
+ 544 00a4 12       		.uleb128 0x12
+ 545 00a5 06       		.uleb128 0x6
+ 546 00a6 40       		.uleb128 0x40
+ 547 00a7 18       		.uleb128 0x18
+ 548 00a8 9642     		.uleb128 0x2116
+ 549 00aa 19       		.uleb128 0x19
+ 550 00ab 01       		.uleb128 0x1
+ 551 00ac 13       		.uleb128 0x13
+ 552 00ad 00       		.byte	0
+ 553 00ae 00       		.byte	0
+ 554 00af 0D       		.uleb128 0xd
+ 555 00b0 05       		.uleb128 0x5
+ 556 00b1 00       		.byte	0
+ 557 00b2 03       		.uleb128 0x3
+ 558 00b3 0E       		.uleb128 0xe
+ 559 00b4 3A       		.uleb128 0x3a
+ 560 00b5 0B       		.uleb128 0xb
+ 561 00b6 3B       		.uleb128 0x3b
+ 562 00b7 0B       		.uleb128 0xb
+ 563 00b8 49       		.uleb128 0x49
+ 564 00b9 13       		.uleb128 0x13
+ 565 00ba 02       		.uleb128 0x2
+ 566 00bb 18       		.uleb128 0x18
+ 567 00bc 00       		.byte	0
+ 568 00bd 00       		.byte	0
+ 569 00be 0E       		.uleb128 0xe
+ 570 00bf 34       		.uleb128 0x34
+ 571 00c0 00       		.byte	0
+ 572 00c1 03       		.uleb128 0x3
+ 573 00c2 08       		.uleb128 0x8
+ 574 00c3 3A       		.uleb128 0x3a
+ 575 00c4 0B       		.uleb128 0xb
+ 576 00c5 3B       		.uleb128 0x3b
+ 577 00c6 0B       		.uleb128 0xb
+ 578 00c7 49       		.uleb128 0x49
+ 579 00c8 13       		.uleb128 0x13
+ 580 00c9 02       		.uleb128 0x2
+ 581 00ca 18       		.uleb128 0x18
+ 582 00cb 00       		.byte	0
+ 583 00cc 00       		.byte	0
+ 584 00cd 0F       		.uleb128 0xf
+ 585 00ce 34       		.uleb128 0x34
+ 586 00cf 00       		.byte	0
+ 587 00d0 03       		.uleb128 0x3
+ 588 00d1 0E       		.uleb128 0xe
+ 589 00d2 3A       		.uleb128 0x3a
+ 590 00d3 0B       		.uleb128 0xb
+ 591 00d4 3B       		.uleb128 0x3b
+ 592 00d5 0B       		.uleb128 0xb
+ 593 00d6 49       		.uleb128 0x49
+ 594 00d7 13       		.uleb128 0x13
+ 595 00d8 02       		.uleb128 0x2
+ 596 00d9 18       		.uleb128 0x18
+ 597 00da 00       		.byte	0
+ 598 00db 00       		.byte	0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 13
+
+
+ 599 00dc 10       		.uleb128 0x10
+ 600 00dd 34       		.uleb128 0x34
+ 601 00de 00       		.byte	0
+ 602 00df 03       		.uleb128 0x3
+ 603 00e0 0E       		.uleb128 0xe
+ 604 00e1 3A       		.uleb128 0x3a
+ 605 00e2 0B       		.uleb128 0xb
+ 606 00e3 3B       		.uleb128 0x3b
+ 607 00e4 0B       		.uleb128 0xb
+ 608 00e5 49       		.uleb128 0x49
+ 609 00e6 13       		.uleb128 0x13
+ 610 00e7 3F       		.uleb128 0x3f
+ 611 00e8 19       		.uleb128 0x19
+ 612 00e9 02       		.uleb128 0x2
+ 613 00ea 18       		.uleb128 0x18
+ 614 00eb 00       		.byte	0
+ 615 00ec 00       		.byte	0
+ 616 00ed 11       		.uleb128 0x11
+ 617 00ee 26       		.uleb128 0x26
+ 618 00ef 00       		.byte	0
+ 619 00f0 49       		.uleb128 0x49
+ 620 00f1 13       		.uleb128 0x13
+ 621 00f2 00       		.byte	0
+ 622 00f3 00       		.byte	0
+ 623 00f4 00       		.byte	0
+ 624              		.section	.debug_aranges,"",%progbits
+ 625 0000 1C000000 		.4byte	0x1c
+ 626 0004 0200     		.2byte	0x2
+ 627 0006 00000000 		.4byte	.Ldebug_info0
+ 628 000a 04       		.byte	0x4
+ 629 000b 00       		.byte	0
+ 630 000c 0000     		.2byte	0
+ 631 000e 0000     		.2byte	0
+ 632 0010 00000000 		.4byte	.LFB0
+ 633 0014 5C000000 		.4byte	.LFE0-.LFB0
+ 634 0018 00000000 		.4byte	0
+ 635 001c 00000000 		.4byte	0
+ 636              		.section	.debug_ranges,"",%progbits
+ 637              	.Ldebug_ranges0:
+ 638 0000 00000000 		.4byte	.LFB0
+ 639 0004 5C000000 		.4byte	.LFE0
+ 640 0008 00000000 		.4byte	0
+ 641 000c 00000000 		.4byte	0
+ 642              		.section	.debug_line,"",%progbits
+ 643              	.Ldebug_line0:
+ 644 0000 78000000 		.section	.debug_str,"MS",%progbits,1
+ 644      02005A00 
+ 644      00000201 
+ 644      FB0E0D00 
+ 644      01010101 
+ 645              	.LASF20:
+ 646 0000 75736572 		.ascii	"userFlashStartAddr\000"
+ 646      466C6173 
+ 646      68537461 
+ 646      72744164 
+ 646      647200
+ 647              	.LASF23:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 14
+
+
+ 648 0013 6E756D62 		.ascii	"numberOfRows\000"
+ 648      65724F66 
+ 648      526F7773 
+ 648      00
+ 649              	.LASF3:
+ 650 0020 73686F72 		.ascii	"short unsigned int\000"
+ 650      7420756E 
+ 650      7369676E 
+ 650      65642069 
+ 650      6E7400
+ 651              	.LASF25:
+ 652 0033 63795F73 		.ascii	"cy_stc_eeprom_context_t\000"
+ 652      74635F65 
+ 652      6570726F 
+ 652      6D5F636F 
+ 652      6E746578 
+ 653              	.LASF17:
+ 654 004b 77656172 		.ascii	"wearLevelingFactor\000"
+ 654      4C657665 
+ 654      6C696E67 
+ 654      46616374 
+ 654      6F7200
+ 655              	.LASF16:
+ 656 005e 65657072 		.ascii	"eepromSize\000"
+ 656      6F6D5369 
+ 656      7A6500
+ 657              	.LASF11:
+ 658 0069 666C6F61 		.ascii	"float\000"
+ 658      7400
+ 659              	.LASF1:
+ 660 006f 756E7369 		.ascii	"unsigned char\000"
+ 660      676E6564 
+ 660      20636861 
+ 660      7200
+ 661              	.LASF30:
+ 662 007d 43595F45 		.ascii	"CY_EM_EEPROM_WRITE_FAIL\000"
+ 662      4D5F4545 
+ 662      50524F4D 
+ 662      5F575249 
+ 662      54455F46 
+ 663              	.LASF5:
+ 664 0095 6C6F6E67 		.ascii	"long unsigned int\000"
+ 664      20756E73 
+ 664      69676E65 
+ 664      6420696E 
+ 664      7400
+ 665              	.LASF9:
+ 666 00a7 75696E74 		.ascii	"uint8\000"
+ 666      3800
+ 667              	.LASF35:
+ 668 00ad 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 668      43313120 
+ 668      352E342E 
+ 668      31203230 
+ 668      31363036 
+ 669 00e0 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 669      20726576 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 15
+
+
+ 669      6973696F 
+ 669      6E203233 
+ 669      37373135 
+ 670 0113 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 670      66756E63 
+ 670      74696F6E 
+ 670      2D736563 
+ 670      74696F6E 
+ 671              	.LASF21:
+ 672 013b 63795F73 		.ascii	"cy_stc_eeprom_config_t\000"
+ 672      74635F65 
+ 672      6570726F 
+ 672      6D5F636F 
+ 672      6E666967 
+ 673              	.LASF32:
+ 674 0152 636F6E66 		.ascii	"config\000"
+ 674      696700
+ 675              	.LASF12:
+ 676 0159 646F7562 		.ascii	"double\000"
+ 676      6C6500
+ 677              	.LASF10:
+ 678 0160 75696E74 		.ascii	"uint32\000"
+ 678      333200
+ 679              	.LASF8:
+ 680 0167 756E7369 		.ascii	"unsigned int\000"
+ 680      676E6564 
+ 680      20696E74 
+ 680      00
+ 681              	.LASF29:
+ 682 0174 43595F45 		.ascii	"CY_EM_EEPROM_BAD_DATA\000"
+ 682      4D5F4545 
+ 682      50524F4D 
+ 682      5F424144 
+ 682      5F444154 
+ 683              	.LASF7:
+ 684 018a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 684      206C6F6E 
+ 684      6720756E 
+ 684      7369676E 
+ 684      65642069 
+ 685              	.LASF26:
+ 686 01a1 43595F45 		.ascii	"CY_EM_EEPROM_SUCCESS\000"
+ 686      4D5F4545 
+ 686      50524F4D 
+ 686      5F535543 
+ 686      43455353 
+ 687              	.LASF19:
+ 688 01b6 626C6F63 		.ascii	"blockingWrite\000"
+ 688      6B696E67 
+ 688      57726974 
+ 688      6500
+ 689              	.LASF38:
+ 690 01c4 456D5F45 		.ascii	"Em_EEPROM_1_Init\000"
+ 690      4550524F 
+ 690      4D5F315F 
+ 690      496E6974 
+ 690      00
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 16
+
+
+ 691              	.LASF18:
+ 692 01d5 72656475 		.ascii	"redundantCopy\000"
+ 692      6E64616E 
+ 692      74436F70 
+ 692      7900
+ 693              	.LASF15:
+ 694 01e3 73697A65 		.ascii	"sizetype\000"
+ 694      74797065 
+ 694      00
+ 695              	.LASF6:
+ 696 01ec 6C6F6E67 		.ascii	"long long int\000"
+ 696      206C6F6E 
+ 696      6720696E 
+ 696      7400
+ 697              	.LASF33:
+ 698 01fa 456D5F45 		.ascii	"Em_EEPROM_1_config\000"
+ 698      4550524F 
+ 698      4D5F315F 
+ 698      636F6E66 
+ 698      696700
+ 699              	.LASF39:
+ 700 020d 73746172 		.ascii	"startAddress\000"
+ 700      74416464 
+ 700      72657373 
+ 700      00
+ 701              	.LASF13:
+ 702 021a 63686172 		.ascii	"char\000"
+ 702      00
+ 703              	.LASF27:
+ 704 021f 43595F45 		.ascii	"CY_EM_EEPROM_BAD_PARAM\000"
+ 704      4D5F4545 
+ 704      50524F4D 
+ 704      5F424144 
+ 704      5F504152 
+ 705              	.LASF31:
+ 706 0236 63795F65 		.ascii	"cy_en_em_eeprom_status_t\000"
+ 706      6E5F656D 
+ 706      5F656570 
+ 706      726F6D5F 
+ 706      73746174 
+ 707              	.LASF36:
+ 708 024f 47656E65 		.ascii	"Generated_Source\\PSoC4\\Em_EEPROM_1.c\000"
+ 708      72617465 
+ 708      645F536F 
+ 708      75726365 
+ 708      5C50536F 
+ 709              	.LASF2:
+ 710 0274 73686F72 		.ascii	"short int\000"
+ 710      7420696E 
+ 710      7400
+ 711              	.LASF34:
+ 712 027e 456D5F45 		.ascii	"Em_EEPROM_1_context\000"
+ 712      4550524F 
+ 712      4D5F315F 
+ 712      636F6E74 
+ 712      65787400 
+ 713              	.LASF37:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccBA1yfk.s 			page 17
+
+
+ 714 0292 433A5C55 		.ascii	"C:\\Users\\Ala\\Desktop\\Cypress\\BeoM_main.cydsn\000"
+ 714      73657273 
+ 714      5C416C61 
+ 714      5C446573 
+ 714      6B746F70 
+ 715              	.LASF22:
+ 716 02bf 776C456E 		.ascii	"wlEndAddr\000"
+ 716      64416464 
+ 716      7200
+ 717              	.LASF4:
+ 718 02c9 6C6F6E67 		.ascii	"long int\000"
+ 718      20696E74 
+ 718      00
+ 719              	.LASF14:
+ 720 02d2 6C6F6E67 		.ascii	"long double\000"
+ 720      20646F75 
+ 720      626C6500 
+ 721              	.LASF24:
+ 722 02de 6C617374 		.ascii	"lastWrRowAddr\000"
+ 722      5772526F 
+ 722      77416464 
+ 722      7200
+ 723              	.LASF0:
+ 724 02ec 7369676E 		.ascii	"signed char\000"
+ 724      65642063 
+ 724      68617200 
+ 725              	.LASF28:
+ 726 02f8 43595F45 		.ascii	"CY_EM_EEPROM_BAD_CHECKSUM\000"
+ 726      4D5F4545 
+ 726      50524F4D 
+ 726      5F424144 
+ 726      5F434845 
+ 727              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

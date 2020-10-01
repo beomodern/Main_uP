@@ -1,0 +1,1212 @@
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"PWR_OK_MODE.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.PWR_OK_MODE_SetDriveMode,"ax",%progbits
+  20              		.align	1
+  21              		.global	PWR_OK_MODE_SetDriveMode
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	PWR_OK_MODE_SetDriveMode, %function
+  25              	PWR_OK_MODE_SetDriveMode:
+  26              	.LFB0:
+  27              		.file 1 "Generated_Source\\PSoC4\\PWR_OK_MODE.c"
+   1:Generated_Source\PSoC4/PWR_OK_MODE.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/PWR_OK_MODE.c **** * File Name: PWR_OK_MODE.c  
+   3:Generated_Source\PSoC4/PWR_OK_MODE.c **** * Version 2.20
+   4:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+   5:Generated_Source\PSoC4/PWR_OK_MODE.c **** * Description:
+   6:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  This file contains API to enable firmware control of a Pins component.
+   7:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+   8:Generated_Source\PSoC4/PWR_OK_MODE.c **** ********************************************************************************
+   9:Generated_Source\PSoC4/PWR_OK_MODE.c **** * Copyright 2008-2015, Cypress Semiconductor Corporation.  All rights reserved.
+  10:Generated_Source\PSoC4/PWR_OK_MODE.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  11:Generated_Source\PSoC4/PWR_OK_MODE.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  12:Generated_Source\PSoC4/PWR_OK_MODE.c **** * the software package with which this file was provided.
+  13:Generated_Source\PSoC4/PWR_OK_MODE.c **** *******************************************************************************/
+  14:Generated_Source\PSoC4/PWR_OK_MODE.c **** 
+  15:Generated_Source\PSoC4/PWR_OK_MODE.c **** #include "cytypes.h"
+  16:Generated_Source\PSoC4/PWR_OK_MODE.c **** #include "PWR_OK_MODE.h"
+  17:Generated_Source\PSoC4/PWR_OK_MODE.c **** 
+  18:Generated_Source\PSoC4/PWR_OK_MODE.c **** 
+  19:Generated_Source\PSoC4/PWR_OK_MODE.c **** #if defined(PWR_OK_MODE__PC)
+  20:Generated_Source\PSoC4/PWR_OK_MODE.c ****     #define PWR_OK_MODE_SetP4PinDriveMode(shift, mode)  \
+  21:Generated_Source\PSoC4/PWR_OK_MODE.c ****     do { \
+  22:Generated_Source\PSoC4/PWR_OK_MODE.c ****         PWR_OK_MODE_PC =   (PWR_OK_MODE_PC & \
+  23:Generated_Source\PSoC4/PWR_OK_MODE.c ****                                 (uint32)(~(uint32)(PWR_OK_MODE_DRIVE_MODE_IND_MASK << \
+  24:Generated_Source\PSoC4/PWR_OK_MODE.c ****                                 (PWR_OK_MODE_DRIVE_MODE_BITS * (shift))))) | \
+  25:Generated_Source\PSoC4/PWR_OK_MODE.c ****                                 (uint32)((uint32)(mode) << \
+  26:Generated_Source\PSoC4/PWR_OK_MODE.c ****                                 (PWR_OK_MODE_DRIVE_MODE_BITS * (shift))); \
+  27:Generated_Source\PSoC4/PWR_OK_MODE.c ****     } while (0)
+  28:Generated_Source\PSoC4/PWR_OK_MODE.c **** #else
+  29:Generated_Source\PSoC4/PWR_OK_MODE.c ****     #if (CY_PSOC4_4200L)
+  30:Generated_Source\PSoC4/PWR_OK_MODE.c ****         #define PWR_OK_MODE_SetP4PinDriveMode(shift, mode)  \
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 2
+
+
+  31:Generated_Source\PSoC4/PWR_OK_MODE.c ****         do { \
+  32:Generated_Source\PSoC4/PWR_OK_MODE.c ****             PWR_OK_MODE_USBIO_CTRL_REG = (PWR_OK_MODE_USBIO_CTRL_REG & \
+  33:Generated_Source\PSoC4/PWR_OK_MODE.c ****                                     (uint32)(~(uint32)(PWR_OK_MODE_DRIVE_MODE_IND_MASK << \
+  34:Generated_Source\PSoC4/PWR_OK_MODE.c ****                                     (PWR_OK_MODE_DRIVE_MODE_BITS * (shift))))) | \
+  35:Generated_Source\PSoC4/PWR_OK_MODE.c ****                                     (uint32)((uint32)(mode) << \
+  36:Generated_Source\PSoC4/PWR_OK_MODE.c ****                                     (PWR_OK_MODE_DRIVE_MODE_BITS * (shift))); \
+  37:Generated_Source\PSoC4/PWR_OK_MODE.c ****         } while (0)
+  38:Generated_Source\PSoC4/PWR_OK_MODE.c ****     #endif
+  39:Generated_Source\PSoC4/PWR_OK_MODE.c **** #endif
+  40:Generated_Source\PSoC4/PWR_OK_MODE.c ****   
+  41:Generated_Source\PSoC4/PWR_OK_MODE.c **** 
+  42:Generated_Source\PSoC4/PWR_OK_MODE.c **** #if defined(PWR_OK_MODE__PC) || (CY_PSOC4_4200L) 
+  43:Generated_Source\PSoC4/PWR_OK_MODE.c ****     /*******************************************************************************
+  44:Generated_Source\PSoC4/PWR_OK_MODE.c ****     * Function Name: PWR_OK_MODE_SetDriveMode
+  45:Generated_Source\PSoC4/PWR_OK_MODE.c ****     ****************************************************************************//**
+  46:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *
+  47:Generated_Source\PSoC4/PWR_OK_MODE.c ****     * \brief Sets the drive mode for each of the Pins component's pins.
+  48:Generated_Source\PSoC4/PWR_OK_MODE.c ****     * 
+  49:Generated_Source\PSoC4/PWR_OK_MODE.c ****     * <b>Note</b> This affects all pins in the Pins component instance. Use the
+  50:Generated_Source\PSoC4/PWR_OK_MODE.c ****     * Per-Pin APIs if you wish to control individual pin's drive modes.
+  51:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *
+  52:Generated_Source\PSoC4/PWR_OK_MODE.c ****     * <b>Note</b> USBIOs have limited drive functionality. Refer to the Drive Mode
+  53:Generated_Source\PSoC4/PWR_OK_MODE.c ****     * parameter for more information.
+  54:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *
+  55:Generated_Source\PSoC4/PWR_OK_MODE.c ****     * \param mode
+  56:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *  Mode for the selected signals. Valid options are documented in 
+  57:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *  \ref driveMode.
+  58:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *
+  59:Generated_Source\PSoC4/PWR_OK_MODE.c ****     * \return
+  60:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *  None
+  61:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *
+  62:Generated_Source\PSoC4/PWR_OK_MODE.c ****     * \sideeffect
+  63:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *  If you use read-modify-write operations that are not atomic, the ISR can
+  64:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *  cause corruption of this function. An ISR that interrupts this function 
+  65:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *  and performs writes to the Pins component Drive Mode registers can cause 
+  66:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *  corrupted port data. To avoid this issue, you should either use the Per-Pin
+  67:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *  APIs (primary method) or disable interrupts around this function.
+  68:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *
+  69:Generated_Source\PSoC4/PWR_OK_MODE.c ****     * \funcusage
+  70:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *  \snippet PWR_OK_MODE_SUT.c usage_PWR_OK_MODE_SetDriveMode
+  71:Generated_Source\PSoC4/PWR_OK_MODE.c ****     *******************************************************************************/
+  72:Generated_Source\PSoC4/PWR_OK_MODE.c ****     void PWR_OK_MODE_SetDriveMode(uint8 mode)
+  73:Generated_Source\PSoC4/PWR_OK_MODE.c ****     {
+  28              		.loc 1 73 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              		@ link register save eliminated.
+  33              	.LVL0:
+  74:Generated_Source\PSoC4/PWR_OK_MODE.c **** 		PWR_OK_MODE_SetP4PinDriveMode(PWR_OK_MODE__0__SHIFT, mode);
+  34              		.loc 1 74 0
+  35 0000 064B     		ldr	r3, .L2
+  36 0002 074A     		ldr	r2, .L2+4
+  37 0004 1968     		ldr	r1, [r3]
+  75:Generated_Source\PSoC4/PWR_OK_MODE.c **** 		PWR_OK_MODE_SetP4PinDriveMode(PWR_OK_MODE__1__SHIFT, mode);
+  76:Generated_Source\PSoC4/PWR_OK_MODE.c ****     }
+  38              		.loc 1 76 0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 3
+
+
+  39              		@ sp needed
+  74:Generated_Source\PSoC4/PWR_OK_MODE.c **** 		PWR_OK_MODE_SetP4PinDriveMode(PWR_OK_MODE__0__SHIFT, mode);
+  40              		.loc 1 74 0
+  41 0006 0A40     		ands	r2, r1
+  42 0008 8104     		lsls	r1, r0, #18
+  43 000a 0A43     		orrs	r2, r1
+  44 000c 1A60     		str	r2, [r3]
+  75:Generated_Source\PSoC4/PWR_OK_MODE.c **** 		PWR_OK_MODE_SetP4PinDriveMode(PWR_OK_MODE__1__SHIFT, mode);
+  45              		.loc 1 75 0
+  46 000e 1968     		ldr	r1, [r3]
+  47 0010 044A     		ldr	r2, .L2+8
+  48 0012 4005     		lsls	r0, r0, #21
+  49              	.LVL1:
+  50 0014 0A40     		ands	r2, r1
+  51 0016 1043     		orrs	r0, r2
+  52 0018 1860     		str	r0, [r3]
+  53              		.loc 1 76 0
+  54 001a 7047     		bx	lr
+  55              	.L3:
+  56              		.align	2
+  57              	.L2:
+  58 001c 08030440 		.word	1074004744
+  59 0020 FFFFE3FF 		.word	-1835009
+  60 0024 FFFF1FFF 		.word	-14680065
+  61              		.cfi_endproc
+  62              	.LFE0:
+  63              		.size	PWR_OK_MODE_SetDriveMode, .-PWR_OK_MODE_SetDriveMode
+  64              		.section	.text.PWR_OK_MODE_Write,"ax",%progbits
+  65              		.align	1
+  66              		.global	PWR_OK_MODE_Write
+  67              		.code	16
+  68              		.thumb_func
+  69              		.type	PWR_OK_MODE_Write, %function
+  70              	PWR_OK_MODE_Write:
+  71              	.LFB1:
+  77:Generated_Source\PSoC4/PWR_OK_MODE.c **** #endif
+  78:Generated_Source\PSoC4/PWR_OK_MODE.c **** 
+  79:Generated_Source\PSoC4/PWR_OK_MODE.c **** 
+  80:Generated_Source\PSoC4/PWR_OK_MODE.c **** /*******************************************************************************
+  81:Generated_Source\PSoC4/PWR_OK_MODE.c **** * Function Name: PWR_OK_MODE_Write
+  82:Generated_Source\PSoC4/PWR_OK_MODE.c **** ****************************************************************************//**
+  83:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+  84:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \brief Writes the value to the physical port (data output register), masking
+  85:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  and shifting the bits appropriately. 
+  86:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+  87:Generated_Source\PSoC4/PWR_OK_MODE.c **** * The data output register controls the signal applied to the physical pin in 
+  88:Generated_Source\PSoC4/PWR_OK_MODE.c **** * conjunction with the drive mode parameter. This function avoids changing 
+  89:Generated_Source\PSoC4/PWR_OK_MODE.c **** * other bits in the port by using the appropriate method (read-modify-write or
+  90:Generated_Source\PSoC4/PWR_OK_MODE.c **** * bit banding).
+  91:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+  92:Generated_Source\PSoC4/PWR_OK_MODE.c **** * <b>Note</b> This function should not be used on a hardware digital output pin 
+  93:Generated_Source\PSoC4/PWR_OK_MODE.c **** * as it is driven by the hardware signal attached to it.
+  94:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+  95:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \param value
+  96:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  Value to write to the component instance.
+  97:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+  98:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \return 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 4
+
+
+  99:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  None 
+ 100:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 101:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \sideeffect
+ 102:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  If you use read-modify-write operations that are not atomic; the Interrupt 
+ 103:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  Service Routines (ISR) can cause corruption of this function. An ISR that 
+ 104:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  interrupts this function and performs writes to the Pins component data 
+ 105:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  register can cause corrupted port data. To avoid this issue, you should 
+ 106:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  either use the Per-Pin APIs (primary method) or disable interrupts around 
+ 107:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  this function.
+ 108:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 109:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \funcusage
+ 110:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  \snippet PWR_OK_MODE_SUT.c usage_PWR_OK_MODE_Write
+ 111:Generated_Source\PSoC4/PWR_OK_MODE.c **** *******************************************************************************/
+ 112:Generated_Source\PSoC4/PWR_OK_MODE.c **** void PWR_OK_MODE_Write(uint8 value)
+ 113:Generated_Source\PSoC4/PWR_OK_MODE.c **** {
+  72              		.loc 1 113 0
+  73              		.cfi_startproc
+  74              		@ args = 0, pretend = 0, frame = 0
+  75              		@ frame_needed = 0, uses_anonymous_args = 0
+  76              		@ link register save eliminated.
+  77              	.LVL2:
+ 114:Generated_Source\PSoC4/PWR_OK_MODE.c ****     uint8 drVal = (uint8)(PWR_OK_MODE_DR & (uint8)(~PWR_OK_MODE_MASK));
+  78              		.loc 1 114 0
+  79 0000 3F23     		movs	r3, #63
+  80 0002 044A     		ldr	r2, .L5
+ 115:Generated_Source\PSoC4/PWR_OK_MODE.c ****     drVal = (drVal | ((uint8)(value << PWR_OK_MODE_SHIFT) & PWR_OK_MODE_MASK));
+ 116:Generated_Source\PSoC4/PWR_OK_MODE.c ****     PWR_OK_MODE_DR = (uint32)drVal;
+  81              		.loc 1 116 0
+  82 0004 8001     		lsls	r0, r0, #6
+  83              	.LVL3:
+ 114:Generated_Source\PSoC4/PWR_OK_MODE.c ****     uint8 drVal = (uint8)(PWR_OK_MODE_DR & (uint8)(~PWR_OK_MODE_MASK));
+  84              		.loc 1 114 0
+  85 0006 1168     		ldr	r1, [r2]
+ 117:Generated_Source\PSoC4/PWR_OK_MODE.c **** }
+  86              		.loc 1 117 0
+  87              		@ sp needed
+ 114:Generated_Source\PSoC4/PWR_OK_MODE.c ****     uint8 drVal = (uint8)(PWR_OK_MODE_DR & (uint8)(~PWR_OK_MODE_MASK));
+  88              		.loc 1 114 0
+  89 0008 0B40     		ands	r3, r1
+ 116:Generated_Source\PSoC4/PWR_OK_MODE.c **** }
+  90              		.loc 1 116 0
+  91 000a 1843     		orrs	r0, r3
+  92 000c C0B2     		uxtb	r0, r0
+  93 000e 1060     		str	r0, [r2]
+  94              		.loc 1 117 0
+  95 0010 7047     		bx	lr
+  96              	.L6:
+  97 0012 C046     		.align	2
+  98              	.L5:
+  99 0014 00030440 		.word	1074004736
+ 100              		.cfi_endproc
+ 101              	.LFE1:
+ 102              		.size	PWR_OK_MODE_Write, .-PWR_OK_MODE_Write
+ 103              		.section	.text.PWR_OK_MODE_Read,"ax",%progbits
+ 104              		.align	1
+ 105              		.global	PWR_OK_MODE_Read
+ 106              		.code	16
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 5
+
+
+ 107              		.thumb_func
+ 108              		.type	PWR_OK_MODE_Read, %function
+ 109              	PWR_OK_MODE_Read:
+ 110              	.LFB2:
+ 118:Generated_Source\PSoC4/PWR_OK_MODE.c **** 
+ 119:Generated_Source\PSoC4/PWR_OK_MODE.c **** 
+ 120:Generated_Source\PSoC4/PWR_OK_MODE.c **** /*******************************************************************************
+ 121:Generated_Source\PSoC4/PWR_OK_MODE.c **** * Function Name: PWR_OK_MODE_Read
+ 122:Generated_Source\PSoC4/PWR_OK_MODE.c **** ****************************************************************************//**
+ 123:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 124:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \brief Reads the associated physical port (pin status register) and masks 
+ 125:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  the required bits according to the width and bit position of the component
+ 126:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  instance. 
+ 127:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 128:Generated_Source\PSoC4/PWR_OK_MODE.c **** * The pin's status register returns the current logic level present on the 
+ 129:Generated_Source\PSoC4/PWR_OK_MODE.c **** * physical pin.
+ 130:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 131:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \return 
+ 132:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  The current value for the pins in the component as a right justified number.
+ 133:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 134:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \funcusage
+ 135:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  \snippet PWR_OK_MODE_SUT.c usage_PWR_OK_MODE_Read  
+ 136:Generated_Source\PSoC4/PWR_OK_MODE.c **** *******************************************************************************/
+ 137:Generated_Source\PSoC4/PWR_OK_MODE.c **** uint8 PWR_OK_MODE_Read(void)
+ 138:Generated_Source\PSoC4/PWR_OK_MODE.c **** {
+ 111              		.loc 1 138 0
+ 112              		.cfi_startproc
+ 113              		@ args = 0, pretend = 0, frame = 0
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ 115              		@ link register save eliminated.
+ 139:Generated_Source\PSoC4/PWR_OK_MODE.c ****     return (uint8)((PWR_OK_MODE_PS & PWR_OK_MODE_MASK) >> PWR_OK_MODE_SHIFT);
+ 116              		.loc 1 139 0
+ 117 0000 024B     		ldr	r3, .L8
+ 140:Generated_Source\PSoC4/PWR_OK_MODE.c **** }
+ 118              		.loc 1 140 0
+ 119              		@ sp needed
+ 139:Generated_Source\PSoC4/PWR_OK_MODE.c ****     return (uint8)((PWR_OK_MODE_PS & PWR_OK_MODE_MASK) >> PWR_OK_MODE_SHIFT);
+ 120              		.loc 1 139 0
+ 121 0002 1868     		ldr	r0, [r3]
+ 122 0004 0006     		lsls	r0, r0, #24
+ 123 0006 800F     		lsrs	r0, r0, #30
+ 124              		.loc 1 140 0
+ 125 0008 7047     		bx	lr
+ 126              	.L9:
+ 127 000a C046     		.align	2
+ 128              	.L8:
+ 129 000c 04030440 		.word	1074004740
+ 130              		.cfi_endproc
+ 131              	.LFE2:
+ 132              		.size	PWR_OK_MODE_Read, .-PWR_OK_MODE_Read
+ 133              		.section	.text.PWR_OK_MODE_ReadDataReg,"ax",%progbits
+ 134              		.align	1
+ 135              		.global	PWR_OK_MODE_ReadDataReg
+ 136              		.code	16
+ 137              		.thumb_func
+ 138              		.type	PWR_OK_MODE_ReadDataReg, %function
+ 139              	PWR_OK_MODE_ReadDataReg:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 6
+
+
+ 140              	.LFB3:
+ 141:Generated_Source\PSoC4/PWR_OK_MODE.c **** 
+ 142:Generated_Source\PSoC4/PWR_OK_MODE.c **** 
+ 143:Generated_Source\PSoC4/PWR_OK_MODE.c **** /*******************************************************************************
+ 144:Generated_Source\PSoC4/PWR_OK_MODE.c **** * Function Name: PWR_OK_MODE_ReadDataReg
+ 145:Generated_Source\PSoC4/PWR_OK_MODE.c **** ****************************************************************************//**
+ 146:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 147:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \brief Reads the associated physical port's data output register and masks 
+ 148:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  the correct bits according to the width and bit position of the component 
+ 149:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  instance. 
+ 150:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 151:Generated_Source\PSoC4/PWR_OK_MODE.c **** * The data output register controls the signal applied to the physical pin in 
+ 152:Generated_Source\PSoC4/PWR_OK_MODE.c **** * conjunction with the drive mode parameter. This is not the same as the 
+ 153:Generated_Source\PSoC4/PWR_OK_MODE.c **** * preferred PWR_OK_MODE_Read() API because the 
+ 154:Generated_Source\PSoC4/PWR_OK_MODE.c **** * PWR_OK_MODE_ReadDataReg() reads the data register instead of the status 
+ 155:Generated_Source\PSoC4/PWR_OK_MODE.c **** * register. For output pins this is a useful function to determine the value 
+ 156:Generated_Source\PSoC4/PWR_OK_MODE.c **** * just written to the pin.
+ 157:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 158:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \return 
+ 159:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  The current value of the data register masked and shifted into a right 
+ 160:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  justified number for the component instance.
+ 161:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 162:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \funcusage
+ 163:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  \snippet PWR_OK_MODE_SUT.c usage_PWR_OK_MODE_ReadDataReg 
+ 164:Generated_Source\PSoC4/PWR_OK_MODE.c **** *******************************************************************************/
+ 165:Generated_Source\PSoC4/PWR_OK_MODE.c **** uint8 PWR_OK_MODE_ReadDataReg(void)
+ 166:Generated_Source\PSoC4/PWR_OK_MODE.c **** {
+ 141              		.loc 1 166 0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145              		@ link register save eliminated.
+ 167:Generated_Source\PSoC4/PWR_OK_MODE.c ****     return (uint8)((PWR_OK_MODE_DR & PWR_OK_MODE_MASK) >> PWR_OK_MODE_SHIFT);
+ 146              		.loc 1 167 0
+ 147 0000 024B     		ldr	r3, .L11
+ 168:Generated_Source\PSoC4/PWR_OK_MODE.c **** }
+ 148              		.loc 1 168 0
+ 149              		@ sp needed
+ 167:Generated_Source\PSoC4/PWR_OK_MODE.c ****     return (uint8)((PWR_OK_MODE_DR & PWR_OK_MODE_MASK) >> PWR_OK_MODE_SHIFT);
+ 150              		.loc 1 167 0
+ 151 0002 1868     		ldr	r0, [r3]
+ 152 0004 0006     		lsls	r0, r0, #24
+ 153 0006 800F     		lsrs	r0, r0, #30
+ 154              		.loc 1 168 0
+ 155 0008 7047     		bx	lr
+ 156              	.L12:
+ 157 000a C046     		.align	2
+ 158              	.L11:
+ 159 000c 00030440 		.word	1074004736
+ 160              		.cfi_endproc
+ 161              	.LFE3:
+ 162              		.size	PWR_OK_MODE_ReadDataReg, .-PWR_OK_MODE_ReadDataReg
+ 163              		.section	.text.PWR_OK_MODE_SetInterruptMode,"ax",%progbits
+ 164              		.align	1
+ 165              		.global	PWR_OK_MODE_SetInterruptMode
+ 166              		.code	16
+ 167              		.thumb_func
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 7
+
+
+ 168              		.type	PWR_OK_MODE_SetInterruptMode, %function
+ 169              	PWR_OK_MODE_SetInterruptMode:
+ 170              	.LFB4:
+ 169:Generated_Source\PSoC4/PWR_OK_MODE.c **** 
+ 170:Generated_Source\PSoC4/PWR_OK_MODE.c **** 
+ 171:Generated_Source\PSoC4/PWR_OK_MODE.c **** /*******************************************************************************
+ 172:Generated_Source\PSoC4/PWR_OK_MODE.c **** * Function Name: PWR_OK_MODE_SetInterruptMode
+ 173:Generated_Source\PSoC4/PWR_OK_MODE.c **** ****************************************************************************//**
+ 174:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 175:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \brief Configures the interrupt mode for each of the Pins component's
+ 176:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  pins. Alternatively you may set the interrupt mode for all the pins
+ 177:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  specified in the Pins component.
+ 178:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 179:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  <b>Note</b> The interrupt is port-wide and therefore any enabled pin
+ 180:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  interrupt may trigger it.
+ 181:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 182:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \param position
+ 183:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  The pin position as listed in the Pins component. You may OR these to be 
+ 184:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  able to configure the interrupt mode of multiple pins within a Pins 
+ 185:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  component. Or you may use PWR_OK_MODE_INTR_ALL to configure the
+ 186:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  interrupt mode of all the pins in the Pins component.       
+ 187:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  - PWR_OK_MODE_0_INTR       (First pin in the list)
+ 188:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  - PWR_OK_MODE_1_INTR       (Second pin in the list)
+ 189:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  - ...
+ 190:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  - PWR_OK_MODE_INTR_ALL     (All pins in Pins component)
+ 191:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 192:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \param mode
+ 193:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  Interrupt mode for the selected pins. Valid options are documented in
+ 194:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  \ref intrMode.
+ 195:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 196:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \return 
+ 197:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  None
+ 198:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  
+ 199:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \sideeffect
+ 200:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  It is recommended that the interrupt be disabled before calling this 
+ 201:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  function to avoid unintended interrupt requests. Note that the interrupt
+ 202:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  type is port wide, and therefore will trigger for any enabled pin on the 
+ 203:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  port.
+ 204:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 205:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \funcusage
+ 206:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  \snippet PWR_OK_MODE_SUT.c usage_PWR_OK_MODE_SetInterruptMode
+ 207:Generated_Source\PSoC4/PWR_OK_MODE.c **** *******************************************************************************/
+ 208:Generated_Source\PSoC4/PWR_OK_MODE.c **** void PWR_OK_MODE_SetInterruptMode(uint16 position, uint16 mode)
+ 209:Generated_Source\PSoC4/PWR_OK_MODE.c **** {
+ 171              		.loc 1 209 0
+ 172              		.cfi_startproc
+ 173              		@ args = 0, pretend = 0, frame = 0
+ 174              		@ frame_needed = 0, uses_anonymous_args = 0
+ 175              		@ link register save eliminated.
+ 176              	.LVL4:
+ 210:Generated_Source\PSoC4/PWR_OK_MODE.c ****     uint32 intrCfg;
+ 211:Generated_Source\PSoC4/PWR_OK_MODE.c ****     
+ 212:Generated_Source\PSoC4/PWR_OK_MODE.c ****     intrCfg =  PWR_OK_MODE_INTCFG & (uint32)(~(uint32)position);
+ 177              		.loc 1 212 0
+ 178 0000 034A     		ldr	r2, .L14
+ 213:Generated_Source\PSoC4/PWR_OK_MODE.c ****     PWR_OK_MODE_INTCFG = intrCfg | ((uint32)position & (uint32)mode);
+ 214:Generated_Source\PSoC4/PWR_OK_MODE.c **** }
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 8
+
+
+ 179              		.loc 1 214 0
+ 180              		@ sp needed
+ 212:Generated_Source\PSoC4/PWR_OK_MODE.c ****     PWR_OK_MODE_INTCFG = intrCfg | ((uint32)position & (uint32)mode);
+ 181              		.loc 1 212 0
+ 182 0002 1368     		ldr	r3, [r2]
+ 183              	.LVL5:
+ 213:Generated_Source\PSoC4/PWR_OK_MODE.c ****     PWR_OK_MODE_INTCFG = intrCfg | ((uint32)position & (uint32)mode);
+ 184              		.loc 1 213 0
+ 185 0004 8343     		bics	r3, r0
+ 186              	.LVL6:
+ 187 0006 0840     		ands	r0, r1
+ 188              	.LVL7:
+ 189 0008 1843     		orrs	r0, r3
+ 190 000a 1060     		str	r0, [r2]
+ 191              		.loc 1 214 0
+ 192 000c 7047     		bx	lr
+ 193              	.L15:
+ 194 000e C046     		.align	2
+ 195              	.L14:
+ 196 0010 0C030440 		.word	1074004748
+ 197              		.cfi_endproc
+ 198              	.LFE4:
+ 199              		.size	PWR_OK_MODE_SetInterruptMode, .-PWR_OK_MODE_SetInterruptMode
+ 200              		.section	.text.PWR_OK_MODE_ClearInterrupt,"ax",%progbits
+ 201              		.align	1
+ 202              		.global	PWR_OK_MODE_ClearInterrupt
+ 203              		.code	16
+ 204              		.thumb_func
+ 205              		.type	PWR_OK_MODE_ClearInterrupt, %function
+ 206              	PWR_OK_MODE_ClearInterrupt:
+ 207              	.LFB5:
+ 215:Generated_Source\PSoC4/PWR_OK_MODE.c **** 
+ 216:Generated_Source\PSoC4/PWR_OK_MODE.c **** 
+ 217:Generated_Source\PSoC4/PWR_OK_MODE.c **** /*******************************************************************************
+ 218:Generated_Source\PSoC4/PWR_OK_MODE.c **** * Function Name: PWR_OK_MODE_ClearInterrupt
+ 219:Generated_Source\PSoC4/PWR_OK_MODE.c **** ****************************************************************************//**
+ 220:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 221:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \brief Clears any active interrupts attached with the component and returns 
+ 222:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  the value of the interrupt status register allowing determination of which
+ 223:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  pins generated an interrupt event.
+ 224:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 225:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \return 
+ 226:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  The right-shifted current value of the interrupt status register. Each pin 
+ 227:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  has one bit set if it generated an interrupt event. For example, bit 0 is 
+ 228:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  for pin 0 and bit 1 is for pin 1 of the Pins component.
+ 229:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  
+ 230:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \sideeffect
+ 231:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  Clears all bits of the physical port's interrupt status register, not just
+ 232:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  those associated with the Pins component.
+ 233:Generated_Source\PSoC4/PWR_OK_MODE.c **** *
+ 234:Generated_Source\PSoC4/PWR_OK_MODE.c **** * \funcusage
+ 235:Generated_Source\PSoC4/PWR_OK_MODE.c **** *  \snippet PWR_OK_MODE_SUT.c usage_PWR_OK_MODE_ClearInterrupt
+ 236:Generated_Source\PSoC4/PWR_OK_MODE.c **** *******************************************************************************/
+ 237:Generated_Source\PSoC4/PWR_OK_MODE.c **** uint8 PWR_OK_MODE_ClearInterrupt(void)
+ 238:Generated_Source\PSoC4/PWR_OK_MODE.c **** {
+ 208              		.loc 1 238 0
+ 209              		.cfi_startproc
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 9
+
+
+ 210              		@ args = 0, pretend = 0, frame = 0
+ 211              		@ frame_needed = 0, uses_anonymous_args = 0
+ 212              		@ link register save eliminated.
+ 239:Generated_Source\PSoC4/PWR_OK_MODE.c **** 	uint8 maskedStatus = (uint8)(PWR_OK_MODE_INTSTAT & PWR_OK_MODE_MASK);
+ 213              		.loc 1 239 0
+ 214 0000 C023     		movs	r3, #192
+ 215 0002 034A     		ldr	r2, .L17
+ 240:Generated_Source\PSoC4/PWR_OK_MODE.c **** 	PWR_OK_MODE_INTSTAT = maskedStatus;
+ 241:Generated_Source\PSoC4/PWR_OK_MODE.c ****     return maskedStatus >> PWR_OK_MODE_SHIFT;
+ 242:Generated_Source\PSoC4/PWR_OK_MODE.c **** }
+ 216              		.loc 1 242 0
+ 217              		@ sp needed
+ 239:Generated_Source\PSoC4/PWR_OK_MODE.c **** 	uint8 maskedStatus = (uint8)(PWR_OK_MODE_INTSTAT & PWR_OK_MODE_MASK);
+ 218              		.loc 1 239 0
+ 219 0004 1068     		ldr	r0, [r2]
+ 220 0006 1840     		ands	r0, r3
+ 221              	.LVL8:
+ 240:Generated_Source\PSoC4/PWR_OK_MODE.c **** 	PWR_OK_MODE_INTSTAT = maskedStatus;
+ 222              		.loc 1 240 0
+ 223 0008 1060     		str	r0, [r2]
+ 241:Generated_Source\PSoC4/PWR_OK_MODE.c **** }
+ 224              		.loc 1 241 0
+ 225 000a 8009     		lsrs	r0, r0, #6
+ 226              	.LVL9:
+ 227              		.loc 1 242 0
+ 228 000c 7047     		bx	lr
+ 229              	.L18:
+ 230 000e C046     		.align	2
+ 231              	.L17:
+ 232 0010 10030440 		.word	1074004752
+ 233              		.cfi_endproc
+ 234              	.LFE5:
+ 235              		.size	PWR_OK_MODE_ClearInterrupt, .-PWR_OK_MODE_ClearInterrupt
+ 236              		.text
+ 237              	.Letext0:
+ 238              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ 239              		.section	.debug_info,"",%progbits
+ 240              	.Ldebug_info0:
+ 241 0000 97010000 		.4byte	0x197
+ 242 0004 0400     		.2byte	0x4
+ 243 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 244 000a 04       		.byte	0x4
+ 245 000b 01       		.uleb128 0x1
+ 246 000c BD010000 		.4byte	.LASF27
+ 247 0010 0C       		.byte	0xc
+ 248 0011 98010000 		.4byte	.LASF28
+ 249 0015 3F000000 		.4byte	.LASF29
+ 250 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 251 001d 00000000 		.4byte	0
+ 252 0021 00000000 		.4byte	.Ldebug_line0
+ 253 0025 02       		.uleb128 0x2
+ 254 0026 01       		.byte	0x1
+ 255 0027 06       		.byte	0x6
+ 256 0028 8C010000 		.4byte	.LASF0
+ 257 002c 02       		.uleb128 0x2
+ 258 002d 01       		.byte	0x1
+ 259 002e 08       		.byte	0x8
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 10
+
+
+ 260 002f 2B000000 		.4byte	.LASF1
+ 261 0033 02       		.uleb128 0x2
+ 262 0034 02       		.byte	0x2
+ 263 0035 05       		.byte	0x5
+ 264 0036 73010000 		.4byte	.LASF2
+ 265 003a 02       		.uleb128 0x2
+ 266 003b 02       		.byte	0x2
+ 267 003c 07       		.byte	0x7
+ 268 003d 87000000 		.4byte	.LASF3
+ 269 0041 02       		.uleb128 0x2
+ 270 0042 04       		.byte	0x4
+ 271 0043 05       		.byte	0x5
+ 272 0044 83010000 		.4byte	.LASF4
+ 273 0048 02       		.uleb128 0x2
+ 274 0049 04       		.byte	0x4
+ 275 004a 07       		.byte	0x7
+ 276 004b 9A000000 		.4byte	.LASF5
+ 277 004f 02       		.uleb128 0x2
+ 278 0050 08       		.byte	0x8
+ 279 0051 05       		.byte	0x5
+ 280 0052 53010000 		.4byte	.LASF6
+ 281 0056 02       		.uleb128 0x2
+ 282 0057 08       		.byte	0x8
+ 283 0058 07       		.byte	0x7
+ 284 0059 06010000 		.4byte	.LASF7
+ 285 005d 03       		.uleb128 0x3
+ 286 005e 04       		.byte	0x4
+ 287 005f 05       		.byte	0x5
+ 288 0060 696E7400 		.ascii	"int\000"
+ 289 0064 02       		.uleb128 0x2
+ 290 0065 04       		.byte	0x4
+ 291 0066 07       		.byte	0x7
+ 292 0067 F9000000 		.4byte	.LASF8
+ 293 006b 04       		.uleb128 0x4
+ 294 006c 7D010000 		.4byte	.LASF9
+ 295 0070 02       		.byte	0x2
+ 296 0071 F701     		.2byte	0x1f7
+ 297 0073 2C000000 		.4byte	0x2c
+ 298 0077 04       		.uleb128 0x4
+ 299 0078 BD000000 		.4byte	.LASF10
+ 300 007c 02       		.byte	0x2
+ 301 007d F801     		.2byte	0x1f8
+ 302 007f 3A000000 		.4byte	0x3a
+ 303 0083 04       		.uleb128 0x4
+ 304 0084 CD000000 		.4byte	.LASF11
+ 305 0088 02       		.byte	0x2
+ 306 0089 F901     		.2byte	0x1f9
+ 307 008b 48000000 		.4byte	0x48
+ 308 008f 02       		.uleb128 0x2
+ 309 0090 04       		.byte	0x4
+ 310 0091 04       		.byte	0x4
+ 311 0092 13000000 		.4byte	.LASF12
+ 312 0096 02       		.uleb128 0x2
+ 313 0097 08       		.byte	0x8
+ 314 0098 04       		.byte	0x4
+ 315 0099 0C000000 		.4byte	.LASF13
+ 316 009d 02       		.uleb128 0x2
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 11
+
+
+ 317 009e 01       		.byte	0x1
+ 318 009f 08       		.byte	0x8
+ 319 00a0 6E010000 		.4byte	.LASF14
+ 320 00a4 04       		.uleb128 0x4
+ 321 00a5 00000000 		.4byte	.LASF15
+ 322 00a9 02       		.byte	0x2
+ 323 00aa A302     		.2byte	0x2a3
+ 324 00ac B0000000 		.4byte	0xb0
+ 325 00b0 05       		.uleb128 0x5
+ 326 00b1 83000000 		.4byte	0x83
+ 327 00b5 06       		.uleb128 0x6
+ 328 00b6 22010000 		.4byte	.LASF16
+ 329 00ba 01       		.byte	0x1
+ 330 00bb 48       		.byte	0x48
+ 331 00bc 00000000 		.4byte	.LFB0
+ 332 00c0 28000000 		.4byte	.LFE0-.LFB0
+ 333 00c4 01       		.uleb128 0x1
+ 334 00c5 9C       		.byte	0x9c
+ 335 00c6 DA000000 		.4byte	0xda
+ 336 00ca 07       		.uleb128 0x7
+ 337 00cb 1D010000 		.4byte	.LASF18
+ 338 00cf 01       		.byte	0x1
+ 339 00d0 48       		.byte	0x48
+ 340 00d1 6B000000 		.4byte	0x6b
+ 341 00d5 00000000 		.4byte	.LLST0
+ 342 00d9 00       		.byte	0
+ 343 00da 06       		.uleb128 0x6
+ 344 00db 19000000 		.4byte	.LASF17
+ 345 00df 01       		.byte	0x1
+ 346 00e0 70       		.byte	0x70
+ 347 00e1 00000000 		.4byte	.LFB1
+ 348 00e5 18000000 		.4byte	.LFE1-.LFB1
+ 349 00e9 01       		.uleb128 0x1
+ 350 00ea 9C       		.byte	0x9c
+ 351 00eb 0A010000 		.4byte	0x10a
+ 352 00ef 07       		.uleb128 0x7
+ 353 00f0 06000000 		.4byte	.LASF19
+ 354 00f4 01       		.byte	0x1
+ 355 00f5 70       		.byte	0x70
+ 356 00f6 6B000000 		.4byte	0x6b
+ 357 00fa 21000000 		.4byte	.LLST1
+ 358 00fe 08       		.uleb128 0x8
+ 359 00ff 39000000 		.4byte	.LASF30
+ 360 0103 01       		.byte	0x1
+ 361 0104 72       		.byte	0x72
+ 362 0105 6B000000 		.4byte	0x6b
+ 363 0109 00       		.byte	0
+ 364 010a 09       		.uleb128 0x9
+ 365 010b AC000000 		.4byte	.LASF20
+ 366 010f 01       		.byte	0x1
+ 367 0110 89       		.byte	0x89
+ 368 0111 6B000000 		.4byte	0x6b
+ 369 0115 00000000 		.4byte	.LFB2
+ 370 0119 10000000 		.4byte	.LFE2-.LFB2
+ 371 011d 01       		.uleb128 0x1
+ 372 011e 9C       		.byte	0x9c
+ 373 011f 09       		.uleb128 0x9
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 12
+
+
+ 374 0120 3B010000 		.4byte	.LASF21
+ 375 0124 01       		.byte	0x1
+ 376 0125 A5       		.byte	0xa5
+ 377 0126 6B000000 		.4byte	0x6b
+ 378 012a 00000000 		.4byte	.LFB3
+ 379 012e 10000000 		.4byte	.LFE3-.LFB3
+ 380 0132 01       		.uleb128 0x1
+ 381 0133 9C       		.byte	0x9c
+ 382 0134 06       		.uleb128 0x6
+ 383 0135 D4000000 		.4byte	.LASF22
+ 384 0139 01       		.byte	0x1
+ 385 013a D0       		.byte	0xd0
+ 386 013b 00000000 		.4byte	.LFB4
+ 387 013f 14000000 		.4byte	.LFE4-.LFB4
+ 388 0143 01       		.uleb128 0x1
+ 389 0144 9C       		.byte	0x9c
+ 390 0145 75010000 		.4byte	0x175
+ 391 0149 07       		.uleb128 0x7
+ 392 014a C4000000 		.4byte	.LASF23
+ 393 014e 01       		.byte	0x1
+ 394 014f D0       		.byte	0xd0
+ 395 0150 77000000 		.4byte	0x77
+ 396 0154 42000000 		.4byte	.LLST2
+ 397 0158 0A       		.uleb128 0xa
+ 398 0159 1D010000 		.4byte	.LASF18
+ 399 015d 01       		.byte	0x1
+ 400 015e D0       		.byte	0xd0
+ 401 015f 77000000 		.4byte	0x77
+ 402 0163 01       		.uleb128 0x1
+ 403 0164 51       		.byte	0x51
+ 404 0165 0B       		.uleb128 0xb
+ 405 0166 F1000000 		.4byte	.LASF25
+ 406 016a 01       		.byte	0x1
+ 407 016b D2       		.byte	0xd2
+ 408 016c 83000000 		.4byte	0x83
+ 409 0170 63000000 		.4byte	.LLST3
+ 410 0174 00       		.byte	0
+ 411 0175 0C       		.uleb128 0xc
+ 412 0176 6C000000 		.4byte	.LASF24
+ 413 017a 01       		.byte	0x1
+ 414 017b ED       		.byte	0xed
+ 415 017c 6B000000 		.4byte	0x6b
+ 416 0180 00000000 		.4byte	.LFB5
+ 417 0184 14000000 		.4byte	.LFE5-.LFB5
+ 418 0188 01       		.uleb128 0x1
+ 419 0189 9C       		.byte	0x9c
+ 420 018a 0B       		.uleb128 0xb
+ 421 018b 61010000 		.4byte	.LASF26
+ 422 018f 01       		.byte	0x1
+ 423 0190 EF       		.byte	0xef
+ 424 0191 6B000000 		.4byte	0x6b
+ 425 0195 80000000 		.4byte	.LLST4
+ 426 0199 00       		.byte	0
+ 427 019a 00       		.byte	0
+ 428              		.section	.debug_abbrev,"",%progbits
+ 429              	.Ldebug_abbrev0:
+ 430 0000 01       		.uleb128 0x1
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 13
+
+
+ 431 0001 11       		.uleb128 0x11
+ 432 0002 01       		.byte	0x1
+ 433 0003 25       		.uleb128 0x25
+ 434 0004 0E       		.uleb128 0xe
+ 435 0005 13       		.uleb128 0x13
+ 436 0006 0B       		.uleb128 0xb
+ 437 0007 03       		.uleb128 0x3
+ 438 0008 0E       		.uleb128 0xe
+ 439 0009 1B       		.uleb128 0x1b
+ 440 000a 0E       		.uleb128 0xe
+ 441 000b 55       		.uleb128 0x55
+ 442 000c 17       		.uleb128 0x17
+ 443 000d 11       		.uleb128 0x11
+ 444 000e 01       		.uleb128 0x1
+ 445 000f 10       		.uleb128 0x10
+ 446 0010 17       		.uleb128 0x17
+ 447 0011 00       		.byte	0
+ 448 0012 00       		.byte	0
+ 449 0013 02       		.uleb128 0x2
+ 450 0014 24       		.uleb128 0x24
+ 451 0015 00       		.byte	0
+ 452 0016 0B       		.uleb128 0xb
+ 453 0017 0B       		.uleb128 0xb
+ 454 0018 3E       		.uleb128 0x3e
+ 455 0019 0B       		.uleb128 0xb
+ 456 001a 03       		.uleb128 0x3
+ 457 001b 0E       		.uleb128 0xe
+ 458 001c 00       		.byte	0
+ 459 001d 00       		.byte	0
+ 460 001e 03       		.uleb128 0x3
+ 461 001f 24       		.uleb128 0x24
+ 462 0020 00       		.byte	0
+ 463 0021 0B       		.uleb128 0xb
+ 464 0022 0B       		.uleb128 0xb
+ 465 0023 3E       		.uleb128 0x3e
+ 466 0024 0B       		.uleb128 0xb
+ 467 0025 03       		.uleb128 0x3
+ 468 0026 08       		.uleb128 0x8
+ 469 0027 00       		.byte	0
+ 470 0028 00       		.byte	0
+ 471 0029 04       		.uleb128 0x4
+ 472 002a 16       		.uleb128 0x16
+ 473 002b 00       		.byte	0
+ 474 002c 03       		.uleb128 0x3
+ 475 002d 0E       		.uleb128 0xe
+ 476 002e 3A       		.uleb128 0x3a
+ 477 002f 0B       		.uleb128 0xb
+ 478 0030 3B       		.uleb128 0x3b
+ 479 0031 05       		.uleb128 0x5
+ 480 0032 49       		.uleb128 0x49
+ 481 0033 13       		.uleb128 0x13
+ 482 0034 00       		.byte	0
+ 483 0035 00       		.byte	0
+ 484 0036 05       		.uleb128 0x5
+ 485 0037 35       		.uleb128 0x35
+ 486 0038 00       		.byte	0
+ 487 0039 49       		.uleb128 0x49
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 14
+
+
+ 488 003a 13       		.uleb128 0x13
+ 489 003b 00       		.byte	0
+ 490 003c 00       		.byte	0
+ 491 003d 06       		.uleb128 0x6
+ 492 003e 2E       		.uleb128 0x2e
+ 493 003f 01       		.byte	0x1
+ 494 0040 3F       		.uleb128 0x3f
+ 495 0041 19       		.uleb128 0x19
+ 496 0042 03       		.uleb128 0x3
+ 497 0043 0E       		.uleb128 0xe
+ 498 0044 3A       		.uleb128 0x3a
+ 499 0045 0B       		.uleb128 0xb
+ 500 0046 3B       		.uleb128 0x3b
+ 501 0047 0B       		.uleb128 0xb
+ 502 0048 27       		.uleb128 0x27
+ 503 0049 19       		.uleb128 0x19
+ 504 004a 11       		.uleb128 0x11
+ 505 004b 01       		.uleb128 0x1
+ 506 004c 12       		.uleb128 0x12
+ 507 004d 06       		.uleb128 0x6
+ 508 004e 40       		.uleb128 0x40
+ 509 004f 18       		.uleb128 0x18
+ 510 0050 9742     		.uleb128 0x2117
+ 511 0052 19       		.uleb128 0x19
+ 512 0053 01       		.uleb128 0x1
+ 513 0054 13       		.uleb128 0x13
+ 514 0055 00       		.byte	0
+ 515 0056 00       		.byte	0
+ 516 0057 07       		.uleb128 0x7
+ 517 0058 05       		.uleb128 0x5
+ 518 0059 00       		.byte	0
+ 519 005a 03       		.uleb128 0x3
+ 520 005b 0E       		.uleb128 0xe
+ 521 005c 3A       		.uleb128 0x3a
+ 522 005d 0B       		.uleb128 0xb
+ 523 005e 3B       		.uleb128 0x3b
+ 524 005f 0B       		.uleb128 0xb
+ 525 0060 49       		.uleb128 0x49
+ 526 0061 13       		.uleb128 0x13
+ 527 0062 02       		.uleb128 0x2
+ 528 0063 17       		.uleb128 0x17
+ 529 0064 00       		.byte	0
+ 530 0065 00       		.byte	0
+ 531 0066 08       		.uleb128 0x8
+ 532 0067 34       		.uleb128 0x34
+ 533 0068 00       		.byte	0
+ 534 0069 03       		.uleb128 0x3
+ 535 006a 0E       		.uleb128 0xe
+ 536 006b 3A       		.uleb128 0x3a
+ 537 006c 0B       		.uleb128 0xb
+ 538 006d 3B       		.uleb128 0x3b
+ 539 006e 0B       		.uleb128 0xb
+ 540 006f 49       		.uleb128 0x49
+ 541 0070 13       		.uleb128 0x13
+ 542 0071 00       		.byte	0
+ 543 0072 00       		.byte	0
+ 544 0073 09       		.uleb128 0x9
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 15
+
+
+ 545 0074 2E       		.uleb128 0x2e
+ 546 0075 00       		.byte	0
+ 547 0076 3F       		.uleb128 0x3f
+ 548 0077 19       		.uleb128 0x19
+ 549 0078 03       		.uleb128 0x3
+ 550 0079 0E       		.uleb128 0xe
+ 551 007a 3A       		.uleb128 0x3a
+ 552 007b 0B       		.uleb128 0xb
+ 553 007c 3B       		.uleb128 0x3b
+ 554 007d 0B       		.uleb128 0xb
+ 555 007e 27       		.uleb128 0x27
+ 556 007f 19       		.uleb128 0x19
+ 557 0080 49       		.uleb128 0x49
+ 558 0081 13       		.uleb128 0x13
+ 559 0082 11       		.uleb128 0x11
+ 560 0083 01       		.uleb128 0x1
+ 561 0084 12       		.uleb128 0x12
+ 562 0085 06       		.uleb128 0x6
+ 563 0086 40       		.uleb128 0x40
+ 564 0087 18       		.uleb128 0x18
+ 565 0088 9742     		.uleb128 0x2117
+ 566 008a 19       		.uleb128 0x19
+ 567 008b 00       		.byte	0
+ 568 008c 00       		.byte	0
+ 569 008d 0A       		.uleb128 0xa
+ 570 008e 05       		.uleb128 0x5
+ 571 008f 00       		.byte	0
+ 572 0090 03       		.uleb128 0x3
+ 573 0091 0E       		.uleb128 0xe
+ 574 0092 3A       		.uleb128 0x3a
+ 575 0093 0B       		.uleb128 0xb
+ 576 0094 3B       		.uleb128 0x3b
+ 577 0095 0B       		.uleb128 0xb
+ 578 0096 49       		.uleb128 0x49
+ 579 0097 13       		.uleb128 0x13
+ 580 0098 02       		.uleb128 0x2
+ 581 0099 18       		.uleb128 0x18
+ 582 009a 00       		.byte	0
+ 583 009b 00       		.byte	0
+ 584 009c 0B       		.uleb128 0xb
+ 585 009d 34       		.uleb128 0x34
+ 586 009e 00       		.byte	0
+ 587 009f 03       		.uleb128 0x3
+ 588 00a0 0E       		.uleb128 0xe
+ 589 00a1 3A       		.uleb128 0x3a
+ 590 00a2 0B       		.uleb128 0xb
+ 591 00a3 3B       		.uleb128 0x3b
+ 592 00a4 0B       		.uleb128 0xb
+ 593 00a5 49       		.uleb128 0x49
+ 594 00a6 13       		.uleb128 0x13
+ 595 00a7 02       		.uleb128 0x2
+ 596 00a8 17       		.uleb128 0x17
+ 597 00a9 00       		.byte	0
+ 598 00aa 00       		.byte	0
+ 599 00ab 0C       		.uleb128 0xc
+ 600 00ac 2E       		.uleb128 0x2e
+ 601 00ad 01       		.byte	0x1
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 16
+
+
+ 602 00ae 3F       		.uleb128 0x3f
+ 603 00af 19       		.uleb128 0x19
+ 604 00b0 03       		.uleb128 0x3
+ 605 00b1 0E       		.uleb128 0xe
+ 606 00b2 3A       		.uleb128 0x3a
+ 607 00b3 0B       		.uleb128 0xb
+ 608 00b4 3B       		.uleb128 0x3b
+ 609 00b5 0B       		.uleb128 0xb
+ 610 00b6 27       		.uleb128 0x27
+ 611 00b7 19       		.uleb128 0x19
+ 612 00b8 49       		.uleb128 0x49
+ 613 00b9 13       		.uleb128 0x13
+ 614 00ba 11       		.uleb128 0x11
+ 615 00bb 01       		.uleb128 0x1
+ 616 00bc 12       		.uleb128 0x12
+ 617 00bd 06       		.uleb128 0x6
+ 618 00be 40       		.uleb128 0x40
+ 619 00bf 18       		.uleb128 0x18
+ 620 00c0 9742     		.uleb128 0x2117
+ 621 00c2 19       		.uleb128 0x19
+ 622 00c3 00       		.byte	0
+ 623 00c4 00       		.byte	0
+ 624 00c5 00       		.byte	0
+ 625              		.section	.debug_loc,"",%progbits
+ 626              	.Ldebug_loc0:
+ 627              	.LLST0:
+ 628 0000 00000000 		.4byte	.LVL0
+ 629 0004 14000000 		.4byte	.LVL1
+ 630 0008 0100     		.2byte	0x1
+ 631 000a 50       		.byte	0x50
+ 632 000b 14000000 		.4byte	.LVL1
+ 633 000f 28000000 		.4byte	.LFE0
+ 634 0013 0400     		.2byte	0x4
+ 635 0015 F3       		.byte	0xf3
+ 636 0016 01       		.uleb128 0x1
+ 637 0017 50       		.byte	0x50
+ 638 0018 9F       		.byte	0x9f
+ 639 0019 00000000 		.4byte	0
+ 640 001d 00000000 		.4byte	0
+ 641              	.LLST1:
+ 642 0021 00000000 		.4byte	.LVL2
+ 643 0025 06000000 		.4byte	.LVL3
+ 644 0029 0100     		.2byte	0x1
+ 645 002b 50       		.byte	0x50
+ 646 002c 06000000 		.4byte	.LVL3
+ 647 0030 18000000 		.4byte	.LFE1
+ 648 0034 0400     		.2byte	0x4
+ 649 0036 F3       		.byte	0xf3
+ 650 0037 01       		.uleb128 0x1
+ 651 0038 50       		.byte	0x50
+ 652 0039 9F       		.byte	0x9f
+ 653 003a 00000000 		.4byte	0
+ 654 003e 00000000 		.4byte	0
+ 655              	.LLST2:
+ 656 0042 00000000 		.4byte	.LVL4
+ 657 0046 08000000 		.4byte	.LVL7
+ 658 004a 0100     		.2byte	0x1
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 17
+
+
+ 659 004c 50       		.byte	0x50
+ 660 004d 08000000 		.4byte	.LVL7
+ 661 0051 14000000 		.4byte	.LFE4
+ 662 0055 0400     		.2byte	0x4
+ 663 0057 F3       		.byte	0xf3
+ 664 0058 01       		.uleb128 0x1
+ 665 0059 50       		.byte	0x50
+ 666 005a 9F       		.byte	0x9f
+ 667 005b 00000000 		.4byte	0
+ 668 005f 00000000 		.4byte	0
+ 669              	.LLST3:
+ 670 0063 04000000 		.4byte	.LVL5
+ 671 0067 06000000 		.4byte	.LVL6
+ 672 006b 0B00     		.2byte	0xb
+ 673 006d 70       		.byte	0x70
+ 674 006e 00       		.sleb128 0
+ 675 006f 0A       		.byte	0xa
+ 676 0070 FFFF     		.2byte	0xffff
+ 677 0072 1A       		.byte	0x1a
+ 678 0073 20       		.byte	0x20
+ 679 0074 73       		.byte	0x73
+ 680 0075 00       		.sleb128 0
+ 681 0076 1A       		.byte	0x1a
+ 682 0077 9F       		.byte	0x9f
+ 683 0078 00000000 		.4byte	0
+ 684 007c 00000000 		.4byte	0
+ 685              	.LLST4:
+ 686 0080 08000000 		.4byte	.LVL8
+ 687 0084 0C000000 		.4byte	.LVL9
+ 688 0088 0100     		.2byte	0x1
+ 689 008a 50       		.byte	0x50
+ 690 008b 0C000000 		.4byte	.LVL9
+ 691 008f 14000000 		.4byte	.LFE5
+ 692 0093 0400     		.2byte	0x4
+ 693 0095 72       		.byte	0x72
+ 694 0096 00       		.sleb128 0
+ 695 0097 06       		.byte	0x6
+ 696 0098 9F       		.byte	0x9f
+ 697 0099 00000000 		.4byte	0
+ 698 009d 00000000 		.4byte	0
+ 699              		.section	.debug_aranges,"",%progbits
+ 700 0000 44000000 		.4byte	0x44
+ 701 0004 0200     		.2byte	0x2
+ 702 0006 00000000 		.4byte	.Ldebug_info0
+ 703 000a 04       		.byte	0x4
+ 704 000b 00       		.byte	0
+ 705 000c 0000     		.2byte	0
+ 706 000e 0000     		.2byte	0
+ 707 0010 00000000 		.4byte	.LFB0
+ 708 0014 28000000 		.4byte	.LFE0-.LFB0
+ 709 0018 00000000 		.4byte	.LFB1
+ 710 001c 18000000 		.4byte	.LFE1-.LFB1
+ 711 0020 00000000 		.4byte	.LFB2
+ 712 0024 10000000 		.4byte	.LFE2-.LFB2
+ 713 0028 00000000 		.4byte	.LFB3
+ 714 002c 10000000 		.4byte	.LFE3-.LFB3
+ 715 0030 00000000 		.4byte	.LFB4
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 18
+
+
+ 716 0034 14000000 		.4byte	.LFE4-.LFB4
+ 717 0038 00000000 		.4byte	.LFB5
+ 718 003c 14000000 		.4byte	.LFE5-.LFB5
+ 719 0040 00000000 		.4byte	0
+ 720 0044 00000000 		.4byte	0
+ 721              		.section	.debug_ranges,"",%progbits
+ 722              	.Ldebug_ranges0:
+ 723 0000 00000000 		.4byte	.LFB0
+ 724 0004 28000000 		.4byte	.LFE0
+ 725 0008 00000000 		.4byte	.LFB1
+ 726 000c 18000000 		.4byte	.LFE1
+ 727 0010 00000000 		.4byte	.LFB2
+ 728 0014 10000000 		.4byte	.LFE2
+ 729 0018 00000000 		.4byte	.LFB3
+ 730 001c 10000000 		.4byte	.LFE3
+ 731 0020 00000000 		.4byte	.LFB4
+ 732 0024 14000000 		.4byte	.LFE4
+ 733 0028 00000000 		.4byte	.LFB5
+ 734 002c 14000000 		.4byte	.LFE5
+ 735 0030 00000000 		.4byte	0
+ 736 0034 00000000 		.4byte	0
+ 737              		.section	.debug_line,"",%progbits
+ 738              	.Ldebug_line0:
+ 739 0000 CD000000 		.section	.debug_str,"MS",%progbits,1
+ 739      02004800 
+ 739      00000201 
+ 739      FB0E0D00 
+ 739      01010101 
+ 740              	.LASF15:
+ 741 0000 72656733 		.ascii	"reg32\000"
+ 741      3200
+ 742              	.LASF19:
+ 743 0006 76616C75 		.ascii	"value\000"
+ 743      6500
+ 744              	.LASF13:
+ 745 000c 646F7562 		.ascii	"double\000"
+ 745      6C6500
+ 746              	.LASF12:
+ 747 0013 666C6F61 		.ascii	"float\000"
+ 747      7400
+ 748              	.LASF17:
+ 749 0019 5057525F 		.ascii	"PWR_OK_MODE_Write\000"
+ 749      4F4B5F4D 
+ 749      4F44455F 
+ 749      57726974 
+ 749      6500
+ 750              	.LASF1:
+ 751 002b 756E7369 		.ascii	"unsigned char\000"
+ 751      676E6564 
+ 751      20636861 
+ 751      7200
+ 752              	.LASF30:
+ 753 0039 64725661 		.ascii	"drVal\000"
+ 753      6C00
+ 754              	.LASF29:
+ 755 003f 433A5C55 		.ascii	"C:\\Users\\Ala\\Desktop\\Cypress\\BeoM_main.cydsn\000"
+ 755      73657273 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 19
+
+
+ 755      5C416C61 
+ 755      5C446573 
+ 755      6B746F70 
+ 756              	.LASF24:
+ 757 006c 5057525F 		.ascii	"PWR_OK_MODE_ClearInterrupt\000"
+ 757      4F4B5F4D 
+ 757      4F44455F 
+ 757      436C6561 
+ 757      72496E74 
+ 758              	.LASF3:
+ 759 0087 73686F72 		.ascii	"short unsigned int\000"
+ 759      7420756E 
+ 759      7369676E 
+ 759      65642069 
+ 759      6E7400
+ 760              	.LASF5:
+ 761 009a 6C6F6E67 		.ascii	"long unsigned int\000"
+ 761      20756E73 
+ 761      69676E65 
+ 761      6420696E 
+ 761      7400
+ 762              	.LASF20:
+ 763 00ac 5057525F 		.ascii	"PWR_OK_MODE_Read\000"
+ 763      4F4B5F4D 
+ 763      4F44455F 
+ 763      52656164 
+ 763      00
+ 764              	.LASF10:
+ 765 00bd 75696E74 		.ascii	"uint16\000"
+ 765      313600
+ 766              	.LASF23:
+ 767 00c4 706F7369 		.ascii	"position\000"
+ 767      74696F6E 
+ 767      00
+ 768              	.LASF11:
+ 769 00cd 75696E74 		.ascii	"uint32\000"
+ 769      333200
+ 770              	.LASF22:
+ 771 00d4 5057525F 		.ascii	"PWR_OK_MODE_SetInterruptMode\000"
+ 771      4F4B5F4D 
+ 771      4F44455F 
+ 771      53657449 
+ 771      6E746572 
+ 772              	.LASF25:
+ 773 00f1 696E7472 		.ascii	"intrCfg\000"
+ 773      43666700 
+ 774              	.LASF8:
+ 775 00f9 756E7369 		.ascii	"unsigned int\000"
+ 775      676E6564 
+ 775      20696E74 
+ 775      00
+ 776              	.LASF7:
+ 777 0106 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 777      206C6F6E 
+ 777      6720756E 
+ 777      7369676E 
+ 777      65642069 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 20
+
+
+ 778              	.LASF18:
+ 779 011d 6D6F6465 		.ascii	"mode\000"
+ 779      00
+ 780              	.LASF16:
+ 781 0122 5057525F 		.ascii	"PWR_OK_MODE_SetDriveMode\000"
+ 781      4F4B5F4D 
+ 781      4F44455F 
+ 781      53657444 
+ 781      72697665 
+ 782              	.LASF21:
+ 783 013b 5057525F 		.ascii	"PWR_OK_MODE_ReadDataReg\000"
+ 783      4F4B5F4D 
+ 783      4F44455F 
+ 783      52656164 
+ 783      44617461 
+ 784              	.LASF6:
+ 785 0153 6C6F6E67 		.ascii	"long long int\000"
+ 785      206C6F6E 
+ 785      6720696E 
+ 785      7400
+ 786              	.LASF26:
+ 787 0161 6D61736B 		.ascii	"maskedStatus\000"
+ 787      65645374 
+ 787      61747573 
+ 787      00
+ 788              	.LASF14:
+ 789 016e 63686172 		.ascii	"char\000"
+ 789      00
+ 790              	.LASF2:
+ 791 0173 73686F72 		.ascii	"short int\000"
+ 791      7420696E 
+ 791      7400
+ 792              	.LASF9:
+ 793 017d 75696E74 		.ascii	"uint8\000"
+ 793      3800
+ 794              	.LASF4:
+ 795 0183 6C6F6E67 		.ascii	"long int\000"
+ 795      20696E74 
+ 795      00
+ 796              	.LASF0:
+ 797 018c 7369676E 		.ascii	"signed char\000"
+ 797      65642063 
+ 797      68617200 
+ 798              	.LASF28:
+ 799 0198 47656E65 		.ascii	"Generated_Source\\PSoC4\\PWR_OK_MODE.c\000"
+ 799      72617465 
+ 799      645F536F 
+ 799      75726365 
+ 799      5C50536F 
+ 800              	.LASF27:
+ 801 01bd 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 801      43313120 
+ 801      352E342E 
+ 801      31203230 
+ 801      31363036 
+ 802 01f0 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 802      20726576 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\ccOVTyLC.s 			page 21
+
+
+ 802      6973696F 
+ 802      6E203233 
+ 802      37373135 
+ 803 0223 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 803      66756E63 
+ 803      74696F6E 
+ 803      2D736563 
+ 803      74696F6E 
+ 804              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran

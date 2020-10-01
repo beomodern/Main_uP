@@ -1,0 +1,2530 @@
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m0
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 4
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"DATALINK_Timer.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.DATALINK_Timer_Enable,"ax",%progbits
+  20              		.align	1
+  21              		.global	DATALINK_Timer_Enable
+  22              		.code	16
+  23              		.thumb_func
+  24              		.type	DATALINK_Timer_Enable, %function
+  25              	DATALINK_Timer_Enable:
+  26              	.LFB20:
+  27              		.cfi_startproc
+  28              		@ args = 0, pretend = 0, frame = 0
+  29              		@ frame_needed = 0, uses_anonymous_args = 0
+  30              		@ link register save eliminated.
+  31              		@ sp needed
+  32 0000 7047     		bx	lr
+  33              		.cfi_endproc
+  34              	.LFE20:
+  35              		.size	DATALINK_Timer_Enable, .-DATALINK_Timer_Enable
+  36              		.section	.text.DATALINK_Timer_Stop,"ax",%progbits
+  37              		.align	1
+  38              		.global	DATALINK_Timer_Stop
+  39              		.code	16
+  40              		.thumb_func
+  41              		.type	DATALINK_Timer_Stop, %function
+  42              	DATALINK_Timer_Stop:
+  43              	.LFB18:
+  44              		.cfi_startproc
+  45              		@ args = 0, pretend = 0, frame = 0
+  46              		@ frame_needed = 0, uses_anonymous_args = 0
+  47              		@ link register save eliminated.
+  48              		@ sp needed
+  49 0000 7047     		bx	lr
+  50              		.cfi_endproc
+  51              	.LFE18:
+  52              		.size	DATALINK_Timer_Stop, .-DATALINK_Timer_Stop
+  53              		.section	.text.DATALINK_Timer_SetInterruptMode,"ax",%progbits
+  54              		.align	1
+  55              		.global	DATALINK_Timer_SetInterruptMode
+  56              		.code	16
+  57              		.thumb_func
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 2
+
+
+  58              		.type	DATALINK_Timer_SetInterruptMode, %function
+  59              	DATALINK_Timer_SetInterruptMode:
+  60              	.LFB4:
+  61              		.file 1 "Generated_Source\\PSoC4\\DATALINK_Timer.c"
+   1:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+   2:Generated_Source\PSoC4/DATALINK_Timer.c **** * File Name: DATALINK_Timer.c
+   3:Generated_Source\PSoC4/DATALINK_Timer.c **** * Version 2.80
+   4:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+   5:Generated_Source\PSoC4/DATALINK_Timer.c **** * Description:
+   6:Generated_Source\PSoC4/DATALINK_Timer.c **** *  The Timer component consists of a 8, 16, 24 or 32-bit timer with
+   7:Generated_Source\PSoC4/DATALINK_Timer.c **** *  a selectable period between 2 and 2^Width - 1.  The timer may free run
+   8:Generated_Source\PSoC4/DATALINK_Timer.c **** *  or be used as a capture timer as well.  The capture can be initiated
+   9:Generated_Source\PSoC4/DATALINK_Timer.c **** *  by a positive or negative edge signal as well as via software.
+  10:Generated_Source\PSoC4/DATALINK_Timer.c **** *  A trigger input can be programmed to enable the timer on rising edge
+  11:Generated_Source\PSoC4/DATALINK_Timer.c **** *  falling edge, either edge or continous run.
+  12:Generated_Source\PSoC4/DATALINK_Timer.c **** *  Interrupts may be generated due to a terminal count condition
+  13:Generated_Source\PSoC4/DATALINK_Timer.c **** *  or a capture event.
+  14:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+  15:Generated_Source\PSoC4/DATALINK_Timer.c **** * Note:
+  16:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+  17:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+  18:Generated_Source\PSoC4/DATALINK_Timer.c **** * Copyright 2008-2017, Cypress Semiconductor Corporation.  All rights reserved.
+  19:Generated_Source\PSoC4/DATALINK_Timer.c **** * You may use this file only in accordance with the license, terms, conditions,
+  20:Generated_Source\PSoC4/DATALINK_Timer.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  21:Generated_Source\PSoC4/DATALINK_Timer.c **** * the software package with which this file was provided.
+  22:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************/
+  23:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+  24:Generated_Source\PSoC4/DATALINK_Timer.c **** #include "DATALINK_Timer.h"
+  25:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+  26:Generated_Source\PSoC4/DATALINK_Timer.c **** uint8 DATALINK_Timer_initVar = 0u;
+  27:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+  28:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+  29:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+  30:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_Init
+  31:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+  32:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+  33:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+  34:Generated_Source\PSoC4/DATALINK_Timer.c **** *  Initialize to the schematic state
+  35:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+  36:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+  37:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+  38:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+  39:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+  40:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+  41:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+  42:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+  43:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_Init(void) 
+  44:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+  45:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if(!DATALINK_Timer_UsingFixedFunction)
+  46:Generated_Source\PSoC4/DATALINK_Timer.c ****             /* Interrupt State Backup for Critical Region*/
+  47:Generated_Source\PSoC4/DATALINK_Timer.c ****             uint8 DATALINK_Timer_interruptState;
+  48:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Interrupt state back up for Fixed Function only */
+  49:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+  50:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if (DATALINK_Timer_UsingFixedFunction)
+  51:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* Clear all bits but the enable bit (if it's already set) for Timer operation */
+  52:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_CONTROL &= DATALINK_Timer_CTRL_ENABLE;
+  53:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 3
+
+
+  54:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* Clear the mode bits for continuous run mode */
+  55:Generated_Source\PSoC4/DATALINK_Timer.c ****         #if (CY_PSOC5A)
+  56:Generated_Source\PSoC4/DATALINK_Timer.c ****             DATALINK_Timer_CONTROL2 &= ((uint8)(~DATALINK_Timer_CTRL_MODE_MASK));
+  57:Generated_Source\PSoC4/DATALINK_Timer.c ****         #endif /* Clear bits in CONTROL2 only in PSOC5A */
+  58:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+  59:Generated_Source\PSoC4/DATALINK_Timer.c ****         #if (CY_PSOC3 || CY_PSOC5LP)
+  60:Generated_Source\PSoC4/DATALINK_Timer.c ****             DATALINK_Timer_CONTROL3 &= ((uint8)(~DATALINK_Timer_CTRL_MODE_MASK));
+  61:Generated_Source\PSoC4/DATALINK_Timer.c ****         #endif /* CONTROL3 register exists only in PSoC3 OR PSoC5LP */
+  62:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+  63:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* Check if One Shot mode is enabled i.e. RunMode !=0*/
+  64:Generated_Source\PSoC4/DATALINK_Timer.c ****         #if (DATALINK_Timer_RunModeUsed != 0x0u)
+  65:Generated_Source\PSoC4/DATALINK_Timer.c ****             /* Set 3rd bit of Control register to enable one shot mode */
+  66:Generated_Source\PSoC4/DATALINK_Timer.c ****             DATALINK_Timer_CONTROL |= 0x04u;
+  67:Generated_Source\PSoC4/DATALINK_Timer.c ****         #endif /* One Shot enabled only when RunModeUsed is not Continuous*/
+  68:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+  69:Generated_Source\PSoC4/DATALINK_Timer.c ****         #if (DATALINK_Timer_RunModeUsed == 2)
+  70:Generated_Source\PSoC4/DATALINK_Timer.c ****             #if (CY_PSOC5A)
+  71:Generated_Source\PSoC4/DATALINK_Timer.c ****                 /* Set last 2 bits of control2 register if one shot(halt on
+  72:Generated_Source\PSoC4/DATALINK_Timer.c ****                 interrupt) is enabled*/
+  73:Generated_Source\PSoC4/DATALINK_Timer.c ****                 DATALINK_Timer_CONTROL2 |= 0x03u;
+  74:Generated_Source\PSoC4/DATALINK_Timer.c ****             #endif /* Set One-Shot Halt on Interrupt bit in CONTROL2 for PSoC5A */
+  75:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+  76:Generated_Source\PSoC4/DATALINK_Timer.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  77:Generated_Source\PSoC4/DATALINK_Timer.c ****                 /* Set last 2 bits of control3 register if one shot(halt on
+  78:Generated_Source\PSoC4/DATALINK_Timer.c ****                 interrupt) is enabled*/
+  79:Generated_Source\PSoC4/DATALINK_Timer.c ****                 DATALINK_Timer_CONTROL3 |= 0x03u;
+  80:Generated_Source\PSoC4/DATALINK_Timer.c ****             #endif /* Set One-Shot Halt on Interrupt bit in CONTROL3 for PSoC3 or PSoC5LP */
+  81:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+  82:Generated_Source\PSoC4/DATALINK_Timer.c ****         #endif /* Remove section if One Shot Halt on Interrupt is not enabled */
+  83:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+  84:Generated_Source\PSoC4/DATALINK_Timer.c ****         #if (DATALINK_Timer_UsingHWEnable != 0)
+  85:Generated_Source\PSoC4/DATALINK_Timer.c ****             #if (CY_PSOC5A)
+  86:Generated_Source\PSoC4/DATALINK_Timer.c ****                 /* Set the default Run Mode of the Timer to Continuous */
+  87:Generated_Source\PSoC4/DATALINK_Timer.c ****                 DATALINK_Timer_CONTROL2 |= DATALINK_Timer_CTRL_MODE_PULSEWIDTH;
+  88:Generated_Source\PSoC4/DATALINK_Timer.c ****             #endif /* Set Continuous Run Mode in CONTROL2 for PSoC5A */
+  89:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+  90:Generated_Source\PSoC4/DATALINK_Timer.c ****             #if (CY_PSOC3 || CY_PSOC5LP)
+  91:Generated_Source\PSoC4/DATALINK_Timer.c ****                 /* Clear and Set ROD and COD bits of CFG2 register */
+  92:Generated_Source\PSoC4/DATALINK_Timer.c ****                 DATALINK_Timer_CONTROL3 &= ((uint8)(~DATALINK_Timer_CTRL_RCOD_MASK));
+  93:Generated_Source\PSoC4/DATALINK_Timer.c ****                 DATALINK_Timer_CONTROL3 |= DATALINK_Timer_CTRL_RCOD;
+  94:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+  95:Generated_Source\PSoC4/DATALINK_Timer.c ****                 /* Clear and Enable the HW enable bit in CFG2 register */
+  96:Generated_Source\PSoC4/DATALINK_Timer.c ****                 DATALINK_Timer_CONTROL3 &= ((uint8)(~DATALINK_Timer_CTRL_ENBL_MASK));
+  97:Generated_Source\PSoC4/DATALINK_Timer.c ****                 DATALINK_Timer_CONTROL3 |= DATALINK_Timer_CTRL_ENBL;
+  98:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+  99:Generated_Source\PSoC4/DATALINK_Timer.c ****                 /* Set the default Run Mode of the Timer to Continuous */
+ 100:Generated_Source\PSoC4/DATALINK_Timer.c ****                 DATALINK_Timer_CONTROL3 |= DATALINK_Timer_CTRL_MODE_CONTINUOUS;
+ 101:Generated_Source\PSoC4/DATALINK_Timer.c ****             #endif /* Set Continuous Run Mode in CONTROL3 for PSoC3ES3 or PSoC5A */
+ 102:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 103:Generated_Source\PSoC4/DATALINK_Timer.c ****         #endif /* Configure Run Mode with hardware enable */
+ 104:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 105:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* Clear and Set SYNCTC and SYNCCMP bits of RT1 register */
+ 106:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_RT1 &= ((uint8)(~DATALINK_Timer_RT1_MASK));
+ 107:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_RT1 |= DATALINK_Timer_SYNC;
+ 108:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 109:Generated_Source\PSoC4/DATALINK_Timer.c ****         /*Enable DSI Sync all all inputs of the Timer*/
+ 110:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_RT1 &= ((uint8)(~DATALINK_Timer_SYNCDSI_MASK));
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 4
+
+
+ 111:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_RT1 |= DATALINK_Timer_SYNCDSI_EN;
+ 112:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 113:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* Set the IRQ to use the status register interrupts */
+ 114:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_CONTROL2 |= DATALINK_Timer_CTRL2_IRQ_SEL;
+ 115:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Configuring registers of fixed function implementation */
+ 116:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 117:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* Set Initial values from Configuration */
+ 118:Generated_Source\PSoC4/DATALINK_Timer.c ****     DATALINK_Timer_WritePeriod(DATALINK_Timer_INIT_PERIOD);
+ 119:Generated_Source\PSoC4/DATALINK_Timer.c ****     DATALINK_Timer_WriteCounter(DATALINK_Timer_INIT_PERIOD);
+ 120:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 121:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if (DATALINK_Timer_UsingHWCaptureCounter)/* Capture counter is enabled */
+ 122:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_CAPTURE_COUNT_CTRL |= DATALINK_Timer_CNTR_ENABLE;
+ 123:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_SetCaptureCount(DATALINK_Timer_INIT_CAPTURE_COUNT);
+ 124:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Configure capture counter value */
+ 125:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 126:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if (!DATALINK_Timer_UsingFixedFunction)
+ 127:Generated_Source\PSoC4/DATALINK_Timer.c ****         #if (DATALINK_Timer_SoftwareCaptureMode)
+ 128:Generated_Source\PSoC4/DATALINK_Timer.c ****             DATALINK_Timer_SetCaptureMode(DATALINK_Timer_INIT_CAPTURE_MODE);
+ 129:Generated_Source\PSoC4/DATALINK_Timer.c ****         #endif /* Set Capture Mode for UDB implementation if capture mode is software controlled */
+ 130:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 131:Generated_Source\PSoC4/DATALINK_Timer.c ****         #if (DATALINK_Timer_SoftwareTriggerMode)
+ 132:Generated_Source\PSoC4/DATALINK_Timer.c ****             #if (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED)
+ 133:Generated_Source\PSoC4/DATALINK_Timer.c ****                 if (0u == (DATALINK_Timer_CONTROL & DATALINK_Timer__B_TIMER__TM_SOFTWARE))
+ 134:Generated_Source\PSoC4/DATALINK_Timer.c ****                 {
+ 135:Generated_Source\PSoC4/DATALINK_Timer.c ****                     DATALINK_Timer_SetTriggerMode(DATALINK_Timer_INIT_TRIGGER_MODE);
+ 136:Generated_Source\PSoC4/DATALINK_Timer.c ****                 }
+ 137:Generated_Source\PSoC4/DATALINK_Timer.c ****             #endif /* (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED) */
+ 138:Generated_Source\PSoC4/DATALINK_Timer.c ****         #endif /* Set trigger mode for UDB Implementation if trigger mode is software controlled */
+ 139:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 140:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critica
+ 141:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* Enter Critical Region*/
+ 142:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_interruptState = CyEnterCriticalSection();
+ 143:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 144:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* Use the interrupt output of the status register for IRQ output */
+ 145:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_STATUS_AUX_CTRL |= DATALINK_Timer_STATUS_ACTL_INT_EN_MASK;
+ 146:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 147:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* Exit Critical Region*/
+ 148:Generated_Source\PSoC4/DATALINK_Timer.c ****         CyExitCriticalSection(DATALINK_Timer_interruptState);
+ 149:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 150:Generated_Source\PSoC4/DATALINK_Timer.c ****         #if (DATALINK_Timer_EnableTriggerMode)
+ 151:Generated_Source\PSoC4/DATALINK_Timer.c ****             DATALINK_Timer_EnableTrigger();
+ 152:Generated_Source\PSoC4/DATALINK_Timer.c ****         #endif /* Set Trigger enable bit for UDB implementation in the control register*/
+ 153:Generated_Source\PSoC4/DATALINK_Timer.c **** 		
+ 154:Generated_Source\PSoC4/DATALINK_Timer.c **** 		
+ 155:Generated_Source\PSoC4/DATALINK_Timer.c ****         #if (DATALINK_Timer_InterruptOnCaptureCount && !DATALINK_Timer_UDB_CONTROL_REG_REMOVED)
+ 156:Generated_Source\PSoC4/DATALINK_Timer.c ****             DATALINK_Timer_SetInterruptCount(DATALINK_Timer_INIT_INT_CAPTURE_COUNT);
+ 157:Generated_Source\PSoC4/DATALINK_Timer.c ****         #endif /* Set interrupt count in UDB implementation if interrupt count feature is checked.*
+ 158:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 159:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_ClearFIFO();
+ 160:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Configure additional features of UDB implementation */
+ 161:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 162:Generated_Source\PSoC4/DATALINK_Timer.c ****     DATALINK_Timer_SetInterruptMode(DATALINK_Timer_INIT_INTERRUPT_MODE);
+ 163:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 164:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 165:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 166:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 167:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_Enable
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 5
+
+
+ 168:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 169:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 170:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 171:Generated_Source\PSoC4/DATALINK_Timer.c **** *  Enable the Timer
+ 172:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 173:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 174:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 175:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 176:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 177:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 178:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 179:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 180:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_Enable(void) 
+ 181:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 182:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* Globally Enable the Fixed Function Block chosen */
+ 183:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if (DATALINK_Timer_UsingFixedFunction)
+ 184:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_GLOBAL_ENABLE |= DATALINK_Timer_BLOCK_EN_MASK;
+ 185:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_GLOBAL_STBY_ENABLE |= DATALINK_Timer_BLOCK_STBY_EN_MASK;
+ 186:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Set Enable bit for enabling Fixed function timer*/
+ 187:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 188:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* Remove assignment if control register is removed */
+ 189:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED || DATALINK_Timer_UsingFixedFunction)
+ 190:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_CONTROL |= DATALINK_Timer_CTRL_ENABLE;
+ 191:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Remove assignment if control register is removed */
+ 192:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 193:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 194:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 195:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 196:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_Start
+ 197:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 198:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 199:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 200:Generated_Source\PSoC4/DATALINK_Timer.c **** *  The start function initializes the timer with the default values, the
+ 201:Generated_Source\PSoC4/DATALINK_Timer.c **** *  enables the timerto begin counting.  It does not enable interrupts,
+ 202:Generated_Source\PSoC4/DATALINK_Timer.c **** *  the EnableInt command should be called if interrupt generation is required.
+ 203:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 204:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 205:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 206:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 207:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 208:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 209:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 210:Generated_Source\PSoC4/DATALINK_Timer.c **** * Global variables:
+ 211:Generated_Source\PSoC4/DATALINK_Timer.c **** *  DATALINK_Timer_initVar: Is modified when this function is called for the
+ 212:Generated_Source\PSoC4/DATALINK_Timer.c **** *   first time. Is used to ensure that initialization happens only once.
+ 213:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 214:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 215:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_Start(void) 
+ 216:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 217:Generated_Source\PSoC4/DATALINK_Timer.c ****     if(DATALINK_Timer_initVar == 0u)
+ 218:Generated_Source\PSoC4/DATALINK_Timer.c ****     {
+ 219:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_Init();
+ 220:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 221:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_initVar = 1u;   /* Clear this bit for Initialization */
+ 222:Generated_Source\PSoC4/DATALINK_Timer.c ****     }
+ 223:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 224:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* Enable the Timer */
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 6
+
+
+ 225:Generated_Source\PSoC4/DATALINK_Timer.c ****     DATALINK_Timer_Enable();
+ 226:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 227:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 228:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 229:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 230:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_Stop
+ 231:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 232:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 233:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 234:Generated_Source\PSoC4/DATALINK_Timer.c **** *  The stop function halts the timer, but does not change any modes or disable
+ 235:Generated_Source\PSoC4/DATALINK_Timer.c **** *  interrupts.
+ 236:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 237:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 238:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 239:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 240:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 241:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 242:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 243:Generated_Source\PSoC4/DATALINK_Timer.c **** * Side Effects: If the Enable mode is set to Hardware only then this function
+ 244:Generated_Source\PSoC4/DATALINK_Timer.c **** *               has no effect on the operation of the timer.
+ 245:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 246:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 247:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_Stop(void) 
+ 248:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 249:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* Disable Timer */
+ 250:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if(!DATALINK_Timer_UDB_CONTROL_REG_REMOVED || DATALINK_Timer_UsingFixedFunction)
+ 251:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_CONTROL &= ((uint8)(~DATALINK_Timer_CTRL_ENABLE));
+ 252:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Remove assignment if control register is removed */
+ 253:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 254:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* Globally disable the Fixed Function Block chosen */
+ 255:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if (DATALINK_Timer_UsingFixedFunction)
+ 256:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_GLOBAL_ENABLE &= ((uint8)(~DATALINK_Timer_BLOCK_EN_MASK));
+ 257:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_GLOBAL_STBY_ENABLE &= ((uint8)(~DATALINK_Timer_BLOCK_STBY_EN_MASK));
+ 258:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Disable global enable for the Timer Fixed function block to stop the Timer*/
+ 259:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 260:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 261:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 262:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 263:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_SetInterruptMode
+ 264:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 265:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 266:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 267:Generated_Source\PSoC4/DATALINK_Timer.c **** *  This function selects which of the interrupt inputs may cause an interrupt.
+ 268:Generated_Source\PSoC4/DATALINK_Timer.c **** *  The twosources are caputure and terminal.  One, both or neither may
+ 269:Generated_Source\PSoC4/DATALINK_Timer.c **** *  be selected.
+ 270:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 271:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 272:Generated_Source\PSoC4/DATALINK_Timer.c **** *  interruptMode:   This parameter is used to enable interrups on either/or
+ 273:Generated_Source\PSoC4/DATALINK_Timer.c **** *                   terminal count or capture.
+ 274:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 275:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 276:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 277:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 278:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 279:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_SetInterruptMode(uint8 interruptMode) 
+ 280:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+  62              		.loc 1 280 0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 7
+
+
+  63              		.cfi_startproc
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		@ link register save eliminated.
+  67              	.LVL0:
+ 281:Generated_Source\PSoC4/DATALINK_Timer.c ****     DATALINK_Timer_STATUS_MASK = interruptMode;
+  68              		.loc 1 281 0
+  69 0000 014B     		ldr	r3, .L4
+ 282:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+  70              		.loc 1 282 0
+  71              		@ sp needed
+ 281:Generated_Source\PSoC4/DATALINK_Timer.c ****     DATALINK_Timer_STATUS_MASK = interruptMode;
+  72              		.loc 1 281 0
+  73 0002 1870     		strb	r0, [r3]
+  74              		.loc 1 282 0
+  75 0004 7047     		bx	lr
+  76              	.L5:
+  77 0006 C046     		.align	2
+  78              	.L4:
+  79 0008 81000F40 		.word	1074724993
+  80              		.cfi_endproc
+  81              	.LFE4:
+  82              		.size	DATALINK_Timer_SetInterruptMode, .-DATALINK_Timer_SetInterruptMode
+  83              		.section	.text.DATALINK_Timer_SoftwareCapture,"ax",%progbits
+  84              		.align	1
+  85              		.global	DATALINK_Timer_SoftwareCapture
+  86              		.code	16
+  87              		.thumb_func
+  88              		.type	DATALINK_Timer_SoftwareCapture, %function
+  89              	DATALINK_Timer_SoftwareCapture:
+  90              	.LFB5:
+ 283:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 284:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 285:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 286:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_SoftwareCapture
+ 287:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 288:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 289:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 290:Generated_Source\PSoC4/DATALINK_Timer.c **** *  This function forces a capture independent of the capture signal.
+ 291:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 292:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 293:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 294:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 295:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 296:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 297:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 298:Generated_Source\PSoC4/DATALINK_Timer.c **** * Side Effects:
+ 299:Generated_Source\PSoC4/DATALINK_Timer.c **** *  An existing hardware capture could be overwritten.
+ 300:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 301:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 302:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_SoftwareCapture(void) 
+ 303:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+  91              		.loc 1 303 0
+  92              		.cfi_startproc
+  93              		@ args = 0, pretend = 0, frame = 0
+  94              		@ frame_needed = 0, uses_anonymous_args = 0
+  95              		@ link register save eliminated.
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 8
+
+
+ 304:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* Generate a software capture by reading the counter register */
+ 305:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if(DATALINK_Timer_UsingFixedFunction)
+ 306:Generated_Source\PSoC4/DATALINK_Timer.c ****         (void)CY_GET_REG16(DATALINK_Timer_COUNTER_LSB_PTR);
+ 307:Generated_Source\PSoC4/DATALINK_Timer.c ****     #else
+ 308:Generated_Source\PSoC4/DATALINK_Timer.c ****         (void)CY_GET_REG8(DATALINK_Timer_COUNTER_LSB_PTR_8BIT);
+  96              		.loc 1 308 0
+  97 0000 014B     		ldr	r3, .L7
+ 309:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif/* (DATALINK_Timer_UsingFixedFunction) */
+ 310:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* Capture Data is now in the FIFO */
+ 311:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+  98              		.loc 1 311 0
+  99              		@ sp needed
+ 308:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif/* (DATALINK_Timer_UsingFixedFunction) */
+ 100              		.loc 1 308 0
+ 101 0002 1B78     		ldrb	r3, [r3]
+ 102              		.loc 1 311 0
+ 103 0004 7047     		bx	lr
+ 104              	.L8:
+ 105 0006 C046     		.align	2
+ 106              	.L7:
+ 107 0008 01000F40 		.word	1074724865
+ 108              		.cfi_endproc
+ 109              	.LFE5:
+ 110              		.size	DATALINK_Timer_SoftwareCapture, .-DATALINK_Timer_SoftwareCapture
+ 111              		.section	.text.DATALINK_Timer_ReadStatusRegister,"ax",%progbits
+ 112              		.align	1
+ 113              		.global	DATALINK_Timer_ReadStatusRegister
+ 114              		.code	16
+ 115              		.thumb_func
+ 116              		.type	DATALINK_Timer_ReadStatusRegister, %function
+ 117              	DATALINK_Timer_ReadStatusRegister:
+ 118              	.LFB6:
+ 312:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 313:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 314:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 315:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_ReadStatusRegister
+ 316:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 317:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 318:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 319:Generated_Source\PSoC4/DATALINK_Timer.c **** *  Reads the status register and returns it's state. This function should use
+ 320:Generated_Source\PSoC4/DATALINK_Timer.c **** *  defined types for the bit-field information as the bits in this register may
+ 321:Generated_Source\PSoC4/DATALINK_Timer.c **** *  be permuteable.
+ 322:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 323:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 324:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 325:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 326:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 327:Generated_Source\PSoC4/DATALINK_Timer.c **** *  The contents of the status register
+ 328:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 329:Generated_Source\PSoC4/DATALINK_Timer.c **** * Side Effects:
+ 330:Generated_Source\PSoC4/DATALINK_Timer.c **** *  Status register bits may be clear on read.
+ 331:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 332:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 333:Generated_Source\PSoC4/DATALINK_Timer.c **** uint8   DATALINK_Timer_ReadStatusRegister(void) 
+ 334:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 119              		.loc 1 334 0
+ 120              		.cfi_startproc
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 9
+
+
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123              		@ link register save eliminated.
+ 335:Generated_Source\PSoC4/DATALINK_Timer.c ****     return (DATALINK_Timer_STATUS);
+ 124              		.loc 1 335 0
+ 125 0000 014B     		ldr	r3, .L10
+ 336:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 126              		.loc 1 336 0
+ 127              		@ sp needed
+ 335:Generated_Source\PSoC4/DATALINK_Timer.c ****     return (DATALINK_Timer_STATUS);
+ 128              		.loc 1 335 0
+ 129 0002 1878     		ldrb	r0, [r3]
+ 130 0004 C0B2     		uxtb	r0, r0
+ 131              		.loc 1 336 0
+ 132 0006 7047     		bx	lr
+ 133              	.L11:
+ 134              		.align	2
+ 135              	.L10:
+ 136 0008 61000F40 		.word	1074724961
+ 137              		.cfi_endproc
+ 138              	.LFE6:
+ 139              		.size	DATALINK_Timer_ReadStatusRegister, .-DATALINK_Timer_ReadStatusRegister
+ 140              		.section	.text.DATALINK_Timer_ReadPeriod,"ax",%progbits
+ 141              		.align	1
+ 142              		.global	DATALINK_Timer_ReadPeriod
+ 143              		.code	16
+ 144              		.thumb_func
+ 145              		.type	DATALINK_Timer_ReadPeriod, %function
+ 146              	DATALINK_Timer_ReadPeriod:
+ 147              	.LFB7:
+ 337:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 338:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 339:Generated_Source\PSoC4/DATALINK_Timer.c **** #if (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED) /* Remove API if control register is unused */
+ 340:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 341:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 342:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 343:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_ReadControlRegister
+ 344:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 345:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 346:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 347:Generated_Source\PSoC4/DATALINK_Timer.c **** *  Reads the control register and returns it's value.
+ 348:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 349:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 350:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 351:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 352:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 353:Generated_Source\PSoC4/DATALINK_Timer.c **** *  The contents of the control register
+ 354:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 355:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 356:Generated_Source\PSoC4/DATALINK_Timer.c **** uint8 DATALINK_Timer_ReadControlRegister(void) 
+ 357:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 358:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED) 
+ 359:Generated_Source\PSoC4/DATALINK_Timer.c ****         return ((uint8)DATALINK_Timer_CONTROL);
+ 360:Generated_Source\PSoC4/DATALINK_Timer.c ****     #else
+ 361:Generated_Source\PSoC4/DATALINK_Timer.c ****         return (0);
+ 362:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED) */
+ 363:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 10
+
+
+ 364:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 365:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 366:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 367:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_WriteControlRegister
+ 368:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 369:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 370:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 371:Generated_Source\PSoC4/DATALINK_Timer.c **** *  Sets the bit-field of the control register.
+ 372:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 373:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 374:Generated_Source\PSoC4/DATALINK_Timer.c **** *  control: The contents of the control register
+ 375:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 376:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 377:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 378:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 379:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_WriteControlRegister(uint8 control) 
+ 380:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 381:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED) 
+ 382:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_CONTROL = control;
+ 383:Generated_Source\PSoC4/DATALINK_Timer.c ****     #else
+ 384:Generated_Source\PSoC4/DATALINK_Timer.c ****         control = 0u;
+ 385:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED) */
+ 386:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 387:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 388:Generated_Source\PSoC4/DATALINK_Timer.c **** #endif /* Remove API if control register is unused */
+ 389:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 390:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 391:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 392:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_ReadPeriod
+ 393:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 394:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 395:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 396:Generated_Source\PSoC4/DATALINK_Timer.c **** *  This function returns the current value of the Period.
+ 397:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 398:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 399:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 400:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 401:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 402:Generated_Source\PSoC4/DATALINK_Timer.c **** *  The present value of the counter.
+ 403:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 404:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 405:Generated_Source\PSoC4/DATALINK_Timer.c **** uint8 DATALINK_Timer_ReadPeriod(void) 
+ 406:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 148              		.loc 1 406 0
+ 149              		.cfi_startproc
+ 150              		@ args = 0, pretend = 0, frame = 0
+ 151              		@ frame_needed = 0, uses_anonymous_args = 0
+ 152              		@ link register save eliminated.
+ 407:Generated_Source\PSoC4/DATALINK_Timer.c ****    #if(DATALINK_Timer_UsingFixedFunction)
+ 408:Generated_Source\PSoC4/DATALINK_Timer.c ****        return ((uint8)CY_GET_REG16(DATALINK_Timer_PERIOD_LSB_PTR));
+ 409:Generated_Source\PSoC4/DATALINK_Timer.c ****    #else
+ 410:Generated_Source\PSoC4/DATALINK_Timer.c ****        return (CY_GET_REG8(DATALINK_Timer_PERIOD_LSB_PTR));
+ 153              		.loc 1 410 0
+ 154 0000 014B     		ldr	r3, .L13
+ 411:Generated_Source\PSoC4/DATALINK_Timer.c ****    #endif /* (DATALINK_Timer_UsingFixedFunction) */
+ 412:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 155              		.loc 1 412 0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 11
+
+
+ 156              		@ sp needed
+ 410:Generated_Source\PSoC4/DATALINK_Timer.c ****    #endif /* (DATALINK_Timer_UsingFixedFunction) */
+ 157              		.loc 1 410 0
+ 158 0002 1878     		ldrb	r0, [r3]
+ 159 0004 C0B2     		uxtb	r0, r0
+ 160              		.loc 1 412 0
+ 161 0006 7047     		bx	lr
+ 162              	.L14:
+ 163              		.align	2
+ 164              	.L13:
+ 165 0008 21000F40 		.word	1074724897
+ 166              		.cfi_endproc
+ 167              	.LFE7:
+ 168              		.size	DATALINK_Timer_ReadPeriod, .-DATALINK_Timer_ReadPeriod
+ 169              		.section	.text.DATALINK_Timer_WritePeriod,"ax",%progbits
+ 170              		.align	1
+ 171              		.global	DATALINK_Timer_WritePeriod
+ 172              		.code	16
+ 173              		.thumb_func
+ 174              		.type	DATALINK_Timer_WritePeriod, %function
+ 175              	DATALINK_Timer_WritePeriod:
+ 176              	.LFB8:
+ 413:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 414:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 415:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 416:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_WritePeriod
+ 417:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 418:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 419:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 420:Generated_Source\PSoC4/DATALINK_Timer.c **** *  This function is used to change the period of the counter.  The new period
+ 421:Generated_Source\PSoC4/DATALINK_Timer.c **** *  will be loaded the next time terminal count is detected.
+ 422:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 423:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 424:Generated_Source\PSoC4/DATALINK_Timer.c **** *  period: This value may be between 1 and (2^Resolution)-1.  A value of 0 will
+ 425:Generated_Source\PSoC4/DATALINK_Timer.c **** *          result in the counter remaining at zero.
+ 426:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 427:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 428:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 429:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 430:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 431:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_WritePeriod(uint8 period) 
+ 432:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 177              		.loc 1 432 0
+ 178              		.cfi_startproc
+ 179              		@ args = 0, pretend = 0, frame = 0
+ 180              		@ frame_needed = 0, uses_anonymous_args = 0
+ 181              		@ link register save eliminated.
+ 182              	.LVL1:
+ 433:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if(DATALINK_Timer_UsingFixedFunction)
+ 434:Generated_Source\PSoC4/DATALINK_Timer.c ****         uint16 period_temp = (uint16)period;
+ 435:Generated_Source\PSoC4/DATALINK_Timer.c ****         CY_SET_REG16(DATALINK_Timer_PERIOD_LSB_PTR, period_temp);
+ 436:Generated_Source\PSoC4/DATALINK_Timer.c ****     #else
+ 437:Generated_Source\PSoC4/DATALINK_Timer.c ****         CY_SET_REG8(DATALINK_Timer_PERIOD_LSB_PTR, period);
+ 183              		.loc 1 437 0
+ 184 0000 014B     		ldr	r3, .L16
+ 438:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed functi
+ 439:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 12
+
+
+ 185              		.loc 1 439 0
+ 186              		@ sp needed
+ 437:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed functi
+ 187              		.loc 1 437 0
+ 188 0002 1870     		strb	r0, [r3]
+ 189              		.loc 1 439 0
+ 190 0004 7047     		bx	lr
+ 191              	.L17:
+ 192 0006 C046     		.align	2
+ 193              	.L16:
+ 194 0008 21000F40 		.word	1074724897
+ 195              		.cfi_endproc
+ 196              	.LFE8:
+ 197              		.size	DATALINK_Timer_WritePeriod, .-DATALINK_Timer_WritePeriod
+ 198              		.section	.text.DATALINK_Timer_ReadCapture,"ax",%progbits
+ 199              		.align	1
+ 200              		.global	DATALINK_Timer_ReadCapture
+ 201              		.code	16
+ 202              		.thumb_func
+ 203              		.type	DATALINK_Timer_ReadCapture, %function
+ 204              	DATALINK_Timer_ReadCapture:
+ 205              	.LFB9:
+ 440:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 441:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 442:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 443:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_ReadCapture
+ 444:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 445:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 446:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 447:Generated_Source\PSoC4/DATALINK_Timer.c **** *  This function returns the last value captured.
+ 448:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 449:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 450:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 451:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 452:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 453:Generated_Source\PSoC4/DATALINK_Timer.c **** *  Present Capture value.
+ 454:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 455:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 456:Generated_Source\PSoC4/DATALINK_Timer.c **** uint8 DATALINK_Timer_ReadCapture(void) 
+ 457:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 206              		.loc 1 457 0
+ 207              		.cfi_startproc
+ 208              		@ args = 0, pretend = 0, frame = 0
+ 209              		@ frame_needed = 0, uses_anonymous_args = 0
+ 210              		@ link register save eliminated.
+ 458:Generated_Source\PSoC4/DATALINK_Timer.c ****    #if(DATALINK_Timer_UsingFixedFunction)
+ 459:Generated_Source\PSoC4/DATALINK_Timer.c ****        return ((uint8)CY_GET_REG16(DATALINK_Timer_CAPTURE_LSB_PTR));
+ 460:Generated_Source\PSoC4/DATALINK_Timer.c ****    #else
+ 461:Generated_Source\PSoC4/DATALINK_Timer.c ****        return (CY_GET_REG8(DATALINK_Timer_CAPTURE_LSB_PTR));
+ 211              		.loc 1 461 0
+ 212 0000 014B     		ldr	r3, .L19
+ 462:Generated_Source\PSoC4/DATALINK_Timer.c ****    #endif /* (DATALINK_Timer_UsingFixedFunction) */
+ 463:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 213              		.loc 1 463 0
+ 214              		@ sp needed
+ 461:Generated_Source\PSoC4/DATALINK_Timer.c ****    #endif /* (DATALINK_Timer_UsingFixedFunction) */
+ 215              		.loc 1 461 0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 13
+
+
+ 216 0002 1878     		ldrb	r0, [r3]
+ 217 0004 C0B2     		uxtb	r0, r0
+ 218              		.loc 1 463 0
+ 219 0006 7047     		bx	lr
+ 220              	.L20:
+ 221              		.align	2
+ 222              	.L19:
+ 223 0008 41000F40 		.word	1074724929
+ 224              		.cfi_endproc
+ 225              	.LFE9:
+ 226              		.size	DATALINK_Timer_ReadCapture, .-DATALINK_Timer_ReadCapture
+ 227              		.section	.text.DATALINK_Timer_WriteCounter,"ax",%progbits
+ 228              		.align	1
+ 229              		.global	DATALINK_Timer_WriteCounter
+ 230              		.code	16
+ 231              		.thumb_func
+ 232              		.type	DATALINK_Timer_WriteCounter, %function
+ 233              	DATALINK_Timer_WriteCounter:
+ 234              	.LFB10:
+ 464:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 465:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 466:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 467:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_WriteCounter
+ 468:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 469:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 470:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 471:Generated_Source\PSoC4/DATALINK_Timer.c **** *  This funtion is used to set the counter to a specific value
+ 472:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 473:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 474:Generated_Source\PSoC4/DATALINK_Timer.c **** *  counter:  New counter value.
+ 475:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 476:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 477:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 478:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 479:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 480:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_WriteCounter(uint8 counter) 
+ 481:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 235              		.loc 1 481 0
+ 236              		.cfi_startproc
+ 237              		@ args = 0, pretend = 0, frame = 0
+ 238              		@ frame_needed = 0, uses_anonymous_args = 0
+ 239              		@ link register save eliminated.
+ 240              	.LVL2:
+ 482:Generated_Source\PSoC4/DATALINK_Timer.c ****    #if(DATALINK_Timer_UsingFixedFunction)
+ 483:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* This functionality is removed until a FixedFunction HW update to
+ 484:Generated_Source\PSoC4/DATALINK_Timer.c ****          * allow this register to be written
+ 485:Generated_Source\PSoC4/DATALINK_Timer.c ****          */
+ 486:Generated_Source\PSoC4/DATALINK_Timer.c ****         CY_SET_REG16(DATALINK_Timer_COUNTER_LSB_PTR, (uint16)counter);
+ 487:Generated_Source\PSoC4/DATALINK_Timer.c ****         
+ 488:Generated_Source\PSoC4/DATALINK_Timer.c ****     #else
+ 489:Generated_Source\PSoC4/DATALINK_Timer.c ****         CY_SET_REG8(DATALINK_Timer_COUNTER_LSB_PTR, counter);
+ 241              		.loc 1 489 0
+ 242 0000 014B     		ldr	r3, .L22
+ 490:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Set Write Counter only for the UDB implementation (Write Counter not available in fix
+ 491:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 243              		.loc 1 491 0
+ 244              		@ sp needed
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 14
+
+
+ 489:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Set Write Counter only for the UDB implementation (Write Counter not available in fix
+ 245              		.loc 1 489 0
+ 246 0002 1870     		strb	r0, [r3]
+ 247              		.loc 1 491 0
+ 248 0004 7047     		bx	lr
+ 249              	.L23:
+ 250 0006 C046     		.align	2
+ 251              	.L22:
+ 252 0008 01000F40 		.word	1074724865
+ 253              		.cfi_endproc
+ 254              	.LFE10:
+ 255              		.size	DATALINK_Timer_WriteCounter, .-DATALINK_Timer_WriteCounter
+ 256              		.section	.text.DATALINK_Timer_ReadCounter,"ax",%progbits
+ 257              		.align	1
+ 258              		.global	DATALINK_Timer_ReadCounter
+ 259              		.code	16
+ 260              		.thumb_func
+ 261              		.type	DATALINK_Timer_ReadCounter, %function
+ 262              	DATALINK_Timer_ReadCounter:
+ 263              	.LFB11:
+ 492:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 493:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 494:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 495:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_ReadCounter
+ 496:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 497:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 498:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 499:Generated_Source\PSoC4/DATALINK_Timer.c **** *  This function returns the current counter value.
+ 500:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 501:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 502:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 503:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 504:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 505:Generated_Source\PSoC4/DATALINK_Timer.c **** *  Present compare value.
+ 506:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 507:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 508:Generated_Source\PSoC4/DATALINK_Timer.c **** uint8 DATALINK_Timer_ReadCounter(void) 
+ 509:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 264              		.loc 1 509 0
+ 265              		.cfi_startproc
+ 266              		@ args = 0, pretend = 0, frame = 0
+ 267              		@ frame_needed = 0, uses_anonymous_args = 0
+ 268              		@ link register save eliminated.
+ 510:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* Force capture by reading Accumulator */
+ 511:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* Must first do a software capture to be able to read the counter */
+ 512:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* It is up to the user code to make sure there isn't already captured data in the FIFO */
+ 513:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if(DATALINK_Timer_UsingFixedFunction)
+ 514:Generated_Source\PSoC4/DATALINK_Timer.c ****         (void)CY_GET_REG16(DATALINK_Timer_COUNTER_LSB_PTR);
+ 515:Generated_Source\PSoC4/DATALINK_Timer.c ****     #else
+ 516:Generated_Source\PSoC4/DATALINK_Timer.c ****         (void)CY_GET_REG8(DATALINK_Timer_COUNTER_LSB_PTR_8BIT);
+ 269              		.loc 1 516 0
+ 270 0000 024B     		ldr	r3, .L25
+ 517:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif/* (DATALINK_Timer_UsingFixedFunction) */
+ 518:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 519:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* Read the data from the FIFO (or capture register for Fixed Function)*/
+ 520:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if(DATALINK_Timer_UsingFixedFunction)
+ 521:Generated_Source\PSoC4/DATALINK_Timer.c ****         return ((uint8)CY_GET_REG16(DATALINK_Timer_CAPTURE_LSB_PTR));
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 15
+
+
+ 522:Generated_Source\PSoC4/DATALINK_Timer.c ****     #else
+ 523:Generated_Source\PSoC4/DATALINK_Timer.c ****         return (CY_GET_REG8(DATALINK_Timer_CAPTURE_LSB_PTR));
+ 524:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* (DATALINK_Timer_UsingFixedFunction) */
+ 525:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 271              		.loc 1 525 0
+ 272              		@ sp needed
+ 516:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif/* (DATALINK_Timer_UsingFixedFunction) */
+ 273              		.loc 1 516 0
+ 274 0002 1B78     		ldrb	r3, [r3]
+ 523:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* (DATALINK_Timer_UsingFixedFunction) */
+ 275              		.loc 1 523 0
+ 276 0004 024B     		ldr	r3, .L25+4
+ 277 0006 1878     		ldrb	r0, [r3]
+ 278 0008 C0B2     		uxtb	r0, r0
+ 279              		.loc 1 525 0
+ 280 000a 7047     		bx	lr
+ 281              	.L26:
+ 282              		.align	2
+ 283              	.L25:
+ 284 000c 01000F40 		.word	1074724865
+ 285 0010 41000F40 		.word	1074724929
+ 286              		.cfi_endproc
+ 287              	.LFE11:
+ 288              		.size	DATALINK_Timer_ReadCounter, .-DATALINK_Timer_ReadCounter
+ 289              		.section	.text.DATALINK_Timer_EnableTrigger,"ax",%progbits
+ 290              		.align	1
+ 291              		.global	DATALINK_Timer_EnableTrigger
+ 292              		.code	16
+ 293              		.thumb_func
+ 294              		.type	DATALINK_Timer_EnableTrigger, %function
+ 295              	DATALINK_Timer_EnableTrigger:
+ 296              	.LFB16:
+ 297              		.cfi_startproc
+ 298              		@ args = 0, pretend = 0, frame = 0
+ 299              		@ frame_needed = 0, uses_anonymous_args = 0
+ 300              		@ link register save eliminated.
+ 301              		@ sp needed
+ 302 0000 7047     		bx	lr
+ 303              		.cfi_endproc
+ 304              	.LFE16:
+ 305              		.size	DATALINK_Timer_EnableTrigger, .-DATALINK_Timer_EnableTrigger
+ 306              		.section	.text.DATALINK_Timer_DisableTrigger,"ax",%progbits
+ 307              		.align	1
+ 308              		.global	DATALINK_Timer_DisableTrigger
+ 309              		.code	16
+ 310              		.thumb_func
+ 311              		.type	DATALINK_Timer_DisableTrigger, %function
+ 312              	DATALINK_Timer_DisableTrigger:
+ 313              	.LFB13:
+ 526:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 527:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 528:Generated_Source\PSoC4/DATALINK_Timer.c **** #if(!DATALINK_Timer_UsingFixedFunction) /* UDB Specific Functions */
+ 529:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 530:Generated_Source\PSoC4/DATALINK_Timer.c ****     
+ 531:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 532:Generated_Source\PSoC4/DATALINK_Timer.c ****  * The functions below this point are only available using the UDB
+ 533:Generated_Source\PSoC4/DATALINK_Timer.c ****  * implementation.  If a feature is selected, then the API is enabled.
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 16
+
+
+ 534:Generated_Source\PSoC4/DATALINK_Timer.c ****  ******************************************************************************/
+ 535:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 536:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 537:Generated_Source\PSoC4/DATALINK_Timer.c **** #if (DATALINK_Timer_SoftwareCaptureMode)
+ 538:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 539:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 540:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 541:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_SetCaptureMode
+ 542:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 543:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 544:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 545:Generated_Source\PSoC4/DATALINK_Timer.c **** *  This function sets the capture mode to either rising or falling edge.
+ 546:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 547:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 548:Generated_Source\PSoC4/DATALINK_Timer.c **** *  captureMode: This parameter sets the capture mode of the UDB capture feature
+ 549:Generated_Source\PSoC4/DATALINK_Timer.c **** *  The parameter values are defined using the
+ 550:Generated_Source\PSoC4/DATALINK_Timer.c **** *  #define DATALINK_Timer__B_TIMER__CM_NONE 0
+ 551:Generated_Source\PSoC4/DATALINK_Timer.c **** #define DATALINK_Timer__B_TIMER__CM_RISINGEDGE 1
+ 552:Generated_Source\PSoC4/DATALINK_Timer.c **** #define DATALINK_Timer__B_TIMER__CM_FALLINGEDGE 2
+ 553:Generated_Source\PSoC4/DATALINK_Timer.c **** #define DATALINK_Timer__B_TIMER__CM_EITHEREDGE 3
+ 554:Generated_Source\PSoC4/DATALINK_Timer.c **** #define DATALINK_Timer__B_TIMER__CM_SOFTWARE 4
+ 555:Generated_Source\PSoC4/DATALINK_Timer.c ****  identifiers
+ 556:Generated_Source\PSoC4/DATALINK_Timer.c **** *  The following are the possible values of the parameter
+ 557:Generated_Source\PSoC4/DATALINK_Timer.c **** *  DATALINK_Timer__B_TIMER__CM_NONE        - Set Capture mode to None
+ 558:Generated_Source\PSoC4/DATALINK_Timer.c **** *  DATALINK_Timer__B_TIMER__CM_RISINGEDGE  - Rising edge of Capture input
+ 559:Generated_Source\PSoC4/DATALINK_Timer.c **** *  DATALINK_Timer__B_TIMER__CM_FALLINGEDGE - Falling edge of Capture input
+ 560:Generated_Source\PSoC4/DATALINK_Timer.c **** *  DATALINK_Timer__B_TIMER__CM_EITHEREDGE  - Either edge of Capture input
+ 561:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 562:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 563:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 564:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 565:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 566:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_SetCaptureMode(uint8 captureMode) 
+ 567:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 568:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* This must only set to two bits of the control register associated */
+ 569:Generated_Source\PSoC4/DATALINK_Timer.c ****     captureMode = ((uint8)((uint8)captureMode << DATALINK_Timer_CTRL_CAP_MODE_SHIFT));
+ 570:Generated_Source\PSoC4/DATALINK_Timer.c ****     captureMode &= (DATALINK_Timer_CTRL_CAP_MODE_MASK);
+ 571:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 572:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED)
+ 573:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* Clear the Current Setting */
+ 574:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_CONTROL &= ((uint8)(~DATALINK_Timer_CTRL_CAP_MODE_MASK));
+ 575:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 576:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* Write The New Setting */
+ 577:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_CONTROL |= captureMode;
+ 578:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED) */
+ 579:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 580:Generated_Source\PSoC4/DATALINK_Timer.c **** #endif /* Remove API if Capture Mode is not Software Controlled */
+ 581:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 582:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 583:Generated_Source\PSoC4/DATALINK_Timer.c **** #if (DATALINK_Timer_SoftwareTriggerMode)
+ 584:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 585:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 586:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 587:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_SetTriggerMode
+ 588:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 589:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 590:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 17
+
+
+ 591:Generated_Source\PSoC4/DATALINK_Timer.c **** *  This function sets the trigger input mode
+ 592:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 593:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 594:Generated_Source\PSoC4/DATALINK_Timer.c **** *  triggerMode: Pass one of the pre-defined Trigger Modes (except Software)
+ 595:Generated_Source\PSoC4/DATALINK_Timer.c ****     #define DATALINK_Timer__B_TIMER__TM_NONE 0x00u
+ 596:Generated_Source\PSoC4/DATALINK_Timer.c ****     #define DATALINK_Timer__B_TIMER__TM_RISINGEDGE 0x04u
+ 597:Generated_Source\PSoC4/DATALINK_Timer.c ****     #define DATALINK_Timer__B_TIMER__TM_FALLINGEDGE 0x08u
+ 598:Generated_Source\PSoC4/DATALINK_Timer.c ****     #define DATALINK_Timer__B_TIMER__TM_EITHEREDGE 0x0Cu
+ 599:Generated_Source\PSoC4/DATALINK_Timer.c ****     #define DATALINK_Timer__B_TIMER__TM_SOFTWARE 0x10u
+ 600:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 601:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 602:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 603:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 604:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 605:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_SetTriggerMode(uint8 triggerMode) 
+ 606:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 607:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* This must only set to two bits of the control register associated */
+ 608:Generated_Source\PSoC4/DATALINK_Timer.c ****     triggerMode &= DATALINK_Timer_CTRL_TRIG_MODE_MASK;
+ 609:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 610:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is rem
+ 611:Generated_Source\PSoC4/DATALINK_Timer.c ****     
+ 612:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* Clear the Current Setting */
+ 613:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_CONTROL &= ((uint8)(~DATALINK_Timer_CTRL_TRIG_MODE_MASK));
+ 614:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 615:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* Write The New Setting */
+ 616:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_CONTROL |= (triggerMode | DATALINK_Timer__B_TIMER__TM_SOFTWARE);
+ 617:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Remove code section if control register is not used */
+ 618:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 619:Generated_Source\PSoC4/DATALINK_Timer.c **** #endif /* Remove API if Trigger Mode is not Software Controlled */
+ 620:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 621:Generated_Source\PSoC4/DATALINK_Timer.c **** #if (DATALINK_Timer_EnableTriggerMode)
+ 622:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 623:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 624:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 625:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_EnableTrigger
+ 626:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 627:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 628:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 629:Generated_Source\PSoC4/DATALINK_Timer.c **** *  Sets the control bit enabling Hardware Trigger mode
+ 630:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 631:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 632:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 633:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 634:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 635:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 636:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 637:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 638:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_EnableTrigger(void) 
+ 639:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 640:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED)   /* Remove assignment if control register is rem
+ 641:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_CONTROL |= DATALINK_Timer_CTRL_TRIG_EN;
+ 642:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Remove code section if control register is not used */
+ 643:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 644:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 645:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 646:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 647:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_DisableTrigger
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 18
+
+
+ 648:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 649:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 650:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 651:Generated_Source\PSoC4/DATALINK_Timer.c **** *  Clears the control bit enabling Hardware Trigger mode
+ 652:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 653:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 654:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 655:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 656:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 657:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 658:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 659:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 660:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_DisableTrigger(void) 
+ 661:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 314              		.loc 1 661 0
+ 315              		.cfi_startproc
+ 316              		@ args = 0, pretend = 0, frame = 0
+ 317              		@ frame_needed = 0, uses_anonymous_args = 0
+ 318              		@ link register save eliminated.
+ 662:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED )   /* Remove assignment if control register is re
+ 663:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_CONTROL &= ((uint8)(~DATALINK_Timer_CTRL_TRIG_EN));
+ 664:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Remove code section if control register is not used */
+ 665:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 319              		.loc 1 665 0
+ 320              		@ sp needed
+ 321 0000 7047     		bx	lr
+ 322              		.cfi_endproc
+ 323              	.LFE13:
+ 324              		.size	DATALINK_Timer_DisableTrigger, .-DATALINK_Timer_DisableTrigger
+ 325              		.section	.text.DATALINK_Timer_ClearFIFO,"ax",%progbits
+ 326              		.align	1
+ 327              		.global	DATALINK_Timer_ClearFIFO
+ 328              		.code	16
+ 329              		.thumb_func
+ 330              		.type	DATALINK_Timer_ClearFIFO, %function
+ 331              	DATALINK_Timer_ClearFIFO:
+ 332              	.LFB14:
+ 666:Generated_Source\PSoC4/DATALINK_Timer.c **** #endif /* Remove API is Trigger Mode is set to None */
+ 667:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 668:Generated_Source\PSoC4/DATALINK_Timer.c **** #if(DATALINK_Timer_InterruptOnCaptureCount)
+ 669:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 670:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 671:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 672:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_SetInterruptCount
+ 673:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 674:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 675:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 676:Generated_Source\PSoC4/DATALINK_Timer.c **** *  This function sets the capture count before an interrupt is triggered.
+ 677:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 678:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 679:Generated_Source\PSoC4/DATALINK_Timer.c **** *  interruptCount:  A value between 0 and 3 is valid.  If the value is 0, then
+ 680:Generated_Source\PSoC4/DATALINK_Timer.c **** *                   an interrupt will occur each time a capture occurs.
+ 681:Generated_Source\PSoC4/DATALINK_Timer.c **** *                   A value of 1 to 3 will cause the interrupt
+ 682:Generated_Source\PSoC4/DATALINK_Timer.c **** *                   to delay by the same number of captures.
+ 683:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 684:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 685:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 19
+
+
+ 686:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 687:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 688:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_SetInterruptCount(uint8 interruptCount) 
+ 689:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 690:Generated_Source\PSoC4/DATALINK_Timer.c ****     /* This must only set to two bits of the control register associated */
+ 691:Generated_Source\PSoC4/DATALINK_Timer.c ****     interruptCount &= DATALINK_Timer_CTRL_INTCNT_MASK;
+ 692:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 693:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED)
+ 694:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* Clear the Current Setting */
+ 695:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_CONTROL &= ((uint8)(~DATALINK_Timer_CTRL_INTCNT_MASK));
+ 696:Generated_Source\PSoC4/DATALINK_Timer.c ****         /* Write The New Setting */
+ 697:Generated_Source\PSoC4/DATALINK_Timer.c ****         DATALINK_Timer_CONTROL |= interruptCount;
+ 698:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* (!DATALINK_Timer_UDB_CONTROL_REG_REMOVED) */
+ 699:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 700:Generated_Source\PSoC4/DATALINK_Timer.c **** #endif /* DATALINK_Timer_InterruptOnCaptureCount */
+ 701:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 702:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 703:Generated_Source\PSoC4/DATALINK_Timer.c **** #if (DATALINK_Timer_UsingHWCaptureCounter)
+ 704:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 705:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 706:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 707:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_SetCaptureCount
+ 708:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 709:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 710:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 711:Generated_Source\PSoC4/DATALINK_Timer.c **** *  This function sets the capture count
+ 712:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 713:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 714:Generated_Source\PSoC4/DATALINK_Timer.c **** *  captureCount: A value between 2 and 127 inclusive is valid.  A value of 1
+ 715:Generated_Source\PSoC4/DATALINK_Timer.c **** *                to 127 will cause the interrupt to delay by the same number of
+ 716:Generated_Source\PSoC4/DATALINK_Timer.c **** *                captures.
+ 717:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 718:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 719:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 720:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 721:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 722:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_SetCaptureCount(uint8 captureCount) 
+ 723:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 724:Generated_Source\PSoC4/DATALINK_Timer.c ****     DATALINK_Timer_CAP_COUNT = captureCount;
+ 725:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 726:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 727:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 728:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 729:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_ReadCaptureCount
+ 730:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 731:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 732:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 733:Generated_Source\PSoC4/DATALINK_Timer.c **** *  This function reads the capture count setting
+ 734:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 735:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 736:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 737:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 738:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 739:Generated_Source\PSoC4/DATALINK_Timer.c **** *  Returns the Capture Count Setting
+ 740:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 741:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 742:Generated_Source\PSoC4/DATALINK_Timer.c **** uint8 DATALINK_Timer_ReadCaptureCount(void) 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 20
+
+
+ 743:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 744:Generated_Source\PSoC4/DATALINK_Timer.c ****     return ((uint8)DATALINK_Timer_CAP_COUNT);
+ 745:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 746:Generated_Source\PSoC4/DATALINK_Timer.c **** #endif /* DATALINK_Timer_UsingHWCaptureCounter */
+ 747:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 748:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 749:Generated_Source\PSoC4/DATALINK_Timer.c **** /*******************************************************************************
+ 750:Generated_Source\PSoC4/DATALINK_Timer.c **** * Function Name: DATALINK_Timer_ClearFIFO
+ 751:Generated_Source\PSoC4/DATALINK_Timer.c **** ********************************************************************************
+ 752:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 753:Generated_Source\PSoC4/DATALINK_Timer.c **** * Summary:
+ 754:Generated_Source\PSoC4/DATALINK_Timer.c **** *  This function clears all capture data from the capture FIFO
+ 755:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 756:Generated_Source\PSoC4/DATALINK_Timer.c **** * Parameters:
+ 757:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 758:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 759:Generated_Source\PSoC4/DATALINK_Timer.c **** * Return:
+ 760:Generated_Source\PSoC4/DATALINK_Timer.c **** *  void
+ 761:Generated_Source\PSoC4/DATALINK_Timer.c **** *
+ 762:Generated_Source\PSoC4/DATALINK_Timer.c **** *******************************************************************************/
+ 763:Generated_Source\PSoC4/DATALINK_Timer.c **** void DATALINK_Timer_ClearFIFO(void) 
+ 764:Generated_Source\PSoC4/DATALINK_Timer.c **** {
+ 333              		.loc 1 764 0
+ 334              		.cfi_startproc
+ 335              		@ args = 0, pretend = 0, frame = 0
+ 336              		@ frame_needed = 0, uses_anonymous_args = 0
+ 337              		@ link register save eliminated.
+ 765:Generated_Source\PSoC4/DATALINK_Timer.c ****     while(0u != (DATALINK_Timer_ReadStatusRegister() & DATALINK_Timer_STATUS_FIFONEMP))
+ 338              		.loc 1 765 0
+ 339 0000 0823     		movs	r3, #8
+ 340              	.LBB16:
+ 341              	.LBB17:
+ 335:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 342              		.loc 1 335 0
+ 343 0002 0449     		ldr	r1, .L34
+ 344              	.LBE17:
+ 345              	.LBE16:
+ 346              	.LBB19:
+ 347              	.LBB20:
+ 461:Generated_Source\PSoC4/DATALINK_Timer.c ****    #endif /* (DATALINK_Timer_UsingFixedFunction) */
+ 348              		.loc 1 461 0
+ 349 0004 0448     		ldr	r0, .L34+4
+ 350              	.L30:
+ 351              	.LBE20:
+ 352              	.LBE19:
+ 353              	.LBB22:
+ 354              	.LBB18:
+ 335:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 355              		.loc 1 335 0
+ 356 0006 0A78     		ldrb	r2, [r1]
+ 357              	.LBE18:
+ 358              	.LBE22:
+ 359              		.loc 1 765 0
+ 360 0008 1A42     		tst	r2, r3
+ 361 000a 01D0     		beq	.L33
+ 362              	.LBB23:
+ 363              	.LBB21:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 21
+
+
+ 461:Generated_Source\PSoC4/DATALINK_Timer.c ****    #endif /* (DATALINK_Timer_UsingFixedFunction) */
+ 364              		.loc 1 461 0
+ 365 000c 0278     		ldrb	r2, [r0]
+ 366 000e FAE7     		b	.L30
+ 367              	.L33:
+ 368              	.LBE21:
+ 369              	.LBE23:
+ 766:Generated_Source\PSoC4/DATALINK_Timer.c ****     {
+ 767:Generated_Source\PSoC4/DATALINK_Timer.c ****         (void)DATALINK_Timer_ReadCapture();
+ 768:Generated_Source\PSoC4/DATALINK_Timer.c ****     }
+ 769:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 370              		.loc 1 769 0
+ 371              		@ sp needed
+ 372 0010 7047     		bx	lr
+ 373              	.L35:
+ 374 0012 C046     		.align	2
+ 375              	.L34:
+ 376 0014 61000F40 		.word	1074724961
+ 377 0018 41000F40 		.word	1074724929
+ 378              		.cfi_endproc
+ 379              	.LFE14:
+ 380              		.size	DATALINK_Timer_ClearFIFO, .-DATALINK_Timer_ClearFIFO
+ 381              		.section	.text.DATALINK_Timer_Init,"ax",%progbits
+ 382              		.align	1
+ 383              		.global	DATALINK_Timer_Init
+ 384              		.code	16
+ 385              		.thumb_func
+ 386              		.type	DATALINK_Timer_Init, %function
+ 387              	DATALINK_Timer_Init:
+ 388              	.LFB0:
+  44:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if(!DATALINK_Timer_UsingFixedFunction)
+ 389              		.loc 1 44 0
+ 390              		.cfi_startproc
+ 391              		@ args = 0, pretend = 0, frame = 0
+ 392              		@ frame_needed = 0, uses_anonymous_args = 0
+ 393              	.LVL3:
+ 394              	.LBB24:
+ 395              	.LBB25:
+ 437:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed functi
+ 396              		.loc 1 437 0
+ 397 0000 4F23     		movs	r3, #79
+ 398 0002 0A4A     		ldr	r2, .L37
+ 399              	.LBE25:
+ 400              	.LBE24:
+  44:Generated_Source\PSoC4/DATALINK_Timer.c ****     #if(!DATALINK_Timer_UsingFixedFunction)
+ 401              		.loc 1 44 0
+ 402 0004 10B5     		push	{r4, lr}
+ 403              		.cfi_def_cfa_offset 8
+ 404              		.cfi_offset 4, -8
+ 405              		.cfi_offset 14, -4
+ 406              	.LBB27:
+ 407              	.LBB26:
+ 437:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /*Write Period value with appropriate resolution suffix depending on UDB or fixed functi
+ 408              		.loc 1 437 0
+ 409 0006 1370     		strb	r3, [r2]
+ 410              	.LVL4:
+ 411              	.LBE26:
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 22
+
+
+ 412              	.LBE27:
+ 413              	.LBB28:
+ 414              	.LBB29:
+ 489:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Set Write Counter only for the UDB implementation (Write Counter not available in fix
+ 415              		.loc 1 489 0
+ 416 0008 094A     		ldr	r2, .L37+4
+ 417              	.LBE29:
+ 418              	.LBE28:
+ 163:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 419              		.loc 1 163 0
+ 420              		@ sp needed
+ 421              	.LBB31:
+ 422              	.LBB30:
+ 489:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Set Write Counter only for the UDB implementation (Write Counter not available in fix
+ 423              		.loc 1 489 0
+ 424 000a 1370     		strb	r3, [r2]
+ 425              	.LVL5:
+ 426              	.LBE30:
+ 427              	.LBE31:
+ 142:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 428              		.loc 1 142 0
+ 429 000c FFF7FEFF 		bl	CyEnterCriticalSection
+ 430              	.LVL6:
+ 145:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 431              		.loc 1 145 0
+ 432 0010 1021     		movs	r1, #16
+ 433 0012 084A     		ldr	r2, .L37+8
+ 434 0014 1378     		ldrb	r3, [r2]
+ 435 0016 0B43     		orrs	r3, r1
+ 436 0018 1370     		strb	r3, [r2]
+ 148:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 437              		.loc 1 148 0
+ 438 001a FFF7FEFF 		bl	CyExitCriticalSection
+ 439              	.LVL7:
+ 159:Generated_Source\PSoC4/DATALINK_Timer.c ****     #endif /* Configure additional features of UDB implementation */
+ 440              		.loc 1 159 0
+ 441 001e FFF7FEFF 		bl	DATALINK_Timer_ClearFIFO
+ 442              	.LVL8:
+ 443              	.LBB32:
+ 444              	.LBB33:
+ 281:Generated_Source\PSoC4/DATALINK_Timer.c **** }
+ 445              		.loc 1 281 0
+ 446 0022 0522     		movs	r2, #5
+ 447 0024 044B     		ldr	r3, .L37+12
+ 448 0026 1A70     		strb	r2, [r3]
+ 449              	.LVL9:
+ 450              	.LBE33:
+ 451              	.LBE32:
+ 163:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 452              		.loc 1 163 0
+ 453 0028 10BD     		pop	{r4, pc}
+ 454              	.L38:
+ 455 002a C046     		.align	2
+ 456              	.L37:
+ 457 002c 21000F40 		.word	1074724897
+ 458 0030 01000F40 		.word	1074724865
+ 459 0034 91000F40 		.word	1074725009
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 23
+
+
+ 460 0038 81000F40 		.word	1074724993
+ 461              		.cfi_endproc
+ 462              	.LFE0:
+ 463              		.size	DATALINK_Timer_Init, .-DATALINK_Timer_Init
+ 464              		.section	.text.DATALINK_Timer_Start,"ax",%progbits
+ 465              		.align	1
+ 466              		.global	DATALINK_Timer_Start
+ 467              		.code	16
+ 468              		.thumb_func
+ 469              		.type	DATALINK_Timer_Start, %function
+ 470              	DATALINK_Timer_Start:
+ 471              	.LFB2:
+ 216:Generated_Source\PSoC4/DATALINK_Timer.c ****     if(DATALINK_Timer_initVar == 0u)
+ 472              		.loc 1 216 0
+ 473              		.cfi_startproc
+ 474              		@ args = 0, pretend = 0, frame = 0
+ 475              		@ frame_needed = 0, uses_anonymous_args = 0
+ 476 0000 10B5     		push	{r4, lr}
+ 477              		.cfi_def_cfa_offset 8
+ 478              		.cfi_offset 4, -8
+ 479              		.cfi_offset 14, -4
+ 217:Generated_Source\PSoC4/DATALINK_Timer.c ****     {
+ 480              		.loc 1 217 0
+ 481 0002 044C     		ldr	r4, .L41
+ 482 0004 2378     		ldrb	r3, [r4]
+ 483 0006 002B     		cmp	r3, #0
+ 484 0008 03D1     		bne	.L39
+ 219:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 485              		.loc 1 219 0
+ 486 000a FFF7FEFF 		bl	DATALINK_Timer_Init
+ 487              	.LVL10:
+ 221:Generated_Source\PSoC4/DATALINK_Timer.c ****     }
+ 488              		.loc 1 221 0
+ 489 000e 0123     		movs	r3, #1
+ 490 0010 2370     		strb	r3, [r4]
+ 491              	.L39:
+ 226:Generated_Source\PSoC4/DATALINK_Timer.c **** 
+ 492              		.loc 1 226 0
+ 493              		@ sp needed
+ 494 0012 10BD     		pop	{r4, pc}
+ 495              	.L42:
+ 496              		.align	2
+ 497              	.L41:
+ 498 0014 00000000 		.word	.LANCHOR0
+ 499              		.cfi_endproc
+ 500              	.LFE2:
+ 501              		.size	DATALINK_Timer_Start, .-DATALINK_Timer_Start
+ 502              		.global	DATALINK_Timer_initVar
+ 503              		.bss
+ 504              		.set	.LANCHOR0,. + 0
+ 505              		.type	DATALINK_Timer_initVar, %object
+ 506              		.size	DATALINK_Timer_initVar, 1
+ 507              	DATALINK_Timer_initVar:
+ 508 0000 00       		.space	1
+ 509              		.text
+ 510              	.Letext0:
+ 511              		.file 2 "Generated_Source\\PSoC4\\cytypes.h"
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 24
+
+
+ 512              		.file 3 "Generated_Source\\PSoC4\\CyLib.h"
+ 513              		.section	.debug_info,"",%progbits
+ 514              	.Ldebug_info0:
+ 515 0000 FA020000 		.4byte	0x2fa
+ 516 0004 0400     		.2byte	0x4
+ 517 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 518 000a 04       		.byte	0x4
+ 519 000b 01       		.uleb128 0x1
+ 520 000c A6020000 		.4byte	.LASF34
+ 521 0010 0C       		.byte	0xc
+ 522 0011 98000000 		.4byte	.LASF35
+ 523 0015 38020000 		.4byte	.LASF36
+ 524 0019 60000000 		.4byte	.Ldebug_ranges0+0x60
+ 525 001d 00000000 		.4byte	0
+ 526 0021 00000000 		.4byte	.Ldebug_line0
+ 527 0025 02       		.uleb128 0x2
+ 528 0026 01       		.byte	0x1
+ 529 0027 06       		.byte	0x6
+ 530 0028 9A020000 		.4byte	.LASF0
+ 531 002c 02       		.uleb128 0x2
+ 532 002d 01       		.byte	0x1
+ 533 002e 08       		.byte	0x8
+ 534 002f C0000000 		.4byte	.LASF1
+ 535 0033 02       		.uleb128 0x2
+ 536 0034 02       		.byte	0x2
+ 537 0035 05       		.byte	0x5
+ 538 0036 2E020000 		.4byte	.LASF2
+ 539 003a 02       		.uleb128 0x2
+ 540 003b 02       		.byte	0x2
+ 541 003c 07       		.byte	0x7
+ 542 003d 07000000 		.4byte	.LASF3
+ 543 0041 02       		.uleb128 0x2
+ 544 0042 04       		.byte	0x4
+ 545 0043 05       		.byte	0x5
+ 546 0044 80020000 		.4byte	.LASF4
+ 547 0048 02       		.uleb128 0x2
+ 548 0049 04       		.byte	0x4
+ 549 004a 07       		.byte	0x7
+ 550 004b F2000000 		.4byte	.LASF5
+ 551 004f 02       		.uleb128 0x2
+ 552 0050 08       		.byte	0x8
+ 553 0051 05       		.byte	0x5
+ 554 0052 F9010000 		.4byte	.LASF6
+ 555 0056 02       		.uleb128 0x2
+ 556 0057 08       		.byte	0x8
+ 557 0058 07       		.byte	0x7
+ 558 0059 81000000 		.4byte	.LASF7
+ 559 005d 03       		.uleb128 0x3
+ 560 005e 04       		.byte	0x4
+ 561 005f 05       		.byte	0x5
+ 562 0060 696E7400 		.ascii	"int\000"
+ 563 0064 02       		.uleb128 0x2
+ 564 0065 04       		.byte	0x4
+ 565 0066 07       		.byte	0x7
+ 566 0067 94010000 		.4byte	.LASF8
+ 567 006b 04       		.uleb128 0x4
+ 568 006c 1F010000 		.4byte	.LASF12
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 25
+
+
+ 569 0070 02       		.byte	0x2
+ 570 0071 F701     		.2byte	0x1f7
+ 571 0073 2C000000 		.4byte	0x2c
+ 572 0077 02       		.uleb128 0x2
+ 573 0078 04       		.byte	0x4
+ 574 0079 04       		.byte	0x4
+ 575 007a 73000000 		.4byte	.LASF9
+ 576 007e 02       		.uleb128 0x2
+ 577 007f 08       		.byte	0x8
+ 578 0080 04       		.byte	0x4
+ 579 0081 25010000 		.4byte	.LASF10
+ 580 0085 02       		.uleb128 0x2
+ 581 0086 01       		.byte	0x1
+ 582 0087 08       		.byte	0x8
+ 583 0088 89020000 		.4byte	.LASF11
+ 584 008c 04       		.uleb128 0x4
+ 585 008d CE000000 		.4byte	.LASF13
+ 586 0091 02       		.byte	0x2
+ 587 0092 A102     		.2byte	0x2a1
+ 588 0094 98000000 		.4byte	0x98
+ 589 0098 05       		.uleb128 0x5
+ 590 0099 6B000000 		.4byte	0x6b
+ 591 009d 02       		.uleb128 0x2
+ 592 009e 08       		.byte	0x8
+ 593 009f 04       		.byte	0x4
+ 594 00a0 8E020000 		.4byte	.LASF14
+ 595 00a4 02       		.uleb128 0x2
+ 596 00a5 04       		.byte	0x4
+ 597 00a6 07       		.byte	0x7
+ 598 00a7 F0010000 		.4byte	.LASF15
+ 599 00ab 06       		.uleb128 0x6
+ 600 00ac 04010000 		.4byte	.LASF16
+ 601 00b0 01       		.byte	0x1
+ 602 00b1 C801     		.2byte	0x1c8
+ 603 00b3 6B000000 		.4byte	0x6b
+ 604 00b7 01       		.byte	0x1
+ 605 00b8 06       		.uleb128 0x6
+ 606 00b9 54030000 		.4byte	.LASF17
+ 607 00bd 01       		.byte	0x1
+ 608 00be 4D01     		.2byte	0x14d
+ 609 00c0 6B000000 		.4byte	0x6b
+ 610 00c4 01       		.byte	0x1
+ 611 00c5 07       		.uleb128 0x7
+ 612 00c6 34030000 		.4byte	.LASF18
+ 613 00ca 01       		.byte	0x1
+ 614 00cb 1701     		.2byte	0x117
+ 615 00cd 01       		.byte	0x1
+ 616 00ce DF000000 		.4byte	0xdf
+ 617 00d2 08       		.uleb128 0x8
+ 618 00d3 20020000 		.4byte	.LASF20
+ 619 00d7 01       		.byte	0x1
+ 620 00d8 1701     		.2byte	0x117
+ 621 00da 6B000000 		.4byte	0x6b
+ 622 00de 00       		.byte	0
+ 623 00df 09       		.uleb128 0x9
+ 624 00e0 76030000 		.4byte	.LASF24
+ 625 00e4 01       		.byte	0x1
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 26
+
+
+ 626 00e5 7E02     		.2byte	0x27e
+ 627 00e7 01       		.byte	0x1
+ 628 00e8 07       		.uleb128 0x7
+ 629 00e9 61010000 		.4byte	.LASF19
+ 630 00ed 01       		.byte	0x1
+ 631 00ee E001     		.2byte	0x1e0
+ 632 00f0 01       		.byte	0x1
+ 633 00f1 02010000 		.4byte	0x102
+ 634 00f5 08       		.uleb128 0x8
+ 635 00f6 79000000 		.4byte	.LASF21
+ 636 00fa 01       		.byte	0x1
+ 637 00fb E001     		.2byte	0x1e0
+ 638 00fd 6B000000 		.4byte	0x6b
+ 639 0101 00       		.byte	0
+ 640 0102 07       		.uleb128 0x7
+ 641 0103 65020000 		.4byte	.LASF22
+ 642 0107 01       		.byte	0x1
+ 643 0108 AF01     		.2byte	0x1af
+ 644 010a 01       		.byte	0x1
+ 645 010b 1C010000 		.4byte	0x11c
+ 646 010f 08       		.uleb128 0x8
+ 647 0110 00000000 		.4byte	.LASF23
+ 648 0114 01       		.byte	0x1
+ 649 0115 AF01     		.2byte	0x1af
+ 650 0117 6B000000 		.4byte	0x6b
+ 651 011b 00       		.byte	0
+ 652 011c 0A       		.uleb128 0xa
+ 653 011d 5D000000 		.4byte	.LASF25
+ 654 0121 01       		.byte	0x1
+ 655 0122 B4       		.byte	0xb4
+ 656 0123 01       		.byte	0x1
+ 657 0124 0B       		.uleb128 0xb
+ 658 0125 C5000000 		.4byte	0xc5
+ 659 0129 00000000 		.4byte	.LFB4
+ 660 012d 0C000000 		.4byte	.LFE4-.LFB4
+ 661 0131 01       		.uleb128 0x1
+ 662 0132 9C       		.byte	0x9c
+ 663 0133 3F010000 		.4byte	0x13f
+ 664 0137 0C       		.uleb128 0xc
+ 665 0138 D2000000 		.4byte	0xd2
+ 666 013c 01       		.uleb128 0x1
+ 667 013d 50       		.byte	0x50
+ 668 013e 00       		.byte	0
+ 669 013f 0D       		.uleb128 0xd
+ 670 0140 D3000000 		.4byte	.LASF37
+ 671 0144 01       		.byte	0x1
+ 672 0145 2E01     		.2byte	0x12e
+ 673 0147 00000000 		.4byte	.LFB5
+ 674 014b 0C000000 		.4byte	.LFE5-.LFB5
+ 675 014f 01       		.uleb128 0x1
+ 676 0150 9C       		.byte	0x9c
+ 677 0151 0E       		.uleb128 0xe
+ 678 0152 B8000000 		.4byte	0xb8
+ 679 0156 00000000 		.4byte	.LFB6
+ 680 015a 0C000000 		.4byte	.LFE6-.LFB6
+ 681 015e 01       		.uleb128 0x1
+ 682 015f 9C       		.byte	0x9c
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 27
+
+
+ 683 0160 0F       		.uleb128 0xf
+ 684 0161 43000000 		.4byte	.LASF26
+ 685 0165 01       		.byte	0x1
+ 686 0166 9501     		.2byte	0x195
+ 687 0168 6B000000 		.4byte	0x6b
+ 688 016c 00000000 		.4byte	.LFB7
+ 689 0170 0C000000 		.4byte	.LFE7-.LFB7
+ 690 0174 01       		.uleb128 0x1
+ 691 0175 9C       		.byte	0x9c
+ 692 0176 0B       		.uleb128 0xb
+ 693 0177 02010000 		.4byte	0x102
+ 694 017b 00000000 		.4byte	.LFB8
+ 695 017f 0C000000 		.4byte	.LFE8-.LFB8
+ 696 0183 01       		.uleb128 0x1
+ 697 0184 9C       		.byte	0x9c
+ 698 0185 91010000 		.4byte	0x191
+ 699 0189 0C       		.uleb128 0xc
+ 700 018a 0F010000 		.4byte	0x10f
+ 701 018e 01       		.uleb128 0x1
+ 702 018f 50       		.byte	0x50
+ 703 0190 00       		.byte	0
+ 704 0191 0E       		.uleb128 0xe
+ 705 0192 AB000000 		.4byte	0xab
+ 706 0196 00000000 		.4byte	.LFB9
+ 707 019a 0C000000 		.4byte	.LFE9-.LFB9
+ 708 019e 01       		.uleb128 0x1
+ 709 019f 9C       		.byte	0x9c
+ 710 01a0 0B       		.uleb128 0xb
+ 711 01a1 E8000000 		.4byte	0xe8
+ 712 01a5 00000000 		.4byte	.LFB10
+ 713 01a9 0C000000 		.4byte	.LFE10-.LFB10
+ 714 01ad 01       		.uleb128 0x1
+ 715 01ae 9C       		.byte	0x9c
+ 716 01af BB010000 		.4byte	0x1bb
+ 717 01b3 0C       		.uleb128 0xc
+ 718 01b4 F5000000 		.4byte	0xf5
+ 719 01b8 01       		.uleb128 0x1
+ 720 01b9 50       		.byte	0x50
+ 721 01ba 00       		.byte	0
+ 722 01bb 0F       		.uleb128 0xf
+ 723 01bc B7010000 		.4byte	.LASF27
+ 724 01c0 01       		.byte	0x1
+ 725 01c1 FC01     		.2byte	0x1fc
+ 726 01c3 6B000000 		.4byte	0x6b
+ 727 01c7 00000000 		.4byte	.LFB11
+ 728 01cb 14000000 		.4byte	.LFE11-.LFB11
+ 729 01cf 01       		.uleb128 0x1
+ 730 01d0 9C       		.byte	0x9c
+ 731 01d1 09       		.uleb128 0x9
+ 732 01d2 D2010000 		.4byte	.LASF28
+ 733 01d6 01       		.byte	0x1
+ 734 01d7 9402     		.2byte	0x294
+ 735 01d9 01       		.byte	0x1
+ 736 01da 0E       		.uleb128 0xe
+ 737 01db D1010000 		.4byte	0x1d1
+ 738 01df 00000000 		.4byte	.LFB13
+ 739 01e3 02000000 		.4byte	.LFE13-.LFB13
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 28
+
+
+ 740 01e7 01       		.uleb128 0x1
+ 741 01e8 9C       		.byte	0x9c
+ 742 01e9 10       		.uleb128 0x10
+ 743 01ea 07020000 		.4byte	.LASF29
+ 744 01ee 01       		.byte	0x1
+ 745 01ef FB02     		.2byte	0x2fb
+ 746 01f1 00000000 		.4byte	.LFB14
+ 747 01f5 1C000000 		.4byte	.LFE14-.LFB14
+ 748 01f9 01       		.uleb128 0x1
+ 749 01fa 9C       		.byte	0x9c
+ 750 01fb 20020000 		.4byte	0x220
+ 751 01ff 11       		.uleb128 0x11
+ 752 0200 B8000000 		.4byte	0xb8
+ 753 0204 02000000 		.4byte	.LBB16
+ 754 0208 00000000 		.4byte	.Ldebug_ranges0+0
+ 755 020c 01       		.byte	0x1
+ 756 020d FD02     		.2byte	0x2fd
+ 757 020f 11       		.uleb128 0x11
+ 758 0210 AB000000 		.4byte	0xab
+ 759 0214 04000000 		.4byte	.LBB19
+ 760 0218 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 761 021c 01       		.byte	0x1
+ 762 021d FF02     		.2byte	0x2ff
+ 763 021f 00       		.byte	0
+ 764 0220 12       		.uleb128 0x12
+ 765 0221 1A000000 		.4byte	.LASF30
+ 766 0225 01       		.byte	0x1
+ 767 0226 2B       		.byte	0x2b
+ 768 0227 00000000 		.4byte	.LFB0
+ 769 022b 3C000000 		.4byte	.LFE0-.LFB0
+ 770 022f 01       		.uleb128 0x1
+ 771 0230 9C       		.byte	0x9c
+ 772 0231 B7020000 		.4byte	0x2b7
+ 773 0235 13       		.uleb128 0x13
+ 774 0236 2C010000 		.4byte	.LASF38
+ 775 023a 01       		.byte	0x1
+ 776 023b 2F       		.byte	0x2f
+ 777 023c 6B000000 		.4byte	0x6b
+ 778 0240 00000000 		.4byte	.LLST0
+ 779 0244 14       		.uleb128 0x14
+ 780 0245 02010000 		.4byte	0x102
+ 781 0249 00000000 		.4byte	.LBB24
+ 782 024d 30000000 		.4byte	.Ldebug_ranges0+0x30
+ 783 0251 01       		.byte	0x1
+ 784 0252 76       		.byte	0x76
+ 785 0253 61020000 		.4byte	0x261
+ 786 0257 15       		.uleb128 0x15
+ 787 0258 0F010000 		.4byte	0x10f
+ 788 025c 13000000 		.4byte	.LLST1
+ 789 0260 00       		.byte	0
+ 790 0261 14       		.uleb128 0x14
+ 791 0262 E8000000 		.4byte	0xe8
+ 792 0266 08000000 		.4byte	.LBB28
+ 793 026a 48000000 		.4byte	.Ldebug_ranges0+0x48
+ 794 026e 01       		.byte	0x1
+ 795 026f 77       		.byte	0x77
+ 796 0270 7E020000 		.4byte	0x27e
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 29
+
+
+ 797 0274 15       		.uleb128 0x15
+ 798 0275 F5000000 		.4byte	0xf5
+ 799 0279 28000000 		.4byte	.LLST2
+ 800 027d 00       		.byte	0
+ 801 027e 16       		.uleb128 0x16
+ 802 027f C5000000 		.4byte	0xc5
+ 803 0283 22000000 		.4byte	.LBB32
+ 804 0287 06000000 		.4byte	.LBE32-.LBB32
+ 805 028b 01       		.byte	0x1
+ 806 028c A2       		.byte	0xa2
+ 807 028d 9B020000 		.4byte	0x29b
+ 808 0291 15       		.uleb128 0x15
+ 809 0292 D2000000 		.4byte	0xd2
+ 810 0296 3D000000 		.4byte	.LLST3
+ 811 029a 00       		.byte	0
+ 812 029b 17       		.uleb128 0x17
+ 813 029c 10000000 		.4byte	.LVL6
+ 814 02a0 E7020000 		.4byte	0x2e7
+ 815 02a4 17       		.uleb128 0x17
+ 816 02a5 1E000000 		.4byte	.LVL7
+ 817 02a9 F2020000 		.4byte	0x2f2
+ 818 02ad 17       		.uleb128 0x17
+ 819 02ae 22000000 		.4byte	.LVL8
+ 820 02b2 E9010000 		.4byte	0x1e9
+ 821 02b6 00       		.byte	0
+ 822 02b7 12       		.uleb128 0x12
+ 823 02b8 2E000000 		.4byte	.LASF31
+ 824 02bc 01       		.byte	0x1
+ 825 02bd D7       		.byte	0xd7
+ 826 02be 00000000 		.4byte	.LFB2
+ 827 02c2 18000000 		.4byte	.LFE2-.LFB2
+ 828 02c6 01       		.uleb128 0x1
+ 829 02c7 9C       		.byte	0x9c
+ 830 02c8 D6020000 		.4byte	0x2d6
+ 831 02cc 17       		.uleb128 0x17
+ 832 02cd 0E000000 		.4byte	.LVL10
+ 833 02d1 20020000 		.4byte	0x220
+ 834 02d5 00       		.byte	0
+ 835 02d6 18       		.uleb128 0x18
+ 836 02d7 4A010000 		.4byte	.LASF39
+ 837 02db 01       		.byte	0x1
+ 838 02dc 1A       		.byte	0x1a
+ 839 02dd 6B000000 		.4byte	0x6b
+ 840 02e1 05       		.uleb128 0x5
+ 841 02e2 03       		.byte	0x3
+ 842 02e3 00000000 		.4byte	DATALINK_Timer_initVar
+ 843 02e7 19       		.uleb128 0x19
+ 844 02e8 7D010000 		.4byte	.LASF32
+ 845 02ec 7D010000 		.4byte	.LASF32
+ 846 02f0 03       		.byte	0x3
+ 847 02f1 F8       		.byte	0xf8
+ 848 02f2 19       		.uleb128 0x19
+ 849 02f3 A1010000 		.4byte	.LASF33
+ 850 02f7 A1010000 		.4byte	.LASF33
+ 851 02fb 03       		.byte	0x3
+ 852 02fc F9       		.byte	0xf9
+ 853 02fd 00       		.byte	0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 30
+
+
+ 854              		.section	.debug_abbrev,"",%progbits
+ 855              	.Ldebug_abbrev0:
+ 856 0000 01       		.uleb128 0x1
+ 857 0001 11       		.uleb128 0x11
+ 858 0002 01       		.byte	0x1
+ 859 0003 25       		.uleb128 0x25
+ 860 0004 0E       		.uleb128 0xe
+ 861 0005 13       		.uleb128 0x13
+ 862 0006 0B       		.uleb128 0xb
+ 863 0007 03       		.uleb128 0x3
+ 864 0008 0E       		.uleb128 0xe
+ 865 0009 1B       		.uleb128 0x1b
+ 866 000a 0E       		.uleb128 0xe
+ 867 000b 55       		.uleb128 0x55
+ 868 000c 17       		.uleb128 0x17
+ 869 000d 11       		.uleb128 0x11
+ 870 000e 01       		.uleb128 0x1
+ 871 000f 10       		.uleb128 0x10
+ 872 0010 17       		.uleb128 0x17
+ 873 0011 00       		.byte	0
+ 874 0012 00       		.byte	0
+ 875 0013 02       		.uleb128 0x2
+ 876 0014 24       		.uleb128 0x24
+ 877 0015 00       		.byte	0
+ 878 0016 0B       		.uleb128 0xb
+ 879 0017 0B       		.uleb128 0xb
+ 880 0018 3E       		.uleb128 0x3e
+ 881 0019 0B       		.uleb128 0xb
+ 882 001a 03       		.uleb128 0x3
+ 883 001b 0E       		.uleb128 0xe
+ 884 001c 00       		.byte	0
+ 885 001d 00       		.byte	0
+ 886 001e 03       		.uleb128 0x3
+ 887 001f 24       		.uleb128 0x24
+ 888 0020 00       		.byte	0
+ 889 0021 0B       		.uleb128 0xb
+ 890 0022 0B       		.uleb128 0xb
+ 891 0023 3E       		.uleb128 0x3e
+ 892 0024 0B       		.uleb128 0xb
+ 893 0025 03       		.uleb128 0x3
+ 894 0026 08       		.uleb128 0x8
+ 895 0027 00       		.byte	0
+ 896 0028 00       		.byte	0
+ 897 0029 04       		.uleb128 0x4
+ 898 002a 16       		.uleb128 0x16
+ 899 002b 00       		.byte	0
+ 900 002c 03       		.uleb128 0x3
+ 901 002d 0E       		.uleb128 0xe
+ 902 002e 3A       		.uleb128 0x3a
+ 903 002f 0B       		.uleb128 0xb
+ 904 0030 3B       		.uleb128 0x3b
+ 905 0031 05       		.uleb128 0x5
+ 906 0032 49       		.uleb128 0x49
+ 907 0033 13       		.uleb128 0x13
+ 908 0034 00       		.byte	0
+ 909 0035 00       		.byte	0
+ 910 0036 05       		.uleb128 0x5
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 31
+
+
+ 911 0037 35       		.uleb128 0x35
+ 912 0038 00       		.byte	0
+ 913 0039 49       		.uleb128 0x49
+ 914 003a 13       		.uleb128 0x13
+ 915 003b 00       		.byte	0
+ 916 003c 00       		.byte	0
+ 917 003d 06       		.uleb128 0x6
+ 918 003e 2E       		.uleb128 0x2e
+ 919 003f 00       		.byte	0
+ 920 0040 3F       		.uleb128 0x3f
+ 921 0041 19       		.uleb128 0x19
+ 922 0042 03       		.uleb128 0x3
+ 923 0043 0E       		.uleb128 0xe
+ 924 0044 3A       		.uleb128 0x3a
+ 925 0045 0B       		.uleb128 0xb
+ 926 0046 3B       		.uleb128 0x3b
+ 927 0047 05       		.uleb128 0x5
+ 928 0048 27       		.uleb128 0x27
+ 929 0049 19       		.uleb128 0x19
+ 930 004a 49       		.uleb128 0x49
+ 931 004b 13       		.uleb128 0x13
+ 932 004c 20       		.uleb128 0x20
+ 933 004d 0B       		.uleb128 0xb
+ 934 004e 00       		.byte	0
+ 935 004f 00       		.byte	0
+ 936 0050 07       		.uleb128 0x7
+ 937 0051 2E       		.uleb128 0x2e
+ 938 0052 01       		.byte	0x1
+ 939 0053 3F       		.uleb128 0x3f
+ 940 0054 19       		.uleb128 0x19
+ 941 0055 03       		.uleb128 0x3
+ 942 0056 0E       		.uleb128 0xe
+ 943 0057 3A       		.uleb128 0x3a
+ 944 0058 0B       		.uleb128 0xb
+ 945 0059 3B       		.uleb128 0x3b
+ 946 005a 05       		.uleb128 0x5
+ 947 005b 27       		.uleb128 0x27
+ 948 005c 19       		.uleb128 0x19
+ 949 005d 20       		.uleb128 0x20
+ 950 005e 0B       		.uleb128 0xb
+ 951 005f 01       		.uleb128 0x1
+ 952 0060 13       		.uleb128 0x13
+ 953 0061 00       		.byte	0
+ 954 0062 00       		.byte	0
+ 955 0063 08       		.uleb128 0x8
+ 956 0064 05       		.uleb128 0x5
+ 957 0065 00       		.byte	0
+ 958 0066 03       		.uleb128 0x3
+ 959 0067 0E       		.uleb128 0xe
+ 960 0068 3A       		.uleb128 0x3a
+ 961 0069 0B       		.uleb128 0xb
+ 962 006a 3B       		.uleb128 0x3b
+ 963 006b 05       		.uleb128 0x5
+ 964 006c 49       		.uleb128 0x49
+ 965 006d 13       		.uleb128 0x13
+ 966 006e 00       		.byte	0
+ 967 006f 00       		.byte	0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 32
+
+
+ 968 0070 09       		.uleb128 0x9
+ 969 0071 2E       		.uleb128 0x2e
+ 970 0072 00       		.byte	0
+ 971 0073 3F       		.uleb128 0x3f
+ 972 0074 19       		.uleb128 0x19
+ 973 0075 03       		.uleb128 0x3
+ 974 0076 0E       		.uleb128 0xe
+ 975 0077 3A       		.uleb128 0x3a
+ 976 0078 0B       		.uleb128 0xb
+ 977 0079 3B       		.uleb128 0x3b
+ 978 007a 05       		.uleb128 0x5
+ 979 007b 27       		.uleb128 0x27
+ 980 007c 19       		.uleb128 0x19
+ 981 007d 20       		.uleb128 0x20
+ 982 007e 0B       		.uleb128 0xb
+ 983 007f 00       		.byte	0
+ 984 0080 00       		.byte	0
+ 985 0081 0A       		.uleb128 0xa
+ 986 0082 2E       		.uleb128 0x2e
+ 987 0083 00       		.byte	0
+ 988 0084 3F       		.uleb128 0x3f
+ 989 0085 19       		.uleb128 0x19
+ 990 0086 03       		.uleb128 0x3
+ 991 0087 0E       		.uleb128 0xe
+ 992 0088 3A       		.uleb128 0x3a
+ 993 0089 0B       		.uleb128 0xb
+ 994 008a 3B       		.uleb128 0x3b
+ 995 008b 0B       		.uleb128 0xb
+ 996 008c 27       		.uleb128 0x27
+ 997 008d 19       		.uleb128 0x19
+ 998 008e 20       		.uleb128 0x20
+ 999 008f 0B       		.uleb128 0xb
+ 1000 0090 00       		.byte	0
+ 1001 0091 00       		.byte	0
+ 1002 0092 0B       		.uleb128 0xb
+ 1003 0093 2E       		.uleb128 0x2e
+ 1004 0094 01       		.byte	0x1
+ 1005 0095 31       		.uleb128 0x31
+ 1006 0096 13       		.uleb128 0x13
+ 1007 0097 11       		.uleb128 0x11
+ 1008 0098 01       		.uleb128 0x1
+ 1009 0099 12       		.uleb128 0x12
+ 1010 009a 06       		.uleb128 0x6
+ 1011 009b 40       		.uleb128 0x40
+ 1012 009c 18       		.uleb128 0x18
+ 1013 009d 9742     		.uleb128 0x2117
+ 1014 009f 19       		.uleb128 0x19
+ 1015 00a0 01       		.uleb128 0x1
+ 1016 00a1 13       		.uleb128 0x13
+ 1017 00a2 00       		.byte	0
+ 1018 00a3 00       		.byte	0
+ 1019 00a4 0C       		.uleb128 0xc
+ 1020 00a5 05       		.uleb128 0x5
+ 1021 00a6 00       		.byte	0
+ 1022 00a7 31       		.uleb128 0x31
+ 1023 00a8 13       		.uleb128 0x13
+ 1024 00a9 02       		.uleb128 0x2
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 33
+
+
+ 1025 00aa 18       		.uleb128 0x18
+ 1026 00ab 00       		.byte	0
+ 1027 00ac 00       		.byte	0
+ 1028 00ad 0D       		.uleb128 0xd
+ 1029 00ae 2E       		.uleb128 0x2e
+ 1030 00af 00       		.byte	0
+ 1031 00b0 3F       		.uleb128 0x3f
+ 1032 00b1 19       		.uleb128 0x19
+ 1033 00b2 03       		.uleb128 0x3
+ 1034 00b3 0E       		.uleb128 0xe
+ 1035 00b4 3A       		.uleb128 0x3a
+ 1036 00b5 0B       		.uleb128 0xb
+ 1037 00b6 3B       		.uleb128 0x3b
+ 1038 00b7 05       		.uleb128 0x5
+ 1039 00b8 27       		.uleb128 0x27
+ 1040 00b9 19       		.uleb128 0x19
+ 1041 00ba 11       		.uleb128 0x11
+ 1042 00bb 01       		.uleb128 0x1
+ 1043 00bc 12       		.uleb128 0x12
+ 1044 00bd 06       		.uleb128 0x6
+ 1045 00be 40       		.uleb128 0x40
+ 1046 00bf 18       		.uleb128 0x18
+ 1047 00c0 9742     		.uleb128 0x2117
+ 1048 00c2 19       		.uleb128 0x19
+ 1049 00c3 00       		.byte	0
+ 1050 00c4 00       		.byte	0
+ 1051 00c5 0E       		.uleb128 0xe
+ 1052 00c6 2E       		.uleb128 0x2e
+ 1053 00c7 00       		.byte	0
+ 1054 00c8 31       		.uleb128 0x31
+ 1055 00c9 13       		.uleb128 0x13
+ 1056 00ca 11       		.uleb128 0x11
+ 1057 00cb 01       		.uleb128 0x1
+ 1058 00cc 12       		.uleb128 0x12
+ 1059 00cd 06       		.uleb128 0x6
+ 1060 00ce 40       		.uleb128 0x40
+ 1061 00cf 18       		.uleb128 0x18
+ 1062 00d0 9742     		.uleb128 0x2117
+ 1063 00d2 19       		.uleb128 0x19
+ 1064 00d3 00       		.byte	0
+ 1065 00d4 00       		.byte	0
+ 1066 00d5 0F       		.uleb128 0xf
+ 1067 00d6 2E       		.uleb128 0x2e
+ 1068 00d7 00       		.byte	0
+ 1069 00d8 3F       		.uleb128 0x3f
+ 1070 00d9 19       		.uleb128 0x19
+ 1071 00da 03       		.uleb128 0x3
+ 1072 00db 0E       		.uleb128 0xe
+ 1073 00dc 3A       		.uleb128 0x3a
+ 1074 00dd 0B       		.uleb128 0xb
+ 1075 00de 3B       		.uleb128 0x3b
+ 1076 00df 05       		.uleb128 0x5
+ 1077 00e0 27       		.uleb128 0x27
+ 1078 00e1 19       		.uleb128 0x19
+ 1079 00e2 49       		.uleb128 0x49
+ 1080 00e3 13       		.uleb128 0x13
+ 1081 00e4 11       		.uleb128 0x11
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 34
+
+
+ 1082 00e5 01       		.uleb128 0x1
+ 1083 00e6 12       		.uleb128 0x12
+ 1084 00e7 06       		.uleb128 0x6
+ 1085 00e8 40       		.uleb128 0x40
+ 1086 00e9 18       		.uleb128 0x18
+ 1087 00ea 9742     		.uleb128 0x2117
+ 1088 00ec 19       		.uleb128 0x19
+ 1089 00ed 00       		.byte	0
+ 1090 00ee 00       		.byte	0
+ 1091 00ef 10       		.uleb128 0x10
+ 1092 00f0 2E       		.uleb128 0x2e
+ 1093 00f1 01       		.byte	0x1
+ 1094 00f2 3F       		.uleb128 0x3f
+ 1095 00f3 19       		.uleb128 0x19
+ 1096 00f4 03       		.uleb128 0x3
+ 1097 00f5 0E       		.uleb128 0xe
+ 1098 00f6 3A       		.uleb128 0x3a
+ 1099 00f7 0B       		.uleb128 0xb
+ 1100 00f8 3B       		.uleb128 0x3b
+ 1101 00f9 05       		.uleb128 0x5
+ 1102 00fa 27       		.uleb128 0x27
+ 1103 00fb 19       		.uleb128 0x19
+ 1104 00fc 11       		.uleb128 0x11
+ 1105 00fd 01       		.uleb128 0x1
+ 1106 00fe 12       		.uleb128 0x12
+ 1107 00ff 06       		.uleb128 0x6
+ 1108 0100 40       		.uleb128 0x40
+ 1109 0101 18       		.uleb128 0x18
+ 1110 0102 9742     		.uleb128 0x2117
+ 1111 0104 19       		.uleb128 0x19
+ 1112 0105 01       		.uleb128 0x1
+ 1113 0106 13       		.uleb128 0x13
+ 1114 0107 00       		.byte	0
+ 1115 0108 00       		.byte	0
+ 1116 0109 11       		.uleb128 0x11
+ 1117 010a 1D       		.uleb128 0x1d
+ 1118 010b 00       		.byte	0
+ 1119 010c 31       		.uleb128 0x31
+ 1120 010d 13       		.uleb128 0x13
+ 1121 010e 52       		.uleb128 0x52
+ 1122 010f 01       		.uleb128 0x1
+ 1123 0110 55       		.uleb128 0x55
+ 1124 0111 17       		.uleb128 0x17
+ 1125 0112 58       		.uleb128 0x58
+ 1126 0113 0B       		.uleb128 0xb
+ 1127 0114 59       		.uleb128 0x59
+ 1128 0115 05       		.uleb128 0x5
+ 1129 0116 00       		.byte	0
+ 1130 0117 00       		.byte	0
+ 1131 0118 12       		.uleb128 0x12
+ 1132 0119 2E       		.uleb128 0x2e
+ 1133 011a 01       		.byte	0x1
+ 1134 011b 3F       		.uleb128 0x3f
+ 1135 011c 19       		.uleb128 0x19
+ 1136 011d 03       		.uleb128 0x3
+ 1137 011e 0E       		.uleb128 0xe
+ 1138 011f 3A       		.uleb128 0x3a
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 35
+
+
+ 1139 0120 0B       		.uleb128 0xb
+ 1140 0121 3B       		.uleb128 0x3b
+ 1141 0122 0B       		.uleb128 0xb
+ 1142 0123 27       		.uleb128 0x27
+ 1143 0124 19       		.uleb128 0x19
+ 1144 0125 11       		.uleb128 0x11
+ 1145 0126 01       		.uleb128 0x1
+ 1146 0127 12       		.uleb128 0x12
+ 1147 0128 06       		.uleb128 0x6
+ 1148 0129 40       		.uleb128 0x40
+ 1149 012a 18       		.uleb128 0x18
+ 1150 012b 9742     		.uleb128 0x2117
+ 1151 012d 19       		.uleb128 0x19
+ 1152 012e 01       		.uleb128 0x1
+ 1153 012f 13       		.uleb128 0x13
+ 1154 0130 00       		.byte	0
+ 1155 0131 00       		.byte	0
+ 1156 0132 13       		.uleb128 0x13
+ 1157 0133 34       		.uleb128 0x34
+ 1158 0134 00       		.byte	0
+ 1159 0135 03       		.uleb128 0x3
+ 1160 0136 0E       		.uleb128 0xe
+ 1161 0137 3A       		.uleb128 0x3a
+ 1162 0138 0B       		.uleb128 0xb
+ 1163 0139 3B       		.uleb128 0x3b
+ 1164 013a 0B       		.uleb128 0xb
+ 1165 013b 49       		.uleb128 0x49
+ 1166 013c 13       		.uleb128 0x13
+ 1167 013d 02       		.uleb128 0x2
+ 1168 013e 17       		.uleb128 0x17
+ 1169 013f 00       		.byte	0
+ 1170 0140 00       		.byte	0
+ 1171 0141 14       		.uleb128 0x14
+ 1172 0142 1D       		.uleb128 0x1d
+ 1173 0143 01       		.byte	0x1
+ 1174 0144 31       		.uleb128 0x31
+ 1175 0145 13       		.uleb128 0x13
+ 1176 0146 52       		.uleb128 0x52
+ 1177 0147 01       		.uleb128 0x1
+ 1178 0148 55       		.uleb128 0x55
+ 1179 0149 17       		.uleb128 0x17
+ 1180 014a 58       		.uleb128 0x58
+ 1181 014b 0B       		.uleb128 0xb
+ 1182 014c 59       		.uleb128 0x59
+ 1183 014d 0B       		.uleb128 0xb
+ 1184 014e 01       		.uleb128 0x1
+ 1185 014f 13       		.uleb128 0x13
+ 1186 0150 00       		.byte	0
+ 1187 0151 00       		.byte	0
+ 1188 0152 15       		.uleb128 0x15
+ 1189 0153 05       		.uleb128 0x5
+ 1190 0154 00       		.byte	0
+ 1191 0155 31       		.uleb128 0x31
+ 1192 0156 13       		.uleb128 0x13
+ 1193 0157 02       		.uleb128 0x2
+ 1194 0158 17       		.uleb128 0x17
+ 1195 0159 00       		.byte	0
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 36
+
+
+ 1196 015a 00       		.byte	0
+ 1197 015b 16       		.uleb128 0x16
+ 1198 015c 1D       		.uleb128 0x1d
+ 1199 015d 01       		.byte	0x1
+ 1200 015e 31       		.uleb128 0x31
+ 1201 015f 13       		.uleb128 0x13
+ 1202 0160 11       		.uleb128 0x11
+ 1203 0161 01       		.uleb128 0x1
+ 1204 0162 12       		.uleb128 0x12
+ 1205 0163 06       		.uleb128 0x6
+ 1206 0164 58       		.uleb128 0x58
+ 1207 0165 0B       		.uleb128 0xb
+ 1208 0166 59       		.uleb128 0x59
+ 1209 0167 0B       		.uleb128 0xb
+ 1210 0168 01       		.uleb128 0x1
+ 1211 0169 13       		.uleb128 0x13
+ 1212 016a 00       		.byte	0
+ 1213 016b 00       		.byte	0
+ 1214 016c 17       		.uleb128 0x17
+ 1215 016d 898201   		.uleb128 0x4109
+ 1216 0170 00       		.byte	0
+ 1217 0171 11       		.uleb128 0x11
+ 1218 0172 01       		.uleb128 0x1
+ 1219 0173 31       		.uleb128 0x31
+ 1220 0174 13       		.uleb128 0x13
+ 1221 0175 00       		.byte	0
+ 1222 0176 00       		.byte	0
+ 1223 0177 18       		.uleb128 0x18
+ 1224 0178 34       		.uleb128 0x34
+ 1225 0179 00       		.byte	0
+ 1226 017a 03       		.uleb128 0x3
+ 1227 017b 0E       		.uleb128 0xe
+ 1228 017c 3A       		.uleb128 0x3a
+ 1229 017d 0B       		.uleb128 0xb
+ 1230 017e 3B       		.uleb128 0x3b
+ 1231 017f 0B       		.uleb128 0xb
+ 1232 0180 49       		.uleb128 0x49
+ 1233 0181 13       		.uleb128 0x13
+ 1234 0182 3F       		.uleb128 0x3f
+ 1235 0183 19       		.uleb128 0x19
+ 1236 0184 02       		.uleb128 0x2
+ 1237 0185 18       		.uleb128 0x18
+ 1238 0186 00       		.byte	0
+ 1239 0187 00       		.byte	0
+ 1240 0188 19       		.uleb128 0x19
+ 1241 0189 2E       		.uleb128 0x2e
+ 1242 018a 00       		.byte	0
+ 1243 018b 3F       		.uleb128 0x3f
+ 1244 018c 19       		.uleb128 0x19
+ 1245 018d 3C       		.uleb128 0x3c
+ 1246 018e 19       		.uleb128 0x19
+ 1247 018f 6E       		.uleb128 0x6e
+ 1248 0190 0E       		.uleb128 0xe
+ 1249 0191 03       		.uleb128 0x3
+ 1250 0192 0E       		.uleb128 0xe
+ 1251 0193 3A       		.uleb128 0x3a
+ 1252 0194 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 37
+
+
+ 1253 0195 3B       		.uleb128 0x3b
+ 1254 0196 0B       		.uleb128 0xb
+ 1255 0197 00       		.byte	0
+ 1256 0198 00       		.byte	0
+ 1257 0199 00       		.byte	0
+ 1258              		.section	.debug_loc,"",%progbits
+ 1259              	.Ldebug_loc0:
+ 1260              	.LLST0:
+ 1261 0000 10000000 		.4byte	.LVL6
+ 1262 0004 1D000000 		.4byte	.LVL7-1
+ 1263 0008 0100     		.2byte	0x1
+ 1264 000a 50       		.byte	0x50
+ 1265 000b 00000000 		.4byte	0
+ 1266 000f 00000000 		.4byte	0
+ 1267              	.LLST1:
+ 1268 0013 00000000 		.4byte	.LVL3
+ 1269 0017 08000000 		.4byte	.LVL4
+ 1270 001b 0300     		.2byte	0x3
+ 1271 001d 08       		.byte	0x8
+ 1272 001e 4F       		.byte	0x4f
+ 1273 001f 9F       		.byte	0x9f
+ 1274 0020 00000000 		.4byte	0
+ 1275 0024 00000000 		.4byte	0
+ 1276              	.LLST2:
+ 1277 0028 08000000 		.4byte	.LVL4
+ 1278 002c 0C000000 		.4byte	.LVL5
+ 1279 0030 0300     		.2byte	0x3
+ 1280 0032 08       		.byte	0x8
+ 1281 0033 4F       		.byte	0x4f
+ 1282 0034 9F       		.byte	0x9f
+ 1283 0035 00000000 		.4byte	0
+ 1284 0039 00000000 		.4byte	0
+ 1285              	.LLST3:
+ 1286 003d 22000000 		.4byte	.LVL8
+ 1287 0041 28000000 		.4byte	.LVL9
+ 1288 0045 0200     		.2byte	0x2
+ 1289 0047 35       		.byte	0x35
+ 1290 0048 9F       		.byte	0x9f
+ 1291 0049 00000000 		.4byte	0
+ 1292 004d 00000000 		.4byte	0
+ 1293              		.section	.debug_aranges,"",%progbits
+ 1294 0000 74000000 		.4byte	0x74
+ 1295 0004 0200     		.2byte	0x2
+ 1296 0006 00000000 		.4byte	.Ldebug_info0
+ 1297 000a 04       		.byte	0x4
+ 1298 000b 00       		.byte	0
+ 1299 000c 0000     		.2byte	0
+ 1300 000e 0000     		.2byte	0
+ 1301 0010 00000000 		.4byte	.LFB4
+ 1302 0014 0C000000 		.4byte	.LFE4-.LFB4
+ 1303 0018 00000000 		.4byte	.LFB5
+ 1304 001c 0C000000 		.4byte	.LFE5-.LFB5
+ 1305 0020 00000000 		.4byte	.LFB6
+ 1306 0024 0C000000 		.4byte	.LFE6-.LFB6
+ 1307 0028 00000000 		.4byte	.LFB7
+ 1308 002c 0C000000 		.4byte	.LFE7-.LFB7
+ 1309 0030 00000000 		.4byte	.LFB8
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 38
+
+
+ 1310 0034 0C000000 		.4byte	.LFE8-.LFB8
+ 1311 0038 00000000 		.4byte	.LFB9
+ 1312 003c 0C000000 		.4byte	.LFE9-.LFB9
+ 1313 0040 00000000 		.4byte	.LFB10
+ 1314 0044 0C000000 		.4byte	.LFE10-.LFB10
+ 1315 0048 00000000 		.4byte	.LFB11
+ 1316 004c 14000000 		.4byte	.LFE11-.LFB11
+ 1317 0050 00000000 		.4byte	.LFB13
+ 1318 0054 02000000 		.4byte	.LFE13-.LFB13
+ 1319 0058 00000000 		.4byte	.LFB14
+ 1320 005c 1C000000 		.4byte	.LFE14-.LFB14
+ 1321 0060 00000000 		.4byte	.LFB0
+ 1322 0064 3C000000 		.4byte	.LFE0-.LFB0
+ 1323 0068 00000000 		.4byte	.LFB2
+ 1324 006c 18000000 		.4byte	.LFE2-.LFB2
+ 1325 0070 00000000 		.4byte	0
+ 1326 0074 00000000 		.4byte	0
+ 1327              		.section	.debug_ranges,"",%progbits
+ 1328              	.Ldebug_ranges0:
+ 1329 0000 02000000 		.4byte	.LBB16
+ 1330 0004 04000000 		.4byte	.LBE16
+ 1331 0008 06000000 		.4byte	.LBB22
+ 1332 000c 08000000 		.4byte	.LBE22
+ 1333 0010 00000000 		.4byte	0
+ 1334 0014 00000000 		.4byte	0
+ 1335 0018 04000000 		.4byte	.LBB19
+ 1336 001c 06000000 		.4byte	.LBE19
+ 1337 0020 0C000000 		.4byte	.LBB23
+ 1338 0024 10000000 		.4byte	.LBE23
+ 1339 0028 00000000 		.4byte	0
+ 1340 002c 00000000 		.4byte	0
+ 1341 0030 00000000 		.4byte	.LBB24
+ 1342 0034 04000000 		.4byte	.LBE24
+ 1343 0038 06000000 		.4byte	.LBB27
+ 1344 003c 08000000 		.4byte	.LBE27
+ 1345 0040 00000000 		.4byte	0
+ 1346 0044 00000000 		.4byte	0
+ 1347 0048 08000000 		.4byte	.LBB28
+ 1348 004c 0A000000 		.4byte	.LBE28
+ 1349 0050 0A000000 		.4byte	.LBB31
+ 1350 0054 0C000000 		.4byte	.LBE31
+ 1351 0058 00000000 		.4byte	0
+ 1352 005c 00000000 		.4byte	0
+ 1353 0060 00000000 		.4byte	.LFB4
+ 1354 0064 0C000000 		.4byte	.LFE4
+ 1355 0068 00000000 		.4byte	.LFB5
+ 1356 006c 0C000000 		.4byte	.LFE5
+ 1357 0070 00000000 		.4byte	.LFB6
+ 1358 0074 0C000000 		.4byte	.LFE6
+ 1359 0078 00000000 		.4byte	.LFB7
+ 1360 007c 0C000000 		.4byte	.LFE7
+ 1361 0080 00000000 		.4byte	.LFB8
+ 1362 0084 0C000000 		.4byte	.LFE8
+ 1363 0088 00000000 		.4byte	.LFB9
+ 1364 008c 0C000000 		.4byte	.LFE9
+ 1365 0090 00000000 		.4byte	.LFB10
+ 1366 0094 0C000000 		.4byte	.LFE10
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 39
+
+
+ 1367 0098 00000000 		.4byte	.LFB11
+ 1368 009c 14000000 		.4byte	.LFE11
+ 1369 00a0 00000000 		.4byte	.LFB13
+ 1370 00a4 02000000 		.4byte	.LFE13
+ 1371 00a8 00000000 		.4byte	.LFB14
+ 1372 00ac 1C000000 		.4byte	.LFE14
+ 1373 00b0 00000000 		.4byte	.LFB0
+ 1374 00b4 3C000000 		.4byte	.LFE0
+ 1375 00b8 00000000 		.4byte	.LFB2
+ 1376 00bc 18000000 		.4byte	.LFE2
+ 1377 00c0 00000000 		.4byte	0
+ 1378 00c4 00000000 		.4byte	0
+ 1379              		.section	.debug_line,"",%progbits
+ 1380              	.Ldebug_line0:
+ 1381 0000 86010000 		.section	.debug_str,"MS",%progbits,1
+ 1381      02005600 
+ 1381      00000201 
+ 1381      FB0E0D00 
+ 1381      01010101 
+ 1382              	.LASF23:
+ 1383 0000 70657269 		.ascii	"period\000"
+ 1383      6F6400
+ 1384              	.LASF3:
+ 1385 0007 73686F72 		.ascii	"short unsigned int\000"
+ 1385      7420756E 
+ 1385      7369676E 
+ 1385      65642069 
+ 1385      6E7400
+ 1386              	.LASF30:
+ 1387 001a 44415441 		.ascii	"DATALINK_Timer_Init\000"
+ 1387      4C494E4B 
+ 1387      5F54696D 
+ 1387      65725F49 
+ 1387      6E697400 
+ 1388              	.LASF31:
+ 1389 002e 44415441 		.ascii	"DATALINK_Timer_Start\000"
+ 1389      4C494E4B 
+ 1389      5F54696D 
+ 1389      65725F53 
+ 1389      74617274 
+ 1390              	.LASF26:
+ 1391 0043 44415441 		.ascii	"DATALINK_Timer_ReadPeriod\000"
+ 1391      4C494E4B 
+ 1391      5F54696D 
+ 1391      65725F52 
+ 1391      65616450 
+ 1392              	.LASF25:
+ 1393 005d 44415441 		.ascii	"DATALINK_Timer_Enable\000"
+ 1393      4C494E4B 
+ 1393      5F54696D 
+ 1393      65725F45 
+ 1393      6E61626C 
+ 1394              	.LASF9:
+ 1395 0073 666C6F61 		.ascii	"float\000"
+ 1395      7400
+ 1396              	.LASF21:
+ 1397 0079 636F756E 		.ascii	"counter\000"
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 40
+
+
+ 1397      74657200 
+ 1398              	.LASF7:
+ 1399 0081 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1399      206C6F6E 
+ 1399      6720756E 
+ 1399      7369676E 
+ 1399      65642069 
+ 1400              	.LASF35:
+ 1401 0098 47656E65 		.ascii	"Generated_Source\\PSoC4\\DATALINK_Timer.c\000"
+ 1401      72617465 
+ 1401      645F536F 
+ 1401      75726365 
+ 1401      5C50536F 
+ 1402              	.LASF1:
+ 1403 00c0 756E7369 		.ascii	"unsigned char\000"
+ 1403      676E6564 
+ 1403      20636861 
+ 1403      7200
+ 1404              	.LASF13:
+ 1405 00ce 72656738 		.ascii	"reg8\000"
+ 1405      00
+ 1406              	.LASF37:
+ 1407 00d3 44415441 		.ascii	"DATALINK_Timer_SoftwareCapture\000"
+ 1407      4C494E4B 
+ 1407      5F54696D 
+ 1407      65725F53 
+ 1407      6F667477 
+ 1408              	.LASF5:
+ 1409 00f2 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1409      20756E73 
+ 1409      69676E65 
+ 1409      6420696E 
+ 1409      7400
+ 1410              	.LASF16:
+ 1411 0104 44415441 		.ascii	"DATALINK_Timer_ReadCapture\000"
+ 1411      4C494E4B 
+ 1411      5F54696D 
+ 1411      65725F52 
+ 1411      65616443 
+ 1412              	.LASF12:
+ 1413 011f 75696E74 		.ascii	"uint8\000"
+ 1413      3800
+ 1414              	.LASF10:
+ 1415 0125 646F7562 		.ascii	"double\000"
+ 1415      6C6500
+ 1416              	.LASF38:
+ 1417 012c 44415441 		.ascii	"DATALINK_Timer_interruptState\000"
+ 1417      4C494E4B 
+ 1417      5F54696D 
+ 1417      65725F69 
+ 1417      6E746572 
+ 1418              	.LASF39:
+ 1419 014a 44415441 		.ascii	"DATALINK_Timer_initVar\000"
+ 1419      4C494E4B 
+ 1419      5F54696D 
+ 1419      65725F69 
+ 1419      6E697456 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 41
+
+
+ 1420              	.LASF19:
+ 1421 0161 44415441 		.ascii	"DATALINK_Timer_WriteCounter\000"
+ 1421      4C494E4B 
+ 1421      5F54696D 
+ 1421      65725F57 
+ 1421      72697465 
+ 1422              	.LASF32:
+ 1423 017d 4379456E 		.ascii	"CyEnterCriticalSection\000"
+ 1423      74657243 
+ 1423      72697469 
+ 1423      63616C53 
+ 1423      65637469 
+ 1424              	.LASF8:
+ 1425 0194 756E7369 		.ascii	"unsigned int\000"
+ 1425      676E6564 
+ 1425      20696E74 
+ 1425      00
+ 1426              	.LASF33:
+ 1427 01a1 43794578 		.ascii	"CyExitCriticalSection\000"
+ 1427      69744372 
+ 1427      69746963 
+ 1427      616C5365 
+ 1427      6374696F 
+ 1428              	.LASF27:
+ 1429 01b7 44415441 		.ascii	"DATALINK_Timer_ReadCounter\000"
+ 1429      4C494E4B 
+ 1429      5F54696D 
+ 1429      65725F52 
+ 1429      65616443 
+ 1430              	.LASF28:
+ 1431 01d2 44415441 		.ascii	"DATALINK_Timer_DisableTrigger\000"
+ 1431      4C494E4B 
+ 1431      5F54696D 
+ 1431      65725F44 
+ 1431      69736162 
+ 1432              	.LASF15:
+ 1433 01f0 73697A65 		.ascii	"sizetype\000"
+ 1433      74797065 
+ 1433      00
+ 1434              	.LASF6:
+ 1435 01f9 6C6F6E67 		.ascii	"long long int\000"
+ 1435      206C6F6E 
+ 1435      6720696E 
+ 1435      7400
+ 1436              	.LASF29:
+ 1437 0207 44415441 		.ascii	"DATALINK_Timer_ClearFIFO\000"
+ 1437      4C494E4B 
+ 1437      5F54696D 
+ 1437      65725F43 
+ 1437      6C656172 
+ 1438              	.LASF20:
+ 1439 0220 696E7465 		.ascii	"interruptMode\000"
+ 1439      72727570 
+ 1439      744D6F64 
+ 1439      6500
+ 1440              	.LASF2:
+ 1441 022e 73686F72 		.ascii	"short int\000"
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 42
+
+
+ 1441      7420696E 
+ 1441      7400
+ 1442              	.LASF36:
+ 1443 0238 433A5C55 		.ascii	"C:\\Users\\Ala\\Desktop\\Cypress\\BeoM_main.cydsn\000"
+ 1443      73657273 
+ 1443      5C416C61 
+ 1443      5C446573 
+ 1443      6B746F70 
+ 1444              	.LASF22:
+ 1445 0265 44415441 		.ascii	"DATALINK_Timer_WritePeriod\000"
+ 1445      4C494E4B 
+ 1445      5F54696D 
+ 1445      65725F57 
+ 1445      72697465 
+ 1446              	.LASF4:
+ 1447 0280 6C6F6E67 		.ascii	"long int\000"
+ 1447      20696E74 
+ 1447      00
+ 1448              	.LASF11:
+ 1449 0289 63686172 		.ascii	"char\000"
+ 1449      00
+ 1450              	.LASF14:
+ 1451 028e 6C6F6E67 		.ascii	"long double\000"
+ 1451      20646F75 
+ 1451      626C6500 
+ 1452              	.LASF0:
+ 1453 029a 7369676E 		.ascii	"signed char\000"
+ 1453      65642063 
+ 1453      68617200 
+ 1454              	.LASF34:
+ 1455 02a6 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1455      43313120 
+ 1455      352E342E 
+ 1455      31203230 
+ 1455      31363036 
+ 1456 02d9 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m0 -mthumb -g -O"
+ 1456      20726576 
+ 1456      6973696F 
+ 1456      6E203233 
+ 1456      37373135 
+ 1457 030c 73202D66 		.ascii	"s -ffunction-sections -ffat-lto-objects\000"
+ 1457      66756E63 
+ 1457      74696F6E 
+ 1457      2D736563 
+ 1457      74696F6E 
+ 1458              	.LASF18:
+ 1459 0334 44415441 		.ascii	"DATALINK_Timer_SetInterruptMode\000"
+ 1459      4C494E4B 
+ 1459      5F54696D 
+ 1459      65725F53 
+ 1459      6574496E 
+ 1460              	.LASF17:
+ 1461 0354 44415441 		.ascii	"DATALINK_Timer_ReadStatusRegister\000"
+ 1461      4C494E4B 
+ 1461      5F54696D 
+ 1461      65725F52 
+ 1461      65616453 
+ARM GAS  C:\Users\Ala\AppData\Local\Temp\cchB5osk.s 			page 43
+
+
+ 1462              	.LASF24:
+ 1463 0376 44415441 		.ascii	"DATALINK_Timer_EnableTrigger\000"
+ 1463      4C494E4B 
+ 1463      5F54696D 
+ 1463      65725F45 
+ 1463      6E61626C 
+ 1464              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
