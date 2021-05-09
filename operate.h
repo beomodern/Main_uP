@@ -1,11 +1,11 @@
 /* ========================================
  *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
+* Copyright HEMI, 2021
+* All Rights Reserved
+* UNPUBLISHED, LICENSED SOFTWARE.
  *
  * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
+ * WHICH IS THE PROPERTY OF HEMI.
  *
  * ========================================
 */
@@ -62,19 +62,26 @@ uint8 BeoM_PSU_state();
 *  SYSTEM_STATE = 1 - Player        -   COMMANDS
 *  SYSTEM_STATE = 2 - iRadio        -   COMMANDS
 *  SYSTEM_STATE = 3 - DAB Radio     -   COMMANDS
-*  SYSTEM_STATE = 4 - Aux IN        -   NO COMMANDS from RPi
-*  SYSTEM_STATE = 5 - Clock         -   NO COMMANDS from RPi
+*  SYSTEM_STATE = 4 - Aux IN        -   NO COMMANDS from RPi -> static message
+*  SYSTEM_STATE = 5 - Clock         -   NO COMMANDS from RPi -> static message
 *  SYSTEM_STATE = 6 - RDS/FM display-   COMMANDS
-*  SYSTEM_STATE = 7 - BlueTooth Rx  -   NO COMMANDS from RPi
-*  SYSTEM_STATE = 8 - BlueTooth Tx  -   NO COMMANDS from RPi
+*  SYSTEM_STATE = 7 - BlueTooth Rx  -   NO COMMANDS from RPi -> BT sents notes
+*  SYSTEM_STATE = 8 - BlueTooth Tx  -   NO COMMANDS from RPi -> BT sents notes
 *
+*  DISPLAY_STATE = 1 - Data         -   sent to display commands from RPi, BT or static
+*  DISPLAY_STATE = 2 - signal level -   sent signal level info from SigmaDSP
+*  DISPLAY_STATE = 3 - spectrm analyzer1 -  sent spectrum analyzer info from SigmaDSP
+*  DISPLAY_STATE = 4 - spectrm analyzer2 -  sent spectrum analyzer info from SigmaDSP
+*  DISPLAY_STATE = 5 - Clock 1      -   sent note to display Clock 1
+*  DISPLAY_STATE = 6 - Clock 2      -   sent note to display Clock 2
+*  DISPLAY_STATE = 7 - blank      -   No data on display (sent spaces)
 *   
 * Parameters:
 *  Function operates on global variable: 
 *  SYSTEM_STATE and DISPLAY_STATE
 *
 * Return:
-*  Funciton returns current ????
+*  Funciton returns 0
 *
 *******************************************************************************/  
 uint8 display_update(void);

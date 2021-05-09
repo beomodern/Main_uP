@@ -1,8 +1,8 @@
 /* ========================================
  *
- * Copyright HEMI, 2020
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
+* Copyright HEMI, 2021
+* All Rights Reserved
+* UNPUBLISHED, LICENSED SOFTWARE.
  * 
  * Functions used by BeoModern main PSoC to monitor input informaiton coming from
  * push buttons and over DataLink interface
@@ -17,15 +17,22 @@
 #define INPUTS_H_
 
 #include <project.h>
+    
+// variable storing MODE short button press event     
+uint8 MODE_SHORT_V;     
+// variable storing PWR/OK short button press event
+uint8 PWR_OK_SHORT_V;   
+// variable storing MODE long button press event    
+uint8 MODE_LONG_V;      
+// variable storing PWR/OK long button press event 
+uint8 PWR_OK_LONG_V;    
 
-uint8 MODE_SHORT_V;     /* variable storing MODE short button press event */
-uint8 PWR_OK_SHORT_V;   /* variable storing PWR/OK short button press event */
-uint8 MODE_LONG_V;      /* variable storing MODE long button press event  */
-uint8 PWR_OK_LONG_V;    /* variable storing PWR/OK long button press event  */
-
+// DATALINK DATA ARRAY
 uint8 DATALINK_TABLE[64];    
 uint8 DATALINK_TABLE_COUNTER;
 uint8 DATALINK_TABLE_COUNTER_MAX;
+
+// Display update flag
 uint8 DISPLAY_UPDATE;
 
 
@@ -50,6 +57,7 @@ uint8 DISPLAY_UPDATE;
 *
 *******************************************************************************/
 CY_ISR(PWR_OK_MODE_SHORT_ISR);
+
 
 /*******************************************************************************
 * Function Name: CY_ISR(MODE_LONG_ISR)
@@ -97,10 +105,16 @@ CY_ISR(PWR_OK_LONG_ISR);
 *  count (STOP condition) or when timer FIFO is full (4 new bits)
 *   
 * Parameters:
-*  None
+*  Routine operates on 3 global vatiables (due to the fact that it can caleld in 
+*  the middle of incomming command to clear 4 byte FIFO.
+*  DATALINK_TABLE[64] - to store incoming information about timer values
+*  DATALINK_TABLE_COUNTER - to store current posiiton in incoming command
+*  DATALINK_TABLE_COUNTER_MAX - to store and indicate to the system that new 
+*  command arrived. Serving routine (datalink)decoder) operate on it plus 
+*  DATALINK_TABLE content. 
 *
 * Return:
-*  None
+*  Sets value of DATALINK_TABLE_COUNTER_MAX to the size of last DATALINK command.
 *
 ********************************************************************************/
 CY_ISR(DATALINK_INTRRUPTHandler);

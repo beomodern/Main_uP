@@ -1,8 +1,8 @@
 /* ========================================
  *
- * Copyright HEMI, 2020
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
+* Copyright HEMI, 2021
+* All Rights Reserved
+* UNPUBLISHED, LICENSED SOFTWARE.
  * 
  * Functions used by BeoModern main PSoC to display informaiton on BeoModern
  * front display as well as front LEDs
@@ -24,67 +24,68 @@
 ****************************************/
 // Tx
 // Packet size
-#define TxPACKET_SIZE      (28u)
+#define PACKET_SIZE      (28u)
 
 // Byte position within the packet (start, end)
-#define TxPACKET_SOP_POS  (0u)
-#define TxPACKET_CTRL1_POS  (25u)
-#define TxPACKET_CTRL2_POS  (26u)
-#define TxPACKET_EOP_POS  (27u)
+#define PACKET_SOP_POS  (0u)
+#define PACKET_CTRL1_POS  (25u)
+#define PACKET_CTRL2_POS  (26u)
+#define PACKET_EOP_POS  (27u)
     
-// Rx    
-// Packet size
-#define RxPACKET_SIZE      (3u)    
-
-// Byte position within the packet (start, status, end)
-#define RxPACKET_SOP_POS  (0u)
-#define RxPACKET_STS_POS  (1u)
-#define RxPACKET_EOP_POS  (2u)    
-
+#define PACKET_STS_POS  (1u)
 // Start and end of the packet markers/
-#define PACKET_SOP      (0x01u)
+#define PACKET_SOP      (0x08u)
 #define PACKET_EOP      (0x17u)    
+
     
-// This dummy buffer used by SPIM when it receives status packet.
-const uint8 dummyBuffer[TxPACKET_SIZE];
-
-
 
 /*******************************************************************************
 * Function Name: SPIM_display_write
 ********************************************************************************
 * Summary:
-*  SPIM initiates the transmission of a command packet to the SPIS. After
-*  transfer completion, the dummy bytes sent by the SPIS are cleared from the
-*  RX buffer.
+*  SPI Master initiates the transmission of 25 long message to the SPI Slave. 
+*  Funciton adds start and stop bajts to indicate correct transfer.
+*  After transfer completion, the dummy bytes sent by the SPIS are cleared from 
+*  the RX buffer.
 *
-* Parameters:
-*  None
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-void SPIM_display_write(uint8 message_table[], uint8 disp_ctrl1, uint8 disp_ctrl2);
-
-
-/*******************************************************************************
-* Function Name: SPIM_display_read
-********************************************************************************
 * Summary:
-*  SPIM initiates the transmission of a dummy packet to collect the status
-*  information from the SPIS. After the transfer is complete the format of
-*  the packet is verified and the status is returned. If the format of the
-*  packet is invalid the unknown status is returned.
+*  Funciton reponsible for decoding and displayin commands that were sent over 
+*  SPI interface to display. It intercepts 24 ASCI characters and pushes them to 
+*  display. It also interprets two control words and manipulates LEDs acordingly
+*  to control words state.
+*  More than one LED can be ON at one time.
 *
 * Parameters:
-*  None
-*
+*  input_table[] - table returned by SPI slave routine contining 24 ASCI
+*                  characters and 2 control words for LED ON/OFF states
+*  disp_ctrl1 - Each bit represents LED on front interface
+*               LED control
+*               CTRL0.0 - Player
+*               CTRL0.1 - iRadio
+*               CTRL0.2 - DAB Radio
+*               CTRL0.3 - Aux IN
+*               CTRL0.4 - Clock    
+*               CTRL0.5 - RDS/FM Display
+*               CTRL0.6 - BT Rx    
+*               CTRL0.7 - NOT USED
+                only one LED can be ON at particualr moment in time
+*  disp_ctrl2 - Each bit represents LED on front interface
+*               LED control
+*               CTRL1.0 - BT Tx
+*               CTRL1.1 - Online status
+*               CTRL1.2 - Signal Level
+*               CTRL1.3 - Spectrum Analyser
+*               CTRL1.4 - Clock 1
+*               CTRL1.5 - Clock 2
+*               CTRL1.6 - NOT USED
+*               CTRL1.7 - NOT USED
+*               more than one LED can be ON at particualr moment in time
 * Return:
-*  None
+*  none
 *
 *******************************************************************************/
-uint32 SPIM_display_read(void);
+uint8 SPIM_display_write(uint8 message_table[], uint8 disp_ctrl1, uint8 disp_ctrl2);
+
 
 
 /*******************************************************************************

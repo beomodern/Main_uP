@@ -28,7 +28,7 @@
 
 #define SPIM_SPI_MODE                   (1u)
 #define SPIM_SPI_SUB_MODE               (0u)
-#define SPIM_SPI_CLOCK_MODE             (3u)
+#define SPIM_SPI_CLOCK_MODE             (0u)
 #define SPIM_SPI_OVS_FACTOR             (16u)
 #define SPIM_SPI_MEDIAN_FILTER_ENABLE   (1u)
 #define SPIM_SPI_LATE_MISO_SAMPLE_ENABLE (0u)
@@ -38,15 +38,15 @@
 #define SPIM_SPI_BITS_ORDER             (1u)
 #define SPIM_SPI_TRANSFER_SEPARATION    (1u)
 #define SPIM_SPI_NUMBER_OF_SS_LINES     (2u)
-#define SPIM_SPI_RX_BUFFER_SIZE         (30u)
-#define SPIM_SPI_TX_BUFFER_SIZE         (8u)
+#define SPIM_SPI_RX_BUFFER_SIZE         (28u)
+#define SPIM_SPI_TX_BUFFER_SIZE         (28u)
 
 #define SPIM_SPI_INTERRUPT_MODE         (1u)
 
 #define SPIM_SPI_INTR_RX_MASK           (0x4u)
 #define SPIM_SPI_INTR_TX_MASK           (0x0u)
 
-#define SPIM_SPI_RX_TRIGGER_LEVEL       (7u)
+#define SPIM_SPI_RX_TRIGGER_LEVEL       (0u)
 #define SPIM_SPI_TX_TRIGGER_LEVEL       (0u)
 
 #define SPIM_SPI_BYTE_MODE_ENABLE       (0u)

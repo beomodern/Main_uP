@@ -1,8 +1,8 @@
 /* ========================================
  *
- * Copyright HEMI, 2020
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
+* Copyright HEMI, 2021
+* All Rights Reserved
+* UNPUBLISHED, LICENSED SOFTWARE.
  * 
  * Functions used by BeoModern main PSoC to switch unit into different states including
  * OFF, Clock, Player, iRadio, RDS/FM display, DAB radio, BT Rx, BT Tx, AuxIN
@@ -30,10 +30,13 @@
 uint8 array[3];
 uint8 eepromArray[3];
 
+// variable used to store whole system state 
+uint8 SYSTEM_STATE;   
+// variable used to store display state
+uint8 DISPLAY_STATE;   
+// variable used to store BT Tx state   
+uint8 BT_Tx_STATE;     
 
-uint8 SYSTEM_STATE;    // variable used to store whole system state 
-uint8 DISPLAY_STATE;   // variable used to store display state
-uint8 BT_Tx_STATE;     // variable used to store BT Tx state   
 
 // flag used to indicate new data ready to be sent over SPI to display module
 uint8 new_display_data_flag;
@@ -54,6 +57,7 @@ struct Power_Supply_State {
 typedef struct Power_Supply_State psuState; 
 
 psuState next_PSUstate, current_PSUstate;
+
 
 /*******************************************************************************
 * Function Name: buttons_check()

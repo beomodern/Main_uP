@@ -1,8 +1,8 @@
 /* ========================================
  *
- * Copyright HEMI, 2020
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
+* Copyright HEMI, 2021
+* All Rights Reserved
+* UNPUBLISHED, LICENSED SOFTWARE.
  * 
  * Functions used by BeoModern main PSoC to display informaiton on BeoModern
  * front display as well as front LEDs
@@ -15,11 +15,6 @@
 
 #include <inputs.h>
 #include <spi_int.h>
-
-
-// This dummy buffer used by SPIM when it receives status packet.
-const uint8 dummyBuffer[TxPACKET_SIZE] = {0xFFu, 0xFFu, 0xFFu};
-//const uint8 message_table[TxPACKET_SIZE+2] = {0};
 
 
 
@@ -67,112 +62,72 @@ const uint8 dummyBuffer[TxPACKET_SIZE] = {0xFFu, 0xFFu, 0xFFu};
 * Return:
 *  none
 *
-*
 *******************************************************************************/
-void SPIM_display_write(uint8 message_table[], uint8 disp_ctrl1, uint8 disp_ctrl2)
+uint8 SPIM_display_write(uint8 message_table[], uint8 disp_ctrl1, uint8 disp_ctrl2)
 {
-// SPIM TX buffer 
-    static uint8 mTxBuffer[TxPACKET_SIZE] = {0};
+// SPI Rx buffer - array used to store data received over SPI interface.    
+    uint8 tmpBuffer[PACKET_SIZE] = {0};
+// variable to store status message that is returend by the function. It is populated
+// with data read back over SPI at 2nd bajt position. 
+    uint8 status;
+// SPIM TX buffer - array used to store data that will be sent to SPI slave (display)
+    uint8 mTxBuffer[PACKET_SIZE] = {0};
 // variable to populate Tx buffer with incomming message
     uint8 i = 0;
-
+    
 // set SPI slave select line to display
     SPIM_SpiSetActiveSlaveSelect(SPIM_SPI_SLAVE_SELECT1);     
-    
+
 // set start of Tx message 
-    mTxBuffer[TxPACKET_SOP_POS] = (PACKET_SOP);
+    mTxBuffer[PACKET_SOP_POS] = (PACKET_SOP);
 // populate buffer with incoming 24 characters of data    
-    for (i = 1; i<TxPACKET_SIZE-3; i++)
+    for (i = 1; i<PACKET_SIZE-3; i++)
     {
         mTxBuffer[i] = (message_table[i-1]);
     }
 // populate control messages 1 and 2    
-    mTxBuffer[TxPACKET_CTRL1_POS] = disp_ctrl1;
-    mTxBuffer[TxPACKET_CTRL2_POS] = disp_ctrl2;
+    mTxBuffer[PACKET_CTRL1_POS] = disp_ctrl1;
+    mTxBuffer[PACKET_CTRL2_POS] = disp_ctrl2;
     
 // set end of Tx message    
-    mTxBuffer[TxPACKET_EOP_POS] = (PACKET_EOP);
+    mTxBuffer[PACKET_EOP_POS] = (PACKET_EOP);
 
 // Start transfer (message plus start/stop indicators
-    SPIM_SpiUartPutArray(mTxBuffer, TxPACKET_SIZE);
-
-// Wait for the end of the transfer. The number of transmitted data
-// elements has to be equal to the number of received data elements.
-    while((TxPACKET_SIZE) != SPIM_SpiUartGetRxBufferSize())
-    {
-    }
-
-// Clear dummy bytes from RX buffer
-    SPIM_SpiUartClearRxBuffer();
-}
-
-
-
-/*******************************************************************************
-* Function Name: SPIM_display_read
-********************************************************************************
-* Summary:
-*  SPIM initiates the transmission of a dummy packet to collect the status
-*  information from the SPIS. After the transfer is complete the format of
-*  the packet is verified and the status is returned. If the format of the
-*  packet is invalid the unknown status is returned.
-*
-* Parameters:
-*  None
-*
-* Return:
-*  None
-*
-*******************************************************************************/
-uint32 SPIM_display_read(void)
-{
-    uint8 tmpBuffer[RxPACKET_SIZE];
-    uint8 status;
-    uint32 i;
-
-// set SPI slave select line to display
-    SPIM_SpiSetActiveSlaveSelect(SPIM_SPI_SLAVE_SELECT1); 
+    SPIM_SpiUartPutArray(mTxBuffer, PACKET_SIZE);
     
-// Start transfer
-    SPIM_SpiUartPutArray(dummyBuffer, RxPACKET_SIZE);
-
 // Wait for the end of the transfer. The number of transmitted data
 // elements has to be equal to the number of received data elements.
-    while (RxPACKET_SIZE != SPIM_SpiUartGetRxBufferSize())
+    while((PACKET_SIZE) != SPIM_SpiUartGetRxBufferSize())
     {
     }
-
-// Clear dummy bytes from TX buffer
-    SPIM_SpiUartClearTxBuffer();
 
 // Read data from the RX buffer
     i = 0u;
     while (0u != SPIM_SpiUartGetRxBufferSize())
     {
-        tmpBuffer[i] = SPIM_SpiUartReadRxData();
-//        UART_UartPutChar('0' + tmpBuffer[i]);
+        tmpBuffer[i] = (uint8)SPIM_SpiUartReadRxData();
         i++;
-//        UART_UartPutString("A");
-        
     }
-
- // Check packet format
-    if ((tmpBuffer[RxPACKET_SOP_POS] == PACKET_SOP) &&
-        (tmpBuffer[RxPACKET_EOP_POS] == PACKET_EOP))
+    
+// Check packet format
+    if ((tmpBuffer[PACKET_SOP_POS] == PACKET_SOP) &&
+        (tmpBuffer[PACKET_EOP_POS] == PACKET_EOP))
     {
  // Return status
-        status = tmpBuffer[RxPACKET_STS_POS];
-//        UART_UartPutString("B");
+        status = tmpBuffer[PACKET_STS_POS];
+        
     }
     else
-    {
- // Invalid packet format, return 0xFF status
+       {
+// Invalid packet format, return 0xFF status
         status = 0xFF;
-//        UART_UartPutString("C");
-    }
+        }
 
     return (status);
 }
+
+
+
 
 /*******************************************************************************
 * Function Name: SPIM_SigmaDSP_init_SPI

@@ -1,8 +1,8 @@
 /* ========================================
  *
- * Copyright HEMI, 2020
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
+* Copyright HEMI, 2021
+* All Rights Reserved
+* UNPUBLISHED, LICENSED SOFTWARE.
  * 
  * Functions used by BeoModern main PSoC to switch unit into different states including
  * OFF, Clock, Player, iRadio, RDS/FM display, DAB radio, BT Rx, BT Tx, AuxIN
@@ -18,10 +18,12 @@
 #include <inputs.h>
 #include <spi_int.h>
 
-
-uint8 SYSTEM_STATE = 0;    // variable used to store whole system state    
-uint8 DISPLAY_STATE = 0;   // variable used to store display state 
-uint8 BT_Tx_STATE = 0;     // variable used to store BT Tx state   
+// variable used to store whole system state 
+uint8 SYSTEM_STATE = 0;       
+// variable used to store display state 
+uint8 DISPLAY_STATE = 0;   
+// variable used to store BT Tx state  
+uint8 BT_Tx_STATE = 0;      
 
 // flag used to indicate new data ready to be sent over SPI to display module
 uint8 new_display_data_flag = 0;
@@ -29,6 +31,7 @@ uint8 new_display_data_flag = 0;
 uint8 new_display_data_buffer[24] = {"........................"};
 uint8 new_disp_ctrl1 = 0;
 uint8 new_disp_ctrl2 = 0;
+
 
 /*******************************************************************************
 * Function Name: buttons_check()
@@ -52,7 +55,7 @@ uint8 buttons_check()
 // [0] = SYSTEM_STATE 
 // [1] = DISPLAY_STATE
 // [2] = BT_Tx_STATE
-uint8 array[]= { 0x00, 0x00, 0x00 };
+    uint8 array[]= { 0x00, 0x00, 0x00 };
 
 // check if power button was pressed for short time      
     if (PWR_OK_SHORT_V == 1)
@@ -91,7 +94,9 @@ uint8 array[]= { 0x00, 0x00, 0x00 };
     }
  
     
-// check if power button was pressed for long time (1 second)        
+// check if power button was pressed for long time (1 second) 
+// or messsage from display over SPI interface indicates timer expired and move to 
+// power down state    
     if (PWR_OK_LONG_V == 1)
     {
 // if it was, prepare array to write it to the EEPROM location
@@ -229,7 +234,7 @@ uint8 array[]= { 0x00, 0x00, 0x00 };
         {
 // if it is not then move to next display state
         DISPLAY_STATE = DISPLAY_STATE + 1;
-            if (DISPLAY_STATE >= 7)
+            if (DISPLAY_STATE >= 8)
             {
                 DISPLAY_STATE = 1;
             }
@@ -1281,8 +1286,6 @@ uint8 SigmaDSP_to_display(uint8 mode)
                 }
         }
         
-// set flag and sent info to display module
-//        new_display_data_flag = 1;
         break;
 
         
@@ -1352,9 +1355,6 @@ uint8 SigmaDSP_to_display(uint8 mode)
 //    b3-b0 - 2000Hz                
         new_display_data_buffer[20] = '0' + (status & 0x0000000F);
 
-// set flag and sent info to display module
-//        new_display_data_flag = 1;
-        
         break;
     }
     

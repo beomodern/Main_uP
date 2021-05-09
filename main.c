@@ -1,8 +1,10 @@
 /*******************************************************************************
 * File Name: main.c
 *
+* Copyright HEMI, 2021
+* All Rights Reserved
+* UNPUBLISHED, LICENSED SOFTWARE.
 * Version: 1.0
-* Date: 2020
 *
 * Description:
 *  This project is intended to be used as main code that runs on PSoC KIT
@@ -10,14 +12,17 @@
 *  It is responsible for monitoring
 *  - two push buttons (short and long press)
 *  - listenning and responding to commands sent over BeO Datalink
+*  - listenning and responding to commands sent over SPI Interface from display 
+*    unit
 *  It is responsible for controling 
-*  - Raspberry Pi that acts as iRadio, mp3/flac player, DAB radio, FM radio
-*    station name display
+*  - Raspberry Pi that acts as iRadio, mp3/flac player, DAB radio, source of 
+*    FM radio station name that is displayed when enabled
 *  - SigmaDSP processor togethre with audio DAC responsible for processing 
 *    audio and producing analog sound
 *  - Bluetooth module
-*  - power supply system (power up and down different blocks)
-*  - information sent to the display module
+*  - power supply system (power up and down different blocks of whole BeoModern)
+*  - information sent to the display module that are displayed on alphanumeric 
+*    display and on LED status displays
 *
 *******************************************************************************/
 
@@ -38,24 +43,17 @@ CY_SECTION(".cy_checksum_exclude")
 __ALIGNED(CY_FLASH_SIZEOF_ROW) = {0u};
 #endif /* defined (__ICCARM__) */
 
-// global display data variables
-uint32 display_return;
-uint8 current_display_data_buffer[24];
-uint8 current_disp_ctrl1;
-uint8 current_disp_ctrl2;
-
-void main()
+int main()
 {   
- // TO BE REMOVED TO BE REMOVED
-    uint8 swCounter = 0;    /* variable used by routine used to quickly move to load mode */
- // TO BE REMOVED TO BE REMOVED
- 
-    uint8 currentSTATE = 9;    /* variable used by routine used to quickly move to load mode */
-    uint8 BTSTATE = 9;    /* variable used by routine used to quickly move to load mode */
+// variable used by routine used to quickly move to load mode
+    uint8 currentSTATE = 9;    
+// variable used by routine used to quickly move to load mode    
+    uint8 BTSTATE = 9;   
+// initial datalink command code    
     uint8 datalink_command = 0;
     
 // display data variables
-    uint32 display_return = 0;
+    uint8 display_return = 0;
     uint8 current_display_data_buffer[24] = {"...4....4....4....4....4"};
     uint8 current_disp_ctrl1 = 0;
     uint8 current_disp_ctrl2 = 0;    
@@ -101,8 +99,17 @@ void main()
 // inifinite loop - this uP is always ON
     for (;;)
     {
-            
- // check if there are any activities with 2 push buttons (short or long press occured)
+// if return information over SPI from display module is 0x5A it indicates that 
+// timer in display module expired and whole system should go into power down state
+        if (display_return == 0x5A)
+        {
+// set flag to 1 indicating move into power off state
+            PWR_OK_LONG_V = 1;      
+// clear SPI message to allow boot up next time. 
+            display_return = 0x00;
+        }
+        
+// check if there are any activities with 2 push buttons (short or long press occured)
         buttons_check();
 
 // check if activity on datalink interface was deteced        
@@ -116,7 +123,7 @@ void main()
                 datalink_check(datalink_command);
             }
         }
-
+        
 // check if system state changed due to datalink command or pushbuttons activities        
         if ( ( currentSTATE > SYSTEM_STATE ) || ( currentSTATE < SYSTEM_STATE ) )
         {
@@ -126,11 +133,12 @@ void main()
             BTSTATE = BT_control(0,0);
 // configure power supply control to fulfil needs of new beomodern state            
             current_PSUstate = psu_config(1, next_PSUstate);
+// flush display data before updating display with new display info            
+            strcpy((char*)new_display_data_buffer, "                        ");                                          
         }
     
 // update information sent over SPI to display based on current state and selected mode
         display_update();
-
         
 // check if there is new data ready to be sent to display over SPI interface
         if (new_display_data_flag == 1)
@@ -140,45 +148,23 @@ void main()
 // copy new control values that will be sent to display            
             current_disp_ctrl1 = new_disp_ctrl1;
             current_disp_ctrl2 = new_disp_ctrl2;
-
 // sent data over SPI to display module
-            SPIM_display_write(current_display_data_buffer, current_disp_ctrl1, current_disp_ctrl2);
-// Delay between commands to handle buffer update on slave side 
-// (when talking to display module using SPI pooling)
-//            CyDelayUs(50);
-// Delay between commands to handle buffer update on slave side 
-// (when talking to display module using SPI interrupt)
-            CyDelay(4);
-
-// Send packet to read response from display
-            display_return = SPIM_display_read();
-            // clear flag indicating new data to dosplay             
+            display_return = SPIM_display_write(current_display_data_buffer, current_disp_ctrl1, current_disp_ctrl2);
+// 20mS delay between SPI commands to handle buffer update on SPI slave side 
+// update of alphanumeric displays is slow - delay is necessary to give time to handle it
+            CyDelay(20);
+// clear flag indicating new data to display             
             new_display_data_flag = 0;
         }
       
         
-  
 // TO BE REMOVED TO BE REMOVED
-// Reset the software counter if SW1 is not pressed (Pulled high)
-        if(Pin_1_Read())
-        {
-            swCounter = 0;
-        }
-        else
+// Enters bootload state when button on PSoC board is pressed
+        if (Pin_1_Read() == 0x00)        
             {
-// Increment the counter if SW1 is pressed (Shorted to GND)
-                swCounter++;
-            }
-// Provide a 10 ms delay to make the counter approximately periodic every 10 ms
-        PSoC_LED_Write(~PSoC_LED_Read());
-// Check if the software counter has passed 100 ==> Enter bootloader mode
-//        if(swCounter > 100)
-        if(swCounter > 3)
-        {
             Bootloadable_1_Load();
-        }   
-// TO BE REMOVED TO BE REMOVED        
-        
+            }    
+// TO BE REMOVED TO BE REMOVED            
         
     }
 }
