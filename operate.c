@@ -1,11 +1,11 @@
 /* ========================================
  *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
+* Copyright HEMI, 2021
+* All Rights Reserved
+* UNPUBLISHED, LICENSED SOFTWARE.
  *
  * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
+ * WHICH IS THE PROPERTY OF HEMI
  *
  * ========================================
 */
@@ -16,7 +16,8 @@
 #include <inputs.h>
 #include <spi_int.h>
 
-uint8 FM_RADIO_STATION = 1;// variable used to store intercepted FM radio station number
+// variable used to store intercepted FM radio station number
+   uint8 FM_RADIO_STATION = 1;
 
 // counter used when reading data over UART    
     uint8 counter = 0;
@@ -933,17 +934,18 @@ uint8 BeoM_PSU_state()
 *
 *  DISPLAY_STATE = 1 - Data         -   sent to display commands from RPi, BT or static
 *  DISPLAY_STATE = 2 - signal level -   sent signal level info from SigmaDSP
-*  DISPLAY_STATE = 3 - spectrm analyzer -  sent spectrum analyzer info from SigmaDSP
-*  DISPLAY_STATE = 4 - Clock 1      -   sent note to display Clock 1
-*  DISPLAY_STATE = 5 - Clock 2      -   sent note to display Clock 2
-*  DISPLAY_STATE = 6 - blank      -   No data on display (sent spaces)
+*  DISPLAY_STATE = 3 - spectrm analyzer1 -  sent spectrum analyzer info from SigmaDSP
+*  DISPLAY_STATE = 4 - spectrm analyzer2 -  sent spectrum analyzer info from SigmaDSP
+*  DISPLAY_STATE = 5 - Clock 1      -   sent note to display Clock 1
+*  DISPLAY_STATE = 6 - Clock 2      -   sent note to display Clock 2
+*  DISPLAY_STATE = 7 - blank      -   No data on display (sent spaces)
 *   
 * Parameters:
 *  Function operates on global variable: 
 *  SYSTEM_STATE and DISPLAY_STATE
 *
 * Return:
-*  Funciton returns current ????
+*  Funciton returns 0
 *
 *******************************************************************************/  
 uint8 display_update(void)  
@@ -1095,14 +1097,19 @@ uint8 display_update(void)
 // SYSTEM_STATE = 5 - Clock   
 // no UART messages from RPi  
         case (5):
-// display clock 1            
-            strcpy((char*)new_display_data_buffer, "CLOCK ONE               ");
 // start display timer to periodically sent informaiton to display module
 // without blocking delay  
             DISPLAY_Timer_Start();
-// check if 2 seconds timer expired             
+// decrease counter value and speed up display update        
+        if (DISPLAY_Timer_ReadCounter() > 200)
+        {
+            DISPLAY_Timer_WriteCounter(100u); 
+       }
+// check if 0.5 seconds timer expired             
             if (DISPLAY_UPDATE > 0)
             { 
+// display clock 1            
+                strcpy((char*)new_display_data_buffer, "CLOCK                   ");
 // set flag and sent info to display module
                 new_display_data_flag = 1;
                 DISPLAY_UPDATE = 0;
@@ -1189,19 +1196,12 @@ uint8 display_update(void)
         new_disp_ctrl2 = new_disp_ctrl2 & 0x03;
 // CTRL1.2 - set Signal Level Indicator
         new_disp_ctrl2 = new_disp_ctrl2 | 0x04;
-// start display timer to periodically sent informaiton to display module
-// without blocking delay  
-//        DISPLAY_Timer_Start();
-// check if 2 seconds timer expired             
-//        if (DISPLAY_UPDATE > 0)
-//        { 
 // set flag and sent info to display module
         new_display_data_flag = 1;
-//            DISPLAY_UPDATE = 0;
 //        } 
     }
         
-// display spectrum analyzer info
+// display spectrum analyzer1 info
     else if (DISPLAY_STATE == 3)
     {
 //  1 - read back spectrum analyser info and encode it into informaiton sent to
@@ -1212,33 +1212,44 @@ uint8 display_update(void)
         new_disp_ctrl2 = new_disp_ctrl2 & 0x03;
 // CTRL1.3 - set Spectrum Analyser indicator 
         new_disp_ctrl2 = new_disp_ctrl2 | 0x08;
-// start display timer to periodically sent informaiton to display module
-// without blocking delay  
-//        DISPLAY_Timer_Start();
-// check if 2 seconds timer expired             
-//        if (DISPLAY_UPDATE > 0)
-//        { 
 // set flag and sent info to display module
         new_display_data_flag = 1;
-//            DISPLAY_UPDATE = 0;
-//        } 
-// set SPI slave select line to display module
-//    SPIM_SpiSetActiveSlaveSelect(SPIM_SPI_SLAVE_SELECT1);  
     }
-        
-// display clock 1
+
+// display spectrum analyzer2 info
     else if (DISPLAY_STATE == 4)
     {
+//  1 - read back spectrum analyser info and encode it into informaiton sent to
+//      display module
+        SigmaDSP_to_display(1);
+// disp_ctrl2 
+// CTRL1.0 and CTRL1.1 - clear all LED status except BT Tx and ONLINE
+        new_disp_ctrl2 = new_disp_ctrl2 & 0x03;
+// CTRL1.3 - set Spectrum Analyser indicator 
+        new_disp_ctrl2 = new_disp_ctrl2 | 0x10;
+// set flag and sent info to display module
+        new_display_data_flag = 1;
+    }
+    
+// display clock 1
+    else if (DISPLAY_STATE == 5)
+    {
 // display clock 1                              
-        strcpy((char*)new_display_data_buffer, "CLOCK ONE               ");
+        strcpy((char*)new_display_data_buffer, "CLOCK                   ");
 // disp_ctrl2 
 // CTRL1.0 and CTRL1.1 - clear all LED status except BT Tx and ONLINE
         new_disp_ctrl2 = new_disp_ctrl2 & 0x03;
 // CTRL1.4 - set Clock 1 indicator 
-        new_disp_ctrl2 = new_disp_ctrl2 | 0x10;
+        new_disp_ctrl2 = new_disp_ctrl2 | 0x20;
+        
 // start display timer to periodically sent informaiton to display module
 // without blocking delay  
         DISPLAY_Timer_Start();
+// decrease counter value and speed up display update        
+        if (DISPLAY_Timer_ReadCounter() > 200)
+        {
+            DISPLAY_Timer_WriteCounter(150u); 
+        }
 // check if 2 seconds timer expired             
         if (DISPLAY_UPDATE > 0)
         { 
@@ -1249,18 +1260,23 @@ uint8 display_update(void)
     }
         
 // display clock 2
-    else if (DISPLAY_STATE == 5)
+    else if (DISPLAY_STATE == 6)
     {
 // display clock 2                                
-        strcpy((char*)new_display_data_buffer, "CLOCK TWO               ");
+        strcpy((char*)new_display_data_buffer, "CLOCK and DATA          ");
 // disp_ctrl2 
 // CTRL1.0 and CTRL1.1 - clear all LED status except BT Tx and ONLINE
         new_disp_ctrl2 = new_disp_ctrl2 & 0x03;
 // CTRL1.5 - set Clock 2 indicator 
-        new_disp_ctrl2 = new_disp_ctrl2 | 0x20;
+        new_disp_ctrl2 = new_disp_ctrl2 | 0x40;
 // start display timer to periodically sent informaiton to display module
 // without blocking delay  
         DISPLAY_Timer_Start();
+// decrease counter value and speed up display update                
+        if (DISPLAY_Timer_ReadCounter() > 200)
+        {
+            DISPLAY_Timer_WriteCounter(150u); 
+        }
 // check if 2 seconds timer expired             
         if (DISPLAY_UPDATE > 0)
         { 
@@ -1271,7 +1287,7 @@ uint8 display_update(void)
     }
         
 // display blank data
-    else if (DISPLAY_STATE == 6)
+    else if (DISPLAY_STATE == 7)
     {
 // blank out display data            
         strcpy((char*)new_display_data_buffer, "                        ");
@@ -1280,6 +1296,11 @@ uint8 display_update(void)
 // start display timer to periodically sent informaiton to display module
 // without blocking delay  
         DISPLAY_Timer_Start();
+// decrease counter value and speed up display update        
+        if (DISPLAY_Timer_ReadCounter() > 200)
+        {
+            DISPLAY_Timer_WriteCounter(150u); 
+        }
 // check if 2 seconds timer expired             
         if (DISPLAY_UPDATE > 0)
         { 
@@ -1418,7 +1439,7 @@ uint8 array[]= { 0x00, 0x00, 0x00 };
 // start Clock state
         else if (command == 15)
         {
-// set SYSTEM STATE variables to RDS/FM Radio
+// set SYSTEM STATE variables to Clock Radio
             SYSTEM_STATE = 5;
 // set BT variables based on EEPROM read back data
             BT_Tx_STATE = eepromArray[2];            
@@ -1487,7 +1508,7 @@ uint8 array[]= { 0x00, 0x00, 0x00 };
 // start Clock state
             else if (command == 15)
             {
-// set SYSTEM STATE variables to RDS/FM Radio
+// set SYSTEM STATE variables to Clock Radio
                 SYSTEM_STATE = 5;
             }
 // check if 6 button was pressed
@@ -1540,7 +1561,7 @@ uint8 array[]= { 0x00, 0x00, 0x00 };
         {
 // if it is not then move to next display state
             DISPLAY_STATE = DISPLAY_STATE + 1;
-            if (DISPLAY_STATE >= 7)
+            if (DISPLAY_STATE >= 8)
             {
                 DISPLAY_STATE = 1;
             }
@@ -1557,7 +1578,7 @@ uint8 array[]= { 0x00, 0x00, 0x00 };
             DISPLAY_STATE = DISPLAY_STATE - 1;
             if (DISPLAY_STATE <= 0)
             {
-                DISPLAY_STATE = 6;
+                DISPLAY_STATE = 7;
             }
         }
     }
@@ -1652,13 +1673,85 @@ uint8 array[]= { 0x00, 0x00, 0x00 };
         }
     }     
     
+    
+// check if system is in Clock state
+    if (SYSTEM_STATE == 5)
+    {
+// if in Clock state and command that arrives are relevant to setting clock react to them
+// check OK/GO/PLAY button was pressed     
+        if (command == 20)
+        {
+// Sent OK/GO command to display module 
+            strcpy((char*)new_display_data_buffer, "CMD:+OKGO+--------------");
+// set flag and sent info to display module
+            new_display_data_flag = 1;
+        }
+// check UP/ STEP > button was pressed     
+        else if (command == 21)
+        {
+// Sent UP/ STEP > command to display module 
+            strcpy((char*)new_display_data_buffer, "CMD:+UPUP+--------------");
+// set flag and sent info to display module
+            new_display_data_flag = 1;
+        }
+// check DOWN/< STEP button was pressed     
+        else if (command == 22)
+        {
+// Sent DOWN command to display module 
+            strcpy((char*)new_display_data_buffer, "CMD:+DOWN+--------------");
+// set flag and sent info to display module
+            new_display_data_flag = 1;  
+        }
+// check LEFT/<< button was pressed     
+        else if (command == 23)
+        {
+// Sent LEFT / << command to display module
+            strcpy((char*)new_display_data_buffer, "CMD:+LEFT+--------------");
+// set flag and sent info to display module
+            new_display_data_flag = 1; 
+        }
+// check RIGHT/>> button was pressed     
+        else if (command == 24)
+        {
+// Sent RIGHT / >> command to display module
+            strcpy((char*)new_display_data_buffer, "CMD:+RIGT+--------------");
+// set flag and sent info to display module
+            new_display_data_flag = 1;
+        }
+// check STOP button was pressed     
+        else if (command == 25)
+        {
+// sent STOP command to display module            
+            strcpy((char*)new_display_data_buffer, "CMD:+STOP+--------------");
+// set flag and sent info to display module
+            new_display_data_flag = 1;
+        }
+        // check MENU(onBeo4)/TURN(on MCP) button was pressed     
+        else if (command == 27)
+        {
+// Sent MENU command to display module 
+            strcpy((char*)new_display_data_buffer, "CMD:+MENU+--------------");
+// set flag and sent info to display module
+            new_display_data_flag = 1;
+        } 
+// check EXIT(on Beo4)/RESET(on MCP) button was pressed     
+        else if (command == 28)
+        {
+// Sent EXIT command to display module 
+            strcpy((char*)new_display_data_buffer, "CMD:+EXIT+--------------");
+// set flag and sent info to display module
+            new_display_data_flag = 1;
+        }
+    }      
+    
+    
 // check if FM radio station number command was intercepted     
     if ((command >= 41) & (command <= 60))
     {
 // if so, store radio station nubmer in globaal variable
         FM_RADIO_STATION = command - 40;
 // if in RM/RDS Radio state and command that user changes RF radio stations, react to them
-    if (SYSTEM_STATE == 6)
+        if (SYSTEM_STATE == 6)
         {
             UART_UartPutString("-FM_");    
             UART_UartPutChar('0' + (FM_RADIO_STATION / 10));               

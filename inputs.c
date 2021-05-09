@@ -1,8 +1,8 @@
 /* ========================================
  *
- * Copyright HEMI, 2020
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
+* Copyright HEMI, 2021
+* All Rights Reserved
+* UNPUBLISHED, LICENSED SOFTWARE.
  * 
  * Functions used by BeoModern main PSoC to monitor input informaiton coming from
  * push buttons and over DataLink interface
@@ -16,14 +16,20 @@
 #include <modes.h>
 #include <inputs.h>
 
-/* global variables */
-uint8 MODE_SWITCH = 0;    /* switch storing info on MODE button long press */
-uint8 PWR_OK_SWITCH = 0;  /* switch storing info on Power/OK button long press */
+// global variables 
+// switch storing info on MODE button long press 
+uint8 MODE_SWITCH = 0;    
+// switch storing info on Power/OK button long press 
+uint8 PWR_OK_SWITCH = 0;  
 
-uint8 MODE_SHORT_V = 0;     /* variable storing MODE short button press event */
-uint8 PWR_OK_SHORT_V = 0;   /* variable storing PWR/OK short button press event */
-uint8 MODE_LONG_V = 0;      /* variable storing MODE long button press event  */
-uint8 PWR_OK_LONG_V = 0;    /* variable storing PWR/OK long button press event  */
+// variable storing MODE short button press event 
+uint8 MODE_SHORT_V = 0;     
+// variable storing PWR/OK short button press event
+uint8 PWR_OK_SHORT_V = 0;  
+// variable storing MODE long button press event  
+uint8 MODE_LONG_V = 0;     
+// variable storing PWR/OK long button press event  
+uint8 PWR_OK_LONG_V = 0;    
 
 
 // DATALINK DATA ARRAY
@@ -103,7 +109,7 @@ CY_ISR(PWR_OK_MODE_SHORT_ISR)
 *******************************************************************************/
 CY_ISR(MODE_LONG_ISR)
 {
-    /* Check interrupt source and clear Interrupt */
+// Check interrupt source and clear Interrupt
     if (Timer_1_GetInterruptSourceMasked() == Timer_1_INTR_MASK_TC)
     {
         MODE_SWITCH = 1;        // set switch to prevent recognizing falling edge as short press
